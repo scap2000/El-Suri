@@ -1,0 +1,94 @@
+Instrucciones de Instalación
+****************************
+
+  Copyright (C) 2007-2010 por D'AMBROSIO MARCELO E CASSINA SANTIAGO SOC DE HECHO.
+  D'AMBROSIO MARCELO E CASSINA SANTIAGO SOC DE HECHO es propiedad de
+  Lic. Santiago Cassina (santiago@digitallsh.com.ar - scap2000@yahoo.com) y
+  Marcelo D'Ambrosio (marcelo@digitallsh.com.ar - marcelodambrosio@gmail.com)
+  http://www.digitallsh.com.ar
+
+  La copia y distribución de este archivo, con o sin modificaciones,
+  están permitidas por cualquier medio sin cargo mientras se preserven
+  el Aviso de Copyright y este mismo aviso.
+
+  Copyright (C) 2007-2010 by D'AMBROSIO MARCELO E CASSINA SANTIAGO SOC DE HECHO.
+  D'AMBROSIO MARCELO E CASSINA SANTIAGO SOC DE HECHO is owned by
+  Lic. Santiago Cassina (santiago@digitallsh.com.ar - scap2000@yahoo.com) and
+  Marcelo D'Ambrosio (marcelo@digitallsh.com.ar - marcelodambrosio@gmail.com)
+  http://www.digitallsh.com.ar
+
+  Copying and distribution of this file, with or without modification,
+  are permitted in any medium without royalty provided the copyright
+  notice and this notice are preserved.
+
+Notas de Instalación
+====================
+
+El Suri está diseñado para compilarse 100% con IcedTea, pero Ud. puede
+optar por usar cualquier otra distrubición Java (Sun, OpenJDK, etcétera).
+
+Requerimientos mínimos:
+	* CPU 800 Mhz
+	* 256 MB de RAM
+	* Java 1.7.0 IcedTea-1.5
+	    (descarga desde http://icedtea.classpath.org/wiki/Main_Page)
+	* Apache Ant (para compilar)
+
+Configuración recomendada:
+	* CPU 2.2 Ghz
+	* 2 GB de RAM
+	* Java 1.7.0 IcedTea-1.5
+	    (descarga desde http://icedtea.classpath.org/wiki/Main_Page)
+	* Apache Ant (para compilar)
+
+El Suri necesita acceso a la red, en general esto no es un problema a menos
+que se intente usar a través de una red que bloquee tráfico de salida.
+Si este fuera el caso solicitar al administrador de la red que permita el
+tráfico de salida por los puertos 2000 al 2003 del protocolo TCP para
+que El Suri encripte toda la información enviada y recibida.
+
+Para iniciar el sistema y conectarse a nuestros servidores demo, deberá
+conectarse con el usuario "demo" y contraseña "demo123" (sin las comillas)
+al servidor demo.digitallsh.com.ar, disponible por tiempo indeterminado,
+o bien configurar PostgreSQL y PostGIS en un servidor propio (recomendado).
+
+Generando los certificados SSL para encriptación de datos
+=========================================================
+
+Cambiar los permisos del archivo genCerts.sh
+
+#: chmod +x genCerts.sh
+
+Ejecutar el script genCerts.sh
+
+#: ./genCerts.sh
+
+Compilando el módulo servidor y levantando la base de datos
+===========================================================
+
+Cambiar los permisos del archivo initServer.sh
+
+#: chmod +x initServer.sh
+
+Ejecutar el script initServer.sh
+
+#: ./initServer.sh
+
+Cambiar los permisos del archivo makeServer.sh
+
+#: chmod +x makeServer.sh
+
+Ejecutar el script makeServer.sh
+
+#: ./makeServer.sh
+
+Compilando el código fuente y corriendo el programa
+===================================================
+
+Cambiar los permisos del archivo makeClient.sh
+
+#: chmod +x makeClient.sh
+
+Ejecutar el script makeClient.sh
+
+#: ./makeClient.sh

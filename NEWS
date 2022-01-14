@@ -1,0 +1,35 @@
+Este archivo NEWS registra los cambios más notorios.
+Lea el manual para información detallada.
+
+  Copyright (C) 2007-2010 por D'AMBROSIO MARCELO E CASSINA SANTIAGO SOC DE HECHO.
+  D'AMBROSIO MARCELO E CASSINA SANTIAGO SOC DE HECHO es propiedad de
+  Lic. Santiago Cassina (santiago@digitallsh.com.ar - scap2000@yahoo.com) y
+  Marcelo D'Ambrosio (marcelo@digitallsh.com.ar - marcelodambrosio@gmail.com)
+  http://www.digitallsh.com.ar
+
+  La copia y distribución de este archivo, con o sin modificaciones,
+  están permitidas por cualquier medio sin cargo mientras se preserven
+  el Aviso de Copyright y este mismo aviso.
+
+  Copyright (C) 2007-2010 by D'AMBROSIO MARCELO E CASSINA SANTIAGO SOC DE HECHO.
+  D'AMBROSIO MARCELO E CASSINA SANTIAGO SOC DE HECHO is owned by
+  Lic. Santiago Cassina (santiago@digitallsh.com.ar - scap2000@yahoo.com) and
+  Marcelo D'Ambrosio (marcelo@digitallsh.com.ar - marcelodambrosio@gmail.com)
+  http://www.digitallsh.com.ar
+
+  Copying and distribution of this file, with or without modification,
+  are permitted in any medium without royalty provided the copyright
+  notice and this notice are preserved.
+
+2010-10-12
+
+    * Se removieron dependencias de código propietario de Java (Sun)
+    para hacer este software 100% compatible con IcedTea 1.7.0
+    * Se creó la lista de correo electrónico: elsuri-bugs@lists.sourceforge.net
+    cualquiera es bienvenido a la lista; para suscribirse visite
+    https://lists.sourceforge.net/lists/listinfo/elsuri-bugs
+
+2010-10-05
+
+    * A partir de ahora existe un archivo `NEWS' (éste mismo), con el historial
+    de cambios visibles al usuario y al programador.
