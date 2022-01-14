@@ -1,4 +1,4 @@
-Instrucciones de InstalaciÃ³n
+Instrucciones de Instalación
 ****************************
 
   Copyright (C) 2007-2010 por D'AMBROSIO MARCELO E CASSINA SANTIAGO SOC DE HECHO.
@@ -7,8 +7,8 @@ Instrucciones de InstalaciÃ³n
   Marcelo D'Ambrosio (marcelo@digitallsh.com.ar - marcelodambrosio@gmail.com)
   http://www.digitallsh.com.ar
 
-  La copia y distribuciÃ³n de este archivo, con o sin modificaciones,
-  estÃ¡n permitidas por cualquier medio sin cargo mientras se preserven
+  La copia y distribución de este archivo, con o sin modificaciones,
+  están permitidas por cualquier medio sin cargo mientras se preserven
   el Aviso de Copyright y este mismo aviso.
 
   Copyright (C) 2007-2010 by D'AMBROSIO MARCELO E CASSINA SANTIAGO SOC DE HECHO.
@@ -21,20 +21,20 @@ Instrucciones de InstalaciÃ³n
   are permitted in any medium without royalty provided the copyright
   notice and this notice are preserved.
 
-Notas de InstalaciÃ³n
+Notas de Instalación
 ====================
 
-El Suri estÃ¡ diseÃ±ado para compilarse 100% con IcedTea, pero Ud. puede
-optar por usar cualquier otra distrubiciÃ³n Java (Sun, OpenJDK, etcÃ©tera).
+El Suri está diseñado para compilarse 100% con IcedTea, pero Ud. puede
+optar por usar cualquier otra distrubición Java (Sun, OpenJDK, etcétera).
 
-Requerimientos mÃ­nimos:
+Requerimientos mínimos:
 	* CPU 800 Mhz
 	* 256 MB de RAM
 	* Java 1.7.0 IcedTea-1.5
 	    (descarga desde http://icedtea.classpath.org/wiki/Main_Page)
 	* Apache Ant (para compilar)
 
-ConfiguraciÃ³n recomendada:
+Configuración recomendada:
 	* CPU 2.2 Ghz
 	* 2 GB de RAM
 	* Java 1.7.0 IcedTea-1.5
@@ -42,17 +42,17 @@ ConfiguraciÃ³n recomendada:
 	* Apache Ant (para compilar)
 
 El Suri necesita acceso a la red, en general esto no es un problema a menos
-que se intente usar a travÃ©s de una red que bloquee trÃ¡fico de salida.
+que se intente usar a través de una red que bloquee tráfico de salida.
 Si este fuera el caso solicitar al administrador de la red que permita el
-trÃ¡fico de salida por los puertos 2000 al 2003 del protocolo TCP para
-que El Suri encripte toda la informaciÃ³n enviada y recibida.
+tráfico de salida por los puertos 2000 al 2003 del protocolo TCP para
+que El Suri encripte toda la información enviada y recibida.
 
-Para iniciar el sistema y conectarse a nuestros servidores demo, deberÃ¡
-conectarse con el usuario "demo" y contraseÃ±a "demo123" (sin las comillas)
+Para iniciar el sistema y conectarse a nuestros servidores demo, deberá
+conectarse con el usuario "demo" y contraseña "demo123" (sin las comillas)
 al servidor demo.digitallsh.com.ar, disponible por tiempo indeterminado,
 o bien configurar PostgreSQL y PostGIS en un servidor propio (recomendado).
 
-Generando los certificados SSL para encriptaciÃ³n de datos
+Generando los certificados SSL para encriptación de datos
 =========================================================
 
 Cambiar los permisos del archivo genCerts.sh
@@ -63,7 +63,7 @@ Ejecutar el script genCerts.sh
 
 #: ./genCerts.sh
 
-Compilando el mÃ³dulo servidor y levantando la base de datos
+Compilando el módulo servidor y levantando la base de datos
 ===========================================================
 
 Cambiar los permisos del archivo initServer.sh
@@ -82,7 +82,7 @@ Ejecutar el script makeServer.sh
 
 #: ./makeServer.sh
 
-Compilando el cÃ³digo fuente y corriendo el programa
+Compilando el código fuente y corriendo el programa
 ===================================================
 
 Cambiar los permisos del archivo makeClient.sh
