@@ -1,0 +1,36 @@
+Funciones SQL
+    En el esquema org
+1 - org.getuser -> obtiene los datos de un usuario en funciÃ³n de su nombre
+2 - org.getpersonbyusername -> obtiene los datos de una persona  partir del
+                               nombre de usuario relacionado
+
+
+    En el esquema task
+1 - task.adddetailstart -> inserta una nueva tupla en la tabla detail
+2 - task.adddetailend -> se actualiza la tupla detail en fucnion de su key
+3 - task.addtask -> agrega una nueva tarea en task
+4 - task.addtaskbyuser -> se asigna una tarea a un usuario
+5 - task.assignedtask -> verifica si una tarea ya fue asignada
+6 - task.assigntaskall 	-> asigna una tarea a todos los usuarios. Si un usuario 
+                           ya tiene esa tarea asignada lo pasa por alto.
+7 - task.deletetask -> borra logicamente una tarea en funciÃ³n de su id
+8 - task.deletetaskbyuser -> borra una tarea asignada a un usuario
+9 - task.getalltask -> obtiene todas las tareas
+10 - task.getallusers -> obtiene todos los usuarios (*)
+11 - task.getdetailbytask -> obtiene todas los de talles de una tarea
+12 - task.getperson -> obtiene una persona en funciÃ³n del iduser (*)
+13 - task.getpersonadmin -> obtiene una persona en funciÃ³n del idperson(*)
+14 - task.gettaskbyuser2 -> onbiene las tareas de los usuarios
+15 - task.gettask -> obtiene todas las tareas no eliminadas
+16 - task.gettaskbyuser -> obtiene las tareas por usuarios con mas campos para 
+			   que se vean en el administrador como lso tiempos
+17 - task.gettaskbyuser2 ->  obtiene las tareas por usuarios para solo para dar 
+			     play y stop
+18 - task.gettasksnotassigntouser -> obtiene las tareas no asignadas a un usuario
+19 - task.getuser -> obtiene un usuario en funcion de su id
+20 - task.istaskplay -> verifica si alguna tarea para un usuario esta play
+21 - task.getdetailnonfinalized -> obtiene un detalle no terminado en funcion 
+				    del idtaskbyuser 
+22 - task.finishedtask -> pone la fecha de finalización
+
+(*) Deben ser pasadas al esquema org

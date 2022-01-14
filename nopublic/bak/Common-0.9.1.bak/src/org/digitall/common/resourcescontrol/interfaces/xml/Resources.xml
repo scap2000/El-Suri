@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!--
+    ~ Copyright (c) 2007, Your Corporation. All Rights Reserved.
+    -->
+
+<report xmlns="http://jfreereport.sourceforge.net/namespaces/reports/legacy/simple" name="Padrón de Recursos" pageformat="A4"
+       topmargin="20" leftmargin="50" bottommargin="30" rightmargin="30" orientation="portrait">
+	
+	<pageheader height="12">
+		<string-field fontname="SansSerif" fontsize="16" fsbold="true" width="100%" dynamic="true" alignment="center" fieldname="location"></string-field>
+                
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        <line x1="0" y1="20" x2="100%" y2="20" weight="3"/>
+                <label name="lbl1"  x="0"  y="25" width="350" height="12" dynamic="true" alignment="left">Padrón de Recursos</label>
+                <rectangle name="t" x="0"  y="25" width="75"  height="12" draw="false" fill="false" color="#FF0000"/>
+             
+
+                <label name="lbldate" x="400" y="25" width="45" dynamic="true" alignment="right" fsbold="true">Fecha:</label>
+                <date-field x="450" y="25" width="65" dynamic="true" fieldname="report.date" alignment="left"  format="dd/MM/yyyy" />
+                
+                <line x1="0" y1="40" x2="100%" y2="40" weight="3"/>
+                <line x1="0" y1="43" x2="100%" y2="43" weight="1"/>
+
+                <rectangle name="tangle"  x="0"   y="55" width="200" height="18"  draw="true" fill="false" color="#000000"/>
+                <rectangle name="tangle"  x="200" y="55" width="160" height="18"  draw="true" fill="false" color="#000000"/>
+                <rectangle name="tangle"  x="360" y="55" width="160" height="18"  draw="true" fill="false" color="#000000"/>
+
+                <label x="0"   y="55" width="200" height="18" dynamic="false" alignment="center" vertical-alignment="middle" fontsize="10">Recurso</label>
+                <label x="200" y="55" width="160" height="18" dynamic="false" alignment="center" vertical-alignment="middle" fontsize="10">Cuenta</label>
+                <label x="360" y="55" width="160" height="18" dynamic="false" alignment="center" vertical-alignment="middle" fontsize="10">Cuenta superior</label>
+	</pageheader>
+	
+	
+	<items layout-cachable="false" fontsize="08">
+		<band name="table_0">
+                        
+			<line x1="0"   y1="0" x2="0"   y2="100%" weight="0.25"/>
+                        <line x1="200" y1="0" x2="200" y2="100%" weight="0.25"/>
+                        <line x1="360" y1="0" x2="360" y2="100%" weight="0.25"/>
+			<line x1="515" y1="0" x2="515" y2="100%" weight="0.25"/>
+
+                        <string-field  x="5"   y="0"   width="195"  alignment="left"  height="08" dynamic="false" fieldname="table_0.resourcename"/>
+			<string-field  x="205" y="0"   width="153"  alignment="left"  height="08" dynamic="false" fieldname="table_0.son"/>
+                        <string-field  x="365" y="0"   width="150"  alignment="left"  height="08" dynamic="false" fieldname="table_0.father"/>
+		</band>
+	</items>
+    <pagefooter height="24">
+	<rectangle name="PF0" x="0" y="0" width="100%" height="100%" color="#FFFFFF" weight="0" draw="false" fill="true"/>
+	<line x1="0" y1="0" x2="100%" y2="0" weight="0.25"/>
+	<string-field fieldname="pageXofY" x="0" y="0" width="100%" height="100%" alignment="right" vertical-alignment="top"/>
+    </pagefooter>
+
+    <functions>
+	<property-ref name="report.date"/>
+	    <function class="org.jfree.report.function.PageOfPagesFunction" name="pageXofY">
+		<properties>
+			<property name="format">Página {0} de {1}</property>
+		</properties>
+	    </function>
+    
+    </functions>
+        
+</report>

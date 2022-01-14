@@ -1,0 +1,3966 @@
+/**
+ LIMITACIÓN DE RESPONSABILIDAD - COPYRIGHT - [Español]
+ ================================================================================
+ El Suri - Entorno JAVA de Trabajo y Desarrollo para Gobierno Electrónico
+ ================================================================================
+
+ Información del Proyecto:  http://elsuri.sourceforge.net
+
+ Copyright (C) 2007-2010 por D'AMBROSIO MARCELO E CASSINA SANTIAGO SOC DE HECHO.
+ D'AMBROSIO MARCELO E CASSINA SANTIAGO SOC DE HECHO es propiedad de
+ Lic. Santiago Cassina (santiago@digitallsh.com.ar - scap2000@yahoo.com) y
+ Marcelo D'Ambrosio (marcelo@digitallsh.com.ar - marcelodambrosio@gmail.com)
+ http://www.digitallsh.com.ar
+
+ Este programa es software libre: usted puede redistribuirlo y/o modificarlo
+ bajo los términos de la Licencia Pública General GNU publicada
+ por la Fundación para el Software Libre, ya sea la versión 3
+ de la Licencia, o (a su elección) cualquier versión posterior.
+
+ Este programa se distribuye con la esperanza de que sea útil, pero
+ SIN GARANTÍA ALGUNA; ni siquiera la garantía implícita
+ MERCANTIL o de APTITUD PARA UN PROPÓSITO DETERMINADO.
+ Consulte los detalles de la Licencia Pública General GNU para obtener
+ una información más detallada.
+
+ Debería haber recibido una copia de la Licencia Pública General GNU
+ junto a este programa.
+ En caso contrario, consulte <http://www.gnu.org/licenses/>.
+
+ DISCLAIMER - COPYRIGHT - [English]
+ =====================================================================================
+ El Suri - JAVA Management & Development Environment for Electronic Government
+ =====================================================================================
+
+ Project Info:  http://elsuri.sourceforge.net
+
+ Copyright (C) 2007-2010 by D'AMBROSIO MARCELO E CASSINA SANTIAGO SOC DE HECHO.
+ D'AMBROSIO MARCELO E CASSINA SANTIAGO SOC DE HECHO is owned by
+ Lic. Santiago Cassina (santiago@digitallsh.com.ar - scap2000@yahoo.com) and
+ Marcelo D'Ambrosio (marcelo@digitallsh.com.ar - marcelodambrosio@gmail.com)
+ http://www.digitallsh.com.ar
+
+ This program is free software: you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation, either version 3 of the License, or
+ (at your option) any later version.
+
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public License for more details.
+
+ You should have received a copy of the GNU General Public License
+ along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+*/
+/**
+ * BasicDrawEngine.java
+ *
+ * */
+package org.digitall.common.geo.mapping;
+
+import java.awt.AlphaComposite;
+import java.awt.BasicStroke;
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Composite;
+import java.awt.Cursor;
+import java.awt.Font;
+import java.awt.Frame;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.Image;
+import java.awt.Point;
+import java.awt.Rectangle;
+import java.awt.RenderingHints;
+import java.awt.Shape;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.InputEvent;
+import java.awt.event.KeyEvent;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionListener;
+import java.awt.event.MouseWheelEvent;
+import java.awt.event.MouseWheelListener;
+import java.awt.geom.AffineTransform;
+import java.awt.geom.Ellipse2D;
+import java.awt.geom.Line2D;
+import java.awt.geom.Point2D;
+import java.awt.geom.Rectangle2D;
+import java.awt.geom.RectangularShape;
+import java.awt.image.BufferedImage;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InvalidClassException;
+import java.io.ObjectInputStream;
+
+import java.text.DecimalFormat;
+
+import java.util.HashMap;
+import java.util.Random;
+import java.util.Vector;
+
+import javax.imageio.ImageIO;
+
+import javax.swing.AbstractAction;
+import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
+import javax.swing.JComponent;
+import javax.swing.JFileChooser;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import javax.swing.JWindow;
+import javax.swing.KeyStroke;
+import javax.swing.SwingUtilities;
+import javax.swing.Timer;
+import javax.swing.border.EtchedBorder;
+
+import org.digitall.common.geo.mapping.panels.StrokeSamples;
+import org.digitall.common.mapper.CoordinateViewer;
+import org.digitall.common.mapper.RuleViewer;
+import org.digitall.common.reports.BasicReport;
+import org.digitall.lib.common.ConfigFile;
+import org.digitall.lib.common.OrganizationInfo;
+import org.digitall.lib.components.Advisor;
+import org.digitall.lib.components.ComponentsManager;
+import org.digitall.lib.components.JArea;
+import org.digitall.lib.components.basic.BasicDialog;
+import org.digitall.lib.components.basic.BasicInternalFrame;
+import org.digitall.lib.components.basic.BasicLabel;
+import org.digitall.lib.components.basic.BasicPanel;
+import org.digitall.lib.components.basic.BasicPrimitivePanel;
+import org.digitall.lib.components.basic.BasicScrollPane;
+import org.digitall.lib.components.basic.BasicTabbedPane;
+import org.digitall.lib.data.Format;
+import org.digitall.lib.environment.Environment;
+import org.digitall.lib.geo.coordinatesystems.CoordinateSystems;
+import org.digitall.lib.geo.coordinatesystems.GKCoord;
+import org.digitall.lib.geo.coordinatesystems.LatLongCoord;
+import org.digitall.lib.geo.coordinatesystems.UTMCoord;
+import org.digitall.lib.geo.esri.ESRIPoint;
+import org.digitall.lib.geo.esri.ESRIPolygon;
+import org.digitall.lib.geo.esri.ESRIPolyline;
+import org.digitall.lib.geo.gaia.GaiaEnvironment;
+import org.digitall.lib.geo.mapping.classes.ImageAttachment;
+import org.digitall.lib.geo.mapping.classes.Layer_original;
+import org.digitall.lib.geo.mapping.classes.LayerFilter;
+import org.digitall.lib.geo.mapping.classes.LayerGroup;
+import org.digitall.lib.geo.mapping.classes.OsnapPoints;
+import org.digitall.lib.geo.mapping.classes.StyleConfig;
+import org.digitall.lib.geo.shapefile.ShapeTypes;
+import org.digitall.lib.geom.Polygon2D;
+import org.digitall.lib.ssl.MD5;
+
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.JFreeChart;
+import org.jfree.chart.plot.PlotOrientation;
+import org.jfree.data.category.DefaultCategoryDataset;
+import org.jfree.data.general.DefaultPieDataset;
+import org.jfree.data.xy.XYSeries;
+import org.jfree.data.xy.XYSeriesCollection;
+
+/** Motor Básico de Dibujo en 2D
+ * Capaz de dibujar objetos de las siguientes clases
+ * ESRIPoint
+ * ESRIPolyline
+ * ESRIPolygon
+ * */
+public class BasicDrawEngine_original extends BasicPrimitivePanel {
+    private BasicLabel statusBar;
+    private String operationStatus;
+    //private BasicButton bpoligono = new BasicButton();
+    //private BasicButton bZoom = new BasicButton();
+    private BasicLabel labelxy = new BasicLabel();
+    private BasicLabel labelinfo = new BasicLabel();
+    //Constantes de operacion
+    private int currentOperation = -1;
+    //Variables de Posicion
+    private Point mousePosition = new Point();
+    private Point2D.Double currentPosition = new Point2D.Double();
+
+    private Point startDragPosition = null;
+    private Point imageStartDragPosition = null;
+    private String testString = "";
+    //Variables de Dibujo
+    private Vector distancePoints = new Vector();
+    private OsnapPoints osnapPointsVector = new OsnapPoints();
+    //Servira de algo?
+    private RectangularShape osnapRectangle;
+    private int containedShape[] = new int[0];
+    protected Line2D panLine = new Line2D.Float();
+    private Point2D.Double startDrawRectPosition;
+    private Point2D.Double endDrawRectPosition;
+
+    private Point2D.Double multiQueryStartDrawRectPosition;
+    private Point2D.Double multiQueryEndDrawRectPosition;
+    private Rectangle2D multiQueryRectangle;
+
+    private Rectangle2D zoomRectangle;
+    private double scaleFactor = 1.05d;
+    //Variables del momento
+    //private double base = 1000.0;
+    //1000 metros
+    //private double altura = 1000.0;
+    //1000 metros
+    //private double area = base * altura;
+    //100 has ??? :=0 !!!
+    //private double areaParcial = area;
+    //Variables de trabajo
+    private MouseListener eraseListener;
+    private MouseMotionListener eraseMotionListener;
+    //private MouseWheelListener eraseWheelListener;
+    private int osnapRectSize = 8;
+    private Vector<Layer_original> layers = new Vector<Layer_original>();
+    private Vector layerGroups = new Vector();
+    private CoordinateViewer coordinateViewer;
+    private RuleViewer ruleViewer;
+    private BasicLabel label = new BasicLabel(" ");
+    private JWindow toolTip = new JWindow(new Frame());
+    private int selectedGeometryIndex = -1;
+    private int foundGeometryID = -1;
+    private String foundLayer = "";
+    private static long lastShowingTime = System.currentTimeMillis();
+    private static Timer hideToolTipTimer = null;
+    private Point2D[] mapExtents = new Point2D[0];
+    /* 3 segundos para ocultar la ventana de tooltip */
+    public static int timeout = 3;
+    private ConfigFile cfg = new ConfigFile("ddesktop.conf");
+    private BasicDrawEngineConfig engineConfig = new BasicDrawEngineConfig();
+    private ImageAttachment selectedImageAttachment = null;
+    double osnapTolerance = 5;
+    private boolean isPainting = false;
+    private String selectedLayerName= null;
+    private BufferedImage bufferedImage = null;
+    private Graphics2D labelGraphics2D = null;
+    
+    public BasicDrawEngine_original(BasicLabel _statusBar) {
+	fetchEngineConfigFromCache();
+	setIgnoreRepaint(true);
+	try {
+	    statusBar = _statusBar;
+	    jbInit();
+	} catch (Exception e) {
+	    e.printStackTrace();
+	}
+    }
+
+    private void jbInit() throws Exception {
+	hideToolTipTimer = new Timer(1000, new ActionListener() {
+
+			public void actionPerformed(ActionEvent e) {
+			    if ((System.currentTimeMillis() - lastShowingTime) > (timeout * 1000)) {
+				toolTip.setVisible(false);
+				hideToolTipTimer.stop();
+			    }
+			}
+
+		    });
+	//this.setLayout(null);
+	this.setBorder(BorderFactory.createEtchedBorder(EtchedBorder.RAISED));
+	/**mPoints = new Point2D[2];*/
+	//        mousePosition.setLocation(0, 0);
+	//        currentPosition.setLocation(0, 0);
+	//this.setSize(new Dimension(800, 600));
+	//labelxy.setText("labelxy");
+	labelxy.setForeground(Color.black);
+	//labelxy.setBounds(new Rectangle(15, 20, 515, 20));
+	//labelinfo.setText("labelinfo");
+	//labelinfo.setForeground(Color.BLACK);
+	//labelinfo.setBackground(Color.ORANGE);
+	//labelinfo.setOpaque(true);
+	//labelinfo.setVisible(false);
+	//labelinfo.setBounds(new Rectangle(0, 0, this.getWidth(), 20));
+	label.setBackground(Color.WHITE);
+	label.setForeground(Color.BLACK);
+	/*bpoligono.setText("Poligono");
+	bZoom.setText("Zoom");
+	bpoligono.setBounds(new Rectangle(695, 65, 90, 25));
+	bZoom.setBounds(new Rectangle(695, 95, 90, 25));
+	bpoligono.addActionListener(new ActionListener() {
+
+				 public void actionPerformed(ActionEvent e) {
+				     bpoligono_actionPerformed(e);
+				 }
+
+			     }
+	);
+	bZoom.addActionListener(new ActionListener() {
+
+			     public void actionPerformed(ActionEvent e) {
+				 bZoom_actionPerformed(e);
+			     }
+
+			 }
+	);
+	//this.add(bpoligono, null);
+	//this.add(bZoom, null);
+	*/
+	//add(labelinfo, BorderLayout.NORTH);
+	add(labelxy, BorderLayout.SOUTH);
+	addMouseWheelListener(commonWheelListener);
+	addMouseListener(commonMouseListener);
+	addMouseMotionListener(commonMotionListener);
+	createKeyBindings();
+    }
+
+    public void paint(Graphics _graphics) {
+	if (!isPainting) {
+	    //super.paint(_graphics);
+	    isPainting = true;
+	    osnapTolerance = 10;
+	    
+	    Graphics2D _graphics2D = (Graphics2D)_graphics;
+    
+	    setEnvironment();
+	    osnapPointsVector.removeAllElements();
+	    //Recorro el vector layer para dibujar uno por uno
+	    //en el orden en que fueron agregados al vector
+	    _graphics2D.setColor(Color.WHITE);
+	    _graphics2D.fillRect(getBounds().x, getBounds().y, getBounds().width, getBounds().height);
+
+	    /*
+	     * Implementación de prueba para rasterización del mapa
+	     * a ver si mejoramos el rendimiento del dibujo eh?
+	     */
+	     /*double minX = -1;
+	     double minY = -1;
+	     double maxX = -1;
+	     double maxY = -1;
+	     for (int i = 0; i < layers.size(); i++)  {
+	        Rectangle2D _bounds = layers.elementAt(i).getLayerConfig().getBounds();
+	        if (_bounds != null) {
+	            if ((minX == -1 || _bounds.getMinX() < minX) && _bounds.getMinX() != 0.0) {
+	                minX = _bounds.getMinX();
+	            }
+	            if ((minY == -1 || _bounds.getMinY() < minY) && _bounds.getMinY() != 0.0) {
+	                minY = _bounds.getMinY();
+	            }
+	            if ((maxX == -1 || _bounds.getMaxX() > maxX) && _bounds.getMaxX() != 0.0) {
+	                maxX = _bounds.getMaxX();
+	            }
+	            if ((maxY == -1 || _bounds.getMaxY() > maxY) && _bounds.getMaxY() != 0.0) {
+	                maxY = _bounds.getMaxY();
+	            }
+	        }
+	     }
+
+	    int _zoom = 17;
+	    double scale = engineConfig.xtoSpace(getWidth())-engineConfig.xtoSpace(0);
+	    if (scale < 700*Math.pow(2,1)) {
+	        _zoom = 17;
+	    } else if (scale < 700*Math.pow(2,2)) {
+	        _zoom = 16;
+	    } else if (scale < 700*Math.pow(2,3)) {
+	        _zoom = 15;
+	    } else if (scale < 700*Math.pow(2,4)) {
+	        _zoom = 14;
+	    } else if (scale < 700*Math.pow(2,5)) {
+	        _zoom = 13;
+	    } else if (scale < 700*Math.pow(2,6)) {
+	        _zoom = 12;
+	    } else if (scale < 700*Math.pow(2,7)) {
+	        _zoom = 11;
+	    } else if (scale < 700*Math.pow(2,8)) {
+	        _zoom = 10;
+	    } else if (scale < 700*Math.pow(2,9)) {
+	        _zoom = 9;
+	    } else if (scale < 700*Math.pow(2,10)) {
+	        _zoom = 8;
+	    } else if (scale < 700*Math.pow(2,11)) {
+	        _zoom = 7;
+	    } else if (scale < 700*Math.pow(2,12)) {
+	        _zoom = 6;
+	    } else if (scale < 700*Math.pow(2,13)) {
+	        _zoom = 5;
+	    } else if (scale < 700*Math.pow(2,14)) {
+	        _zoom = 4;
+	    } else if (scale < 700*Math.pow(2,15)) {
+	        _zoom = 3;
+	    } else if (scale < 700*Math.pow(2,16)) {
+	        _zoom = 2;
+	    } else {
+	        _zoom = 1;
+	    }
+
+	    System.out.println(_zoom);
+	    int _minX = engineConfig.xtoPixel(minX);
+	    int _minY = engineConfig.ytoPixel(minY);
+	    int _maxX = engineConfig.xtoPixel(maxX);
+	    int _maxY = engineConfig.ytoPixel(maxY);
+	    double _rectWidth = maxX - minX;
+	    double _rectHeight = maxY - minY;
+	    int _x = 0;
+	    while (_minX+_x*(int)(_rectWidth*engineConfig.drawFactor/_zoom) < _maxX) {
+	        Random rand = new Random();
+	        _graphics2D.setColor(new Color(rand.nextInt(256), rand.nextInt(256), rand.nextInt(256)));
+	        int _y = 0;
+	        while (_maxY+_y*(int)(_rectHeight*engineConfig.drawFactor/_zoom) < _minY) {
+		    _graphics2D.fillRect(_minX + _x*(int)(_rectWidth*engineConfig.drawFactor/_zoom), _maxY + _y*(int)(_rectHeight*engineConfig.drawFactor/_zoom),  (int)(_rectWidth*engineConfig.drawFactorOriginal/_zoom), (int)(_rectHeight*engineConfig.drawFactorOriginal/_zoom));
+		    System.out.println("zoom: " + _zoom + ",minX: " + _minX + ", maxX: " + _maxX + ", width: " + (int)(_rectWidth*engineConfig.drawFactor/_zoom) + ", height: " + (int)(_rectHeight*engineConfig.drawFactor/_zoom));
+		    _y++;
+		}
+	        _x++;
+	    }*/
+	    //System.out.println(_rectWidth/_zoom);
+	    //_graphics2D.fillRect(_minX, _maxY,  _rectWidth, _rectHeight);
+	    //System.out.println("minX: " + minX + "minY: " + minY + "maxX: " + maxX + "maxY: " + maxY);
+
+	     bufferedImage = new BufferedImage(getBounds().width, getBounds().height, BufferedImage.TYPE_4BYTE_ABGR);
+	     labelGraphics2D = bufferedImage.createGraphics();
+	    drawLayers(_graphics2D, labelGraphics2D);
+	    _graphics2D.drawImage(bufferedImage, 0, 0, engineConfig.getFWidth(), engineConfig.getFHeight(), this);
+	    _graphics2D.setColor(Color.yellow);
+	    _graphics2D.setStroke(new BasicStroke(1));
+	    _graphics2D.draw(panLine);
+	    //Dibujo el texto del puntero del mouse
+	    if (currentPosition != null) {
+		//ESTAS DOS LINEAS CLAVAN EL PROGRAMA!!!
+		//LatLongCoord latlon = CoordinateSystems.gk2geo(currentPosition.getX(), currentPosition.getY(), faja);
+		//String latlong = CoordinateSystems.dec2gms(latlon.getLatitude(), 4) + " lat " + CoordinateSystems.dec2gms(latlon.getLongitude(), 4) + " long";
+		//POR ESO ESTÁN COMENTADAS
+		if (engineConfig.paintCoordinates()) {
+		    _graphics2D.setColor(Color.black);
+		    Font thisFont = new Font("Arial", Font.PLAIN, 12);
+		    _graphics2D.setFont(thisFont);
+		    _graphics2D.drawString("(" + decimalFormat(currentPosition.getX(), 4) + " " + decimalFormat(currentPosition.getY(), 4) + ")", (int)mousePosition.getX(), (int)mousePosition.getY());
+		}
+		if (engineConfig.getProjectionType() == CoordinateSystems.UTM) {
+		    int zona = 19;
+		    coordinateViewer.setUTMCoord(new UTMCoord(currentPosition.getX(), currentPosition.getY(), zona));
+		    System.out.println(currentPosition.getX());
+		} else if (engineConfig.getProjectionType() == CoordinateSystems.GK || engineConfig.getProjectionType() == -1) {
+		    int faja = 0;
+		    coordinateViewer.setGKCoord(new GKCoord(currentPosition.getX(), currentPosition.getY(), faja));
+		} else if (engineConfig.getProjectionType() == CoordinateSystems.LL) {
+		    coordinateViewer.setLLCoord(new LatLongCoord(currentPosition.getY(), currentPosition.getX()));
+		}
+	    }
+	    //Dibujo el texto del puntero del mouse
+	    if (startDragPosition != null) {
+		_graphics2D.setColor(Color.blue);
+		_graphics2D.drawString(testString, 200, 200);
+	    }
+	    //Dibujo el Rectángulo del osnap
+	    if (osnapRectangle != null) {
+		_graphics2D.setColor(Color.cyan);
+		_graphics2D.fill(osnapRectangle);
+	    }
+	  
+	    //DIBUJO EL POLIGONO DE CALCULO DE DISTANCIAS
+	    if (distancePoints.size() > 1) {
+		_graphics2D.setColor(Color.GREEN.darker());
+		try {
+		    for (int i = 0; i < distancePoints.size() - 1; i++) //Fijarse si es size()-1
+		    {
+			Point2D x0y0 = (Point2D.Double)distancePoints.elementAt(i);
+			Point2D x1y1 = (Point2D.Double)distancePoints.elementAt(i + 1);
+			_graphics2D.drawLine(engineConfig.xtoPixel(x0y0.getX()), engineConfig.ytoPixel(x0y0.getY()), engineConfig.xtoPixel(x1y1.getX()), engineConfig.ytoPixel(x1y1.getY()));
+		    }
+		    Point2D x0y0 = (Point2D.Double)distancePoints.elementAt(distancePoints.size() - 1);
+		    Point2D x1y1 = (Point2D.Double)distancePoints.elementAt(0);
+		    _graphics2D.drawLine(engineConfig.xtoPixel(x0y0.getX()), engineConfig.ytoPixel(x0y0.getY()), engineConfig.xtoPixel(x1y1.getX()), engineConfig.ytoPixel(x1y1.getY()));
+		} catch (NullPointerException x) {
+		    x.printStackTrace();
+		}
+	    } else if (distancePoints.size() == 0) {
+		//distancePoints.add(new Point2D.Double());
+	    }
+	    // DIBUJO EL POLIGONO DE ZOOM
+	    if (zoomRectangle != null) {
+		_graphics2D.setColor(Color.BLUE);
+		_graphics2D.draw(zoomRectangle);
+		Composite originalComposite = _graphics2D.getComposite();
+		_graphics2D.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.2f));
+		_graphics2D.fill(zoomRectangle);
+		_graphics2D.setComposite(originalComposite);
+	    }
+    
+	    if (currentOperation == BasicDrawEngineConfig.OPERATION_MULTIQUERY && multiQueryRectangle != null) {
+		_graphics2D.setColor(Color.BLUE);
+		_graphics2D.setStroke(new BasicStroke(1));
+		_graphics2D.draw(multiQueryRectangle);
+	    }
+    
+	    // DIBUJO EL PUNTO DE REFERENCIA
+	    if (engineConfig.hasReferencePosition()) {
+		Point2D.Double referencePosition = engineConfig.getReferencePosition();
+		Shape point = new Ellipse2D.Double(engineConfig.xtoPixel(referencePosition.getX() - (double)16 / 2.0), engineConfig.ytoPixel(referencePosition.getY() + (double)16 / 2.0), ((double)16 * engineConfig.getDrawFactor()), ((double)16 * engineConfig.getDrawFactor()));
+		_graphics2D.setColor(Color.CYAN);
+		_graphics2D.fill(point);
+		_graphics2D.setColor(Color.BLACK);
+		_graphics2D.draw(point);
+	    }
+	    // INCRUSTO EL LOGO DE LA ORGANIZACION 
+	    if (engineConfig.paintLogo()) {
+		Image logo = OrganizationInfo.getLeftLogo();
+		double _logoScale = Math.min(90 / (double)logo.getHeight(this), 90 / (double)logo.getWidth(this));
+		_graphics2D.drawImage(logo, 20, getHeight() - (int)(logo.getHeight(this) * _logoScale) - 20, (int)(logo.getWidth(this) * _logoScale), (int)(logo.getHeight(this) * _logoScale), this);
+	    }
+	    
+	    if (engineConfig.paintScaleBar()) {
+		drawScaleBar(_graphics2D);
+	    }
+	    //super.paintComponents(_graphics2D);
+	    isPainting = false;
+	}
+    }
+
+    private void drawScaleBar(Graphics2D _graphics2D) {
+	BufferedImage _scaleImage = new BufferedImage(getWidth(), 17, BufferedImage.TYPE_4BYTE_ABGR);
+	Graphics2D _scaleImageGraphics = _scaleImage.createGraphics();
+	int _insets = _scaleImage.getWidth()/20;
+	int _scaleWidth = _scaleImage.getWidth()-_insets*2;
+	Composite originalComposite = _scaleImageGraphics.getComposite();
+	_scaleImageGraphics.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.0f));
+	_scaleImageGraphics.setColor(Color.WHITE);
+	_scaleImageGraphics.fillRect(0, 0,_scaleImage.getWidth(), _scaleImage.getHeight());
+	_scaleImageGraphics.setComposite(originalComposite);
+	Font thisFont = new Font("Arial", Font.PLAIN, 12);
+	_scaleImageGraphics.setFont(thisFont);
+	String _scales[] = new String[6];
+	double _offset = engineConfig.xtoSpace(0.0);
+	_scales[0] = "" + decimalFormat(0, 2);
+	_scales[1] = "" + decimalFormat(engineConfig.xtoSpace(1*_scaleWidth/5)-_offset,2);
+	_scales[2] = "" + decimalFormat(engineConfig.xtoSpace(2*_scaleWidth/5)-_offset,2);
+	_scales[3] = "" + decimalFormat(engineConfig.xtoSpace(3*_scaleWidth/5)-_offset,2);
+	_scales[4] = "" + decimalFormat(engineConfig.xtoSpace(4*_scaleWidth/5)-_offset,2);
+	_scales[5] = "" + decimalFormat(engineConfig.xtoSpace(5*_scaleWidth/5)-_offset,2);
+	_scaleImageGraphics.setColor(Color.WHITE);
+	_scaleImageGraphics.fillRect(0*_scaleWidth/5+_insets-(int)(_scaleImageGraphics.getFontMetrics().getStringBounds(_scales[0],_scaleImageGraphics).getWidth()/2), 0, (int)_scaleImageGraphics.getFontMetrics().getStringBounds(_scales[0],_scaleImageGraphics).getWidth(), (int)_scaleImageGraphics.getFontMetrics().getStringBounds(_scales[0],_scaleImageGraphics).getHeight());
+	_scaleImageGraphics.fillRect(1*_scaleWidth/5+_insets-(int)(_scaleImageGraphics.getFontMetrics().getStringBounds(_scales[1],_scaleImageGraphics).getWidth()/2), 0, (int)_scaleImageGraphics.getFontMetrics().getStringBounds(_scales[1],_scaleImageGraphics).getWidth(), (int)_scaleImageGraphics.getFontMetrics().getStringBounds(_scales[1],_scaleImageGraphics).getHeight());
+	_scaleImageGraphics.fillRect(2*_scaleWidth/5+_insets-(int)(_scaleImageGraphics.getFontMetrics().getStringBounds(_scales[2],_scaleImageGraphics).getWidth()/2), 0, (int)_scaleImageGraphics.getFontMetrics().getStringBounds(_scales[2],_scaleImageGraphics).getWidth(), (int)_scaleImageGraphics.getFontMetrics().getStringBounds(_scales[2],_scaleImageGraphics).getHeight());
+	_scaleImageGraphics.fillRect(3*_scaleWidth/5+_insets-(int)(_scaleImageGraphics.getFontMetrics().getStringBounds(_scales[3],_scaleImageGraphics).getWidth()/2), 0, (int)_scaleImageGraphics.getFontMetrics().getStringBounds(_scales[3],_scaleImageGraphics).getWidth(), (int)_scaleImageGraphics.getFontMetrics().getStringBounds(_scales[3],_scaleImageGraphics).getHeight());
+	_scaleImageGraphics.fillRect(4*_scaleWidth/5+_insets-(int)(_scaleImageGraphics.getFontMetrics().getStringBounds(_scales[4],_scaleImageGraphics).getWidth()/2), 0, (int)_scaleImageGraphics.getFontMetrics().getStringBounds(_scales[4],_scaleImageGraphics).getWidth(), (int)_scaleImageGraphics.getFontMetrics().getStringBounds(_scales[4],_scaleImageGraphics).getHeight());
+	_scaleImageGraphics.fillRect(5*_scaleWidth/5+_insets-(int)(_scaleImageGraphics.getFontMetrics().getStringBounds(_scales[5],_scaleImageGraphics).getWidth()/2), 0, (int)_scaleImageGraphics.getFontMetrics().getStringBounds(_scales[5],_scaleImageGraphics).getWidth(), (int)_scaleImageGraphics.getFontMetrics().getStringBounds(_scales[5],_scaleImageGraphics).getHeight());
+	_scaleImageGraphics.setColor(Color.BLACK);
+	_scaleImageGraphics.drawString(_scales[0], 0*_scaleWidth/5+_insets-(int)(_scaleImageGraphics.getFontMetrics().getStringBounds(_scales[0],_scaleImageGraphics).getWidth()/2), 9);
+	_scaleImageGraphics.drawString(_scales[1], 1*_scaleWidth/5+_insets-(int)(_scaleImageGraphics.getFontMetrics().getStringBounds(_scales[1],_scaleImageGraphics).getWidth()/2), 9);
+	_scaleImageGraphics.drawString(_scales[2], 2*_scaleWidth/5+_insets-(int)(_scaleImageGraphics.getFontMetrics().getStringBounds(_scales[2],_scaleImageGraphics).getWidth()/2), 9);
+	_scaleImageGraphics.drawString(_scales[3], 3*_scaleWidth/5+_insets-(int)(_scaleImageGraphics.getFontMetrics().getStringBounds(_scales[3],_scaleImageGraphics).getWidth()/2), 9);
+	_scaleImageGraphics.drawString(_scales[4], 4*_scaleWidth/5+_insets-(int)(_scaleImageGraphics.getFontMetrics().getStringBounds(_scales[4],_scaleImageGraphics).getWidth()/2), 9);
+	_scaleImageGraphics.drawString(_scales[5], 5*_scaleWidth/5+_insets-(int)(_scaleImageGraphics.getFontMetrics().getStringBounds(_scales[5],_scaleImageGraphics).getWidth()/2), 9);
+	_scaleImageGraphics.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.8f));
+	_scaleImageGraphics.setColor(Color.BLACK);
+	_scaleImageGraphics.fillRect(_insets, 10,_scaleWidth, 10);
+	_scaleImageGraphics.setColor(Color.YELLOW);
+	_scaleImageGraphics.fillRect(_scaleWidth/5+_insets, 10,_scaleWidth/5, 10);
+	_scaleImageGraphics.fillRect(3*_scaleWidth/5+_insets, 10, _scaleWidth/5, 10);
+	_graphics2D.drawImage(_scaleImage, 0, 22, _scaleImage.getWidth(), _scaleImage.getHeight(), this);
+	_scaleImageGraphics.setColor(Color.BLACK);
+
+    }
+
+    private Polygon2D pointsArraysToPolygon(double[] xp, double[] yp) {
+	if (xp.length > 0) {
+	    double[] xy = new double[xp.length * 2];
+	    for (int i = 0; i < xp.length * 2; i += 2) {
+		xy[i] = xp[i / 2];
+		xy[i + 1] = yp[i / 2];
+	    }
+	    return new Polygon2D.Double(xy);
+	} else {
+	    return new Polygon2D.Double(0, 0);
+	}
+    }
+
+    private Polygon2D pointsVectorToPolygon(Vector _points) {
+	if (_points.size() > 0) {
+	    double[] xy = new double[_points.size() * 2];
+	    for (int i = 0; i < _points.size() * 2; i += 2) {
+		Point2D _punto = (Point2D.Double)_points.elementAt(i / 2);
+		xy[i] = _punto.getX();
+		xy[i + 1] = _punto.getY();
+	    }
+	    return new Polygon2D.Double(xy);
+	} else {
+	    return new Polygon2D.Double(0, 0);
+	}
+    }
+
+    private Polygon2D pointsArrayToPolygon(Point2D.Double[] _xy) {
+	if (_xy.length > 0) {
+	    double[] xy = new double[_xy.length * 2];
+	    for (int i = 0; i < _xy.length * 2; i += 2) {
+		xy[i] = _xy[i / 2].getX();
+		xy[i + 1] = _xy[i / 2].getY();
+	    }
+	    return new Polygon2D.Double(xy);
+	} else {
+	    return new Polygon2D.Double(0, 0);
+	}
+    }
+
+    private ESRIPolygon getFakePolygon(Rectangle2D _rect) {
+	double[] xy = new double[8];
+	xy[0] = engineConfig.xtoPixel(_rect.getMinX());
+	xy[1] = engineConfig.ytoPixel(_rect.getMinY());
+	xy[2] = engineConfig.xtoPixel(_rect.getMaxX());
+	xy[3] = engineConfig.ytoPixel(_rect.getMinY());
+	xy[4] = engineConfig.xtoPixel(_rect.getMaxX());
+	xy[5] = engineConfig.ytoPixel(_rect.getMaxY());
+	xy[6] = engineConfig.xtoPixel(_rect.getMinX());
+	xy[7] = engineConfig.ytoPixel(_rect.getMaxY());
+	return new ESRIPolygon.Double(xy);
+    }
+
+    private ESRIPolygon getFakePolygon(ESRIPolygon _poly) {
+	double[] xy = new double[_poly.getVertexCount() * 2];
+	for (int i = 0; i < _poly.getVertexCount() * 2; i += 2) {
+	    xy[i] = engineConfig.xtoPixel(_poly.getX(i / 2));
+	    xy[i + 1] = engineConfig.ytoPixel(_poly.getY(i / 2));
+	}
+	return new ESRIPolygon.Double(xy);
+    }
+
+    private ESRIPolygon.Double toSpace(Rectangle _rectangle) {
+	double[] xy = new double[10];
+	double _minX = engineConfig.xtoSpace(_rectangle.getMinX());
+	double _minY = engineConfig.ytoSpace(_rectangle.getMinY());
+	double _maxX = engineConfig.xtoSpace(_rectangle.getMaxX());
+	double _maxY = engineConfig.ytoSpace(_rectangle.getMaxY());
+	xy[0] = _minX;
+	xy[1] = _minY;
+	xy[2] = _minX;
+	xy[3] = _maxY;
+	xy[4] = _maxX;
+	xy[5] = _maxY;
+	xy[6] = _maxX;
+	xy[7] = _minY;
+	xy[8] = _minX;
+	xy[9] = _minY;
+	return new ESRIPolygon.Double(xy);
+    }
+    /*
+    private ESRIPolyline getFakePolyline(ESRIPolyline _poly) {
+	ESRIPoint[] xy = new ESRIPoint[_poly.getgetVertexCount()];
+	for (int i = 0; i < _poly.getVertexCount() * 2; i += 2) {
+	    xy[i] = new ESRIPoint(engineConfig.xtoPixel(_poly.getX(i / 2)),engineConfig.ytoPixel(_poly.getY(i / 2)));
+	}
+	return new ESRIPolyline(xy);
+    }
+    */
+
+    private ESRIPolygon getFakePolygon(double[] xp, double[] yp) {
+	int cantidad = xp.length;
+	if (cantidad > 0) {
+	    double[] xy = new double[cantidad * 2];
+	    for (int i = 0; i < cantidad * 2; i += 2) {
+		xy[i] = engineConfig.xtoPixel(xp[i / 2]);
+		xy[i + 1] = engineConfig.ytoPixel(yp[i / 2]);
+	    }
+	    return new ESRIPolygon.Double(xy);
+	} else {
+	    return new ESRIPolygon.Double(0, 0);
+	}
+    }
+
+    public void distance(boolean _add) {
+	double _distanciaParcial = 0;
+	double _area = 0;
+	double _angulo = 0;
+	double _distanciaTotal = 0;
+	if (distancePoints.size() < 99) //Fijarse si hay que mantener la restricción o no
+	{
+	    if (_add) {
+		distancePoints.add(new Point2D.Double(currentPosition.getX(), currentPosition.getY()));
+	    }
+	    if (distancePoints.size() == 2) { //Un solo segmento, por lo tanto distancia parcial
+		if (!_add) {
+		    //distancia = distance((Point2D.Double)distancePoints.elementAt(distancePoints.size() - 2), (Point2D.Double)distancePoints.elementAt(distancePoints.size() - 1));
+		    _distanciaParcial = ((Point2D.Double)distancePoints.elementAt(distancePoints.size() - 2)).distance((Point2D.Double)distancePoints.elementAt(distancePoints.size() - 1));
+		}
+	    } else if (distancePoints.size() > 2) { //Por lo menos dos segmentos, por lo tanto distancia parcial y distancia total
+		 for (int i = 0; i < distancePoints.size()-2; i++)  {
+		     _distanciaTotal += ((Point2D.Double)distancePoints.elementAt(i)).distance((Point2D.Double)distancePoints.elementAt(i+1));
+		 }
+		if (_add) {
+		    //distancia = distance((Point2D.Double)distancePoints.elementAt(distancePoints.size() - 3), (Point2D.Double)distancePoints.elementAt(distancePoints.size() - 2));
+		    _distanciaParcial = ((Point2D.Double)distancePoints.elementAt(distancePoints.size() - 3)).distance((Point2D.Double)distancePoints.elementAt(distancePoints.size() - 2));
+		} else {
+		    //distancia = distance((Point2D.Double)distancePoints.elementAt(distancePoints.size() - 2), (Point2D.Double)distancePoints.elementAt(distancePoints.size() - 1));
+		    _distanciaParcial = ((Point2D.Double)distancePoints.elementAt(distancePoints.size() - 2)).distance((Point2D.Double)distancePoints.elementAt(distancePoints.size() - 1));
+		}
+		_area = calcArea(distancePoints, _add);
+		/**angulo = calcAngulo(polypoints);*/
+	    }
+	    ruleViewer.setData(_distanciaParcial, _distanciaTotal, _area, _angulo);
+	} else {
+	    Advisor.messageBox("Maxima cantidad de puntos alcanzada, \nno debe superar los 100 puntos", "Error");
+	}
+    }
+
+    private double distance(Point2D.Double _sourcePoint, Point2D.Double _destinationPoint) {
+	/*if (engineConfig.getProjectionType() == CoordinateSystems.LL) {
+	    GKCoord gk0 = CoordinateSystems.geo2gk(x0.getY(), x0.getX());
+	    GKCoord gk1 = CoordinateSystems.geo2gk(x1.getY(), x1.getX());
+	    double catetox = gk1.getX() - gk0.getX();
+	    double catetoy = gk1.getY() - gk0.getY();
+	    double cats = catetox * catetox + catetoy * catetoy;
+	    double dist = Math.sqrt(cats);
+	    return dist;
+	} else {
+	    double catetox = x1.getX() - x0.getX();
+	    double catetoy = x1.getY() - x0.getY();
+	    double cats = catetox * catetox + catetoy * catetoy;
+	    double dist = Math.sqrt(cats);
+	    return dist;
+	}*/
+	double deltaX = deltaX(_sourcePoint, _destinationPoint);
+	double deltaY = deltaY(_sourcePoint, _destinationPoint);
+	return Math.sqrt(deltaX * deltaX + deltaY * deltaY);
+    }
+
+    private double deltaX(Point2D.Double sourcePoint, Point2D.Double destinationPoint) {
+	double deltaX;
+	if (engineConfig.getProjectionType() == CoordinateSystems.LL) {
+	    GKCoord gk0 = CoordinateSystems.geo2gk(sourcePoint.getY(), sourcePoint.getX());
+	    GKCoord gk1 = CoordinateSystems.geo2gk(destinationPoint.getY(), destinationPoint.getX());
+	    deltaX = gk1.getX() - gk0.getX();
+	} else {
+	    deltaX = destinationPoint.getX() - sourcePoint.getX();
+	}
+	return Math.abs(deltaX);
+    }
+
+    private double deltaY(Point2D.Double sourcePoint, Point2D.Double destinationPoint) {
+	double deltaY;
+	if (engineConfig.getProjectionType() == CoordinateSystems.LL) {
+	    GKCoord gk0 = CoordinateSystems.geo2gk(sourcePoint.getY(), sourcePoint.getX());
+	    GKCoord gk1 = CoordinateSystems.geo2gk(destinationPoint.getY(), destinationPoint.getX());
+	    deltaY = gk1.getY() - gk0.getY();
+	} else {
+	    deltaY = destinationPoint.getY() - sourcePoint.getY();
+	}
+	return Math.abs(deltaY);
+    }
+
+    private double calcArea(Vector _poly, boolean nuevo) {
+	if (engineConfig.getProjectionType() == CoordinateSystems.LL) {
+	    double area = 0;
+	    int dif = 1;
+	    if (nuevo)
+		dif = 2;
+	    for (int i = 0; i < _poly.size() - dif; i++) {
+		GKCoord gkip = CoordinateSystems.geo2gk(((Point2D.Double)_poly.elementAt(i + 1)).getY(), ((Point2D.Double)_poly.elementAt(i + 1)).getX());
+		GKCoord gki = CoordinateSystems.geo2gk(((Point2D.Double)_poly.elementAt(i)).getY(), ((Point2D.Double)_poly.elementAt(i)).getX());
+		area += ((gkip.getX() * gki.getY()) - (gki.getX() * gkip.getY()));
+	    }
+	    GKCoord gk0 = CoordinateSystems.geo2gk(((Point2D.Double)_poly.elementAt(0)).getY(), ((Point2D.Double)_poly.elementAt(0)).getX());
+	    GKCoord gks = CoordinateSystems.geo2gk(((Point2D.Double)_poly.elementAt(_poly.size() - dif)).getY(), ((Point2D.Double)_poly.elementAt(_poly.size() - dif)).getX());
+	    area += ((gk0.getX() * gks.getY()) - (gks.getX() * gk0.getY()));
+	    return Math.abs(area / 2);
+	} else {
+	    double area = 0;
+	    int dif = 1;
+	    if (nuevo)
+		dif = 2;
+	    for (int i = 0; i < _poly.size() - dif; i++) {
+		area += ((((Point2D.Double)_poly.elementAt(i + 1)).getX() * ((Point2D.Double)_poly.elementAt(i)).getY()) - (((Point2D.Double)_poly.elementAt(i)).getX() * ((Point2D.Double)_poly.elementAt(i + 1)).getY()));
+	    }
+	    area += ((((Point2D.Double)_poly.elementAt(0)).getX() * ((Point2D.Double)_poly.elementAt(_poly.size() - dif)).getY()) - (((Point2D.Double)_poly.elementAt(_poly.size() - dif)).getX() * ((Point2D.Double)_poly.elementAt(0)).getY()));
+	    return Math.abs(area / 2);
+	}
+    }
+
+    private double angle(double x0, double y0, double x1, double y1) {
+	return Math.abs((Math.atan((y1 - y0) / (x1 - x0)) * 180) / Math.PI);
+    }
+    /*
+    private void bpoligono_actionPerformed(ActionEvent e) {
+	setOperation(OPERATION_DISTANCE_AREA);
+    }
+
+    private void bZoom_actionPerformed(ActionEvent e) {
+	setOperation(OPERATION_ZOOM_IN);
+    }
+    */
+
+    private void zoomExtents() {
+	setMapExtents(3548172.1937, 7249881.0068, 3571654.0741, 7268573.5261);
+	engineConfig.setFWidth(0);
+	flyTo(1.0d, engineConfig.getXOffsetPosta(), engineConfig.getYOffsetPosta());
+    }
+    
+    public void setOperation(int _operation) {
+	removeMouseListener(eraseListener);
+	removeMouseMotionListener(eraseMotionListener);
+	boolean _ruleViewerVisible = ruleViewer.isVisible();
+	switch (_operation) {
+	    case BasicDrawEngineConfig.OPERATION_DISTANCE_AREA:
+		eraseListener = distanceMouseListener;
+		eraseMotionListener = distanceMotionListener;
+		operationStatus = "Herramienta de Medición: ";
+		restartEnvironment();
+		_ruleViewerVisible = true;
+		break;
+	    case BasicDrawEngineConfig.OPERATION_ESCAPE:
+		switch (currentOperation) { //Por si quiero especificar acciones para cada operación
+			default: 
+			    restartEnvironment();
+			    break;
+		}
+		break;
+	    case BasicDrawEngineConfig.OPERATION_QUERY:
+		eraseListener = infoMouseListener;
+		eraseMotionListener = infoMotionListener;
+		_ruleViewerVisible = false;
+		restartEnvironment();
+		operationStatus = "Ver Info: ";
+		break;
+	    case BasicDrawEngineConfig.OPERATION_ZOOM_IN:
+		eraseListener = zoomMouseListener;
+		eraseMotionListener = zoomMotionListener;
+		_ruleViewerVisible = false;
+		restartEnvironment();
+		operationStatus = "Zoom Ventana: ";
+		break;
+	    case BasicDrawEngineConfig.OPERATION_ADDRESSES:
+		eraseListener = addressesMouseListener;
+		eraseMotionListener = addressesMotionListener;
+		_ruleViewerVisible = false;
+		restartEnvironment();
+		operationStatus = "Reasignando Dirección: ";
+		break;
+	    case BasicDrawEngineConfig.OPERATION_STREETS:
+		eraseListener = streetsMouseListener;
+		eraseMotionListener = streetsMotionListener;
+		_ruleViewerVisible = false;
+		restartEnvironment();
+		operationStatus = "Reasignando Calle: ";
+		break;
+	    case BasicDrawEngineConfig.OPERATION_INFRASTRUCTURES:
+		eraseListener = infrastructuresMouseListener;
+		eraseMotionListener = infrastructuresMotionListener;
+		_ruleViewerVisible = false;
+		restartEnvironment();
+		operationStatus = "Reasignando Infraestructura: ";
+		break;
+	    case BasicDrawEngineConfig.OPERATION_EDITION:
+		eraseListener = editionMouseListener;
+		eraseMotionListener = editionMotionListener;
+		_ruleViewerVisible = false;
+		restartEnvironment();
+		operationStatus = "Editando layer: ";
+		break;
+	    case BasicDrawEngineConfig.OPERATION_MANAGE_IMAGE_ATTACHMENT:
+		eraseListener = imageManagerMouseListener;
+		eraseMotionListener = imageManagerMotionListener;
+		_ruleViewerVisible = false;
+		restartEnvironment();
+		operationStatus = "Image manager: ";
+		break;
+	    case BasicDrawEngineConfig.OPERATION_ZOOM_EXTENTS:
+		zoomExtents();
+		break;
+	    case BasicDrawEngineConfig.OPERATION_PRINT:
+		doReport();
+		break;
+	    case BasicDrawEngineConfig.OPERATION_SET_OSNAP_ON_OFF:
+		engineConfig.setOsnapActive(!engineConfig.isOsnapActive());
+		System.out.println("OSNAP: " + (engineConfig.isOsnapActive()?"ON":"OFF"));
+		break;
+	    case BasicDrawEngineConfig.OPERATION_SET_LOGO_ON_OFF:
+		engineConfig.setPaintLogo(!engineConfig.paintLogo());
+		repaint();
+		System.out.println("LOGO: " + (engineConfig.paintLogo()?"ON":"OFF"));
+		break;
+	    case BasicDrawEngineConfig.OPERATION_SET_ANTIALIAS_ON_OFF:
+		engineConfig.setAntiAlias(!engineConfig.isAntiAlias());
+		repaint();
+		System.out.println("ANTIALIAS: " + (engineConfig.isAntiAlias()?"ON":"OFF"));
+		break;
+	    case BasicDrawEngineConfig.OPERATION_SAVE_MAP_IMAGE:
+		saveMapImage();
+		break;
+	    case BasicDrawEngineConfig.OPERATION_SHOW_HELP:
+		showHelp();
+		break;
+	    case BasicDrawEngineConfig.OPERATION_MULTIQUERY:
+		restartEnvironment();
+	        eraseListener = multiQueryMouseListener;
+	        eraseMotionListener = multiQueryMotionListener;
+	        _ruleViewerVisible = false;
+	        operationStatus = "Ver MultiInfo: ";
+	        break;
+	    case BasicDrawEngineConfig.OPERATION_FIXED_POLYGON_QUERY:
+		restartEnvironment();
+		Vector<String> _layerNames = new Vector();
+		for (int i = 0; i < layers.size(); i++)  {
+		    if (layers.elementAt(i).getShapeType() == ShapeTypes.POLYGON || layers.elementAt(i).getShapeType() == ShapeTypes.MULTIPOLYGON) {
+		        _layerNames.add(layers.elementAt(i).getName());
+		    }
+		}
+		selectedLayerName = (String)JOptionPane.showInternalInputDialog(Environment.getActiveDesktop(), "Seleccione el resultado esperado", "Resultado esperado", JOptionPane.QUESTION_MESSAGE, null, _layerNames.toArray(), _layerNames.toArray()[0]);
+		if (selectedLayerName != null) {
+		    eraseListener = fixedPolygonQueryMouseListener;
+		    eraseMotionListener = fixedPolygonQueryMotionListener;
+		    _ruleViewerVisible = false;
+		    operationStatus = "Consulta de geometrias contenidas en un polígono: ";
+		} else {
+		    Advisor.messageBox("Debe seleccionar un layer", "Error");
+		}
+	        break;
+	    case BasicDrawEngineConfig.OPERATION_NOMENCLADOR:
+		doNomenclador();
+		break;
+	    case BasicDrawEngineConfig.OPERATION_SET_SCALEBAR_ON_OFF:
+	        engineConfig.setPaintScaleBar(!engineConfig.paintScaleBar());
+	        repaint();
+	        break;
+	    case BasicDrawEngineConfig.OPERATION_SET_COORDINATES_ON_OFF:
+		engineConfig.setPaintCoordinates(!engineConfig.paintCoordinates());
+		repaint();
+		break;
+	    case BasicDrawEngineConfig.OPERATION_LIST_LAYERS:
+		doListLayers();
+		break;
+	    case BasicDrawEngineConfig.OPERATION_SET_COORDINATE_VIEWER_ON_OFF:
+	        coordinateViewer.setVisible(!coordinateViewer.isVisible());
+	        break;
+	}
+	addMouseListener(eraseListener);
+	addMouseMotionListener(eraseMotionListener);
+	currentOperation = _operation;
+	ruleViewer.setVisible(_ruleViewerVisible);
+    }
+
+    /**REVISAR EL WHEELLISTENER*/
+    protected MouseWheelListener commonWheelListener = new MouseWheelListener() {
+
+	    public void mouseWheelMoved(MouseWheelEvent me) {
+		//Diferencia entre el punto y el offset
+		double originX = engineConfig.xtoSpace(me.getX());
+		double originY = engineConfig.ytoSpace(me.getY());
+
+	        double _newDrawScale = 0.0;
+	        
+		if (me.getWheelRotation() < 0) {
+		    //Abajo hacia arriba
+		    _newDrawScale = engineConfig.getDrawScale() * scaleFactor;
+		} else {
+		    _newDrawScale = engineConfig.getDrawScale() / scaleFactor;
+		}
+
+	        if ((me.getModifiers() & MouseWheelEvent.SHIFT_MASK) == MouseWheelEvent.SHIFT_MASK) {
+		    int _scaleWidth = getWidth()-((int)getWidth()/20)*2;
+		    double _extents = Math.round(_scaleWidth / engineConfig.getDrawFactor());
+		    double _newExtents = (int)(_extents /10)*10;
+		    if (_newExtents == _extents) {
+			_newExtents = _newExtents + (10*me.getWheelRotation());
+		    } else {
+		        if (me.getWheelRotation() > 0) { //Sumo 10 sólo si acerco, sino dejo tal cual está
+		            _newExtents = _newExtents + 10;
+		        }
+		    }
+		    double _drawFactor = _scaleWidth / _newExtents;
+		    double _drawScale = _drawFactor / engineConfig.getDrawFactorOriginal();
+		    engineConfig.setDrawScale(_drawScale);
+		} else if ((me.getModifiers() & MouseWheelEvent.CTRL_MASK) == MouseWheelEvent.CTRL_MASK) {
+		    int _scaleWidth = getWidth()-((int)getWidth()/20)*2;
+		    double _extents = Math.round(_scaleWidth / engineConfig.getDrawFactor());
+		    double _newExtents = (int)(_extents /10)*10;
+		    if (_newExtents == _extents) {
+		        _newExtents = _newExtents + (50*me.getWheelRotation());
+		    } else {
+		        if (me.getWheelRotation() > 0) { //Sumo 50 sólo si acerco, sino dejo tal cual está
+		            _newExtents = _newExtents + 50;
+		        }
+		    }
+		    double _drawFactor = _scaleWidth / _newExtents;
+		    double _drawScale = _drawFactor / engineConfig.getDrawFactorOriginal();
+		    engineConfig.setDrawScale(_drawScale);
+		} else {
+		    engineConfig.setDrawScale(_newDrawScale);
+		}
+	        engineConfig.setDrawFactor(engineConfig.getDrawFactorOriginal() * engineConfig.getDrawScale());
+	        double destX = engineConfig.xtoSpace(me.getX());
+	        double destY = engineConfig.ytoSpace(me.getY());
+		//System.out.println("originX:" + (originX - destX));
+		//System.out.println("destX:" + destX);
+		//System.out.println("xOffset:" + xOffset);
+		//System.out.println("yOffset:" + yOffset);
+		engineConfig.setXOffset(engineConfig.getXOffsetOriginal() - (destX - originX));
+		engineConfig.setYOffset(engineConfig.getYOffsetOriginal() - (destY - originY));
+		engineConfig.setXOffsetOriginal(engineConfig.getXOffset());
+		engineConfig.setYOffsetOriginal(engineConfig.getYOffset());
+		repaint();
+	    }
+
+	};
+    protected MouseListener commonMouseListener = new MouseListener() {
+
+	    public void mousePressed(MouseEvent me) {
+		if (me.getButton() == me.BUTTON2) {
+		    setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		    startDragPosition = mousePosition;
+		}
+	    }
+
+	    public void mouseReleased(MouseEvent me) {
+		if (startDragPosition != null) {
+		    engineConfig.setXOffset(engineConfig.getXOffsetOriginal() + (engineConfig.xtoSpace(startDragPosition.x) - engineConfig.xtoSpace(mousePosition.x)));
+		    engineConfig.setYOffset(engineConfig.getYOffsetOriginal() - (engineConfig.xtoSpace(startDragPosition.y) - engineConfig.xtoSpace(mousePosition.y)));
+		    engineConfig.setXOffsetOriginal(engineConfig.getXOffset());
+		    engineConfig.setYOffsetOriginal(engineConfig.getYOffset());
+		    panLine = new Line2D.Float();
+		    startDragPosition = null;
+		    repaint();
+		}
+	        try {
+		    double scale = engineConfig.xtoSpace(getWidth())-engineConfig.xtoSpace(0);
+	            int _zoom = 17;
+		    if (scale < 700*Math.pow(2,1)) {
+			_zoom = 17;
+		    } else if (scale < 700*Math.pow(2,2)) {
+		        _zoom = 16;
+		    } else if (scale < 700*Math.pow(2,3)) {
+		        _zoom = 15;
+		    } else if (scale < 700*Math.pow(2,4)) {
+		        _zoom = 14;
+		    } else if (scale < 700*Math.pow(2,5)) {
+		        _zoom = 13;
+		    } else if (scale < 700*Math.pow(2,6)) {
+		        _zoom = 12;
+		    } else if (scale < 700*Math.pow(2,7)) {
+		        _zoom = 11;
+		    } else if (scale < 700*Math.pow(2,8)) {
+		        _zoom = 10;
+		    } else if (scale < 700*Math.pow(2,9)) {
+		        _zoom = 9;
+		    } else if (scale < 700*Math.pow(2,10)) {
+		        _zoom = 8;
+		    } else if (scale < 700*Math.pow(2,11)) {
+		        _zoom = 7;
+		    } else if (scale < 700*Math.pow(2,12)) {
+		        _zoom = 6;
+		    } else if (scale < 700*Math.pow(2,13)) {
+		        _zoom = 5;
+		    } else if (scale < 700*Math.pow(2,14)) {
+		        _zoom = 4;
+		    } else if (scale < 700*Math.pow(2,15)) {
+		        _zoom = 3;
+		    } else if (scale < 700*Math.pow(2,16)) {
+		        _zoom = 2;
+		    } else {
+		        _zoom = 1;
+		    }
+	        } catch (Exception ex) {
+	            ex.printStackTrace();
+	        }
+		setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
+	    }
+
+	    public void mouseClicked(MouseEvent me) {
+		if ((me.getButton() == me.BUTTON2) && (me.getClickCount() == 2)) {
+		    zoomExtents();
+		} else if ((me.getButton() == me.BUTTON3) && (me.getClickCount() == 1)) {
+		    if ((me.getModifiers() & MouseEvent.CTRL_MASK) == MouseEvent.CTRL_MASK) {
+			setReferencePosition(null);
+		    } else if ((me.getModifiers() & MouseEvent.SHIFT_MASK) == MouseEvent.SHIFT_MASK) {
+			setReferencePosition(new Point2D.Double(currentPosition.getX(), currentPosition.getY()));
+		    }
+		    repaint();
+		} else if ((me.getButton() == me.BUTTON3) && (me.getClickCount() == 2) && ((me.getModifiers() & MouseEvent.SHIFT_MASK) != 0)) {
+		    //coordinateViewer.setVisible(false);
+		    //setVisible(false);
+		}
+	    }
+
+	    public void mouseEntered(MouseEvent me) {
+
+	    }
+
+	    public void mouseExited(MouseEvent me) {
+
+	    }
+
+	};
+
+    private void setReferencePosition(Point2D.Double _position) {
+	engineConfig.setReferencePosition(_position);
+    }
+
+    protected MouseMotionListener commonMotionListener = new MouseMotionListener() {
+
+	    public void mouseMoved(MouseEvent me) {
+		mouseDraggedOrMoved(me);
+	    }
+
+	    public void mouseDragged(MouseEvent me) {
+	        mouseDraggedOrMoved(me);
+	    }
+	    
+	    public void mouseDraggedOrMoved(MouseEvent me) {
+	        if (engineConfig.hasReferencePosition()) {
+	            labelxy.setOpaque(true);
+	            Point2D.Double referencePosition = engineConfig.getReferencePosition();
+	            labelxy.setText("<html><b><font color=ff0000><u>dX</u></font></b>: " + decimalFormat(deltaX(currentPosition, referencePosition),4) + " - <b><font color=ff0000><u>dY</u></font></b>: " + decimalFormat(deltaY(currentPosition, referencePosition),4) + "</html>");
+	        } else {
+	            labelxy.setOpaque(false);
+	            labelxy.setText("");
+	        }
+	        mousePosition = me.getPoint();
+	        osnap(mousePosition);
+	        if (startDragPosition != null) {
+	            engineConfig.setXOffset(engineConfig.getXOffsetOriginal() + (engineConfig.xtoSpace(startDragPosition.x) - engineConfig.xtoSpace(mousePosition.x)));
+	            engineConfig.setYOffset(engineConfig.getYOffsetOriginal() - (engineConfig.xtoSpace(startDragPosition.y) - engineConfig.xtoSpace(mousePosition.y)));
+	            currentPosition = engineConfig.toSpace(mousePosition);
+	            panLine.setLine(startDragPosition, mousePosition);
+	        }
+	        repaint();
+	    }
+
+	};
+    protected MouseListener zoomMouseListener = new MouseListener() {
+
+	    public void mousePressed(MouseEvent me) {
+
+	    }
+
+	    public void mouseReleased(MouseEvent me) {
+		if (me.getButton() == me.BUTTON1) {
+		    if (startDrawRectPosition == null) {
+			startDrawRectPosition = new Point2D.Double(me.getPoint().getX(), me.getPoint().getY());
+		    } else {
+			endDrawRectPosition = new Point2D.Double(me.getPoint().getX(), me.getPoint().getY());
+			//ZOOM
+			createDrawRectangle();
+			setPixelEnvironment(zoomRectangle);
+			startDrawRectPosition = null;
+			zoomRectangle = null;
+		    }
+		    repaint();
+		}
+	    }
+
+	    public void mouseClicked(MouseEvent me) {
+
+	    }
+
+	    public void mouseEntered(MouseEvent me) {
+
+	    }
+
+	    public void mouseExited(MouseEvent me) {
+
+	    }
+
+	};
+    protected MouseMotionListener zoomMotionListener = new MouseMotionListener() {
+
+	    public void mouseMoved(MouseEvent me) {
+		mouseDraggedOrMoved(me);
+	    }
+
+	    public void mouseDragged(MouseEvent me) {
+		mouseDraggedOrMoved(me);
+	    }
+
+	    public void mouseDraggedOrMoved(MouseEvent me) {
+		endDrawRectPosition = new Point2D.Double(me.getPoint().getX(), me.getPoint().getY());
+		createDrawRectangle();
+		repaint();
+	    }
+
+	};
+    protected MouseListener distanceMouseListener = new MouseListener() {
+	    //REVISAR
+
+	    public void mouseClicked(MouseEvent me) {
+
+	    }
+
+	    public void mousePressed(MouseEvent me) {
+
+	    }
+
+	    public void mouseReleased(MouseEvent me) {
+		if (me.getButton() == me.BUTTON1) {
+		    if ((me.getModifiers() & MouseEvent.SHIFT_MASK) == MouseEvent.SHIFT_MASK) {
+			restartEnvironment();
+			//labelinfo.setVisible(true);
+		    } else {
+			distance(true);
+		    }
+		    repaint();
+		} else if (me.getButton() == me.BUTTON3) {
+		    if (distancePoints.size() > 0) {
+			distancePoints.removeElementAt(distancePoints.size()-1);
+			repaint();
+		    }
+		}
+	    }
+
+	    public void mouseEntered(MouseEvent me) {
+
+	    }
+
+	    public void mouseExited(MouseEvent me) {
+
+	    }
+
+	};
+    protected MouseMotionListener distanceMotionListener = new MouseMotionListener() {
+	    //REVISAR
+
+	    public void mouseMoved(MouseEvent me) {
+		labelxy.setText("X: " + me.getX() + ", Y: " + me.getY());
+		//labelinfo.setText("Dist x*y: " + String.valueOf(l.ptSegDist(me.getPoint())));
+		/**      inside = getFakePolyFromPoints(xd,yd).contains(me.getPoint());*/
+		distance(false);
+		//currentPosition = (Point2D.Double)distancePoints.elementAt(distancePoints.size()-1);
+		repaint();
+	    }
+	    //REVISAR
+
+	    public void mouseDragged(MouseEvent me) {
+
+	    }
+
+	};
+    protected MouseListener infoMouseListener = new MouseListener() {
+	    //REVISAR
+
+	    public void mouseClicked(MouseEvent me) {
+		if (me.getButton() == me.BUTTON2) {
+		    /*if (containedShape != -1) {
+			containedShape = -1;
+			repaint();
+		    }*/
+		}
+		if (containedShape.length > 0) {
+		    int i = 0;
+		    boolean found = false;
+		    //for (int i = 0; i < layers.size(); i++) {
+		    while (i < layers.size() && !found) {
+			Layer_original _layer = layers.elementAt(i);
+			if (_layer.isOn() && (_layer.isQueryable() || _layer.isModifiable())) {
+			    if (containedShape[i] != -1) {
+				if (_layer.getShapeType() == ShapeTypes.POINT) {
+				    ESRIPoint _point = (ESRIPoint)(_layer.getGeometries().toArray()[containedShape[i]]);
+				    _layer.fireClick(_point);
+				    found = true;
+				} else if (_layer.getShapeType() == ShapeTypes.POLYGON || _layer.getShapeType() == ShapeTypes.MULTIPOLYGON) {
+				    ESRIPolygon _polygon = (ESRIPolygon)(_layer.getGeometries().toArray()[containedShape[i]]);
+				    _layer.fireClick(_polygon);
+				    found = true;
+				} else if (_layer.getShapeType() == ShapeTypes.POLYLINE || _layer.getShapeType() == ShapeTypes.MULTIPOLYLINE) {
+				    ESRIPolygon _polyline = (ESRIPolygon)(_layer.getGeometries().toArray()[containedShape[i]]);
+				    _layer.fireClick(_polyline);
+				    found = true;
+				}
+			    }
+			}
+			//TODO ELSE
+			i++;
+		    }
+		}
+	    }
+	    //REVISAR
+
+	    public void mousePressed(MouseEvent me) {
+		/*if (me.getButton() == me.BUTTON1) {
+		    if (startDrawRectPosition == null) {
+			startDrawRectPosition = new Point2D.Double(me.getPoint().getX(), me.getPoint().getY());
+		    }
+		    repaint();
+		}*/
+	    }
+	    //REVISAR
+
+	    public void mouseReleased(MouseEvent me) {
+		/*if (me.getButton() == me.BUTTON1) {
+		    if (startDrawRectPosition != null) {
+			endDrawRectPosition = new Point2D.Double(me.getPoint().getX(), me.getPoint().getY());
+			//ZOOM
+			createDrawRectangle();
+			//setPixelEnvironment(zoomRectangle);
+			int i = 0;
+			boolean found = false;
+			//for (int i = 0; i < layers.size(); i++) {
+			while (i < layers.size() && !found) {
+			    Layer_original _layer = layers.elementAt(i);
+			    if (_layer.isOn() && (_layer.isQueryable() || _layer.isModifiable())) {
+				found = true;
+				double _x = engineConfig.xtoSpace((int)zoomRectangle.getMinX());
+				double _y = engineConfig.ytoSpace((int)zoomRectangle.getMinY());
+				double _w = engineConfig.xtoSpace((int)zoomRectangle.getMaxX()) - _x;
+				double _h = engineConfig.ytoSpace((int)zoomRectangle.getMaxY()) - _y;
+				_layer.fireClick(me, new Rectangle2D.Double(_x, _y, _w, _h));
+			    }
+			    //TODO ELSE
+			    i++;
+			}
+			startDrawRectPosition = null;
+			zoomRectangle = null;
+		    }
+		    repaint();
+		}*/
+	    }
+
+	    public void mouseEntered(MouseEvent me) {
+
+	    }
+
+	    public void mouseExited(MouseEvent me) {
+
+	    }
+
+	};
+    protected MouseMotionListener infoMotionListener = new MouseMotionListener() {
+	    //REVISAR
+
+	    public void mouseMoved(MouseEvent me) {
+		//labelinfo.setText(String.valueOf(engineConfig.getDrawScale()));
+		mousePosition = me.getPoint();
+		containedShape = new int[layers.size()];
+		/*for (int i = 0; i < parcelas.size(); i++) {
+		    Polygon2D _parcela = (Polygon2D)parcelas.elementAt(i);
+		    if (getFakePolyFromPoly(_parcela).contains(me.getPoint()))
+			containedPolygon = i;
+		}*/
+		//Tengo que revisar los layers a la inversa de como han sido agregados
+		//for (int i = 0; i < layers.size(); i++) {
+		for (int i = layers.size() - 1; i >= 0; i--) {
+		    containedShape[i] = -1;
+		}
+		int i = layers.size() - 1;
+		boolean found = false;
+		while (i >= 0) {
+		    // && !found) {
+		    //for (int i = layers.size() - 1; i >= 0; i--) {
+		    Layer_original _layer = layers.elementAt(i);
+		    if (_layer.isOn() && (_layer.isQueryable() || _layer.isModifiable())) {
+			if (_layer.getShapeType() == ShapeTypes.POINT) {
+			    /*int j = 0;
+			    while (j < _layer.getGeometries().size()) {
+				// && !found) {
+				ESRIPoint _point = (ESRIPoint)_layer.getGeometries().elementAt(j);
+				Shape point = new Ellipse2D.Double(engineConfig.xtoPixel(_point.getX() - (double)_layer.getTolerance() / 2.0), engineConfig.ytoPixel(_point.getY() + (double)_layer.getTolerance() / 2.0), ((double)_layer.getTolerance() * engineConfig.getDrawFactor()), ((double)_layer.getTolerance() * engineConfig.getDrawFactor()));
+				if (point.contains(me.getPoint())) {
+				    containedShape[i] = j;
+				    found = true;
+				}
+				j++;
+			    }*/
+			    containedShape[i] = _layer.getContainedShapeIndex(engineConfig.xtoSpace((int)me.getPoint().getX()), engineConfig.ytoSpace((int)me.getPoint().getY()));
+			    if (_layer.isQueryable()) {
+			        if (containedShape[i] != -1 && _layer.getToolTipText() != null) {
+			            ///if (!toolTip.isVisible()) {
+			            toolTip.getContentPane().add(label);
+			            label.setText(_layer.getToolTipText().toString());
+			            /* if (((ESRIPolygon)_layer.getGeometries().elementAt(containedShape[i])).getToolTipValue() != null) {
+			                 label.setText(((ESRIPolygon)_layer.getGeometries().elementAt(containedShape[i])).getToolTipValue());
+			             } else {
+			                 label.setText(((ESRIPolygon)_layer.getGeometries().elementAt(containedShape[i])).getLabel());
+			             }*/
+			            label.setBorder(BorderFactory.createLineBorder(Color.black, 1));
+			            label.setFont(new Font("Arial", Font.PLAIN, 12));
+			            toolTip.pack();
+			            showToolTip(true);
+			            //}
+			            Point p = me.getPoint();
+			            SwingUtilities.convertPointToScreen(p, Environment.getActiveDesktop());
+			            toolTip.setLocation(p.x + 5, p.y - toolTip.getHeight() - 5);
+			            found = true;
+			        } else {
+			            // showToolTip(false);
+			        }
+			    }
+			} else if (_layer.getShapeType() == ShapeTypes.POLYGON || _layer.getShapeType() == ShapeTypes.MULTIPOLYGON) {
+			    containedShape[i] = _layer.getContainedShapeIndex(engineConfig.xtoSpace((int)me.getPoint().getX()), engineConfig.ytoSpace((int)me.getPoint().getY()));
+			    if (_layer.isQueryable()) {
+				if (containedShape[i] != -1 && _layer.getToolTipText() != null) {
+				    ///if (!toolTip.isVisible()) {
+				    toolTip.getContentPane().add(label);
+				    label.setText(_layer.getToolTipText().toString());
+				    /* if (((ESRIPolygon)_layer.getGeometries().elementAt(containedShape[i])).getToolTipValue() != null) {
+				         label.setText(((ESRIPolygon)_layer.getGeometries().elementAt(containedShape[i])).getToolTipValue());
+				     } else {
+				         label.setText(((ESRIPolygon)_layer.getGeometries().elementAt(containedShape[i])).getLabel());
+				     }*/
+				    label.setBorder(BorderFactory.createLineBorder(Color.black, 1));
+				    label.setFont(new Font("Arial", Font.PLAIN, 12));
+				    toolTip.pack();
+				    showToolTip(true);
+				    //}
+				    Point p = me.getPoint();
+				    SwingUtilities.convertPointToScreen(p, Environment.getActiveDesktop());
+				    toolTip.setLocation(p.x + 5, p.y - toolTip.getHeight() - 5);
+				    found = true;
+				} else {
+				    // showToolTip(false);
+				}
+			    }
+			} else if (_layer.getShapeType() == ShapeTypes.POLYLINE || _layer.getShapeType() == ShapeTypes.MULTIPOLYLINE) {
+			    containedShape[i] = _layer.getContainedShapeIndex(engineConfig.xtoSpace((int)me.getPoint().getX()), engineConfig.ytoSpace((int)me.getPoint().getY()));
+			    if /*queryLayer*/(_layer.isQueryable()) {
+				if (containedShape[i] != -1 && _layer.getToolTipText() != null) {
+				    ///if (!toolTip.isVisible()) {
+				    toolTip.getContentPane().add(label);
+				    if (((ESRIPolygon)_layer.getGeometries().elementAt(containedShape[i])).getLabel() != null) {
+					label.setText(((ESRIPolygon)_layer.getGeometries().elementAt(containedShape[i])).getLabel());
+				    } else {
+					label.setText(((ESRIPolygon)_layer.getGeometries().elementAt(containedShape[i])).getToolTipValue());
+				    }
+				    label.setBorder(null);
+				    label.setFont(new Font("Arial", Font.BOLD, 16));
+				    toolTip.pack();
+				    showToolTip(true);
+				    //}
+				    Point p = me.getPoint();
+				    SwingUtilities.convertPointToScreen(p, Environment.getActiveDesktop());
+				    toolTip.setLocation(p.x + 5, p.y - toolTip.getHeight() - 5);
+				    found = true;
+				} else {
+				    // showToolTip(false);
+				}
+			    }
+			}
+		    }
+		    i--;
+		}
+		showToolTip(found);
+		repaint();
+	    }
+	    //REVISAR
+
+	    public void mouseDragged(MouseEvent me) {
+		endDrawRectPosition = new Point2D.Double(me.getPoint().getX(), me.getPoint().getY());
+		createDrawRectangle();
+		repaint();
+	    }
+
+	};
+    protected MouseListener addressesMouseListener = new MouseListener() {
+	    //REVISAR
+
+	    public void mouseClicked(MouseEvent me) {
+		if (me.getButton() == me.BUTTON1) {
+		    if (GaiaEnvironment.selectedStreetID == -1 && selectedGeometryIndex != -1) {
+			//CALLE SELECCIONADA!!!
+			GaiaEnvironment.selectedStreetID = ((ESRIPolygon)getLayer(GaiaEnvironment.streetsLayer).getGeometries().elementAt(selectedGeometryIndex)).getIdPolygon();
+			GaiaEnvironment.selectedStreetName = ((ESRIPolygon)getLayer(GaiaEnvironment.streetsLayer).getGeometries().elementAt(selectedGeometryIndex)).getLabel();
+			hideToolTipTimer.stop();
+		    } else {
+			//DAR DE ALTA O MODIFICAR DIRECCION!!!
+			int i = 0;
+			Layer_original _layer = getLayer(GaiaEnvironment.addressLayer);
+			if (_layer != null) {
+			    if (_layer.isOn() && (_layer.isQueryable() || _layer.isModifiable())) {
+				if (selectedGeometryIndex != -1) {
+				    if (_layer.getShapeType() == ShapeTypes.POINT) {
+					ESRIPoint _point = (ESRIPoint)(_layer.getGeometries().toArray()[selectedGeometryIndex]);
+					_layer.fireClick(_point, false);
+				    } else if (_layer.getShapeType() == ShapeTypes.POLYGON) {
+					ESRIPolygon _polygon = (ESRIPolygon)(_layer.getGeometries().toArray()[selectedGeometryIndex]);
+					_layer.fireClick(_polygon, false);
+				    } else if (_layer.getShapeType() == ShapeTypes.POLYLINE) {
+					ESRIPolygon _polyline = (ESRIPolygon)(_layer.getGeometries().toArray()[selectedGeometryIndex]);
+					_layer.fireClick(_polyline, false);
+				    }
+				} else {
+				    if (_layer.getShapeType() == ShapeTypes.POINT && _layer.isModifiable()) {
+					//AGREGO UN PUNTO!
+					ESRIPoint _point = new ESRIPoint(engineConfig.xtoSpace(me.getX()), engineConfig.ytoSpace(me.getY()));
+					_layer.fireClick(_point, false);
+				    }
+				}
+				//TODO ELSE
+			    }
+			}
+		    }
+		} else if (me.getButton() == me.BUTTON3) {
+		    GaiaEnvironment.selectedStreetID = -1;
+		    hideToolTipTimer.start();
+		}
+	    }
+	    //REVISAR
+
+	    public void mousePressed(MouseEvent me) {
+
+	    }
+	    //REVISAR
+
+	    public void mouseReleased(MouseEvent me) {
+
+	    }
+
+	    public void mouseEntered(MouseEvent me) {
+
+	    }
+
+	    public void mouseExited(MouseEvent me) {
+
+	    }
+
+	};
+    protected MouseMotionListener addressesMotionListener = new MouseMotionListener() {
+	    //REVISAR
+
+	    public void mouseMoved(MouseEvent me) {
+		if (GaiaEnvironment.selectedStreetID == -1) {
+		    //Seleccionando calle
+		    labelxy.setText("X: " + me.getX() + ", Y: " + me.getY());
+		    //labelinfo.setText(String.valueOf(engineConfig.getDrawScale()));
+		    mousePosition = me.getPoint();
+		    Layer_original _layer = getLayer(GaiaEnvironment.streetsLayer);
+		    if (_layer != null) {
+			if (_layer.isOn() && (_layer.isQueryable() || _layer.isModifiable())) {
+			    if (_layer.getShapeType() == ShapeTypes.POLYGON || _layer.getShapeType() == ShapeTypes.MULTIPOLYGON) {
+				selectedGeometryIndex = _layer.getContainedShapeIndex(engineConfig.xtoSpace((int)me.getPoint().getX()), engineConfig.ytoSpace((int)me.getPoint().getY()));
+				if (_layer.isQueryable()) {
+				    if (selectedGeometryIndex != -1 && _layer.getToolTipText() != null) {
+					toolTip.getContentPane().add(label);
+					label.setText(_layer.getToolTipText().toString());
+					label.setBorder(BorderFactory.createLineBorder(Color.black, 1));
+					label.setFont(new Font("Arial", Font.PLAIN, 12));
+					toolTip.pack();
+					showToolTip(true);
+					Point p = me.getPoint();
+					SwingUtilities.convertPointToScreen(p, Environment.getActiveDesktop());
+					toolTip.setLocation(p.x + 5, p.y - toolTip.getHeight() - 5);
+				    } else {
+					showToolTip(false);
+				    }
+				}
+			    } else if (_layer.getShapeType() == ShapeTypes.POLYLINE || _layer.getShapeType() == ShapeTypes.MULTIPOLYLINE) {
+				selectedGeometryIndex = _layer.getContainedShapeIndex(engineConfig.xtoSpace((int)me.getPoint().getX()), engineConfig.ytoSpace((int)me.getPoint().getY()));
+				if (_layer.isQueryable()) {
+				    if (selectedGeometryIndex != -1 && _layer.getToolTipText() != null) {
+					toolTip.getContentPane().add(label);
+					label.setText(((ESRIPolygon)_layer.getGeometries().elementAt(selectedGeometryIndex)).getLabel());
+					label.setBorder(null);
+					label.setFont(new Font("Arial", Font.BOLD, 16));
+					toolTip.pack();
+					showToolTip(true);
+					Point p = me.getPoint();
+					SwingUtilities.convertPointToScreen(p, Environment.getActiveDesktop());
+					toolTip.setLocation(p.x + 5, p.y - toolTip.getHeight() - 5);
+				    } else {
+					showToolTip(false);
+				    }
+				}
+			    }
+			}
+		    }
+		} else {
+		    //Asignando dirección
+		    selectedGeometryIndex = -1;
+		    Layer_original _layer = getLayer(GaiaEnvironment.addressLayer);
+		    if (_layer != null) {
+			if (_layer.isOn() && (_layer.isQueryable() || _layer.isModifiable())) {
+			    if (_layer.getShapeType() == ShapeTypes.POINT) {
+				int j = 0;
+				while (j < _layer.getGeometries().size()) {
+				    // && !found) {
+				    ESRIPoint _point = (ESRIPoint)_layer.getGeometries().elementAt(j);
+				    Shape point = new Ellipse2D.Double(engineConfig.xtoPixel(_point.getX() - (double)_layer.getPointDiameter() / 2.0), engineConfig.ytoPixel(_point.getY() + (double)_layer.getPointDiameter() / 2.0), ((double)_layer.getPointDiameter() * engineConfig.getDrawFactor()), ((double)_layer.getPointDiameter() * engineConfig.getDrawFactor()));
+				    if (point.contains(me.getPoint())) {
+					selectedGeometryIndex = j;
+				    }
+				    j++;
+				}
+			    } else if (_layer.getShapeType() == ShapeTypes.POLYGON || _layer.getShapeType() == ShapeTypes.MULTIPOLYGON) {
+				selectedGeometryIndex = _layer.getContainedShapeIndex(engineConfig.xtoSpace((int)me.getPoint().getX()), engineConfig.ytoSpace((int)me.getPoint().getY()));
+				if (_layer.isQueryable()) {
+				    if (selectedGeometryIndex != -1 && _layer.getToolTipText() != null) {
+					///if (!toolTip.isVisible()) {
+					toolTip.getContentPane().add(label);
+					label.setText(_layer.getToolTipText().toString());
+					label.setBorder(BorderFactory.createLineBorder(Color.black, 1));
+					label.setFont(new Font("Arial", Font.PLAIN, 12));
+					toolTip.pack();
+					showToolTip(true);
+					//}
+					Point p = me.getPoint();
+					SwingUtilities.convertPointToScreen(p, Environment.getActiveDesktop());
+					toolTip.setLocation(p.x + 5, p.y - toolTip.getHeight() - 5);
+				    } else {
+					showToolTip(false);
+				    }
+				}
+			    } else if (_layer.getShapeType() == ShapeTypes.POLYLINE) {
+				selectedGeometryIndex = _layer.getContainedShapeIndex(engineConfig.xtoSpace((int)me.getPoint().getX()), engineConfig.ytoSpace((int)me.getPoint().getY()));
+				if /*queryLayer*/(_layer.isQueryable()) {
+				    if (selectedGeometryIndex != -1 && _layer.getToolTipText() != null) {
+					///if (!toolTip.isVisible()) {
+					toolTip.getContentPane().add(label);
+					label.setText(((ESRIPolygon)_layer.getGeometries().elementAt(selectedGeometryIndex)).getLabel());
+					label.setBorder(null);
+					label.setFont(new Font("Arial", Font.BOLD, 16));
+					toolTip.pack();
+					showToolTip(true);
+					//}
+					Point p = me.getPoint();
+					SwingUtilities.convertPointToScreen(p, Environment.getActiveDesktop());
+					toolTip.setLocation(p.x + 5, p.y - toolTip.getHeight() - 5);
+				    } else {
+					showToolTip(false);
+				    }
+				}
+			    }
+			}
+		    }
+		}
+		repaint();
+	    }
+	    //REVISAR
+
+	    public void mouseDragged(MouseEvent me) {
+
+	    }
+
+	};
+    protected MouseListener streetsMouseListener = new MouseListener() {
+	    //REVISAR
+
+	    public void mouseClicked(MouseEvent me) {
+		if (me.getButton() == me.BUTTON1) {
+		    //DAR DE ALTA O MODIFICAR DIRECCION!!!
+		    int i = 0;
+		    Layer_original _layer = getLayer(GaiaEnvironment.streetsLayer);
+		    if (_layer != null) {
+			if (_layer.isOn() && (_layer.isQueryable() || _layer.isModifiable())) {
+			    if (selectedGeometryIndex != -1) {
+				if (_layer.getShapeType() == ShapeTypes.POINT) {
+				    ESRIPoint _point = (ESRIPoint)(_layer.getGeometries().toArray()[selectedGeometryIndex]);
+				    _layer.fireClick(_point, true);
+				} else if (_layer.getShapeType() == ShapeTypes.POLYGON) {
+				    ESRIPolygon _polygon = (ESRIPolygon)(_layer.getGeometries().toArray()[selectedGeometryIndex]);
+				    _layer.fireClick(_polygon, true);
+				} else if (_layer.getShapeType() == ShapeTypes.POLYLINE) {
+				    ESRIPolygon _polyline = (ESRIPolygon)(_layer.getGeometries().toArray()[selectedGeometryIndex]);
+				    _layer.fireClick(_polyline, false);
+				}
+			    } else {
+				if (_layer.getShapeType() == ShapeTypes.POINT && _layer.isModifiable()) {
+				    //AGREGO UN PUNTO!
+				    ESRIPoint _point = new ESRIPoint(engineConfig.xtoSpace(me.getX()), engineConfig.ytoSpace(me.getY()));
+				    _layer.fireClick(_point, true);
+				}
+			    }
+			    //TODO ELSE
+			}
+		    }
+		}
+	    }
+	    //REVISAR
+
+	    public void mousePressed(MouseEvent me) {
+
+	    }
+	    //REVISAR
+
+	    public void mouseReleased(MouseEvent me) {
+
+	    }
+
+	    public void mouseEntered(MouseEvent me) {
+
+	    }
+
+	    public void mouseExited(MouseEvent me) {
+
+	    }
+
+	};
+    protected MouseMotionListener streetsMotionListener = new MouseMotionListener() {
+	    //REVISAR
+
+	    public void mouseMoved(MouseEvent me) {
+		//Seleccionando calle
+		labelxy.setText("X: " + me.getX() + ", Y: " + me.getY());
+		//labelinfo.setText(String.valueOf(engineConfig.getDrawScale()));
+		mousePosition = me.getPoint();
+		Layer_original _layer = getLayer(GaiaEnvironment.streetsLayer);
+		if (_layer != null) {
+		    if (_layer.isOn() && (_layer.isQueryable() || _layer.isModifiable())) {
+			if (_layer.getShapeType() == ShapeTypes.POLYGON || _layer.getShapeType() == ShapeTypes.MULTIPOLYGON) {
+			    selectedGeometryIndex = _layer.getContainedShapeIndex(engineConfig.xtoSpace((int)me.getPoint().getX()), engineConfig.ytoSpace((int)me.getPoint().getY()));
+			    if (_layer.isQueryable()) {
+				if (selectedGeometryIndex != -1 && _layer.getToolTipText() != null) {
+				    toolTip.getContentPane().add(label);
+				    label.setText(_layer.getToolTipText().toString());
+				    label.setBorder(BorderFactory.createLineBorder(Color.black, 1));
+				    label.setFont(new Font("Arial", Font.PLAIN, 12));
+				    toolTip.pack();
+				    showToolTip(true);
+				    Point p = me.getPoint();
+				    SwingUtilities.convertPointToScreen(p, Environment.getActiveDesktop());
+				    toolTip.setLocation(p.x + 5, p.y - toolTip.getHeight() - 5);
+				} else {
+				    showToolTip(false);
+				}
+			    }
+			} else if (_layer.getShapeType() == ShapeTypes.POLYLINE) {
+			    selectedGeometryIndex = _layer.getContainedShapeIndex(engineConfig.xtoSpace((int)me.getPoint().getX()), engineConfig.ytoSpace((int)me.getPoint().getY()));
+			    if (_layer.isQueryable()) {
+				if (selectedGeometryIndex != -1 && _layer.getToolTipText() != null) {
+				    toolTip.getContentPane().add(label);
+				    label.setText(((ESRIPolygon)_layer.getGeometries().elementAt(selectedGeometryIndex)).getLabel());
+				    label.setBorder(null);
+				    label.setFont(new Font("Arial", Font.BOLD, 16));
+				    toolTip.pack();
+				    showToolTip(true);
+				    Point p = me.getPoint();
+				    SwingUtilities.convertPointToScreen(p, Environment.getActiveDesktop());
+				    toolTip.setLocation(p.x + 5, p.y - toolTip.getHeight() - 5);
+				} else {
+				    showToolTip(false);
+				}
+			    }
+			}
+		    }
+		}
+		repaint();
+	    }
+	    //REVISAR
+
+	    public void mouseDragged(MouseEvent me) {
+
+	    }
+
+	};
+    protected MouseListener infrastructuresMouseListener = new MouseListener() {
+	    //REVISAR
+
+	    public void mouseClicked(MouseEvent me) {
+		if (me.getButton() == me.BUTTON1) {
+		    //DAR DE ALTA O MODIFICAR INFRAESTRUCTURA!!!
+		    int i = 0;
+		    Layer_original _layer = getLayer(GaiaEnvironment.infrastructuresLayer);
+		    if (_layer != null) {
+			if (_layer.isOn() && (_layer.isQueryable() || _layer.isModifiable())) {
+			    if (selectedGeometryIndex != -1) {
+				if (_layer.getShapeType() == ShapeTypes.POINT) {
+				    ESRIPoint _point = (ESRIPoint)(_layer.getGeometries().toArray()[selectedGeometryIndex]);
+				    _layer.fireClick(_point, false);
+				} else if (_layer.getShapeType() == ShapeTypes.POLYGON) {
+				    ESRIPolygon _polygon = (ESRIPolygon)(_layer.getGeometries().toArray()[selectedGeometryIndex]);
+				    _layer.fireClick(_polygon, false);
+				} else if (_layer.getShapeType() == ShapeTypes.POLYLINE) {
+				    ESRIPolygon _polyline = (ESRIPolygon)(_layer.getGeometries().toArray()[selectedGeometryIndex]);
+				    _layer.fireClick(_polyline, false);
+				}
+			    } else {
+				if (_layer.getShapeType() == ShapeTypes.POINT && _layer.isModifiable()) {
+				    //AGREGO UN PUNTO!
+				    ESRIPoint _point = new ESRIPoint(engineConfig.xtoSpace(me.getX()), engineConfig.ytoSpace(me.getY()));
+				    _layer.fireClick(_point, false);
+				}
+			    }
+			    //TODO ELSE
+			}
+		    }
+		}
+	    }
+	    //REVISAR
+
+	    public void mousePressed(MouseEvent me) {
+
+	    }
+	    //REVISAR
+
+	    public void mouseReleased(MouseEvent me) {
+
+	    }
+
+	    public void mouseEntered(MouseEvent me) {
+
+	    }
+
+	    public void mouseExited(MouseEvent me) {
+
+	    }
+
+	};
+    protected MouseMotionListener infrastructuresMotionListener = new MouseMotionListener() {
+	    //REVISAR
+
+	    public void mouseMoved(MouseEvent me) {
+		labelxy.setText("X: " + me.getX() + ", Y: " + me.getY());
+		//labelinfo.setText(String.valueOf(engineConfig.getDrawScale()));
+		mousePosition = me.getPoint();
+		selectedGeometryIndex = -1;
+		Layer_original _layer = getLayer(GaiaEnvironment.infrastructuresLayer);
+		boolean found = false;
+		if (_layer != null) {
+		    if (_layer.isOn() && (_layer.isQueryable() || _layer.isModifiable())) {
+			if (_layer.getShapeType() == ShapeTypes.POINT) {
+			    int j = 0;
+			    while (j < _layer.getGeometries().size() && !found) {
+				ESRIPoint _point = (ESRIPoint)_layer.getGeometries().elementAt(j);
+				Shape point = new Ellipse2D.Double(engineConfig.xtoPixel(_point.getX() - (double)_layer.getTolerance() / 2.0), engineConfig.ytoPixel(_point.getY() + (double)_layer.getTolerance() / 2.0), ((double)_layer.getTolerance() * engineConfig.getDrawFactor()), ((double)_layer.getTolerance() * engineConfig.getDrawFactor()));
+				if (point.contains(me.getPoint())) {
+				    selectedGeometryIndex = j;
+				    found = true;
+				    toolTip.getContentPane().add(label);
+				    label.setText(_point.getLabel());
+				    label.setBorder(BorderFactory.createLineBorder(Color.black, 1));
+				    label.setFont(new Font("Arial", Font.PLAIN, 12));
+				    toolTip.pack();
+				    Point p = me.getPoint();
+				    SwingUtilities.convertPointToScreen(p, Environment.getActiveDesktop());
+				    toolTip.setLocation(p.x + 5, p.y - toolTip.getHeight() - 5);
+				    showToolTip(true);
+				} else {
+				    showToolTip(false);
+				}
+				j++;
+			    }
+			} else if (_layer.getShapeType() == ShapeTypes.POLYGON || _layer.getShapeType() == ShapeTypes.MULTIPOLYGON) {
+			    selectedGeometryIndex = _layer.getContainedShapeIndex(engineConfig.xtoSpace((int)me.getPoint().getX()), engineConfig.ytoSpace((int)me.getPoint().getY()));
+			    if (_layer.isQueryable()) {
+				if (selectedGeometryIndex != -1 && _layer.getToolTipText() != null) {
+				    ///if (!toolTip.isVisible()) {
+				    toolTip.getContentPane().add(label);
+				    label.setText(_layer.getToolTipText().toString());
+				    label.setBorder(BorderFactory.createLineBorder(Color.black, 1));
+				    label.setFont(new Font("Arial", Font.PLAIN, 12));
+				    toolTip.pack();
+				    showToolTip(true);
+				    //}
+				    Point p = me.getPoint();
+				    SwingUtilities.convertPointToScreen(p, Environment.getActiveDesktop());
+				    toolTip.setLocation(p.x + 5, p.y - toolTip.getHeight() - 5);
+				} else {
+				    showToolTip(false);
+				}
+			    }
+			} else if (_layer.getShapeType() == ShapeTypes.POLYLINE) {
+			    selectedGeometryIndex = _layer.getContainedShapeIndex(engineConfig.xtoSpace((int)me.getPoint().getX()), engineConfig.ytoSpace((int)me.getPoint().getY()));
+			    if /*queryLayer*/(_layer.isQueryable()) {
+				if (selectedGeometryIndex != -1 && _layer.getToolTipText() != null) {
+				    ///if (!toolTip.isVisible()) {
+				    toolTip.getContentPane().add(label);
+				    label.setText(((ESRIPolygon)_layer.getGeometries().elementAt(selectedGeometryIndex)).getLabel());
+				    label.setBorder(null);
+				    label.setFont(new Font("Arial", Font.BOLD, 16));
+				    toolTip.pack();
+				    showToolTip(true);
+				    //}
+				    Point p = me.getPoint();
+				    SwingUtilities.convertPointToScreen(p, Environment.getActiveDesktop());
+				    toolTip.setLocation(p.x + 5, p.y - toolTip.getHeight() - 5);
+				} else {
+				    showToolTip(false);
+				}
+			    }
+			}
+		    }
+		}
+		repaint();
+	    }
+	    //REVISAR
+
+	    public void mouseDragged(MouseEvent me) {
+
+	    }
+
+	};
+    protected MouseListener editionMouseListener = new MouseListener() {
+	    //REVISAR
+
+	    public void mouseClicked(MouseEvent me) {
+		if (me.getButton() == me.BUTTON1) {
+		    //DAR DE ALTA O MODIFICAR INFRAESTRUCTURA!!!
+		    int i = 0;
+		    boolean found = false;
+		    while (i < layers.size() && !found) {
+			if (layers.elementAt(i).isActive()) {
+			    found = true;
+			    Layer_original _layer = layers.elementAt(i);
+			    if (_layer.isOn() && (_layer.isQueryable() || _layer.isEditable())) {
+				selectedGeometryIndex = _layer.getContainedShapeIndex(engineConfig.xtoSpace((int)me.getPoint().getX()), engineConfig.ytoSpace((int)me.getPoint().getY()));
+				if (selectedGeometryIndex != -1) {
+				    //EDITO UNA GEOMETRIA
+				    if (_layer.getShapeType() == ShapeTypes.POINT) {
+					ESRIPoint _point = (ESRIPoint)(_layer.getGeometries().toArray()[selectedGeometryIndex]);
+					_layer.edit(_point);
+				    } else if (_layer.getShapeType() == ShapeTypes.POLYGON) {
+					ESRIPolygon _polygon = (ESRIPolygon)(_layer.getGeometries().toArray()[selectedGeometryIndex]);
+					_layer.edit(_polygon);
+				    } else if (_layer.getShapeType() == ShapeTypes.POLYLINE) {
+					ESRIPolygon _polyline = (ESRIPolygon)(_layer.getGeometries().toArray()[selectedGeometryIndex]);
+					_layer.fireClick(_polyline, false);
+				    }
+				} else {
+				    //AGREGO UNA GEOMETRIA
+				    if (_layer.getShapeType() == ShapeTypes.POINT && _layer.isEditable()) {
+					//AGREGO UN PUNTO
+					ESRIPoint _point = new ESRIPoint(engineConfig.xtoSpace(me.getX()), engineConfig.ytoSpace(me.getY()));
+					_layer.edit(_point);
+				    }
+				}
+				//TODO ELSE
+			    }
+			}
+			i++;
+		    }
+		}
+	    }
+	    //REVISAR
+
+	    public void mousePressed(MouseEvent me) {
+
+	    }
+	    //REVISAR
+
+	    public void mouseReleased(MouseEvent me) {
+
+	    }
+
+	    public void mouseEntered(MouseEvent me) {
+
+	    }
+
+	    public void mouseExited(MouseEvent me) {
+
+	    }
+
+	};
+    protected MouseMotionListener editionMotionListener = new MouseMotionListener() {
+	    //REVISAR
+
+	    public void mouseMoved(MouseEvent me) {
+		labelxy.setText("X: " + me.getX() + ", Y: " + me.getY());
+		//labelinfo.setText(String.valueOf(engineConfig.getDrawScale()));
+		mousePosition = me.getPoint();
+		selectedGeometryIndex = -1;
+		Layer_original _layer = getLayer(GaiaEnvironment.infrastructuresLayer);
+		boolean found = false;
+		if (_layer != null) {
+		    if (_layer.isOn() && (_layer.isQueryable() || _layer.isModifiable())) {
+			if (_layer.getShapeType() == ShapeTypes.POINT) {
+			    int j = 0;
+			    while (j < _layer.getGeometries().size() && !found) {
+				ESRIPoint _point = (ESRIPoint)_layer.getGeometries().elementAt(j);
+				Shape point = new Ellipse2D.Double(engineConfig.xtoPixel(_point.getX() - (double)_layer.getTolerance() / 2.0), engineConfig.ytoPixel(_point.getY() + (double)_layer.getTolerance() / 2.0), ((double)_layer.getTolerance() * engineConfig.getDrawFactor()), ((double)_layer.getTolerance() * engineConfig.getDrawFactor()));
+				if (point.contains(me.getPoint())) {
+				    selectedGeometryIndex = j;
+				    found = true;
+				    toolTip.getContentPane().add(label);
+				    label.setText(_point.getLabel());
+				    label.setBorder(BorderFactory.createLineBorder(Color.black, 1));
+				    label.setFont(new Font("Arial", Font.PLAIN, 12));
+				    toolTip.pack();
+				    Point p = me.getPoint();
+				    SwingUtilities.convertPointToScreen(p, Environment.getActiveDesktop());
+				    toolTip.setLocation(p.x + 5, p.y - toolTip.getHeight() - 5);
+				    showToolTip(true);
+				} else {
+				    showToolTip(false);
+				}
+				j++;
+			    }
+			} else if (_layer.getShapeType() == ShapeTypes.POLYGON || _layer.getShapeType() == ShapeTypes.MULTIPOLYGON) {
+			    selectedGeometryIndex = _layer.getContainedShapeIndex(engineConfig.xtoSpace((int)me.getPoint().getX()), engineConfig.ytoSpace((int)me.getPoint().getY()));
+			    if (_layer.isQueryable()) {
+				if (selectedGeometryIndex != -1 && _layer.getToolTipText() != null) {
+				    ///if (!toolTip.isVisible()) {
+				    toolTip.getContentPane().add(label);
+				    label.setText(_layer.getToolTipText().toString());
+				    label.setBorder(BorderFactory.createLineBorder(Color.black, 1));
+				    label.setFont(new Font("Arial", Font.PLAIN, 12));
+				    toolTip.pack();
+				    showToolTip(true);
+				    //}
+				    Point p = me.getPoint();
+				    SwingUtilities.convertPointToScreen(p, Environment.getActiveDesktop());
+				    toolTip.setLocation(p.x + 5, p.y - toolTip.getHeight() - 5);
+				} else {
+				    showToolTip(false);
+				}
+			    }
+			} else if (_layer.getShapeType() == ShapeTypes.POLYLINE) {
+			    selectedGeometryIndex = _layer.getContainedShapeIndex(engineConfig.xtoSpace((int)me.getPoint().getX()), engineConfig.ytoSpace((int)me.getPoint().getY()));
+			    if /*queryLayer*/(_layer.isQueryable()) {
+				if (selectedGeometryIndex != -1 && _layer.getToolTipText() != null) {
+				    ///if (!toolTip.isVisible()) {
+				    toolTip.getContentPane().add(label);
+				    label.setText(((ESRIPolygon)_layer.getGeometries().elementAt(selectedGeometryIndex)).getLabel());
+				    label.setBorder(null);
+				    label.setFont(new Font("Arial", Font.BOLD, 16));
+				    toolTip.pack();
+				    showToolTip(true);
+				    //}
+				    Point p = me.getPoint();
+				    SwingUtilities.convertPointToScreen(p, Environment.getActiveDesktop());
+				    toolTip.setLocation(p.x + 5, p.y - toolTip.getHeight() - 5);
+				} else {
+				    showToolTip(false);
+				}
+			    }
+			}
+		    }
+		}
+		repaint();
+	    }
+	    //REVISAR
+
+	    public void mouseDragged(MouseEvent me) {
+
+	    }
+
+	};
+    protected MouseListener imageManagerMouseListener = new MouseListener() {
+	    //REVISAR
+
+	    public void mouseClicked(MouseEvent me) {
+		if (me.getButton() == me.BUTTON2) {
+		    if (selectedImageAttachment != null) {
+			selectedImageAttachment.setMinX(engineConfig.xtoSpace(0));
+			selectedImageAttachment.setMinY(engineConfig.ytoSpace(0));
+		    }
+		}
+	    }
+
+	    public void mousePressed(MouseEvent me) {
+		if (me.getButton() == me.BUTTON3) {
+		    setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		    imageStartDragPosition = mousePosition;
+		} else if (me.getButton() == me.BUTTON1) {
+		    if (selectedImageAttachment != null) {
+			Rectangle2D[] controlPoints = selectedImageAttachment.getControlPoints();
+			boolean found = false;
+			int i = 0;
+			while (i < controlPoints.length && !found) {
+			    found = controlPoints[i].contains(engineConfig.toSpace(me.getPoint()));
+			    i++;
+			}
+			if (found) {
+			}
+		    }
+		}
+	    }
+
+	    public void mouseReleased(MouseEvent me) {
+		if (imageStartDragPosition != null) {
+		    panLine = new Line2D.Float();
+		    if (selectedImageAttachment != null) {
+			//_attachment.setX(_attachment.getX() + (engineConfig.xtoSpace(mousePosition.x)) - engineConfig.xtoSpace(imageStartDragPosition.x));
+			//_attachment.setY(_attachment.getY() - (engineConfig.ytoSpace(imageStartDragPosition.y) - engineConfig.ytoSpace(mousePosition.y)));
+			// engineConfig.setXOffset(engineConfig.getXOffsetOriginal() + (engineConfig.xtoSpace(startDragPosition.x) - engineConfig.xtoSpace(mousePosition.x)));
+			// engineConfig.setYOffset(engineConfig.getYOffsetOriginal() - (engineConfig.xtoSpace(startDragPosition.y) - engineConfig.xtoSpace(mousePosition.y)));
+			 Rectangle2D[] controlPoints = selectedImageAttachment.getControlPoints();
+			 boolean found = false;
+			 int i = 0;
+			 while (i < controlPoints.length && !found) {
+			     found = controlPoints[i].contains(engineConfig.toSpace(me.getPoint()));
+			     i++;
+			 }
+			 if (found) {
+			     //Mover el controlPoint
+			 } else {
+			    //Mover la imagen
+			     selectedImageAttachment.setMinX(selectedImageAttachment.getMinX() + (engineConfig.xtoSpace(mousePosition.x)) - engineConfig.xtoSpace(imageStartDragPosition.x));
+			     selectedImageAttachment.setMinY(selectedImageAttachment.getMinY() - (engineConfig.ytoSpace(imageStartDragPosition.y) - engineConfig.ytoSpace(mousePosition.y)));
+			 }
+		    }
+		    imageStartDragPosition = null;
+		    repaint();
+		}
+		setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
+	    }
+
+	    public void mouseEntered(MouseEvent me) {
+
+	    }
+
+	    public void mouseExited(MouseEvent me) {
+
+	    }
+
+	};
+    protected MouseMotionListener imageManagerMotionListener = new MouseMotionListener() {
+	    //REVISAR
+
+	    public void mouseMoved(MouseEvent me) {
+		int i = 0;
+		boolean found = false;
+		while (i < layers.size() && !found) {
+		    Layer_original _layer = layers.elementAt(i);
+		    if (_layer.isOn()) {
+			int j = 0;
+			while (j < _layer.getLayerConfig().getImageAttachments().size() && !found) {
+			    ImageAttachment _imageAttachment = _layer.getLayerConfig().getImageAttachments().elementAt(j);
+			    if (_imageAttachment.isOn()) {
+				BufferedImage _imageAttachmentImage = _layer.getImageAttachments().elementAt(j);
+				if (_imageAttachmentImage != null) {
+				    System.out.println(_imageAttachment.getBounds().getMinX());
+				    System.out.println(_imageAttachment.getBounds().getMaxX());
+				    System.out.println(_imageAttachment.getBounds().getMinY());
+				    System.out.println(_imageAttachment.getBounds().getMaxY());
+				    System.out.println(engineConfig.toSpace(me.getPoint()));
+				    selectedImageAttachment = _imageAttachment.getBounds().contains(engineConfig.toSpace(me.getPoint())) ? _imageAttachment : null;
+				}
+			    }
+			    found = (selectedImageAttachment != null);
+			    j++;
+			}
+		    }
+		    i++;
+		}
+		repaint();
+	    }
+	    //REVISAR
+
+	    public void mouseDragged(MouseEvent me) {
+		if (imageStartDragPosition != null) {
+		    if (selectedImageAttachment != null) {
+			//_attachment.setX(_attachment.getX() + (engineConfig.xtoSpace(mousePosition.x)) - engineConfig.xtoSpace(imageStartDragPosition.x));
+			//_attachment.setY(_attachment.getY() - (engineConfig.ytoSpace(imageStartDragPosition.y) - engineConfig.ytoSpace(mousePosition.y)));
+			// engineConfig.setXOffset(engineConfig.getXOffsetOriginal() + (engineConfig.xtoSpace(startDragPosition.x) - engineConfig.xtoSpace(mousePosition.x)));
+			// engineConfig.setYOffset(engineConfig.getYOffsetOriginal() - (engineConfig.xtoSpace(startDragPosition.y) - engineConfig.xtoSpace(mousePosition.y)));
+		    }
+		    mousePosition = me.getPoint();
+		    panLine.setLine(imageStartDragPosition, mousePosition);
+		    repaint();
+		}
+	    }
+
+	};
+
+    protected MouseListener multiQueryMouseListener = new MouseListener() {
+	    //REVISAR
+
+	    public void mouseClicked(MouseEvent me) {
+	    }
+	    //REVISAR
+
+	    public void mousePressed(MouseEvent me) {
+		if (me.getButton() == me.BUTTON1) {
+		    if (multiQueryStartDrawRectPosition == null) {
+			multiQueryStartDrawRectPosition = new Point2D.Double(me.getPoint().getX(), me.getPoint().getY());
+		    }
+		    repaint();
+		}
+	    }
+	    //REVISAR
+
+	    public void mouseReleased(MouseEvent me) {
+		if (me.getButton() == me.BUTTON1 && multiQueryStartDrawRectPosition != null && multiQueryEndDrawRectPosition != null) {
+		
+		    BasicTabbedPane _multiQueryTabbedPane = new BasicTabbedPane();
+		    HashMap _chartsList = new HashMap();
+
+		    multiQueryRectangle = createRectangle(multiQueryStartDrawRectPosition, multiQueryEndDrawRectPosition);
+		    StringBuilder _queryResult = new StringBuilder("<html><p align=center>");
+		    for (int i = 0; i < layers.size(); i++) {
+		        if (layers.elementAt(i).isOn()) {
+		            Layer_original _layer = layers.elementAt(i);
+		            Vector _geometries = _layer.getGeometries();
+		            int[] _filtered = new int[_layer.getLayerConfig().getFilters().size()];
+			    int _total = 0;
+		            for (int j = 0; j < _filtered.length; j++) {
+		                _filtered[j] = 0;
+		            }
+		            switch (_layer.getShapeType()) {
+		                case ShapeTypes.POLYGON:
+		                case ShapeTypes.MULTIPOLYGON:
+		                    for (int j = 0; j < _geometries.size(); j++) {
+		                        ESRIPolygon _polygon = (ESRIPolygon)_geometries.elementAt(j);
+		                        if (_polygon.intersects(createRectangle(engineConfig.toSpace(multiQueryStartDrawRectPosition), engineConfig.toSpace(multiQueryEndDrawRectPosition)))) {
+		                            //System.out.println("Layer_original: " + _layer.getName() + ", id: " + _polygon.getIdPolygon() + ", filter: " + _polygon.getIdFilterMatch());
+					    if (_polygon.getIdFilterMatch() != -1) {
+						_filtered[_polygon.getIdFilterMatch()]++;
+					    }
+					    _total++;
+		                        }
+		                    }
+				    break;
+		                case ShapeTypes.POINT:
+		                case ShapeTypes.MULTIPOINT:
+				    Rectangle _rectangle = createRectangle(engineConfig.toSpace(multiQueryStartDrawRectPosition), engineConfig.toSpace(multiQueryEndDrawRectPosition));
+		                    for (int j = 0; j < _geometries.size(); j++) {
+		                        ESRIPoint _point = (ESRIPoint)_geometries.elementAt(j);
+		                        if (_rectangle.contains(_point)) {
+		                            //System.out.println("Layer_original: " + _layer.getName() + ", id: " + _polygon.getIdPolygon() + ", filter: " + _polygon.getIdFilterMatch());
+		                            if (_point.getIdFilterMatch() != -1) {
+		                                _filtered[_point.getIdFilterMatch()]++;
+		                            }
+		                            _total++;
+		                        }
+		                    }
+		                    break;
+		            }
+		            if (_total > 0) {
+		                _queryResult.append("Layer_original: " + _layer.getAlias() + "<br>");
+		                _queryResult.append("Total: " + _total + "<br>");
+		                DefaultPieDataset _pieDataset = new DefaultPieDataset();
+		                DefaultCategoryDataset _barDataset = new DefaultCategoryDataset();
+				int _totalFiltered = 0;
+		                for (int j = 0; j < _filtered.length; j++) {
+				    if (_filtered[j]>0) {
+				        //System.out.println(Format.toDouble((double)_filtered[j]/_total*100.0));
+				        _queryResult.append(_layer.getLayerConfig().getFilters().elementAt(j).getName() + ": " + Format.toDouble((double)_filtered[j]/_total*100.0) + "% ( <b>" + _filtered[j] + "</b> )<br>");
+				        _pieDataset.setValue(_layer.getLayerConfig().getFilters().elementAt(j).getName() + " (" + Format.toDouble((double)_filtered[j]/_total*100.0) + "%)", Format.toDouble((double)_filtered[j]/_total*100.0));
+				        //_barDataset.setValue(_filtered[j], "Cantidad", _layer.getLayerConfig().getFilters().elementAt(j).getToolTipValue());
+					_barDataset.setValue(_filtered[j], _layer.getLayerConfig().getFilters().elementAt(j).getName(), "");
+				        _totalFiltered += _filtered[j];
+				    }
+		                }
+				
+				/*for (int j = 0; j < 40; j++)  {
+				    _pieDataset.setValue("Test " + j, 1);
+				    _totalFiltered += 1;
+				}*/
+				
+
+				if (_pieDataset.getItemCount() > 0) {
+				    if (_total != _totalFiltered) {
+					_pieDataset.setValue("SIN FILTRAR" + " (" + Format.toDouble((double)(_total-_totalFiltered)/_total*100.0) + "%)", Format.toDouble((double)(_total-_totalFiltered)/_total*100.0));
+				    }
+				    JFreeChart _pieChart = ChartFactory.createPieChart3D("",   // Title
+				                          _pieDataset, // Dataset
+				                          true, // Muestra referencias
+				                          false, // Show legend  
+				                          false // Show legend  
+				                         );
+
+				    _chartsList.put(_layer.getAlias() + " (Torta)", _pieChart);
+				}
+				
+		                if (_barDataset.getRowCount() > 0) {
+				    if (_total != _totalFiltered) {
+				        //_barDataset.setValue(Format.toDouble((double)(_total-_totalFiltered)), "Cantidad", "Sin filtro");
+				        _barDataset.setValue(Format.toDouble((double)(_total-_totalFiltered)), "Sin filtro", "");
+				    }
+				    JFreeChart _barChart = ChartFactory.createBarChart("",
+					    "", "Cantidad", _barDataset, PlotOrientation.VERTICAL, true,
+					    false, false);
+				    _chartsList.put(_layer.getAlias() + " (Barras)", _barChart);
+				}
+		            }
+
+		        }
+		    }
+		    _queryResult.append("</p></html>");
+
+		    multiQueryStartDrawRectPosition = null;
+		    multiQueryEndDrawRectPosition = null;
+		    multiQueryRectangle = null;
+		    repaint();
+
+		    BasicInternalFrame _multiQueryDialog = new BasicInternalFrame("Resultado de Consulta Múltiple");
+		    _multiQueryDialog.setLayout(new BorderLayout());
+		    _multiQueryDialog.setSize(400,300);
+		    ComponentsManager.setConfigurable(_multiQueryDialog);
+		    JArea _multiQuery = new JArea();
+		    _multiQuery.setContentType("text/html"); 
+		    _multiQuery.setEditable(false);
+		    _multiQueryTabbedPane.insertTab("Resumen", null, _multiQuery, null, 0);
+
+		    for (int i = 0; i < _chartsList.size(); i++)  {
+			String _chartName = _chartsList.keySet().toArray()[i].toString();
+		        BufferedImage _chartImage = ((JFreeChart)_chartsList.get(_chartName)).createBufferedImage(800,500);
+
+		        BasicLabel _lblChart = new BasicLabel();
+		        _lblChart.setIcon(new ImageIcon(_chartImage));
+			_lblChart.setHorizontalAlignment(_lblChart.CENTER);
+		        
+		        BasicScrollPane _jpChart = new BasicScrollPane(_lblChart);
+		        _multiQueryTabbedPane.addTab(_chartName, _jpChart);
+		    }
+
+		    _multiQueryDialog.add(_multiQueryTabbedPane, BorderLayout.CENTER);
+
+		    _multiQuery.setText(_queryResult.toString());
+		    _multiQueryDialog.setMaximizable(true);
+		    _multiQueryDialog.setClosable(true);
+		    _multiQueryDialog.setResizable(true);
+		    _multiQueryDialog.setVisible(true);
+
+		} else {
+		    multiQueryStartDrawRectPosition = null;
+		    multiQueryEndDrawRectPosition = null;
+		}
+	    }
+
+	    public void mouseEntered(MouseEvent me) {
+
+	    }
+
+	    public void mouseExited(MouseEvent me) {
+
+	    }
+
+	};
+    protected MouseMotionListener multiQueryMotionListener = new MouseMotionListener() {
+	    //REVISAR
+
+	    public void mouseMoved(MouseEvent me) {
+		//labelinfo.setText(String.valueOf(engineConfig.getDrawScale()));
+		mousePosition = me.getPoint();
+		repaint();
+	    }
+	    //REVISAR
+
+	    public void mouseDragged(MouseEvent me) {
+		if (multiQueryStartDrawRectPosition != null) {
+		    multiQueryEndDrawRectPosition = new Point2D.Double(me.getPoint().getX(), me.getPoint().getY());
+		    multiQueryRectangle = createRectangle(multiQueryStartDrawRectPosition, multiQueryEndDrawRectPosition);
+		    /*for (int i = 0; i < layers.size(); i++) {
+			if (layers.elementAt(i).isOn()) {
+			    Layer_original _layer = layers.elementAt(i);
+			    Vector _geometries = _layer.getGeometries();
+			    int[] _filtered = new int[_layer.getLayerConfig().getFilters().size()+1];
+			    for (int j = 0; j < _filtered.length; j++) {
+				_filtered[j] = 0;
+			    }
+			    switch (_layer.getShapeType()) {
+				case ShapeTypes.POLYGON:
+				case ShapeTypes.MULTIPOLYGON:
+				    for (int j = 0; j < _geometries.size(); j++) {
+					ESRIPolygon _polygon = (ESRIPolygon)_geometries.elementAt(j);
+					if (_polygon.intersects(createRectangle(engineConfig.toSpace(multiQueryStartDrawRectPosition), engineConfig.toSpace(multiQueryEndDrawRectPosition)))) {
+					    //System.out.println("Layer_original: " + _layer.getName() + ", id: " + _polygon.getIdPolygon() + ", filter: " + _polygon.getIdFilterMatch());
+					    _filtered[_polygon.getIdFilterMatch()+1]++;
+					}
+				    }
+				    System.out.println("Sin filtro: " + _filtered[0]);
+				    for (int j = 1; j < _filtered.length; j++) {
+				        System.out.println("Filtro " + _layer.getLayerConfig().getFilters().elementAt(j-1).getExpression() + ": " + _filtered[j]);
+				    }
+				    break;
+			    }
+			}
+		    }*/
+		    repaint();
+		}
+	    }
+
+	};
+
+    protected MouseListener drawingMouseListener = new MouseListener() {
+	    //REVISAR
+
+	    public void mouseClicked(MouseEvent me) {
+
+	    }
+
+	    public void mousePressed(MouseEvent me) {
+
+	    }
+
+	    public void mouseReleased(MouseEvent me) {
+		if (me.getButton() == me.BUTTON1) {
+		    if ((me.getModifiers() & MouseEvent.SHIFT_MASK) == MouseEvent.SHIFT_MASK) {
+			restartEnvironment();
+			//labelinfo.setVisible(true);
+		    } else {
+			distance(true);
+		    }
+		} else if (me.getButton() == me.BUTTON3) {
+		    if (distancePoints.size() > 1) {
+			distancePoints.removeElementAt(distancePoints.size()-1);
+		    }
+		}
+	    }
+
+	    public void mouseEntered(MouseEvent me) {
+
+	    }
+
+	    public void mouseExited(MouseEvent me) {
+
+	    }
+
+	};
+    protected MouseMotionListener drawingMotionListener = new MouseMotionListener() {
+	    //REVISAR
+
+	    public void mouseMoved(MouseEvent me) {
+		labelxy.setText("X: " + me.getX() + ", Y: " + me.getY());
+		//labelinfo.setText("Dist x*y: " + String.valueOf(l.ptSegDist(me.getPoint())));
+		/**      inside = getFakePolyFromPoints(xd,yd).contains(me.getPoint());*/
+		distance(false);
+		//currentPosition = (Point2D.Double)distancePoints.elementAt(distancePoints.size()-1);
+		repaint();
+	    }
+	    //REVISAR
+
+	    public void mouseDragged(MouseEvent me) {
+
+	    }
+
+	};
+
+    protected MouseListener fixedPolygonQueryMouseListener = new MouseListener() {
+	    //REVISAR
+
+	    public void mouseClicked(MouseEvent me) {
+	    }
+	    //REVISAR
+
+	    public void mousePressed(MouseEvent me) {
+	    }
+	    //REVISAR
+
+	    public void mouseReleased(MouseEvent me) {
+		if (me.getButton() == MouseEvent.BUTTON1) {
+		    selectedGeometryIndex = getLayer(selectedLayerName).getContainedShapeIndex(engineConfig.xtoSpace((int)me.getPoint().getX()), engineConfig.ytoSpace((int)me.getPoint().getY()));
+		    if (selectedGeometryIndex != -1) {
+			ESRIPolygon _selectedPolygon = (ESRIPolygon)getLayer(selectedLayerName).getGeometries().elementAt(selectedGeometryIndex);
+			BasicTabbedPane _multiQueryTabbedPane = new BasicTabbedPane();
+			HashMap _chartsList = new HashMap();
+		        StringBuilder _queryResult = new StringBuilder("<html><p align=center>");
+		        _queryResult.append("<font size=8px><b>Layer_original \"" + selectedLayerName + "\"<br>Nombre \"" + (_selectedPolygon.getLabel()!=null?_selectedPolygon.getLabel():"Sin nombre") + "\"</b><br></font><br>" );
+			for (int i = 0; i < layers.size(); i++) {
+			    if (layers.elementAt(i).isOn()) {
+				Layer_original _layer = layers.elementAt(i);
+				Vector _geometries = _layer.getGeometries();
+				int[] _filtered = new int[_layer.getLayerConfig().getFilters().size()];
+				int _total = 0;
+				for (int j = 0; j < _filtered.length; j++) {
+				    _filtered[j] = 0;
+				}
+				switch (_layer.getShapeType()) {
+				    case ShapeTypes.POLYGON:
+				    case ShapeTypes.MULTIPOLYGON:
+					for (int j = 0; j < _geometries.size(); j++) {
+					    ESRIPolygon _polygon = (ESRIPolygon)_geometries.elementAt(j);
+					    ESRIPoint[] _polygonPoints = _polygon.getPoints();
+					    boolean _intersects = false;
+					    int k = 0;
+					    if (_polygon.intersects(_selectedPolygon.getBounds())) {
+					        while (!_intersects && k < _polygonPoints.length) {
+					            _intersects = _selectedPolygon.contains(_polygonPoints[k]);
+					            k++;
+					        }
+					        if (_intersects) {
+					            if (_polygon.getIdFilterMatch() != -1) {
+					                _filtered[_polygon.getIdFilterMatch()]++;
+					            }
+					            _total++;
+					        }
+					    }
+					}
+					break;
+				    case ShapeTypes.POINT:
+				    case ShapeTypes.MULTIPOINT:
+					for (int j = 0; j < _geometries.size(); j++) {
+					    ESRIPoint _point = (ESRIPoint)_geometries.elementAt(j);
+					    if (_selectedPolygon.contains(_point)) {
+						if (_point.getIdFilterMatch() != -1) {
+						    _filtered[_point.getIdFilterMatch()]++;
+						}
+						_total++;
+					    }
+					}
+					break;
+				}
+				if (_total > 0) {
+				    _queryResult.append("Layer_original: " + _layer.getAlias() + "<br>");
+				    _queryResult.append("Total: " + _total + (_layer.getName().equals(selectedLayerName)?" <i>(Colindantes)</i>":"") + "<br>");
+				    DefaultPieDataset _pieDataset = new DefaultPieDataset();
+				    DefaultCategoryDataset _barDataset = new DefaultCategoryDataset();
+				    int _totalFiltered = 0;
+				    for (int j = 0; j < _filtered.length; j++) {
+					if (_filtered[j] > 0) {
+					    //System.out.println(Format.toDouble((double)_filtered[j]/_total*100.0));
+					    _queryResult.append(_layer.getLayerConfig().getFilters().elementAt(j).getName() + ": " + Format.toDouble((double)_filtered[j] / _total * 100.0) + "% ( <b>" + _filtered[j] + "</b> )<br>");
+					    _pieDataset.setValue(_layer.getLayerConfig().getFilters().elementAt(j).getName() + " (" + Format.toDouble((double)_filtered[j] / _total * 100.0) + "%)", Format.toDouble((double)_filtered[j] / _total * 100.0));
+					    //_barDataset.setValue(_filtered[j], "Cantidad", _layer.getLayerConfig().getFilters().elementAt(j).getToolTipValue());
+					    _barDataset.setValue(_filtered[j], _layer.getLayerConfig().getFilters().elementAt(j).getName(), "");
+					    _totalFiltered += _filtered[j];
+					}
+				    }
+    
+				    /*for (int j = 0; j < 40; j++)  {
+					_pieDataset.setValue("Test " + j, 1);
+					_totalFiltered += 1;
+				    }*/
+    
+				    if (_pieDataset.getItemCount() > 0) {
+					if (_total != _totalFiltered) {
+					    _pieDataset.setValue("SIN FILTRAR" + " (" + Format.toDouble((double)(_total - _totalFiltered) / _total * 100.0) + "%)", Format.toDouble((double)(_total - _totalFiltered) / _total * 100.0));
+					}
+					JFreeChart _pieChart = // Title
+					    // Dataset
+					    // Muestra referencias
+					    // Show legend  
+					    // Show legend  
+					    ChartFactory.createPieChart3D("", _pieDataset, true, false, false);
+    
+					_chartsList.put(_layer.getAlias() + " (Torta)", _pieChart);
+				    }
+    
+				    if (_barDataset.getRowCount() > 0) {
+					if (_total != _totalFiltered) {
+					    //_barDataset.setValue(Format.toDouble((double)(_total-_totalFiltered)), "Cantidad", "Sin filtro");
+					    _barDataset.setValue(Format.toDouble((double)(_total - _totalFiltered)), "Sin filtro", "");
+					}
+					JFreeChart _barChart = ChartFactory.createBarChart("", "", "Cantidad", _barDataset, PlotOrientation.VERTICAL, true, false, false);
+					_chartsList.put(_layer.getAlias() + " (Barras)", _barChart);
+				    }
+				}
+    
+			    }
+			}
+			_queryResult.append("</p></html>");
+    
+			repaint();
+    
+			BasicInternalFrame _multiQueryDialog = new BasicInternalFrame("Resultado de Consulta Múltiple");
+			_multiQueryDialog.setLayout(new BorderLayout());
+			_multiQueryDialog.setSize(400, 300);
+			ComponentsManager.setConfigurable(_multiQueryDialog);
+			JArea _multiQuery = new JArea();
+			_multiQuery.setContentType("text/html");
+			_multiQuery.setEditable(false);
+			_multiQueryTabbedPane.insertTab("Resumen", null, _multiQuery, null, 0);
+    
+			for (int i = 0; i < _chartsList.size(); i++) {
+			    String _chartName = _chartsList.keySet().toArray()[i].toString();
+			    BufferedImage _chartImage = ((JFreeChart)_chartsList.get(_chartName)).createBufferedImage(800, 500);
+    
+			    BasicLabel _lblChart = new BasicLabel();
+			    _lblChart.setIcon(new ImageIcon(_chartImage));
+			    _lblChart.setHorizontalAlignment(_lblChart.CENTER);
+    
+			    BasicScrollPane _jpChart = new BasicScrollPane(_lblChart);
+			    _multiQueryTabbedPane.addTab(_chartName, _jpChart);
+			}
+    
+			_multiQueryDialog.add(_multiQueryTabbedPane, BorderLayout.CENTER);
+    
+			_multiQuery.setText(_queryResult.toString());
+			_multiQueryDialog.setMaximizable(true);
+			_multiQueryDialog.setClosable(true);
+			_multiQueryDialog.setResizable(true);
+			_multiQueryDialog.setVisible(true);
+		    }
+		}
+	    }
+
+	    public void mouseEntered(MouseEvent me) {
+
+	    }
+
+	    public void mouseExited(MouseEvent me) {
+
+	    }
+
+	};
+    protected MouseMotionListener fixedPolygonQueryMotionListener = new MouseMotionListener() {
+	    //REVISAR
+
+	    public void mouseMoved(MouseEvent me) {
+		//labelinfo.setText(String.valueOf(engineConfig.getDrawScale()));
+		mousePosition = me.getPoint();
+	        selectedGeometryIndex = getLayer(selectedLayerName).getContainedShapeIndex(engineConfig.xtoSpace((int)me.getPoint().getX()), engineConfig.ytoSpace((int)me.getPoint().getY()));
+		repaint();
+	    }
+	    //REVISAR
+
+	    public void mouseDragged(MouseEvent me) {
+	    }
+
+	};
+
+    private String decimalFormat(double _numero, int _decimales) {
+	String df = "0.";
+	for (int i = 0; i < _decimales; i++) {
+	    df += "0";
+	}
+	return (new DecimalFormat(df)).format(_numero);
+    }
+
+    private void osnap(Point _p) {
+	double _osnapTolerance = 5;
+	currentPosition = engineConfig.toSpace(_p);
+	osnapRectangle = null;
+	if (engineConfig.isOsnapActive()) {
+	    if (distancePoints.size() > 0) {
+		distancePoints.setElementAt(engineConfig.toSpace(_p), distancePoints.size() - 1);
+		int i = 0;
+		boolean found = false;
+		while (i < osnapPointsVector.size() && !found) {
+		    ESRIPoint xy = (ESRIPoint)osnapPointsVector.elementAt(i);
+		    Point2D.Double _point = engineConfig.toSpace(_p);
+		    if ( xy.distance(_point) < _osnapTolerance ) {
+			_osnapTolerance = xy.distance(_point);
+		        osnapRectangle = new Rectangle2D.Double(engineConfig.xtoPixel(xy.getX()) - osnapRectSize / 2, engineConfig.ytoPixel(xy.getY()) - osnapRectSize / 2, osnapRectSize, osnapRectSize);
+		        distancePoints.setElementAt(new Point2D.Double(xy.getX(), xy.getY()), distancePoints.size() - 1);
+		    }
+		    currentPosition = new Point2D.Double(xy.getX(), xy.getY());
+		    i++;
+		}
+	    } else {
+	        distancePoints.add(engineConfig.toSpace(_p));
+		for (int i = 0; i < osnapPointsVector.size(); i++) {
+		    ESRIPoint xy = (ESRIPoint)osnapPointsVector.elementAt(i);
+		    Point2D.Double _point = engineConfig.toSpace(_p);
+		    if ( xy.distance(_point) < _osnapTolerance ) {
+		        _osnapTolerance = xy.distance(_point);
+			osnapRectangle = new Rectangle2D.Double(engineConfig.xtoPixel(xy.getX()) - osnapRectSize / 2, engineConfig.ytoPixel(xy.getY()) - osnapRectSize / 2, osnapRectSize, osnapRectSize);
+		        distancePoints.setElementAt(new Point2D.Double(xy.getX(), xy.getY()), 0);
+		    }
+		    currentPosition = new Point2D.Double(xy.getX(), xy.getY());
+		}
+	    }
+	} else {
+	    if (distancePoints.size() > 0) {
+	        distancePoints.setElementAt(engineConfig.toSpace(_p), distancePoints.size() - 1);
+	    } else {
+	        distancePoints.add(engineConfig.toSpace(_p));
+	    }
+	}
+    }
+
+    private void bInfo_actionPerformed(ActionEvent e) {
+	setOperation(BasicDrawEngineConfig.OPERATION_QUERY);
+    }
+
+    public void addLayerGroup(LayerGroup _layers) {
+	layerGroups.add(_layers);
+	for (int i = 0; i < _layers.size(); i++) {
+	    addLayer((Layer_original)_layers.elementAt(i));
+	}
+    }
+
+    public void addLayer(Layer_original _layer) {
+	layers.add(_layer);
+	_layer.setParent(this);
+	_layer.setOsnapPointsVector(osnapPointsVector);
+	_layer.getLayerConfig().getGeometryTypeFromSQL();
+	if (_layer.getLayerConfig().getAutoUpdateRateInSeconds() > 0) {
+	    startAutoUpdate(_layer);
+	}
+	if (_layer.isOn()) {
+	    _layer.load();
+	    repaint();
+	}
+    }
+
+    public void removeLayer(String _name) {
+	int i = 0;
+	while (i < layers.size()) {
+	    if (layers.elementAt(i).getAlias().equals(_name)) {
+		layers.removeElementAt(i);
+	    } else {
+		i++;
+	    }
+	}
+	repaint();
+    }
+
+    private void drawImageAttachments(Graphics2D _graphics2d, Layer_original _layer) {
+	/*if (_layer.isOn()) {
+	    for (int i = 0; i < _layer.getLayerConfig().getImageAttachments().size(); i++) {
+		ImageAttachment _imageAttachment = _layer.getLayerConfig().getImageAttachments().elementAt(i);
+		if (_imageAttachment.isOn()) {
+		    BufferedImage _imageAttachmentImage = _layer.getImageAttachments().elementAt(i);
+		    if (_imageAttachmentImage != null) {
+			if (_imageAttachment.getMinX() == -1 || _imageAttachment.getMinY() == -1) {
+			    _imageAttachment.setMinX(engineConfig.xtoSpace(0));
+			    _imageAttachment.setMinY(engineConfig.ytoSpace(0));
+			}
+		        _imageAttachment.setMinX(engineConfig.xtoSpace(0));
+		        _imageAttachment.setMinY(engineConfig.ytoSpace(0));
+		        _graphics2d.drawImage(_imageAttachmentImage, engineConfig.xtoPixel(_imageAttachment.getMinX()), engineConfig.ytoPixel(_imageAttachment.getMinY()), (int)(_imageAttachmentImage.getWidth() * _imageAttachment.getScale() * engineConfig.getDrawScale()), (int)(_imageAttachmentImage.getHeight() * _imageAttachment.getScale() * engineConfig.getDrawScale()), this);
+		        Rectangle2D bounds = new Rectangle2D.Double(engineConfig.xtoPixel(_imageAttachment.getMinX()), engineConfig.ytoPixel(_imageAttachment.getMinY()), (int)(_imageAttachmentImage.getWidth() * _imageAttachment.getScale() * engineConfig.getDrawScale()), (int)(_imageAttachmentImage.getHeight() * _imageAttachment.getScale() * engineConfig.getDrawScale()));
+			_imageAttachment.setSpaceBounds(new Rectangle2D.Double(_imageAttachment.getMinX(), _imageAttachment.getMinY(), engineConfig.xtoSpace(bounds.getMaxX())-_imageAttachment.getMinX(), _imageAttachment.getMinY() - engineConfig.ytoSpace(bounds.getMaxY())));
+			if (_imageAttachment == selectedImageAttachment) {
+			    _graphics2d.setPaint(Color.RED);
+			    _graphics2d.draw(bounds);
+			    Rectangle2D[] controlPoints = _imageAttachment.getControlPoints();
+			    for (int j = 0; j < controlPoints.length; j++) {
+			        _graphics2d.setPaint(controlPoints[j].contains(mousePosition)?Color.red:Color.blue);
+			        _graphics2d.fill(controlPoints[j]);
+			    }
+			}
+		    }
+		}
+	    }
+	}*/
+    }
+
+
+     private void drawLayers(Graphics2D _graphics2D, Graphics2D _labelGraphics2D) {
+	try {
+	     if (engineConfig.isAntiAlias()) {
+		 _graphics2D.setRenderingHint(RenderingHints.KEY_ALPHA_INTERPOLATION, RenderingHints.VALUE_ALPHA_INTERPOLATION_QUALITY);
+		 _graphics2D.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+		 _graphics2D.setRenderingHint(RenderingHints.KEY_COLOR_RENDERING, RenderingHints.VALUE_COLOR_RENDER_QUALITY);
+		 _graphics2D.setRenderingHint(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);
+		 _graphics2D.setRenderingHint(RenderingHints.KEY_DITHERING, RenderingHints.VALUE_DITHER_ENABLE);
+		 _graphics2D.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
+	     } else {
+		 _graphics2D.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_OFF);
+		 _graphics2D.setRenderingHint(RenderingHints.KEY_ALPHA_INTERPOLATION, RenderingHints.VALUE_ALPHA_INTERPOLATION_SPEED);
+		 _graphics2D.setRenderingHint(RenderingHints.KEY_COLOR_RENDERING, RenderingHints.VALUE_COLOR_RENDER_SPEED);
+		 _graphics2D.setRenderingHint(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_SPEED);
+		 _graphics2D.setRenderingHint(RenderingHints.KEY_DITHERING, RenderingHints.VALUE_DITHER_DISABLE);
+		 _graphics2D.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_OFF);
+	     }
+	     for (int i = 0; i < layers.size(); i++) {
+		 drawImageAttachments(_graphics2D, layers.elementAt(i));
+	     }
+	     for (int i = 0; i < layers.size(); i++) {
+		 drawLayer(_graphics2D, _labelGraphics2D, layers.elementAt(i));
+	     }
+	 } catch (Exception x) {
+	     x.printStackTrace();
+	 }
+     }
+
+    private void drawLayer(Graphics2D _graphics2d, Graphics2D _labelGraphics2D, Layer_original _layer) {
+	if (_layer.getLayerConfig().getBounds() != null && (_layer.isOn() || _layer.getName().equals(selectedLayerName))) {
+	    double _extents = engineConfig.getExtents()/engineConfig.getDrawScale();
+	    if (_extents >= _layer.getLayerConfig().getMinScale() && _extents <= _layer.getLayerConfig().getMaxScale()) {
+	        if (toSpace(getBounds()).intersects(_layer.getLayerConfig().getBounds())) {
+	            switch (_layer.getShapeType()) {
+	                case ShapeTypes.POINT:
+	                case ShapeTypes.MULTIPOINT:
+	                    drawPoints(_graphics2d, _labelGraphics2D, _layer);
+	                    break;
+	                case ShapeTypes.POLYGON:
+	                case ShapeTypes.MULTIPOLYGON:
+	                    drawPolygons(_graphics2d, _labelGraphics2D, _layer);
+	                    break;
+	                case ShapeTypes.POLYLINE:
+	                case ShapeTypes.MULTIPOLYLINE:
+	                    drawPolylines(_graphics2d, _labelGraphics2D, _layer);
+	                    break;
+	            }
+	        }
+	    }
+	}
+    }
+
+    private ESRIPoint[] toPointsArray(Vector _geometries) {
+	Object[] _objects = _geometries.toArray();
+	ESRIPoint[] _points = new ESRIPoint[_objects.length];
+	for (int i = 0; i < _objects.length; i++) {
+	    _points[i] = (ESRIPoint)_objects[i];
+	}
+	return _points;
+    }
+
+    private ESRIPolygon[] toPolygonsArray(Vector _geometries) {
+	Object[] _objects = _geometries.toArray();
+	ESRIPolygon[] _polygons = new ESRIPolygon[_objects.length];
+	for (int i = 0; i < _objects.length; i++) {
+	    _polygons[i] = (ESRIPolygon)_objects[i];
+	}
+	return _polygons;
+    }
+
+    private ESRIPolyline[] toPolylinesArray(Vector _geometries) {
+	Object[] _objects = _geometries.toArray();
+	ESRIPolyline[] _polylines = new ESRIPolyline[_objects.length];
+	for (int i = 0; i < _objects.length; i++) {
+	    _polylines[i] = (ESRIPolyline)_objects[i];
+	}
+	return _polylines;
+    }
+
+    private void setEnvironment() {
+	if ((engineConfig.getFWidth() != getWidth()) || (engineConfig.getFHeight() != getHeight())) {
+	    if (mapExtents.length == 2) {
+		engineConfig.setFWidth(getWidth());
+		engineConfig.setFHeight(getHeight());
+		//System.out.println(Math.max(Math.max(mapExtents[0].getX(), mapExtents[1].getX()) - Math.min(mapExtents[0].getX(), mapExtents[1].getX()), Math.max(mapExtents[0].getY(), mapExtents[1].getY()) - Math.min(mapExtents[0].getY(), mapExtents[1].getY())));
+	        //System.out.println(engineConfig.getFWidth() + "x" + engineConfig.getFHeight());
+		engineConfig.setExtents(Math.max(Math.max(mapExtents[0].getX(), mapExtents[1].getX()) - Math.min(mapExtents[0].getX(), mapExtents[1].getX()), Math.max(mapExtents[0].getY(), mapExtents[1].getY()) - Math.min(mapExtents[0].getY(), mapExtents[1].getY())));
+		engineConfig.setDrawFactor(Math.max(engineConfig.getFWidth(), engineConfig.getFHeight()) / engineConfig.getExtents());
+		double centerXOffset = (getWidth()) / engineConfig.getDrawFactor();
+		double centerYOffset = (getHeight()) / engineConfig.getDrawFactor();
+		engineConfig.setDrawFactorOriginal(engineConfig.getDrawFactor());
+		engineConfig.setDrawFactor(engineConfig.getDrawFactorOriginal() * engineConfig.getDrawScale());
+		if (engineConfig.getXOffset() == 0) {
+		    engineConfig.setXOffset(Math.min(mapExtents[0].getX(), mapExtents[1].getX()) + ((Math.max(mapExtents[0].getX(), mapExtents[1].getX()) - Math.min(mapExtents[0].getX(), mapExtents[1].getX())) / 2 - centerXOffset / 2));
+		    engineConfig.setXOffsetOriginal(engineConfig.getXOffset());
+		    engineConfig.setXOffsetPosta(engineConfig.getXOffsetOriginal());
+		}
+		if (engineConfig.getYOffset() == 0) {
+		    engineConfig.setYOffset(Math.min(mapExtents[0].getY(), mapExtents[1].getY()) + ((Math.max(mapExtents[0].getY(), mapExtents[1].getY()) - Math.min(mapExtents[0].getY(), mapExtents[1].getY())) / 2 - centerYOffset / 2));
+		    engineConfig.setYOffsetOriginal(engineConfig.getYOffset());
+		    engineConfig.setYOffsetPosta(engineConfig.getYOffsetOriginal());
+		}
+	    } else {
+		Vector<Layer_original> _layers = new Vector();
+		for (int i = 0; i < layers.size(); i++) {
+		    if (layers.elementAt(i).isOn()) {
+			_layers.add(layers.elementAt(i));
+		    }
+		}
+		if (_layers.size() > 0) {
+		    double max = _layers.elementAt(0).getExtents();
+		    engineConfig.setProjectionType(_layers.elementAt(0).getProjectionType());
+		    int index = 0;
+		    for (int i = 1; i < _layers.size(); i++) {
+			if (_layers.elementAt(i).getExtents() > max) {
+			    index = i;
+			}
+		    }
+		    Layer_original _layer = _layers.elementAt(index);
+		    engineConfig.setFWidth(getWidth());
+		    engineConfig.setFHeight(getHeight());
+		    engineConfig.setExtents(_layer.getExtents());
+		    engineConfig.setDrawFactor(Math.max(engineConfig.getFWidth(), engineConfig.getFHeight()) / engineConfig.getExtents());
+		    double centerXOffset = (getWidth()) / engineConfig.getDrawFactor();
+		    double centerYOffset = (getHeight()) / engineConfig.getDrawFactor();
+		    engineConfig.setDrawFactorOriginal(engineConfig.getDrawFactor());
+		    engineConfig.setDrawFactor(engineConfig.getDrawFactorOriginal() * engineConfig.getDrawScale());
+		    //xOffset = _layer.getXMin() - centerOffset/2.6666667;
+		    if (engineConfig.getXOffset() == 0) {
+			engineConfig.setXOffset(_layer.getXMin() + ((_layer.getXMax() - _layer.getXMin()) / 2 - centerXOffset / 2));
+		    }
+		    engineConfig.setXOffsetOriginal(engineConfig.getXOffset());
+		    engineConfig.setXOffsetPosta(engineConfig.getXOffsetOriginal());
+		    //Por qué?
+		    if (engineConfig.getYOffset() == 0) {
+			engineConfig.setYOffset(_layer.getYMin() + ((_layer.getYMax() - _layer.getYMin()) / 2 - centerYOffset / 2));
+		    }
+		    //yOffset = _layer.getYMin();
+		    // + 1000;
+		    engineConfig.setYOffsetOriginal(engineConfig.getYOffset());
+		    engineConfig.setYOffsetPosta(engineConfig.getYOffsetOriginal());
+		}
+	    }
+	}
+	saveEnvironment();
+    }
+
+    public void setPixelEnvironment(Rectangle2D _bounds) {
+	double _width = engineConfig.xtoSpace((int)_bounds.getMaxX()) - engineConfig.xtoSpace((int)_bounds.getMinX());
+	double _height = engineConfig.ytoSpace((int)_bounds.getMaxY()) - engineConfig.ytoSpace((int)_bounds.getMinY());
+	double _extents = Math.max(_width, _height);
+	if (_extents < 10.001) {
+	    _extents = 10.001;
+	}
+	/*
+	if (_extents > 900.001) {
+	    _extents = 900.001;
+	}*/
+	double _drawFactor = (this.getHeight() - 20) / _extents;
+	double _drawScale = _drawFactor / engineConfig.getDrawFactorOriginal();
+	double minX = engineConfig.xtoSpace((int)_bounds.getMinX());
+	double minY = engineConfig.ytoSpace((int)_bounds.getMaxY());
+	flyTo(_drawScale, minX, minY);
+    }
+    
+    private void goTo(double _drawScale, double _xOffset, double _yOffset) {
+	engineConfig.setDrawScale(_drawScale);
+	engineConfig.setDrawFactor(engineConfig.getDrawFactorOriginal() * engineConfig.getDrawScale());
+	engineConfig.setXOffset(_xOffset);
+	engineConfig.setYOffset(_yOffset);
+	repaint();
+    }
+
+    public void setSpaceEnvironment(Rectangle2D _bounds, boolean _flying) {
+	double _extents = Math.max(_bounds.getWidth(), _bounds.getHeight());
+	_extents = _extents * 4.0;
+	if (_extents < 10.001) {
+	    _extents = 10.001;
+	}
+	/*
+	if (_extents > 900.001) {
+	    _extents = 900.001;
+	}
+	*/
+	double _drawFactor = (this.getHeight() - 20) / _extents;
+	double _drawScale = _drawFactor / engineConfig.getDrawFactorOriginal();
+	double minX = _bounds.getMinX() - (getWidth() / _drawFactor) / 2.0 + (_bounds.getWidth() / 2.0);
+	//double minX = (getWidth()*_drawScale)/2 - _bounds.getWidth()/2;
+	//minX = _bounds.getMinX() + _bounds.getWidth()/2;
+	//double minY = _bounds.getMinY();
+	double minY = _bounds.getMinY() - (getHeight() / _drawFactor) / 2.0 + (_bounds.getHeight() / 2.0);
+	if (_flying) {
+	    flyTo(_drawScale, minX, minY);
+	} else {
+	    goTo(_drawScale, minX, minY);
+	}
+    }
+
+    private void flyTo(double _drawScale, double _xOffset, double _yOffset) {
+	final double _scale = _drawScale;
+	final double _xOff = _xOffset;
+	final double _yOff = _yOffset;
+	Thread drawScaleThread = new Thread();
+	drawScaleThread = new Thread(new Runnable() {
+
+			public void run() {
+			    int sleep = 12;
+			    if (engineConfig.getDrawScale() < _scale) {
+				while ((engineConfig.getDrawScale() * scaleFactor) < _scale) {
+				    try {
+					engineConfig.setDrawScale(engineConfig.getDrawScale() * scaleFactor);
+					engineConfig.setDrawFactor(engineConfig.getDrawFactorOriginal() * engineConfig.getDrawScale());
+					repaint();
+					Thread.currentThread().sleep(sleep);
+				    } catch (InterruptedException e) {
+					System.out.println(e);
+				    }
+				}
+			    } else {
+				while ((engineConfig.getDrawScale() / scaleFactor) > _scale) {
+				    try {
+					engineConfig.setDrawScale(engineConfig.getDrawScale() / scaleFactor);
+					engineConfig.setDrawFactor(engineConfig.getDrawFactorOriginal() * engineConfig.getDrawScale());
+					repaint();
+					Thread.currentThread().sleep(sleep);
+				    } catch (InterruptedException e) {
+					System.out.println(e);
+				    }
+				}
+			    }
+			    engineConfig.setDrawScale(_scale);
+			    engineConfig.setDrawFactor(engineConfig.getDrawFactorOriginal() * engineConfig.getDrawScale());
+			    repaint();
+			}
+
+		    });
+	Thread xOffsetThread = new Thread();
+	xOffsetThread = new Thread(new Runnable() {
+
+			public void run() {
+			    double xoffsetFactor = (engineConfig.getXOffset() <= _xOff) ? (_xOff - engineConfig.getXOffset()) / 2 : (engineConfig.getXOffset() - _xOff) / 2;
+			    int sleep = 12;
+			    try {
+				if (engineConfig.getXOffset() < _xOff) {
+				    //while (xOffset / _xOff > 1.0005) {
+				    while (engineConfig.getXOffset() < _xOff) {
+					if ((engineConfig.getXOffset() + xoffsetFactor) < _xOff) {
+					    engineConfig.setXOffset(engineConfig.getXOffset() + xoffsetFactor);
+					} else {
+					    engineConfig.setXOffset(_xOff);
+					}
+					xoffsetFactor = (_xOff - engineConfig.getXOffset()) / 2;
+					if (xoffsetFactor < 0.01)
+					    xoffsetFactor = 0.01;
+					engineConfig.setXOffsetOriginal(engineConfig.getXOffset());
+					repaint();
+					Thread.currentThread().sleep(sleep);
+				    }
+				} else {
+				    //while (_xOff / xOffset > 1.0005) {
+				    while (engineConfig.getXOffset() > _xOff) {
+					if ((engineConfig.getXOffset() - xoffsetFactor) > _xOff) {
+					    engineConfig.setXOffset(engineConfig.getXOffset() - xoffsetFactor);
+					} else {
+					    engineConfig.setXOffset(_xOff);
+					}
+					xoffsetFactor = (engineConfig.getXOffset() - _xOff) / 2;
+					if (xoffsetFactor < 0.01)
+					    xoffsetFactor = 0.01;
+					engineConfig.setXOffsetOriginal(engineConfig.getXOffset());
+					repaint();
+					Thread.currentThread().sleep(sleep);
+				    }
+				}
+			    } catch (InterruptedException e) {
+				System.out.println(e);
+			    }
+			}
+
+		    });
+	Thread yOffsetThread = new Thread();
+	yOffsetThread = new Thread(new Runnable() {
+
+			public void run() {
+			    double yoffsetFactor = (engineConfig.getYOffset() <= _yOff) ? (_yOff - engineConfig.getYOffset()) / 2 : (engineConfig.getYOffset() - _yOff) / 2;
+			    int sleep = 12;
+			    try {
+				if (engineConfig.getYOffset() < _yOff) {
+				    //while (yOffset / _yOff > 1.0005) {
+				    while (engineConfig.getYOffset() < _yOff) {
+					if ((engineConfig.getYOffset() + yoffsetFactor) < _yOff) {
+					    engineConfig.setYOffset(engineConfig.getYOffset() + yoffsetFactor);
+					} else {
+					    engineConfig.setYOffset(_yOff);
+					}
+					yoffsetFactor = (_yOff - engineConfig.getYOffset()) / 2;
+					if (yoffsetFactor < 0.01)
+					    yoffsetFactor = 0.01;
+					engineConfig.setYOffsetOriginal(engineConfig.getYOffset());
+					repaint();
+					Thread.currentThread().sleep(sleep);
+				    }
+				} else {
+				    //while (_yOff / yOffset > 1.0005) {
+				    while (engineConfig.getYOffset() > _yOff) {
+					if ((engineConfig.getYOffset() - yoffsetFactor) > _yOff) {
+					    engineConfig.setYOffset(engineConfig.getYOffset() - yoffsetFactor);
+					} else {
+					    engineConfig.setYOffset(_yOff);
+					}
+					yoffsetFactor = (engineConfig.getYOffset() - _yOff) / 2;
+					if (yoffsetFactor < 0.01)
+					    yoffsetFactor = 0.01;
+					engineConfig.setYOffsetOriginal(engineConfig.getYOffset());
+					repaint();
+					Thread.currentThread().sleep(sleep);
+				    }
+				}
+			    } catch (InterruptedException e) {
+				System.out.println(e);
+			    }
+			}
+
+		    });
+	xOffsetThread.start();
+	yOffsetThread.start();
+	drawScaleThread.start();
+    }
+
+    public void setPolygonEnvironment(String _layer, int _id, Color _color, boolean _flying) {
+	foundGeometryID = _id;
+	foundLayer = _layer;
+	try {
+	    getLayer(foundLayer).getPolygon(foundGeometryID).setFillColor(_color);
+	    setSpaceEnvironment(getLayer(foundLayer).getPolygon(foundGeometryID).getBounds(), _flying);
+	} catch (NullPointerException x) {
+	    Advisor.messageBox("No se ha encontrado el polígono", "Aviso");
+	}
+    }
+
+    public void setPolygonEnvironment(Layer_original _layer, int _id, Color _color, boolean _flying) {
+	foundGeometryID = _id;
+	try {
+	    _layer.getPolygon(foundGeometryID).setFillColor(_color);
+	    setSpaceEnvironment(_layer.getPolygon(foundGeometryID).getBounds(), _flying);
+	} catch (NullPointerException x) {
+	    Advisor.messageBox("No se ha encontrado el polígono", "Aviso");
+	}
+    }
+
+    private void drawPoints(Graphics2D _graphics2d, Graphics2D _labelGraphics2D, Layer_original _layer) {
+	ESRIPoint[] _points = toPointsArray(_layer.getGeometries());
+	int _pointDiameter = _layer.getPointDiameter();
+	int _containedShape = _layer.getContainedShapeIndex();
+	boolean isSelectedLayer = _layer.getName().equals(selectedLayerName);
+	if ((_pointDiameter * engineConfig.getDrawFactor() >= _layer.getLayerConfig().getMinScale() || (_layer.getLayerConfig().getMinScale() == 0.0 && _pointDiameter * engineConfig.getDrawFactor() > 2)) && (_pointDiameter * engineConfig.getDrawFactor() <= _layer.getLayerConfig().getMaxScale() || _layer.getLayerConfig().getMaxScale() == 0.0)) {
+	    for (int i = 0; i < _points.length; i++) {
+	        int _symbol = _layer.getSymbol();
+		boolean _drawPoint = _layer.drawGeometries();
+	        StyleConfig _styleConfig = _layer.getLayerConfig().getStyleConfig();
+		if (_points[i].getIdFilterMatch() != -1) { //override original StyleConfig
+		    try {
+			LayerFilter _filter = _layer.getLayerFilter(_points[i].getIdFilterMatch());
+			_styleConfig = _filter.getStyleConfig();
+		        _drawPoint = _filter.isActive();
+		    } catch (NullPointerException e) {
+		    }
+	        }
+
+		Point _point = engineConfig.toPixel(_points[i]);
+		if (getBounds().contains(_point)) {
+		    Shape point = new Ellipse2D.Double(engineConfig.xtoPixel(_points[i].getX() - (double)_pointDiameter / 2.0), engineConfig.ytoPixel(_points[i].getY() + (double)_pointDiameter / 2.0), ((double)_pointDiameter * engineConfig.getDrawFactor()), ((double)_pointDiameter * engineConfig.getDrawFactor()));
+		    if (_layer.drawGeometries() || _drawPoint || isSelectedLayer) {
+			if (_styleConfig.getFillColor() != null) {
+			    _graphics2d.setColor(_styleConfig.getFillColor());
+			    
+			    /*
+			    Paint p = new RadialGradientPaint(engineConfig.toPixel(_points[i]), getWidth() / 2.0f,
+			                    new float[] { 0.0f, 1.0f },
+			                    new Color[] { new Color(_styleConfig.getFillColor().getRed(),_styleConfig.getFillColor().getGreen(),_styleConfig.getFillColor().getBlue(), 255),
+			                        new Color(0, 0, 255, 50*255/100) });
+			    _graphics2d.setPaint(p);*/
+			    _graphics2d.fill(point);
+			}
+			if (_styleConfig.getOutlineColor() != null) {
+			    _graphics2d.setColor(_styleConfig.getOutlineColor());
+			    _graphics2d.setStroke(new BasicStroke(_styleConfig.getLineWidth()));
+			    _graphics2d.draw(point);
+			}
+			addOsnapPoint(_points[i]);
+		    }
+		    /**
+		 * En caso de que el punto (prioridad cero)
+		 * o el layer (prioridad uno)
+		 * tengan alguna imagen asociada, se dibuja
+		 * la imagen con el punto como centro
+		 */
+		    if (_points[i].getSymbol() != -1) {
+			_symbol = _points[i].getSymbol();
+		    }
+		    _symbol = _styleConfig.getSymbol();
+		    if (_symbol != -1) {
+			//BufferedImage imagen = LibIMG.scale((double)25 / (double)_layer.getSymbol(symbol).getWidth(this), _layer.getSymbol(symbol));
+			BufferedImage imagen = BasicDrawEngineConfig.getSymbol(_symbol);
+			int width = (int)(imagen.getWidth(this) / 1 * engineConfig.getDrawFactor());
+			int height = (int)(imagen.getHeight(this) / 1 * engineConfig.getDrawFactor());
+		        width = (int)(imagen.getWidth(this) * engineConfig.getDrawFactor() * _layer.getPointDiameter() / 10);
+		        height = (int)(imagen.getHeight(this) * engineConfig.getDrawFactor() * _layer.getPointDiameter() / 10);
+			if (width > 0 || height > 0) {
+			    int centX = engineConfig.xtoPixel(_points[i].getX()) - (width / 2);
+			    int centY = engineConfig.ytoPixel(_points[i].getY()) - (height / 2);
+			    _graphics2d.drawImage(imagen, centX, centY, width, height, this);
+			}
+		    }
+		    if (_containedShape == i) {
+			if (_styleConfig.getMouseOverColor() != null) {
+			    _graphics2d.setColor(_styleConfig.getMouseOverColor());
+			    _graphics2d.fill(point);
+			}
+			if (_styleConfig.getMouseOverOutlineColor() != null) {
+			    _graphics2d.setColor(_styleConfig.getMouseOverOutlineColor());
+			    _graphics2d.setStroke(new BasicStroke(_styleConfig.getLineWidth()));
+			    _graphics2d.draw(point);
+			}
+		    }
+		    if (foundGeometryID == i && _layer.getAlias().equals(foundLayer)) {
+			if (_styleConfig.getSelectedColor() != null) {
+			    _graphics2d.setColor(_styleConfig.getSelectedColor());
+			    _graphics2d.fill(point);
+			}
+			if (_styleConfig.getSelectedOutlineColor() != null) {
+			    _graphics2d.setColor(_styleConfig.getSelectedOutlineColor());
+			    _graphics2d.setStroke(new BasicStroke(_styleConfig.getLineWidth()));
+			    _graphics2d.draw(point);
+			}
+		    }
+		    if (_points[i].getLabel() != null && _layer.getLayerConfig().paintLabels()) {
+			Font _originalFont = _styleConfig.getLabelFont();
+			Font _labelFont = new Font(_originalFont.getName(), _originalFont.getStyle(), (int)(_originalFont.getSize() * engineConfig.getDrawFactor()) > 100 ? 100 : (int)(_originalFont.getSize() * engineConfig.getDrawFactor()));
+			if (_labelFont.getSize() > 6) {
+			    _labelGraphics2D.setFont(_labelFont);
+			    _labelGraphics2D.setColor(_styleConfig.getLabelColor());
+			    Rectangle2D metricBounds = _labelGraphics2D.getFontMetrics().getStringBounds(_points[i].getLabel(), _labelGraphics2D);
+			    _labelGraphics2D.drawString(_points[i].getLabel(), engineConfig.xtoPixel(_points[i].getX()) - (int)(metricBounds.getWidth() / 2.0), engineConfig.ytoPixel(_points[i].getY()) + (int)(metricBounds.getHeight() / 4.0));
+			}
+		    }
+		}
+	    }
+	}
+    }
+
+    private void drawPolygons(Graphics2D _graphics2d, Graphics2D _labelGraphics2D, Layer_original _layer) {
+	ESRIPolygon[] _polygons = toPolygonsArray(_layer.getGeometries());
+	ESRIPolygon _bounds = toSpace(getBounds());
+	boolean isSelectedLayer = _layer.getName().equals(selectedLayerName);
+	int _containedShape = _layer.getContainedShapeIndex();
+	for (int i = 0; i < _polygons.length; i++) {
+	    boolean _drawPolygon = _layer.drawGeometries();
+	    int _symbol = _layer.getSymbol();
+	    StyleConfig _styleConfig = _layer.getLayerConfig().getStyleConfig();
+	    if (_polygons[i].getIdFilterMatch() != -1) {
+		try {
+		    LayerFilter _filter = _layer.getLayerFilter(_polygons[i].getIdFilterMatch());
+		    _styleConfig = _filter.getStyleConfig();
+		    _drawPolygon = _filter.isActive();
+		} catch (NullPointerException e) {
+		}
+	    }
+	    if (_bounds.intersects(_polygons[i].getBounds2D())) {
+		double _width = _polygons[i].getBounds2D().getWidth() * engineConfig.getDrawFactor();
+		double _heigth = _polygons[i].getBounds2D().getHeight() * engineConfig.getDrawFactor();
+		if (true) { //((_width >= _layer.getLayerConfig().getMinScale() || (_layer.getLayerConfig().getMinScale() == 0.0 && _width > 2)) && (_heigth >= _layer.getLayerConfig().getMinScale() || (_layer.getLayerConfig().getMinScale() == 0.0 && _heigth > 2)) && (_width <= _layer.getLayerConfig().getMaxScale() || _layer.getLayerConfig().getMaxScale() == 0.0) && (_heigth <= _layer.getLayerConfig().getMaxScale() || _layer.getLayerConfig().getMaxScale() == 0.0)) {
+		    if (_layer.drawGeometries() || _drawPolygon || isSelectedLayer) {
+			ESRIPolygon _polygon = getFakePolygon(_polygons[i]);
+			if (engineConfig.isOsnapActive()) {
+			    if (_polygon.getBounds().contains(mousePosition)) {
+				addOsnapPoints(_polygons[i]);
+			    }
+			}
+			if (_styleConfig.getFillColor() != null) {
+			    _graphics2d.setColor(_styleConfig.getFillColor());
+			    _graphics2d.fill(_polygon);
+			}
+			if (_styleConfig.getOutlineColor() != null) {
+			    _graphics2d.setColor(_styleConfig.getOutlineColor());
+			    _graphics2d.setStroke(getStyleConfigStroke(_styleConfig));
+			    _graphics2d.draw(_polygon);
+			}
+			if (_polygons[i].getSymbol() != -1) {
+			    _symbol = _polygons[i].getSymbol();
+			}
+			if (_symbol != -1) {
+			    //BufferedImage imagen = LibIMG.scale((double)25 / (double)_layer.getSymbol(symbol).getWidth(this), _layer.getSymbol(symbol));
+			    BufferedImage imagen = BasicDrawEngineConfig.getSymbol(_symbol);
+			    int width = (int)(imagen.getWidth(this) / 10 * engineConfig.getDrawFactor());
+			    int height = (int)(imagen.getHeight(this) / 10 * engineConfig.getDrawFactor());
+			    if (width > 20 || height > 20) {
+				int centX = engineConfig.xtoPixel(_polygons[i].getCentroid().getX()) - (width / 2);
+				int centY = engineConfig.ytoPixel(_polygons[i].getCentroid().getY()) - (height / 2);
+				_graphics2d.drawImage(imagen, centX, centY, width, height, this);
+			    }
+			}
+			if (_containedShape == i) {
+			    _graphics2d.setColor(_styleConfig.getMouseOverColor()!=null?_styleConfig.getMouseOverColor():Color.YELLOW);
+			    _graphics2d.fill(_polygon);
+			    _graphics2d.setColor(_styleConfig.getMouseOverOutlineColor()!=null?_styleConfig.getMouseOverOutlineColor():Color.RED);
+			    _graphics2d.setStroke(new BasicStroke(_styleConfig.getLineWidth()));
+			    _graphics2d.draw(_polygon);
+			    Color _inverse = new Color(255-_graphics2d.getColor().getRed(), 255-_graphics2d.getColor().getGreen(), 255-_graphics2d.getColor().getBlue());
+			    _graphics2d.setColor(_inverse);
+			    _graphics2d.drawString("Seleccion: " + _polygons[i].getLabel(), (int)mousePosition.getX(), (int)mousePosition.getY());
+			}
+		    } //fi layer.drawGeometries()
+		    if (_polygons[i].getLabel() != null && _layer.getLayerConfig().paintLabels() && _drawPolygon) {
+			Font _originalFont = _styleConfig.getLabelFont();
+			Font _labelFont = new Font(_originalFont.getName(), _originalFont.getStyle(), (int)(_originalFont.getSize() * engineConfig.getDrawFactor()) > 100 ? 100 : (int)(_originalFont.getSize() * engineConfig.getDrawFactor()));
+			if (_labelFont.getSize() > 6) {
+			    _labelGraphics2D.setFont(_labelFont);
+			    _labelGraphics2D.setColor(_styleConfig.getLabelColor());
+			    Rectangle2D metricBounds = _labelGraphics2D.getFontMetrics().getStringBounds(_polygons[i].getLabel(), _labelGraphics2D);
+			    _labelGraphics2D.drawString(_polygons[i].getLabel(), engineConfig.xtoPixel(_polygons[i].getCentroid().getX()) - (int)(metricBounds.getWidth() / 2.0), engineConfig.ytoPixel(_polygons[i].getCentroid().getY()) + (int)(metricBounds.getHeight() / 4.0));
+			}
+		    }
+		    if (foundGeometryID == _polygons[i].getIdPolygon() && _layer.getAlias().equals(foundLayer)) {
+			ESRIPolygon _polygon = getFakePolygon(_polygons[i]);
+			_graphics2d.setColor(_styleConfig.getSelectedColor() != null ? _styleConfig.getSelectedColor() : _polygon.getSelectedColor());
+			_graphics2d.fill(_polygon);
+			_graphics2d.setColor(_styleConfig.getSelectedOutlineColor() != null ? _styleConfig.getSelectedOutlineColor() : _polygon.getSelectedColor());
+			_graphics2d.setStroke(new BasicStroke(_styleConfig.getLineWidth()));
+			_graphics2d.draw(_polygon);
+		    }
+		}
+	    } //fi _bounds.intersects
+	}
+    }
+
+    private void drawPolylines(Graphics2D _graphics2d, Graphics2D _labelGraphics2D, Layer_original _layer) {
+	ESRIPolygon _bounds = toSpace(getBounds());
+	ESRIPolygon[] _polylines = toPolygonsArray(_layer.getGeometries());
+	int _containedShape = _layer.getContainedShapeIndex();
+	for (int i = 0; i < _polylines.length; i++) {
+	    boolean _drawPolyline = _layer.drawGeometries();
+	    int _symbol = _layer.getSymbol();
+	    StyleConfig _styleConfig = _layer.getLayerConfig().getStyleConfig();
+	    if (_polylines[i].getIdFilterMatch() != -1) {
+		try {
+		    LayerFilter _filter = _layer.getLayerFilter(_polylines[i].getIdFilterMatch());
+		    _styleConfig = _filter.getStyleConfig();
+		    _drawPolyline = _filter.isActive();
+		} catch (NullPointerException e) {
+
+		}
+	    }
+	    if (_bounds.intersects(_polylines[i].getBounds2D())) {
+		double _width = _polylines[i].getBounds2D().getWidth() * engineConfig.getDrawFactor();
+		double _heigth = _polylines[i].getBounds2D().getHeight() * engineConfig.getDrawFactor();
+		if (true) { //(((_width >= _layer.getLayerConfig().getMinScale() || (_layer.getLayerConfig().getMinScale() == 0.0 && _width > 2)) || (_heigth >= _layer.getLayerConfig().getMinScale() || (_layer.getLayerConfig().getMinScale() == 0.0 && _heigth > 2))) && (_width <= _layer.getLayerConfig().getMaxScale() || _layer.getLayerConfig().getMaxScale() == 0.0) && (_heigth <= _layer.getLayerConfig().getMaxScale() || _layer.getLayerConfig().getMaxScale() == 0.0)) {
+		    if (_layer.drawGeometries() || _drawPolyline) {
+			if (engineConfig.isOsnapActive()) {
+			    for (int j = 0; j < _polylines[i].getVertexCount(); j++) {
+			        ESRIPolygon _polyline = getFakePolygon(_polylines[i]);
+				if (getBounds().contains(_polyline.getX(j), _polyline.getY(j))) {
+				    addOsnapPoint(new ESRIPoint(_polylines[i].getX(j), _polylines[i].getY(j)));
+				}
+			    }
+			}
+			if (_styleConfig.getOutlineColor() != null) {
+			    _graphics2d.setColor(_styleConfig.getOutlineColor());
+			    _graphics2d.setStroke(getStyleConfigStroke(_styleConfig));
+			    _graphics2d.drawPolyline(engineConfig.xtoPixel(_polylines[i].getXCoords()), engineConfig.ytoPixel(_polylines[i].getYCoords()), _polylines[i].getVertexCount());
+			}
+			if (_polylines[i].getSymbol() != -1) {
+			    _symbol = _polylines[i].getSymbol();
+			}
+			/* Todavía no funciona, falta calcular el punto de inserción del symbol
+		     * if (_layer.getSymbol(_symbol) != null) {
+			//BufferedImage imagen = LibIMG.scale((double)25 / (double)_layer.getSymbol(symbol).getWidth(this), _layer.getSymbol(symbol));
+			BufferedImage imagen = _layer.getSymbol(_symbol);
+			int width = (int)(imagen.getWidth(this) / 10 * engineConfig.getDrawFactor());
+			int height = (int)(imagen.getHeight(this) / 10 * engineConfig.getDrawFactor());
+			if (width > 20 || height > 20) {
+			    int centX = engineConfig.xtoPixel(_polylines[i].getCentroid().getX()) - (width / 2);
+			    int centY = engineConfig.ytoPixel(_polylines[i].getCentroid().getY()) - (height / 2);
+			    _graphics2d.drawImage(imagen, centX, centY, width, height, this);
+			}
+		    }
+		    */
+			//  System.out.println(i + ".." + osnapPointsVector.size());
+		    } //fi layer.drawGeometries()
+		    if (_polylines[i].getLabel() != null && _layer.getLayerConfig().paintLabels()) {
+			Font _originalFont = _layer.getLayerConfig().getStyleConfig().getLabelFont();
+			Font _labelFont = new Font(_originalFont.getName(), _originalFont.getStyle(), (int)(_originalFont.getSize() * engineConfig.getDrawFactor()) > 35 ? 35 : (int)(_originalFont.getSize() * engineConfig.getDrawFactor()));
+			if (_labelFont.getSize() > 6) {
+			    _labelGraphics2D.setFont(_labelFont);
+			    _labelGraphics2D.setColor(_styleConfig.getLabelColor());
+			    Rectangle2D metricBounds = _labelGraphics2D.getFontMetrics().getStringBounds(_polylines[i].getLabel(), _labelGraphics2D);
+			    int j = 0;
+			    boolean _found = false;
+			    ESRIPolygon _polyline = getFakePolygon(_polylines[i]);
+			    while (j < _polyline.getVertexCount() - 1 && !_found) {
+				if (getBounds().intersectsLine(_polyline.getX(j), _polyline.getY(j), _polyline.getX(j + 1), _polyline.getY(j + 1))) {
+				    _found = true;
+				    double x1 = engineConfig.xtoPixel(_polylines[i].getX(j));
+				    double x2 = engineConfig.xtoPixel(_polylines[i].getX(j + 1));
+				    double y1 = engineConfig.ytoPixel(_polylines[i].getY(j));
+				    double y2 = engineConfig.ytoPixel(_polylines[i].getY(j + 1));
+				    Point2D.Double _intersectionA = new Point2D.Double(x1, y1);
+				    if (!getBounds().contains(x1, y1)) {
+					if (x1 < 0) {
+					    if (y1 < 0) {
+						if (Line2D.linesIntersect(x1, y1, x2, y2, 0, 0, 0, engineConfig.getFHeight())) {
+						    _intersectionA = getIntersection(new Point2D.Double(x1, y1), new Point2D.Double(x2, y2), new Point2D.Double(0, 0), new Point2D.Double(0, engineConfig.getFHeight()));
+						} else {
+						    _intersectionA = getIntersection(new Point2D.Double(x1, y1), new Point2D.Double(x2, y2), new Point2D.Double(0, 0), new Point2D.Double(engineConfig.getFWidth(), 0));
+						}
+					    } else if (y1 > engineConfig.getFHeight()) {
+						if (Line2D.linesIntersect(x1, y1, x2, y2, 0, 0, 0, engineConfig.getFHeight())) {
+						    _intersectionA = getIntersection(new Point2D.Double(x1, y1), new Point2D.Double(x2, y2), new Point2D.Double(0, 0), new Point2D.Double(0, engineConfig.getFHeight()));
+						} else {
+						    _intersectionA = getIntersection(new Point2D.Double(x1, y1), new Point2D.Double(x2, y2), new Point2D.Double(0, engineConfig.getFHeight()), new Point2D.Double(engineConfig.getFWidth(), engineConfig.getFHeight()));
+						}
+					    } else {
+						_intersectionA = getIntersection(new Point2D.Double(x1, y1), new Point2D.Double(x2, y2), new Point2D.Double(0, 0), new Point2D.Double(0, engineConfig.getFHeight()));
+					    }
+					} else if (x1 > engineConfig.getFWidth()) {
+					    if (y1 < 0) {
+						if (Line2D.linesIntersect(x1, y1, x2, y2, engineConfig.getFWidth(), 0, engineConfig.getFWidth(), engineConfig.getFHeight())) {
+						    _intersectionA = getIntersection(new Point2D.Double(x1, y1), new Point2D.Double(x2, y2), new Point2D.Double(engineConfig.getFWidth(), 0), new Point2D.Double(engineConfig.getFWidth(), engineConfig.getFHeight()));
+						} else {
+						    _intersectionA = getIntersection(new Point2D.Double(x1, y1), new Point2D.Double(x2, y2), new Point2D.Double(0, 0), new Point2D.Double(engineConfig.getFWidth(), 0));
+						}
+					    } else if (y1 > engineConfig.getFHeight()) {
+						if (Line2D.linesIntersect(x1, y1, x2, y2, 0, engineConfig.getFHeight(), engineConfig.getFWidth(), engineConfig.getFHeight())) {
+						    _intersectionA = getIntersection(new Point2D.Double(x1, y1), new Point2D.Double(x2, y2), new Point2D.Double(0, engineConfig.getFHeight()), new Point2D.Double(engineConfig.getFWidth(), engineConfig.getFHeight()));
+						} else {
+						    _intersectionA = getIntersection(new Point2D.Double(x1, y1), new Point2D.Double(x2, y2), new Point2D.Double(engineConfig.getFWidth(), 0), new Point2D.Double(engineConfig.getFWidth(), engineConfig.getFHeight()));
+						}
+					    } else {
+						_intersectionA = getIntersection(new Point2D.Double(x1, y1), new Point2D.Double(x2, y2), new Point2D.Double(engineConfig.getFWidth(), 0), new Point2D.Double(engineConfig.getFWidth(), engineConfig.getFHeight()));
+					    }
+					} else {
+					    if (y1 < 0) {
+						_intersectionA = getIntersection(new Point2D.Double(x1, y1), new Point2D.Double(x2, y2), new Point2D.Double(0, 0), new Point2D.Double(engineConfig.getFWidth(), 0));
+					    } else {
+						_intersectionA = getIntersection(new Point2D.Double(x1, y1), new Point2D.Double(x2, y2), new Point2D.Double(0, engineConfig.getFHeight()), new Point2D.Double(engineConfig.getFWidth(), engineConfig.getFHeight()));
+					    }
+					}
+				    }
+				    Point2D.Double _intersectionB = new Point2D.Double(x2, y2);
+				    if (!getBounds().contains(x2, y2)) {
+					if (x2 < 0) {
+					    if (y2 < 0) {
+						if (Line2D.linesIntersect(x1, y1, x2, y2, 0, 0, 0, engineConfig.getFHeight())) {
+						    _intersectionB = getIntersection(new Point2D.Double(x1, y1), new Point2D.Double(x2, y2), new Point2D.Double(0, 0), new Point2D.Double(0, engineConfig.getFHeight()));
+						} else {
+						    _intersectionB = getIntersection(new Point2D.Double(x1, y1), new Point2D.Double(x2, y2), new Point2D.Double(0, 0), new Point2D.Double(engineConfig.getFWidth(), 0));
+						}
+					    } else if (y2 > engineConfig.getFHeight()) {
+						if (Line2D.linesIntersect(x1, y1, x2, y2, 0, 0, 0, engineConfig.getFHeight())) {
+						    _intersectionB = getIntersection(new Point2D.Double(x1, y1), new Point2D.Double(x2, y2), new Point2D.Double(0, 0), new Point2D.Double(0, engineConfig.getFHeight()));
+						} else {
+						    _intersectionB = getIntersection(new Point2D.Double(x1, y1), new Point2D.Double(x2, y2), new Point2D.Double(0, engineConfig.getFHeight()), new Point2D.Double(engineConfig.getFWidth(), engineConfig.getFHeight()));
+						}
+					    } else {
+						_intersectionB = getIntersection(new Point2D.Double(x1, y1), new Point2D.Double(x2, y2), new Point2D.Double(0, 0), new Point2D.Double(0, engineConfig.getFHeight()));
+					    }
+					} else if (x2 > engineConfig.getFWidth()) {
+					    if (y2 < 0) {
+						if (Line2D.linesIntersect(x1, y1, x2, y2, engineConfig.getFWidth(), 0, engineConfig.getFWidth(), engineConfig.getFHeight())) {
+						    _intersectionB = getIntersection(new Point2D.Double(x1, y1), new Point2D.Double(x2, y2), new Point2D.Double(engineConfig.getFWidth(), 0), new Point2D.Double(engineConfig.getFWidth(), engineConfig.getFHeight()));
+						} else {
+						    _intersectionB = getIntersection(new Point2D.Double(x1, y1), new Point2D.Double(x2, y2), new Point2D.Double(0, 0), new Point2D.Double(engineConfig.getFWidth(), 0));
+						}
+					    } else if (y2 > engineConfig.getFHeight()) {
+						if (Line2D.linesIntersect(x1, y1, x2, y2, 0, engineConfig.getFHeight(), engineConfig.getFWidth(), engineConfig.getFHeight())) {
+						    _intersectionB = getIntersection(new Point2D.Double(x1, y1), new Point2D.Double(x2, y2), new Point2D.Double(0, engineConfig.getFHeight()), new Point2D.Double(engineConfig.getFWidth(), engineConfig.getFHeight()));
+						} else {
+						    _intersectionB = getIntersection(new Point2D.Double(x1, y1), new Point2D.Double(x2, y2), new Point2D.Double(engineConfig.getFWidth(), 0), new Point2D.Double(engineConfig.getFWidth(), engineConfig.getFHeight()));
+						}
+					    } else {
+						_intersectionB = getIntersection(new Point2D.Double(x1, y1), new Point2D.Double(x2, y2), new Point2D.Double(engineConfig.getFWidth(), 0), new Point2D.Double(engineConfig.getFWidth(), engineConfig.getFHeight()));
+					    }
+					} else {
+					    if (y2 < 0) {
+						_intersectionB = getIntersection(new Point2D.Double(x1, y1), new Point2D.Double(x2, y2), new Point2D.Double(0, 0), new Point2D.Double(engineConfig.getFWidth(), 0));
+					    } else {
+						_intersectionB = getIntersection(new Point2D.Double(x1, y1), new Point2D.Double(x2, y2), new Point2D.Double(0, engineConfig.getFHeight()), new Point2D.Double(engineConfig.getFWidth(), engineConfig.getFHeight()));
+					    }
+					}
+				    }
+				    x1 = _intersectionA.getX();
+				    y1 = _intersectionA.getY();
+				    x2 = _intersectionB.getX();
+				    y2 = _intersectionB.getY();
+				    int xl = (int)(x1 / 2.0 + x2 / 2.0);
+				    int yl = (int)(y1 / 2.0 + y2 / 2.0);
+				    //Cálculo del ángulo del label
+				    double lblbase = x1 - x2;
+				    double lblaltura = y1 - y2;
+				    double lblangulo = Math.atan(lblaltura / lblbase);
+				    int lHeight = _labelGraphics2D.getFontMetrics().getHeight();
+				    int lWidth = (int)metricBounds.getWidth();
+				    if (lblangulo * 180.0 / Math.PI >= -360 && lblangulo * 180.0 / Math.PI <= 360) {
+					AffineTransform at = AffineTransform.getRotateInstance(lblangulo, xl, yl);
+					_labelGraphics2D.setTransform(at);
+					_labelGraphics2D.drawString(_polylines[i].getLabel(), (int)(xl - lWidth / 2.0), (int)(yl + lHeight / 2.0));
+					at = at.getRotateInstance(0, xl, yl);
+					_labelGraphics2D.setTransform(at);
+				    }
+				}
+				j++;
+			    }
+			}
+		    }
+		}
+	    }
+	}
+    }
+
+    public void setCoordinateViewer(CoordinateViewer _coordinateViewer) {
+	coordinateViewer = _coordinateViewer;
+	coordinateViewer.setVisible(true);
+    }
+
+    public void removeAllLayers() {
+	layers.removeAllElements();
+	osnapPointsVector.removeAllElements();
+    }
+
+    public void removeAllLayersExcept(String _name) {
+	int i = 0;
+	while (i < layers.size()) {
+	    if (!layers.elementAt(i).getAlias().equals(_name)) {
+		layers.removeElementAt(i);
+	    }
+	    i++;
+	}
+	repaint();
+    }
+
+    private void restartEnvironment() {
+	//labelinfo.setVisible(false);
+	distancePoints.removeAllElements();
+	startDrawRectPosition = null;
+	endDrawRectPosition = null;
+	zoomRectangle = null;
+	hideToolTipTimer.start();
+	for (int i = 0; i < layers.size(); i++) {
+	    layers.elementAt(i).setContainedShape(-1);
+	}
+	GaiaEnvironment.selectedStreetID = -1;
+	GaiaEnvironment.selectedStreetName = "";
+	foundGeometryID = -1;
+	foundLayer = "";
+	selectedLayerName = null;
+    }
+
+    public Vector getLayers() {
+	return layers;
+    }
+
+    public Layer_original getLayer(String _layerName) {
+	Layer_original _layer = null;
+	boolean found = false;
+	int i = 0;
+	while (i < layers.size() && !found) {
+	    if (layers.elementAt(i).getAlias().equalsIgnoreCase(_layerName)) {
+		found = true;
+		_layer = layers.elementAt(i);
+	    }
+	    i++;
+	}
+	return _layer;
+    }
+
+    private ESRIPolygon getFakePolygon(ESRIPoint[] _points) {
+	int cantidad = _points.length;
+	if (cantidad > 0) {
+	    double[] xy = new double[cantidad * 2];
+	    for (int i = 0; i < cantidad * 2; i += 2) {
+		xy[i] = engineConfig.xtoPixel(_points[i / 2].getX());
+		xy[i + 1] = engineConfig.ytoPixel(_points[i / 2].getY());
+	    }
+	    return new ESRIPolygon.Double(xy);
+	} else {
+	    return new ESRIPolygon.Double(0, 0);
+	}
+    }
+
+    private ESRIPolygon pointsArrayToPolygon(ESRIPoint[] _points) {
+	int cantidad = _points.length;
+	if (cantidad > 0) {
+	    double[] xy = new double[cantidad * 2];
+	    for (int i = 0; i < cantidad * 2; i += 2) {
+		xy[i] = _points[i / 2].getX();
+		xy[i + 1] = _points[i / 2].getY();
+	    }
+	    return new ESRIPolygon.Double(xy);
+	} else {
+	    return new ESRIPolygon.Double(0, 0);
+	}
+    }
+
+    private void createDrawRectangle() {
+	if (startDrawRectPosition != null) {
+	    int drawRectWidth = (int)(endDrawRectPosition.getX() - startDrawRectPosition.getX());
+	    int drawRectHeight = (int)(endDrawRectPosition.getY() - startDrawRectPosition.getY());
+	    int drawRectX = (int)startDrawRectPosition.getX();
+	    int drawRectY = (int)startDrawRectPosition.getY();
+	    if (drawRectWidth < 0) {
+		drawRectWidth *= -1;
+		drawRectX -= drawRectWidth;
+		if (drawRectX < 0) {
+		    drawRectWidth += drawRectX;
+		    drawRectX = 0;
+		}
+	    }
+	    if (drawRectHeight < 0) {
+		drawRectHeight *= -1;
+		drawRectY -= drawRectHeight;
+		if (drawRectY < 0) {
+		    drawRectHeight += drawRectY;
+		    drawRectY = 0;
+		}
+	    }
+	    zoomRectangle = new Rectangle(drawRectX, drawRectY, drawRectWidth, drawRectHeight);
+	}
+    }
+
+    private Rectangle createRectangle(Point2D.Double _startPosition, Point2D.Double _endPosition) {
+	Rectangle _rectangle = null;
+	if (_startPosition != null && _endPosition != null) {
+	    int _drawRectWidth = (int)(_endPosition.getX() - _startPosition.getX());
+	    int _drawRectHeight = (int)(_endPosition.getY() - _startPosition.getY());
+	    int _drawRectX = (int)_startPosition.getX();
+	    int _drawRectY = (int)_startPosition.getY();
+	    if (_drawRectWidth < 0) {
+		_drawRectWidth *= -1;
+		_drawRectX -= _drawRectWidth;
+		if (_drawRectX < 0) {
+		    _drawRectWidth += _drawRectX;
+		    _drawRectX = 0;
+		}
+	    }
+	    if (_drawRectHeight < 0) {
+		_drawRectHeight *= -1;
+		_drawRectY -= _drawRectHeight;
+		if (_drawRectY < 0) {
+		    _drawRectHeight += _drawRectY;
+		    _drawRectY = 0;
+		}
+	    }
+	    _rectangle = new Rectangle(_drawRectX, _drawRectY, _drawRectWidth, _drawRectHeight);
+	}
+	return _rectangle;
+    }
+
+    private void showToolTip(boolean _visible) {
+	lastShowingTime = System.currentTimeMillis();
+	if (!_visible) {
+	    toolTip.setVisible(_visible);
+	} else if (!toolTip.isVisible()) {
+	    toolTip.setVisible(_visible);
+	    hideToolTipTimer.start();
+	}
+    }
+
+    public void setMapExtents(Point2D[] mapExtents) {
+	this.mapExtents = mapExtents;
+    }
+
+    public void setMapExtents(Point2D _minExtents, Point2D _maxExtents) {
+	mapExtents = new Point2D[2];
+	mapExtents[0] = _minExtents;
+	mapExtents[1] = _maxExtents;
+    }
+
+    public void setMapExtents(double _x1, double _y1, double _x2, double _y2) {
+	mapExtents = new Point2D[2];
+	mapExtents[0] = new Point2D.Double(_x1, _y1);
+	mapExtents[1] = new Point2D.Double(_x2, _y2);
+    }
+
+    public Point2D[] getMapExtents() {
+	return mapExtents;
+    }
+
+    public void setProjectionType(int _projectionType) {
+	engineConfig.setProjectionType(_projectionType);
+    }
+
+    public int getProjectionType() {
+	return engineConfig.getProjectionType();
+    }
+
+    public Vector getLayerGroups() {
+	return layerGroups;
+    }
+
+    private boolean saveMapImage() {
+	JFileChooser chooser = new JFileChooser(cfg.getProperty("MapImage") + File.separator);
+	chooser.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
+	int returnVal = chooser.showSaveDialog(chooser.getParent());
+	if (returnVal == JFileChooser.APPROVE_OPTION) {
+	    // IF File Selected
+	    try {
+		String path = chooser.getSelectedFile().getAbsolutePath();
+		if (!path.endsWith(".png")) {
+		    path += ".png";
+		}
+		cfg.setProperty("MapImage", chooser.getSelectedFile().getParent());
+		File file = new File(path);
+		BufferedImage bufferedImage = new BufferedImage(engineConfig.getFWidth(), engineConfig.getFHeight(), BufferedImage.TYPE_4BYTE_ABGR);
+		Graphics2D _graphics2D = bufferedImage.createGraphics();
+	        Graphics2D labelGraphics2D = (Graphics2D)_graphics2D.create();
+	
+		drawLayers(_graphics2D, labelGraphics2D);
+	        if (engineConfig.paintScaleBar()) {
+	            drawScaleBar(_graphics2D);
+	        }
+		_graphics2D.dispose();
+
+		ImageIO.write(bufferedImage, "png", file);
+		Advisor.messageBox("La imagen se grabó con éxito", "Grabar Imagen");
+		return true;
+	    } catch (IOException x) {
+		Advisor.messageBox("No se pudo grabar la imagen", "Error de E/S");
+		x.printStackTrace();
+		return false;
+	    }
+	} else {
+	    return false;
+	}
+    }
+
+    private void doReport() {
+	BasicReport report = new BasicReport(BasicDrawEngine.class.getResource("xml/MapImageReport.xml"));
+
+	String _title = JOptionPane.showInternalInputDialog(Environment.getActiveDesktop(), "Ingrese el Título del Mapa", "MAPA", JOptionPane.QUESTION_MESSAGE);
+	if (_title != null) {
+	    BufferedImage bufferedImage = new BufferedImage(engineConfig.getFWidth(), engineConfig.getFHeight(), BufferedImage.TYPE_4BYTE_ABGR);
+	    Graphics2D _graphics2D = bufferedImage.createGraphics();
+	    Graphics2D labelGraphics2D = (Graphics2D)_graphics2D.create();
+
+	    drawLayers(_graphics2D, labelGraphics2D);
+	    if (engineConfig.paintScaleBar()) {
+	        drawScaleBar(_graphics2D);
+	    }
+	    _graphics2D.dispose();
+
+	    Image logo = OrganizationInfo.getLeftLogo();
+	    double _logoScale = Math.min(90 / (double)logo.getHeight(this), 90 / (double)logo.getWidth(this));
+	    report.setProperty("headerlogo", logo.getScaledInstance((int)(logo.getWidth(this) * _logoScale), (int)(logo.getHeight(this) * _logoScale), Image.SCALE_SMOOTH));
+
+	    report.setProperty("title", _title);
+	    report.setProperty("mapImage", bufferedImage);
+	    report.addTableModel("org.getSessionData", "");
+
+	    report.doReport();
+	}
+    }
+
+    private void doNomenclador() {
+    /*
+	JFileChooser chooser = new JFileChooser(cfg.getProperty("Nomenclador") + File.separator);
+	chooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+	int returnVal = chooser.showSaveDialog(chooser.getParent());
+	if (returnVal == JFileChooser.APPROVE_OPTION) {
+	    // IF Directory Selected
+	    try {
+		String path = chooser.getSelectedFile().getAbsolutePath();
+		if (!path.endsWith("/")) {
+		    path += "/";
+		}
+		cfg.setProperty("Nomenclador", chooser.getSelectedFile().getAbsolutePath());
+		if (GaiaEnvironment.nomencladorLayers.size() > 0) {
+		    for (int i = 0; i < layers.size(); i++) {
+			layers.elementAt(i).setOff();
+		    }
+		    for (int i = 0; i < GaiaEnvironment.nomencladorLayers.size(); i++) {
+			GaiaEnvironment.nomencladorLayers.elementAt(i).setOn();
+		    }
+		    if ((GaiaEnvironment.nomencladorLayers.elementAt(0).getShapeType() == ShapeTypes.POLYGON) || (GaiaEnvironment.nomencladorLayers.elementAt(0).getShapeType() == ShapeTypes.MULTIPOLYGON)) {
+			Vector geometries = GaiaEnvironment.nomencladorLayers.elementAt(0).getGeometries();
+			Vector<String> labels = new Vector<String>();
+			int counter = 0;
+			for (int i = 0; i < geometries.size(); i++) {
+			    if (true) {
+			    //if (((ESRIPolygon)geometries.elementAt(i)).getLabel().startsWith("B") && counter < 10) {
+				counter++;
+				Rectangle2D _bounds = ((ESRIPolygon)geometries.elementAt(i)).getBounds2D();
+				double _extents = Math.max(_bounds.getWidth(), _bounds.getHeight());
+				//_extents = _extents * 4.0;
+				if (_extents < 10.001) {
+				    _extents = 10.001;
+				}
+				double _drawFactor = (this.getHeight() - 20) / _extents;
+				double _drawScale = _drawFactor / engineConfig.getDrawFactorOriginal();
+				double minX = _bounds.getMinX() - (getWidth() / _drawFactor) / 2.0 + (_bounds.getWidth() / 2.0);
+				double minY = _bounds.getMinY() - (getHeight() / _drawFactor) / 2.0 + (_bounds.getHeight() / 2.0);
+				engineConfig.setDrawScale(_drawScale);
+				engineConfig.setDrawFactor(engineConfig.getDrawFactorOriginal() * engineConfig.getDrawScale());
+				engineConfig.setXOffset(minX);
+				engineConfig.setYOffset(minY);
+				repaint();
+				//goTo(_drawScale, minX, minY);
+				//String _title = (String)JOptionPane.showInternalInputDialog(Environment.getActiveDesktop(), "Manzana: ", "NOMENCLADOR", JOptionPane.QUESTION_MESSAGE, null, null, ((ESRIPolygon)geometries.elementAt(i)).getLabel());
+				//setPolygonEnvironment(GaiaEnvironment.nomencladorLayers.elementAt(0), ((ESRIPolygon)geometries.elementAt(i)).getIdPolygon(), Color.black, false);
+				BufferedImage bufferedImage = new BufferedImage(engineConfig.getFWidth(), engineConfig.getFHeight(), BufferedImage.TYPE_4BYTE_ABGR);
+				Graphics2D graphics2D = bufferedImage.createGraphics();
+				Graphics2D labelGraphics2D = (Graphics2D)graphics2D.create();
+				drawLayers(graphics2D, labelGraphics2D);
+				graphics2D.dispose();
+				String _label = ((ESRIPolygon)geometries.elementAt(i)).getLabel();
+				System.out.println(i + ": " + _label);
+				if (labels.contains(_label) || _label.length() == 0) {
+				    _label += "[" + ((ESRIPolygon)geometries.elementAt(i)).getIdPolygon() + "]";
+				}
+				String filePath = path + _label + ".png";
+				File file = new File(filePath);
+				ImageIO.write(bufferedImage, "png", file);
+				//Advisor.messageBox("Grabar Imagen", "La imagen se grabó con exito");
+			    }
+			}
+		    }
+		}
+	    } catch (IOException x) {
+		if (Advisor.question(this, "Error de E/S", "No se pudo generar el nomenclador\n¿Desea ver los detalles del error?")) {
+		    Advisor.printException(x);
+		}
+	        x.printStackTrace();
+	    } catch (NullPointerException x) {
+	        if (Advisor.question(this, "Error de E/S", "No se pudo generar el nomenclador\n¿Desea ver los detalles del error?")) {
+	            Advisor.printException(x);
+	        }
+	        x.printStackTrace();
+	    }
+	}
+	*/
+    }
+
+    private Point2D.Double getIntersection(Point2D.Double p0, Point2D.Double p1, Point2D.Double p2, Point2D.Double p3) {
+	double a = 0;
+	if (p1.getX() - p0.getX() == 0) {
+	    a = 900;
+	} else {
+	    a = (p1.getY() - p0.getY()) / (p1.getX() - p0.getX());
+	}
+	double b = -1.0;
+	double c = a * p0.getX() - p0.getY();
+	double d = 0;
+	if (p3.getX() - p2.getX() == 0) {
+	    d = 1000000;
+	} else {
+	    d = (p3.getY() - p2.getY()) / (p3.getX() - p2.getX());
+	}
+	double e = -1.0;
+	double f = d * p2.getX() - p2.getY();
+	double D = a * e - b * d;
+	double x = (c * e - f * b) / D;
+	double y = (a * f - d * c) / D;
+	return new Point2D.Double(x, y);
+    }
+
+    public synchronized void fetchEngineConfigFromCache() {
+	String _userHome = System.getProperty("user.home");
+	final File _cacheFile = new File(_userHome + File.separator + ".ddesktop.cache" + File.separator + MD5.getMD5("Engine - " + OrganizationInfo.getOrgName()) + ".config");
+	if (!(_cacheFile.exists())) {
+	    engineConfig.saveData();
+	} else {
+	    try {
+		System.out.println("Fetching engine configuration");
+		// Read from disk using FileInputStream
+		FileInputStream inFile = new FileInputStream(_cacheFile);
+		// Read object using ObjectInputStream
+		ObjectInputStream inObject = new ObjectInputStream(inFile);
+		// Read an object
+		Object cachedObject = inObject.readObject();
+		if (cachedObject instanceof BasicDrawEngineConfig) {
+		    engineConfig = (BasicDrawEngineConfig)cachedObject;
+		}
+	    } catch (ClassNotFoundException e) {
+		System.out.println("Error: " + e.getMessage());
+		engineConfig.saveData();
+	    } catch (InvalidClassException e) {
+		System.out.println("Error: " + e.getMessage());
+		engineConfig.saveData();
+	    } catch (FileNotFoundException e) {
+		System.out.println("Error: " + e.getMessage());
+		engineConfig.saveData();
+	    } catch (IOException e) {
+		System.out.println("Error: " + e.getMessage());
+		engineConfig.saveData();
+	    }
+	}
+    }
+    
+    private void showHelp() {
+	String _helpMessage = "<html>";
+	_helpMessage += "F1: Muestra esta ventana de ayuda<br>";
+	//_helpMessage += "F2: Listado de Layers<br>";
+	_helpMessage += "F3: OSNAP on/off<br>";
+	_helpMessage += "F5: COORDENADAS si/no<br>";
+	_helpMessage += "F8: ANTIALIAS si/no<br>";
+	_helpMessage += "F9: Ejecutar el nomenclador<br>";
+	//_helpMessage += "F10: LOGO si/no<br>";
+	_helpMessage += "F11: Pantalla completa<br>";
+	_helpMessage += "F12: Barra de escala si/no<br>";
+	_helpMessage += "";
+	_helpMessage += "Ctrl+P: Imprimir reporte de la vista actual<br>";
+	_helpMessage += "Ctrl+S: Grabar imagen de la vista actual<br>";
+	_helpMessage += "</html>";
+	Advisor.messageBox(_helpMessage, "Ayuda");
+    }
+
+    private void createKeyBindings() {
+	getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0, true), "escape");
+	getActionMap().put("escape", new AbstractAction() {
+	    public void actionPerformed(ActionEvent evt) {
+		setOperation(BasicDrawEngineConfig.OPERATION_ESCAPE);
+	    }
+	}
+	);
+
+	getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke('P', InputEvent.CTRL_DOWN_MASK, true), "print");
+	getActionMap().put("print", new AbstractAction() {
+	    public void actionPerformed(ActionEvent evt) {
+		setOperation(BasicDrawEngineConfig.OPERATION_PRINT);
+	    }
+	}
+	);
+
+	getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke(KeyEvent.VK_F1, 0, true), "show_help");
+	getActionMap().put("show_help", new AbstractAction() {
+	    public void actionPerformed(ActionEvent evt) {
+		setOperation(BasicDrawEngineConfig.OPERATION_SHOW_HELP);
+	    }
+	}
+	);
+
+	getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke(KeyEvent.VK_F3, 0, true), "set_osnap_on_off");
+	getActionMap().put("set_osnap_on_off", new AbstractAction() {
+	    public void actionPerformed(ActionEvent evt) {
+		setOperation(BasicDrawEngineConfig.OPERATION_SET_OSNAP_ON_OFF);
+	    }
+	}
+	);
+
+	getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke(KeyEvent.VK_F4, 0, true), "set_coordinate_viewer_on_off");
+	getActionMap().put("set_coordinate_viewer_on_off", new AbstractAction() {
+	    public void actionPerformed(ActionEvent evt) {
+		setOperation(BasicDrawEngineConfig.OPERATION_SET_COORDINATE_VIEWER_ON_OFF);
+	    }
+	}
+	);
+
+	getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke(KeyEvent.VK_F5, 0, true), "set_coordinates_on_off");
+	getActionMap().put("set_coordinates_on_off", new AbstractAction() {
+	    public void actionPerformed(ActionEvent evt) {
+		setOperation(BasicDrawEngineConfig.OPERATION_SET_COORDINATES_ON_OFF);
+	    }
+	}
+	);
+
+	getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke(KeyEvent.VK_F8, 0, true), "set_antialias_on_off");
+	getActionMap().put("set_antialias_on_off", new AbstractAction() {
+	    public void actionPerformed(ActionEvent evt) {
+		setOperation(BasicDrawEngineConfig.OPERATION_SET_ANTIALIAS_ON_OFF);
+	    }
+	}
+	);
+
+	getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke(KeyEvent.VK_F9, 0, true), "nomenclador");
+	getActionMap().put("nomenclador", new AbstractAction() {
+	    public void actionPerformed(ActionEvent evt) {
+		setOperation(BasicDrawEngineConfig.OPERATION_NOMENCLADOR);
+	    }
+	}
+	);
+
+	getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke(KeyEvent.VK_F10, 0, true), "set_logo_on_off");
+	getActionMap().put("set_logo_on_off", new AbstractAction() {
+	    public void actionPerformed(ActionEvent evt) {
+		setOperation(BasicDrawEngineConfig.OPERATION_SET_LOGO_ON_OFF);
+	    }
+	}
+	);
+
+	getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke(KeyEvent.VK_F12, 0, true), "set_scalebar_on_off");
+	getActionMap().put("set_scalebar_on_off", new AbstractAction() {
+	    public void actionPerformed(ActionEvent evt) {
+		setOperation(BasicDrawEngineConfig.OPERATION_SET_SCALEBAR_ON_OFF);
+	    }
+	}
+	);
+
+	getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke('S', InputEvent.CTRL_DOWN_MASK, true), "save_map_image");
+	getActionMap().put("save_map_image", new AbstractAction() {
+	    public void actionPerformed(ActionEvent evt) {
+		setOperation(BasicDrawEngineConfig.OPERATION_SAVE_MAP_IMAGE);
+	    }
+	}
+	);
+
+	getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke(KeyEvent.VK_F2, 0, true), "list_layers");
+	getActionMap().put("list_layers", new AbstractAction() {
+	    public void actionPerformed(ActionEvent evt) {
+		setOperation(BasicDrawEngineConfig.OPERATION_LIST_LAYERS);
+	    }
+	}
+	);
+    }
+
+    private BasicStroke getStyleConfigStroke(StyleConfig _styleConfig) {
+	if (_styleConfig.getStrokeStyle() == -1) {
+	    return new BasicStroke(_styleConfig.getLineWidth());
+	} else {
+	    BasicStroke _stroke = (BasicStroke)StrokeSamples.strokeSamples[_styleConfig.getStrokeStyle()].getStroke();
+	    return new BasicStroke(_styleConfig.getLineWidth(), _stroke.getEndCap(), _stroke.getLineJoin(), _stroke.getMiterLimit(), _stroke.getDashArray(), _stroke.getDashPhase());
+	}
+    }
+
+    private void startAutoUpdate(final Layer_original _layer) {
+	    Timer autoUpdateTimer = new Timer(_layer.getLayerConfig().getAutoUpdateRateInSeconds()*1000, new ActionListener() {
+
+		    public void actionPerformed(ActionEvent actionEvent) {
+			if (_layer.isOn()) {
+			    System.out.println("Auto-Updating layer " + _layer.getAlias());
+			    _layer.reload();
+			}
+		    }
+
+		});
+	    autoUpdateTimer.start();
+	}
+
+    private void addOsnapPoints(ESRIPolygon _esriPolygon) {
+	for (int i = 0; i < _esriPolygon.getVertexCount() - 1; i++) {
+	    addOsnapPoint(new ESRIPoint(_esriPolygon.getX(i), _esriPolygon.getY(i)));
+	}
+    }
+
+    private void addOsnapPoint(ESRIPoint _esriPoint) {
+	Point2D.Double _point = engineConfig.toSpace(mousePosition);
+	if ( _esriPoint.distance(_point) < osnapTolerance ) {
+	    osnapTolerance = _esriPoint.distance(_point);
+	    osnapPointsVector.addOsnapPoint(_esriPoint);
+	}
+    }
+    
+    private void doListLayers() {
+	BasicDialog _layerListDialog = new BasicDialog(new BasicDialog(), "Listado de Layers", true);
+	_layerListDialog.setLayout(new BorderLayout());
+	_layerListDialog.setSize(400,200);
+	JArea _layerList = new JArea();
+	_layerList.setEditable(false);
+	_layerListDialog.add(_layerList, BorderLayout.CENTER);
+	StringBuilder _list = new StringBuilder();
+	for (int i = 0; i < layerGroups.size(); i++)  {
+	    LayerGroup _group = ((LayerGroup)layerGroups.elementAt(i));
+	    _list.append("Grupo: " + _group.getName() + "\n");
+	    for (int j = 0; j < _group.size(); j++)  {
+	        _list.append("\t" + ((Layer_original)_group.elementAt(j)).getName() + "\n");
+	    }
+	}
+	_layerList.setText(_list.toString());
+	ComponentsManager.centerWindow(_layerListDialog);
+	_layerListDialog.setVisible(true);
+    }
+
+    private void saveEnvironment() {
+	engineConfig.saveData();
+    }
+
+    public void setRuleViewer(RuleViewer _ruleViewer) {
+	ruleViewer = _ruleViewer;
+	ruleViewer.setVisible(true);
+    }
+
+}

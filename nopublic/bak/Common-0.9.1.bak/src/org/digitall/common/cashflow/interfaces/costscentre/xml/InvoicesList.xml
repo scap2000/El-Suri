@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<report xmlns="http://jfreereport.sourceforge.net/namespaces/reports/legacy/simple" name="Listado de Cheques" pageformat="A4"
+       topmargin="20" leftmargin="50" bottommargin="70" rightmargin="30" orientation="landscape">
+	
+	<pageheader height="12" fontname="SansSerif" fontsize="16" fsbold="true">
+		<string-field  width="100%" dynamic="true" alignment="center" fieldname="location"></string-field>
+	</pageheader>
+	
+	<groups>
+		<group name="table_0">
+			<fields>
+				<field>TablePrefix</field>
+				<field>table_0.header</field>
+				<field>table_0.idbankaccount</field>
+			</fields>
+			
+			<groupheader layout-cachable="false" pagebreak-before-print="true">
+				<band name="table_0" fontname="SansSerif" fsbold="true" fontsize="10">
+                                        <line x1="0" y1="15" x2="100%" y2="15" weight="3"/>
+                                        <label name="lbltitle" x="0" y="20" width="280" dynamic="true" alignment="left" fsbold="true" fontsize="12">Listado de Facturas</label>
+					<label name="lbldate" x="640" y="20" width="45" dynamic="true" alignment="right" fsbold="true">Fecha:</label>
+					<date-field x="690" y="20" width="65" dynamic="true" fieldname="report.date" alignment="left"  format="dd/MM/yyyy"/>
+                                        <label name="lbl" x="0"   y="38" width="110" dynamic="true" alignment="left" fsbold="true"  fontsize="12">Centro de Costos:</label>
+                                        <string-field     x="120" y="38" width="500" dynamic="true" alignment="left" fsbold="false" fontsize="12" fieldname="costcentre"  />
+					
+					<line x1="0" y1="55" x2="100%" y2="55" weight="3"/>
+                                        <line x1="0" y1="58" x2="100%" y2="58" weight="1"/>
+
+                                        <rectangle name="tangle"  x="0"   y="70"  width="80"  height="18"  draw="true" fill="false" color="#000000"/>
+                                        <rectangle name="tangle"  x="80"  y="70"  width="140"  height="18"  draw="true" fill="false" color="#000000"/>
+                                        <rectangle name="tangle"  x="220" y="70" width="100" height="18"  draw="true" fill="false" color="#000000"/>
+                                        <rectangle name="tangle"  x="320" y="70" width="320" height="18"  draw="true" fill="false" color="#000000"/>
+                                        <rectangle name="tangle"  x="640" y="70" width="120" height="18"  draw="true" fill="false" color="#000000"/>
+                                        
+					<label name="emitido" x="5"   y="70" width="80"  height="18" alignment="center" vertical-alignment="middle">Fecha</label>
+					<label name="vence"   x="80"  y="70" width="140"  height="18" alignment="center" vertical-alignment="middle">Factura</label>
+					<label name="numero"  x="220" y="70" width="100" height="18" alignment="center" vertical-alignment="middle">Número</label>
+                                        <label name="numero"  x="320" y="70" width="320" height="18" alignment="center" vertical-alignment="middle">Descripción</label>
+                                        <label name="numero"  x="640" y="70" width="120" height="18" alignment="center" vertical-alignment="middle">($) Monto</label>
+                                        
+				</band>
+			</groupheader>
+		</group>
+		
+		<group name="Header-Detail" >
+			<fields>
+				<field>TablePrefix</field>
+				<field>table_0.header</field>
+				<field>table_0.idbankaccount</field>
+				<field>dummy-field</field>
+			</fields>
+			
+			
+			<groupfooter height="18" fontname="Monospaced" fontstyle="bold" fontsize="9">
+			    <line x1="0" y1="0" x2="760" y2="0" weight="0.25"/>
+      			</groupfooter>
+		</group>
+		
+	</groups>
+	
+	<items layout-cachable="false" >
+		<band name="table_0">
+			
+                        <line x1="0"    y1="0" x2="0"    y2="100%" weight="0.25"/>
+			<line x1="80"   y1="0" x2="80"   y2="100%" weight="0.25"/>
+			<line x1="220"  y1="0" x2="220"  y2="100%" weight="0.25"/>
+			<line x1="320"  y1="0" x2="320"  y2="100%" weight="0.25"/>
+                        <line x1="640"  y1="0" x2="640"  y2="100%" weight="0.25"/>
+                        <line x1="760" y1="0" x2="760" y2="100%" weight="0.25"/>
+			
+			<date-field   x="0"   y="2" width="80"  height="12" alignment="center" dynamic="false" fieldname="table_0.date" format="dd/MM/yyyy"/>
+			<string-field x="83"  y="2" width="97"  height="12" alignment="left"   dynamic="false" fieldname="table_0.name"/>
+                        <number-field x="223" y="2" width="97"  height="12" alignment="center" dynamic="false" fieldname="table_0.number"/>
+			<string-field x="323" y="2" width="317" height="12" alignment="left"   dynamic="false" fieldname="table_0.description"/>
+                        <number-field x="640" y="2" width="117" height="12" alignment="right"  dynamic="false" format="$ #,##0.00" fieldname="table_0.amount"/>
+		</band>
+	</items>
+	
+	<functions>
+		<function class="org.jfree.report.function.HideElementByNameFunction" name="hideHeader">
+			<properties>
+				<property name="element">table_0</property>
+				<property name="field">TablePrefix</property>
+			</properties>
+		</function>
+
+		<property-ref name="dummy-field"/>
+	</functions>
+	
+</report>
+
+
+
+
+

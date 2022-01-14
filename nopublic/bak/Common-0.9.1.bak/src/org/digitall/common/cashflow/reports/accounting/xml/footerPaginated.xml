@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<report>
+    <pagefooter height="24">
+	<rectangle name="PF0" x="0" y="0" width="100%" height="100%" color="#FFFFFF" weight="0" draw="false" fill="true"/>
+	<line x1="0" y1="0" x2="100%" y2="0" weight="0.5"/>
+	<string-field fieldname="location" x="0" y="4" width="100%" height="100%" alignment="left" vertical-alignment="middle"/>
+	<string-field fieldname="pageXofY" x="0" y="4" width="100%" height="100%" alignment="right" vertical-alignment="middle"/>
+    </pagefooter>
+
+    <functions>
+	<property-ref name="report.date"/>
+	    <function class="org.jfree.report.function.PageOfPagesFunction" name="pageXofY">
+		<properties>
+			<property name="format">Página {0} de {1}</property>
+		</properties>
+	    </function>
+    
+    </functions>
+</report>    

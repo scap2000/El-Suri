@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!--
+ LIMITACIÓN DE RESPONSABILIDAD - COPYRIGHT - [Español]
+ ================================================================================
+ El Suri - Entorno JAVA de Trabajo y Desarrollo para Gobierno Electrónico
+ ================================================================================
+
+ Información del Proyecto:  http://elsuri.sourceforge.net
+
+ Copyright (C) 2007-2010 por D'AMBROSIO MARCELO E CASSINA SANTIAGO SOC DE HECHO.
+ D'AMBROSIO MARCELO E CASSINA SANTIAGO SOC DE HECHO es propiedad de
+ Lic. Santiago Cassina (santiago@digitallsh.com.ar - scap2000@yahoo.com) y
+ Marcelo D'Ambrosio (marcelo@digitallsh.com.ar - marcelodambrosio@gmail.com)
+ http://www.digitallsh.com.ar
+
+ Este programa es software libre: usted puede redistribuirlo y/o modificarlo
+ bajo los términos de la Licencia Pública General GNU publicada
+ por la Fundación para el Software Libre, ya sea la versión 3
+ de la Licencia, o (a su elección) cualquier versión posterior.
+
+ Este programa se distribuye con la esperanza de que sea útil, pero
+ SIN GARANTÍA ALGUNA; ni siquiera la garantía implícita
+ MERCANTIL o de APTITUD PARA UN PROPÓSITO DETERMINADO.
+ Consulte los detalles de la Licencia Pública General GNU para obtener
+ una información más detallada.
+
+ Debería haber recibido una copia de la Licencia Pública General GNU
+ junto a este programa.
+ En caso contrario, consulte <http://www.gnu.org/licenses/>.
+
+ DISCLAIMER - COPYRIGHT - [English]
+ =====================================================================================
+ El Suri - JAVA Management & Development Environment for Electronic Government
+ =====================================================================================
+
+ Project Info:  http://elsuri.sourceforge.net
+
+ Copyright (C) 2007-2010 by D'AMBROSIO MARCELO E CASSINA SANTIAGO SOC DE HECHO.
+ D'AMBROSIO MARCELO E CASSINA SANTIAGO SOC DE HECHO is owned by
+ Lic. Santiago Cassina (santiago@digitallsh.com.ar - scap2000@yahoo.com) and
+ Marcelo D'Ambrosio (marcelo@digitallsh.com.ar - marcelodambrosio@gmail.com)
+ http://www.digitallsh.com.ar
+
+ This program is free software: you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation, either version 3 of the License, or
+ (at your option) any later version.
+
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public License for more details.
+
+ You should have received a copy of the GNU General Public License
+ along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+-->
+<!--
+  BudgetCostsCentresBookReport.xml
+-->
+<!--
+    ~ Copyright (c) 2007, Your Corporation. All Rights Reserved.
+    -->
+
+<report xmlns="http://jfreereport.sourceforge.net/namespaces/reports/legacy/simple" name="Ejercicio Financiero 2008" pageformat="A4"
+       orientation="landscape" topmargin="20" leftmargin="50" bottommargin="70" rightmargin="30" >
+	
+	<pageheader height="12" fontname="SansSerif" fontsize="16" fsbold="true">
+		<string-field  width="100%" dynamic="true" alignment="center" fieldname="location"></string-field>
+	</pageheader>
+	
+	<groups>
+
+		<group name="Header-Detail">
+			<fields>
+				<field>TablePrefix</field>
+				<field>table_0.header</field>
+				<field>table_0.idcostcentre</field>
+				<field>dummy-field</field>
+			</fields>
+			
+			<groupheader repeat="false" layout-cachable="false" pagebreak-before-print="true">
+				<band name="table_0" height="30" fontname="SansSerif" fontstyle="bold" fontsize="10" >
+
+					<line x1="0" y1="10" x2="100%" y2="10" weight="3"/>
+                                        <label name="budgetcostscentre" x="0" y="20" width="760" dynamic="true" alignment="center">ASIGNACIÓN DE LA PARTIDA PRESUPUESTARIA POR CENTRO DE COSTOS</label>
+                                        <string-field x="0" y="38" width="300" dynamic="true" fieldname="title" alignment="center"/>
+                                        <label name="costscentre" x="400" y="38" width="100" dynamic="true" alignment="right">Centro de Costos: </label>
+					<string-field x="500" y="38" width="275" dynamic="true" fieldname="table_0.costscentre" alignment="left"/>
+					<line x1="0" y1="56" x2="100%" y2="56" weight="3"/>
+					<line x1="0" y1="60" x2="100%" y2="60" weight="2"/>
+
+                                        <rectangle name="tangle"  x="0"   y="75" width="280" height="18"  draw="true" fill="false" color="#000000"/>
+                                        <rectangle name="tangle"  x="280" y="75" width="80" height="18"  draw="true" fill="false" color="#000000"/>
+                                        <rectangle name="tangle"  x="360" y="75" width="80" height="18"  draw="true" fill="false" color="#000000"/>
+                                        <rectangle name="tangle"  x="440" y="75" width="80" height="18"  draw="true" fill="false" color="#000000"/>
+                                        <rectangle name="tangle"  x="520" y="75" width="80" height="18"  draw="true" fill="false" color="#000000"/>
+                                        <rectangle name="tangle"  x="600" y="75" width="80" height="18"  draw="true" fill="false" color="#000000"/>
+                                        <rectangle name="tangle"  x="680" y="75" width="80" height="18"  draw="true" fill="false" color="#000000"/>
+                                        
+					<label name="partpres"  x="0"   y="75" width="280" height="18"   alignment="center" vertical-alignment="middle">Partidas Presupuestarias</label>
+					<label name="partida"   x="280" y="75" width="80"  height="18"   alignment="center" vertical-alignment="middle">Partida</label>
+					<label name="subtotal"  x="360" y="75" width="80"  height="18"   alignment="center" vertical-alignment="middle">Subtotal</label>
+                                        <label name="total"     x="440" y="75" width="80"  height="18"   alignment="center" vertical-alignment="middle">Total</label>
+                                        <label name="modified"  x="520" y="75" width="80"  height="18"   alignment="center" vertical-alignment="middle">Modificado</label>
+                                        <label name="spent"     x="600" y="75" width="80"  height="18"   alignment="center" vertical-alignment="middle">Ejecutado</label>
+                                        <label name="predicted" x="680" y="75" width="80"  height="18"   alignment="center" vertical-alignment="middle">Preventivo</label>
+					
+                                        
+				</band>
+			</groupheader>
+			
+			<groupfooter height="18" fontname="Monospaced" fontstyle="bold" fontsize="9">
+			    <line x1="0" y1="0" x2="760" y2="0" weight="0.25"/>
+      			</groupfooter>
+		</group>
+		
+		<group name="Header-Footer" >
+			<groupfooter height="18" fontname="Monospaced" fontstyle="bold" fontsize="9">
+                                <line x1="0" y1="10" x2="100%" y2="10" weight="3"/>
+      			</groupfooter>
+		</group>
+		
+	</groups>
+	
+	<items layout-cachable="false">
+		<band name="table_0">
+			<line x1="0"    y1="0" x2="0"    y2="100%" weight="0.25"/>
+			<line x1="280"  y1="0" x2="280"  y2="100%" weight="0.25"/>
+			<line x1="360"  y1="0" x2="360"  y2="100%" weight="0.25"/>
+                        <line x1="440"  y1="0" x2="440"  y2="100%" weight="0.25"/>
+                        <line x1="520"  y1="0" x2="520"  y2="100%" weight="0.25"/>
+			<line x1="600"  y1="0" x2="600"  y2="100%" weight="0.25"/>
+                        <line x1="680"  y1="0" x2="680"  y2="100%" weight="0.25"/>
+			<line x1="760"  y1="0" x2="760"  y2="100%" weight="0.25"/>
+			
+                        <string-field x="3"   y="0" width="275" height="18" alignment="left"  dynamic="true" vertical-alignment="middle" fieldname="table_0.name"/>
+			<number-field x="280" y="0" width="77"  height="18" alignment="right" dynamic="true" vertical-alignment="middle" format="$#,##0.00" fieldname="table_0.level1"/>
+			<number-field x="360" y="0" width="77"  height="18" alignment="right" dynamic="true" vertical-alignment="middle" format="$#,##0.00" fieldname="table_0.level2"/>
+                        <number-field x="440" y="0" width="77"  height="18" alignment="right" dynamic="true" vertical-alignment="middle" format="$#,##0.00" fieldname="table_0.level3"/>
+                        <number-field x="520" y="0" width="77"  height="18" alignment="right" dynamic="true" vertical-alignment="middle" format="$#,##0.00" fieldname="table_0.modifiedamount"/>
+			<number-field x="600" y="0" width="77"  height="18" alignment="right" dynamic="true" vertical-alignment="middle" format="$#,##0.00" fieldname="table_0.spentamount"/>
+                        <number-field x="680" y="0" width="77"  height="18" alignment="right" dynamic="true" vertical-alignment="middle" format="$#,##0.00" fieldname="table_0.predictedamount"/>
+                        
+		</band>
+	</items>
+	
+	
+	
+	<functions>
+		<function class="org.jfree.report.function.HideElementByNameFunction" name="hideHeader">
+			<properties>
+				<property name="element">table_0</property>
+				<property name="field">TablePrefix</property>
+			</properties>
+		</function>
+		
+		<property-ref name="dummy-field"/>
+	</functions>
+	
+</report>
+

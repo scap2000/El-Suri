@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="ISO-8859-15" ?>
+<!--
+ LIMITACIÓN DE RESPONSABILIDAD - COPYRIGHT - [Español]
+ ================================================================================
+ El Suri - Entorno JAVA de Trabajo y Desarrollo para Gobierno Electrónico
+ ================================================================================
+
+ Información del Proyecto:  http://elsuri.sourceforge.net
+
+ Copyright (C) 2007-2010 por D'AMBROSIO MARCELO E CASSINA SANTIAGO SOC DE HECHO.
+ D'AMBROSIO MARCELO E CASSINA SANTIAGO SOC DE HECHO es propiedad de
+ Lic. Santiago Cassina (santiago@digitallsh.com.ar - scap2000@yahoo.com) y
+ Marcelo D'Ambrosio (marcelo@digitallsh.com.ar - marcelodambrosio@gmail.com)
+ http://www.digitallsh.com.ar
+
+ Este programa es software libre: usted puede redistribuirlo y/o modificarlo
+ bajo los términos de la Licencia Pública General GNU publicada
+ por la Fundación para el Software Libre, ya sea la versión 3
+ de la Licencia, o (a su elección) cualquier versión posterior.
+
+ Este programa se distribuye con la esperanza de que sea útil, pero
+ SIN GARANTÍA ALGUNA; ni siquiera la garantía implícita
+ MERCANTIL o de APTITUD PARA UN PROPÓSITO DETERMINADO.
+ Consulte los detalles de la Licencia Pública General GNU para obtener
+ una información más detallada.
+
+ Debería haber recibido una copia de la Licencia Pública General GNU
+ junto a este programa.
+ En caso contrario, consulte <http://www.gnu.org/licenses/>.
+
+ DISCLAIMER - COPYRIGHT - [English]
+ =====================================================================================
+ El Suri - JAVA Management & Development Environment for Electronic Government
+ =====================================================================================
+
+ Project Info:  http://elsuri.sourceforge.net
+
+ Copyright (C) 2007-2010 by D'AMBROSIO MARCELO E CASSINA SANTIAGO SOC DE HECHO.
+ D'AMBROSIO MARCELO E CASSINA SANTIAGO SOC DE HECHO is owned by
+ Lic. Santiago Cassina (santiago@digitallsh.com.ar - scap2000@yahoo.com) and
+ Marcelo D'Ambrosio (marcelo@digitallsh.com.ar - marcelodambrosio@gmail.com)
+ http://www.digitallsh.com.ar
+
+ This program is free software: you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation, either version 3 of the License, or
+ (at your option) any later version.
+
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public License for more details.
+
+ You should have received a copy of the GNU General Public License
+ along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+-->
+<!--
+  UpdatedFeesReport.xml
+-->
+<!--
+    ~ Copyright (c) 2007, Your Corporation. All Rights Reserved.
+    -->
+
+<report xmlns="http://jfreereport.sourceforge.net/namespaces/reports/legacy/simple" name="Impuestos Actualizados" pageformat="A4"
+       topmargin="20" leftmargin="50" bottommargin="70" rightmargin="30" orientation="landscape">
+	
+	<pageheader height="12" fontname="SansSerif" fontsize="16" fsbold="true">
+		<string-field  width="100%" dynamic="true" alignment="center" fieldname="location"></string-field>
+	</pageheader>
+	
+	<groups>
+		<group name="Header-Detail" >
+			<fields>
+				<field>TablePrefix</field>
+				<field>table_0.header</field>
+			</fields>
+			
+			<groupheader repeat="false" layout-cachable="false" pagebreak-before-print="true">
+				<band name="table_0" height="30" fontname="SansSerif" fontstyle="bold" fontsize="10" >
+                                        
+                                        <line x1="0" y1="15" x2="100%" y2="15" weight="3"/>
+                                        <label name="lbltitle" x="0" y="20" width="400" dynamic="true" alignment="left" fsbold="true">Listado de Impuestos Actualizados</label>
+					<label name="lbldate" x="630" y="20" width="45" dynamic="true" alignment="right" fsbold="true">Fecha:</label>
+					<date-field x="680" y="20" width="65" dynamic="true" fieldname="report.date" alignment="left"  format="dd/MM/yyyy" />
+                                        
+                                        <label name="lbltitle" x="0" y="40" width="50" dynamic="true" alignment="left" fsbold="true">dato:</label>
+                                        <string-field x="60" y="40" width="400" dynamic="true" alignment="left" fieldname="table_1.impuesto" fsbold="true"/>
+                                        <label name="lblInitDate" x="500" y="40" width="45" dynamic="true" alignment="right" fsbold="true">Desde:</label>
+					<string-field x="550" y="40" width="65" dynamic="true" alignment="left" fieldname="startdate" fsbold="true"/>    
+                                        <label name="lblEndDate"  x="630" y="40" width="45" dynamic="true" alignment="right" fsbold="true">Hasta:</label>
+					<string-field x="680" y="40" width="65" dynamic="true" alignment="left" fieldname="enddate" fsbold="true"/>    
+                                        <line x1="0" y1="55" x2="100%" y2="55" weight="3"/>
+                                        <line x1="0" y1="58" x2="100%" y2="58" weight="1"/>
+                                        
+                                        <rectangle name="tangle"  x="0"     y="70" width="80"  height="18"  draw="true" fill="false" color="#000000"/>
+                                        <rectangle name="tangle"  x="80"    y="70" width="150"  height="18"  draw="true" fill="false" color="#000000"/>
+                                        <rectangle name="tangle"  x="230"   y="70" width="150" height="18"  draw="true" fill="false" color="#000000"/>
+                                        <rectangle name="tangle"  x="380"   y="70" width="70"  height="18"  draw="true" fill="false" color="#000000"/>
+                                        <rectangle name="tangle"  x="450"   y="70" width="70"  height="18"  draw="true" fill="false" color="#000000"/>
+                                        <rectangle name="tangle"  x="520"   y="70" width="80"  height="18"  draw="true" fill="false" color="#000000"/>
+                                        <rectangle name="tangle"  x="600"   y="70" width="80"  height="18"  draw="true" fill="false" color="#000000"/>
+                                        <rectangle name="tangle"  x="680"   y="70" width="80"  height="18"  draw="true" fill="false" color="#000000"/>
+                                        
+					<label name="costcentre"    x="0"   y="70" width="80"  height="18" dynamic="true" alignment="center" vertical-alignment="middle">Impuesto</label>
+					<label name="date"          x="80"  y="70" width="150" height="18" dynamic="true" alignment="center" vertical-alignment="middle">Contribuyente</label>
+					<label name="purchaseorder" x="230" y="70" width="150" height="18" dynamic="true" alignment="center" vertical-alignment="middle">Bien</label>
+                                        <label name="status"        x="380" y="70" width="70"  height="18" dynamic="true" alignment="center" vertical-alignment="middle">1º Anticipo</label>
+                                        <label name="amount"        x="450" y="70" width="70"  height="18" dynamic="true" alignment="center" vertical-alignment="middle">Fecha act.</label>
+                                        <label name="amount"        x="520" y="70" width="80"  height="18" dynamic="true" alignment="center" vertical-alignment="middle">Monto (s/int.)</label>
+                                        <label name="amount"        x="600" y="70" width="80"  height="18" dynamic="true" alignment="center" vertical-alignment="middle">Intereses</label>
+                                        <label name="amount"        x="680" y="70" width="80"  height="18" dynamic="true" alignment="center" vertical-alignment="middle">Monto Total</label>
+				</band>
+			</groupheader>
+			
+			<groupfooter height="18" fontname="SansSerif" fsbold="true" fontsize="9">
+			    <line x1="0" y1="0" x2="760" y2="0" weight="0.25"/>
+			    <rectangle x="520" y="10" width="80" height="15" color="#FFFF00" draw="true" fill="true"/>
+			    <rectangle x="520" y="10" width="80" height="15" color="#000000" draw="true" fill="false"/>
+                            <rectangle x="600" y="10" width="80" height="15" color="#FFFF00" draw="true" fill="true"/>
+			    <rectangle x="600" y="10" width="80" height="15" color="#000000" draw="true" fill="false"/>
+                            <rectangle x="680" y="10" width="80" height="15" color="#FFFF00" draw="true" fill="true"/>
+			    <rectangle x="680" y="10" width="80" height="15" color="#000000" draw="true" fill="false"/>
+			    <label x="430" y="13" name="lblTotal" dynamic="true" width="75" fontname="SansSerif" fsbold="true" fontsize="10" alignment="right">Totales:</label>
+			    <number-field x="520" y="13" width="78" alignment="right" dynamic="true" fontsize="9" fsbold="false" format="$ #,##0.00" fieldname="subtotal" />
+                            <number-field x="600" y="13" width="78" alignment="right" dynamic="true" fontsize="9" fsbold="false" format="$ #,##0.00" fieldname="intereses" />
+                            <number-field x="680" y="13" width="78" alignment="right" dynamic="true" fontsize="9" fsbold="false" format="$ #,##0.00" fieldname="total" />
+                            
+      			</groupfooter>
+		</group>
+		
+		<!--<group name="Header-Footer" >
+			<groupfooter height="18" fontname="SansSerif" fsbold="true" fontsize="9">
+                                <label x="590" y="13" name="lblTotal" fontname="SansSerif" fsbold="true" fontsize="10" dynamic="true" width="55" alignment="right">Total:</label>
+				<rectangle x="650" y="10" width="120" height="15" color="#FFFF00" draw="true" fill="true"/>
+				<rectangle x="650" y="10" width="120" height="15" color="#000000" draw="true" fill="false"/>
+				<number-field x="650" y="13" format="$ #,##0.00" fieldname="total" dynamic="true" width="110" alignment="right" fontsize="9" fsbold="false"/>
+      			</groupfooter>
+		</group>
+		-->
+	</groups>
+	
+	<items layout-cachable="false" >
+		<band name="table_0" >
+			<line x1="0"   y1="0" x2="0"   y2="100%" weight="0.25"/>
+			<line x1="80"  y1="0" x2="80"  y2="100%" weight="0.25"/>
+			<line x1="230" y1="0" x2="230" y2="100%" weight="0.25"/>
+                        <line x1="380" y1="0" x2="380" y2="100%" weight="0.25"/>
+                        <line x1="450" y1="0" x2="450" y2="100%" weight="0.25"/>
+                        <line x1="520" y1="0" x2="520" y2="100%" weight="0.25"/>
+                        <line x1="600" y1="0" x2="600" y2="100%" weight="0.25"/>
+                        <line x1="680" y1="0" x2="680" y2="100%" weight="0.25"/>
+                        <line x1="760" y1="0" x2="760" y2="100%" weight="0.25"/>
+                        
+			<string-field x="3"   y="2"  width="77"  height="12" alignment="left"   vertical-alignment="middle" dynamic="false" fieldname="table_0.impuesto"/>
+                        <string-field x="83"  y="2"  width="147" height="12" alignment="left"   vertical-alignment="middle" dynamic="false" fieldname="table_0.contribuyente"/>
+			<string-field x="230" y="2"  width="150" height="12" alignment="center" vertical-alignment="middle" dynamic="false" fieldname="table_0.bien"/>
+                        <string-field x="380" y="2"  width="70"  height="12" alignment="center" vertical-alignment="middle" dynamic="false" fieldname="table_0.primeranticipo"/>
+                        <date-field   x="450" y="2"  width="70"  height="12" alignment="center" vertical-alignment="middle" dynamic="false" format="dd/MM/yyyy" fieldname="table_0.fecha"/>
+                        <number-field x="520" y="2"  width="77"  height="12" alignment="right"  vertical-alignment="middle" dynamic="false" format="$ #,##0.00" fieldname="table_0.subtotal"/>
+                        <number-field x="600" y="2"  width="77"  height="12" alignment="right"  vertical-alignment="middle" dynamic="false" format="$ #,##0.00" fieldname="table_0.intereses"/>
+                        <number-field x="680" y="2"  width="77"  height="12" alignment="right"  vertical-alignment="middle" dynamic="false" format="$ #,##0.00" fieldname="table_0.total"/>
+		</band>
+	</items>
+	
+	
+	
+	<functions>
+		<function class="org.jfree.report.function.HideElementByNameFunction" name="hideHeader">
+			<properties>
+				<property name="element">table_0</property>
+				<property name="field">TablePrefix</property>
+			</properties>
+		</function>
+		
+		<function class="org.jfree.report.function.ItemSumFunction" name="subtotal">
+			<properties>
+				<property name="field">table_0.subtotal</property>
+				<property name="group">Header-Detail</property>
+			</properties>
+		</function>
+		
+                <function class="org.jfree.report.function.ItemSumFunction" name="intereses">
+			<properties>
+				<property name="field">table_0.intereses</property>
+			</properties>
+		</function>
+                
+		<function class="org.jfree.report.function.ItemSumFunction" name="total">
+			<properties>
+				<property name="field">table_0.total</property>
+			</properties>
+		</function>
+                
+	</functions>
+	
+</report>
+
+
+
+

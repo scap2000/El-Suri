@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!--
+    ~ Copyright (c) 2007, Your Corporation. All Rights Reserved.
+    -->
+
+<report xmlns="http://jfreereport.sourceforge.net/namespaces/reports/legacy/simple" name="Libro diario" pageformat="A4"
+       topmargin="20" leftmargin="50" bottommargin="24" rightmargin="30" orientation="landscape">
+	
+	<pageheader height="12" fontname="SansSerif" fontsize="16">
+		<string-field  width="100%" dynamic="true" alignment="center" fieldname="location" fsbold="true"></string-field>
+                
+                <line x1="0" y1="20" x2="100%" y2="20" weight="2"/>
+                <label name="lblBook" x="0" y="27" width="100" dynamic="true" alignment="left" fsbold="true" fontsize="09">LIBRO DIARIO</label>
+                <string-field x="405" y="27" width="100" dynamic="true" alignment="left" fieldname="startdate" fontsize="09"/>
+                <string-field x="520" y="27" width="95" dynamic="true" alignment="left" fieldname="enddate" fontsize="09"/>
+                <!--
+                <label name="lblInitDate" x="405" y="27" width="40" dynamic="true" alignment="right" fontsize="09">Desde:</label>
+                <string-field x="450" y="27" width="60" dynamic="true" alignment="left" fieldname="startdate" fontsize="09"/>
+                <label name="lblEndDate" x="520" y="27" width="35" dynamic="true" alignment="right" fontsize="09">Hasta:</label>
+                <string-field x="560" y="27" width="60" dynamic="true" alignment="left" fieldname="enddate" fontsize="09"/>
+                -->
+                <label name="lbldate" x="630" y="27" width="60" dynamic="true" alignment="right" fontsize="09">Fecha Imp.:</label>
+                <date-field x="695" y="27" width="65" dynamic="true" fieldname="report.date" alignment="left"  format="dd/MM/yyyy" fontsize="09" />
+                
+                <rectangle name="tangle"  x="0"   y="45" width="60"  height="18"  draw="true" fill="false" color="#000000"/>
+                <rectangle name="tangle"  x="60"  y="45" width="80"  height="18"  draw="true" fill="false" color="#000000"/>
+                <rectangle name="tangle"  x="140" y="45" width="227"  height="18"  draw="true" fill="false" color="#000000"/>
+                <rectangle name="tangle"  x="367" y="45" width="255" height="18"  draw="true" fill="false" color="#000000"/>
+                <rectangle name="tangle"  x="622" y="45" width="70"  height="18"  draw="true" fill="false" color="#000000"/>
+                <rectangle name="tangle"  x="692" y="45" width="70"  height="18"  draw="true" fill="false" color="#000000"/>
+                
+                <label name="date"    x="0"   y="45" width="60"  height="18"    alignment="center" vertical-alignment="middle" fontsize="10" fsbold="true">Fecha</label>
+                <label name="bkentry" x="60"  y="45" width="80"  height="18"    alignment="center" vertical-alignment="middle" fontsize="10" fsbold="true">Operación</label>
+                <label name="account" x="140" y="45" width="227" height="18"    alignment="center" vertical-alignment="middle" fontsize="10" fsbold="true">Cuenta</label>
+                <label name="concept" x="367" y="45" width="255" height="18"    alignment="center" vertical-alignment="middle" fontsize="10" fsbold="true">Concepto</label>
+                <label name="debit"   x="622" y="45" width="70"  height="18"    alignment="center" vertical-alignment="middle" fontsize="10" fsbold="true">Debe</label>
+                <label name="credit"  x="692" y="45" width="70"  height="18"    alignment="center" vertical-alignment="middle" fontsize="10" fsbold="true">Haber</label>
+	</pageheader>
+	
+	<groups>
+		
+		<group name="Header-Detail" >
+			<fields>
+				<field>TablePrefix</field>
+			</fields>
+			
+			<groupheader repeat="false" layout-cachable="false" >
+
+			</groupheader>
+			
+			<groupfooter height="08" fontname="SansSerif" fontstyle="bold" fontsize="08">
+				
+                                <line x1="0"   y1="0" x2="0"   y2="100%" weight="0.25"/>
+                                <line x1="60"  y1="0" x2="60"  y2="100%" weight="0.25"/>
+                                <line x1="140" y1="0" x2="140" y2="100%" weight="0.25"/>
+                                <line x1="367" y1="0" x2="367" y2="100%" weight="0.25"/>
+                                <line x1="622" y1="0" x2="622" y2="100%" weight="0.25"/>
+                                <line x1="692" y1="0" x2="692" y2="100%" weight="0.25"/>
+                                <line x1="762" y1="0" x2="762" y2="100%" weight="0.25"/>
+                                <line x1="0" y1="5" x2="770" y2="5" weight="1.0" stroke-style="dashed" color="#AAAAAA"/>
+                        
+      			</groupfooter>
+                        
+                        
+		</group>
+		
+	</groups>
+	
+	<items layout-cachable="false" >
+		<band name="table_0" fontsize="08">
+                        <line x1="0"   y1="0" x2="0"   y2="100%" weight="0.25"/>
+			<line x1="60"  y1="0" x2="60"  y2="100%" weight="0.25"/>
+			<line x1="140" y1="0" x2="140" y2="100%" weight="0.25"/>
+                        <line x1="367" y1="0" x2="367" y2="100%" weight="0.25"/>
+                        <line x1="622" y1="0" x2="622" y2="100%" weight="0.25"/>
+                        <line x1="692" y1="0" x2="692" y2="100%" weight="0.25"/>
+                        <line x1="762" y1="0" x2="762" y2="100%" weight="0.25"/>
+                        
+			<date-field   x="0"   y="0" width="60"  alignment="center" height="08" dynamic="true"  format="dd/MM/yyyy" fieldname="table_0.date"/>
+                        <string-field x="60"  y="0" width="80"  alignment="center" height="08" dynamic="true"  fieldname="table_0.operation"/>
+                        <string-field x="142" y="0" width="220" alignment="left"   height="08" dynamic="false" fieldname="table_0.concept"/>
+			<string-field x="372" y="0" width="250" alignment="left"   height="08" dynamic="false" fieldname="table_0.observations"/>
+			<number-field x="622" y="0" width="68"  alignment="right"  height="08" dynamic="true"  format="$ #,##0.00" fieldname="table_0.debitamount"/>
+			<number-field x="692" y="0" width="68"  alignment="right"  height="08" dynamic="true"  format="$ #,##0.00" fieldname="table_0.creditamount"/>
+                        
+		</band>
+	</items>
+
+        <pagefooter height="24">
+                <rectangle name="PF0" x="0" y="0" width="100%" height="100%" color="#FFFFFF" weight="0" draw="false" fill="true"/>
+                <line x1="0" y1="0" x2="100%" y2="0" weight="0.5"/>
+                <string-field fieldname="location" x="0" y="4" width="100%" height="100%" alignment="left" vertical-alignment="middle"/>
+                <string-field fieldname="pageXofY" x="0" y="4" width="100%" height="100%" alignment="right" vertical-alignment="middle"/>
+        </pagefooter>
+
+    <functions>
+	<property-ref name="report.date"/>
+	    <function class="org.jfree.report.function.PageOfPagesFunction" name="pageXofY">
+		<properties>
+			<property name="format">Página {0} de {1}</property>
+		</properties>
+	    </function>
+    
+    </functions>
+        
+</report>
+

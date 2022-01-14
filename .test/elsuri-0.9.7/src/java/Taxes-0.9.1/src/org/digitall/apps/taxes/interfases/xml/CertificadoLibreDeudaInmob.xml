@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!--
+ LIMITACIÓN DE RESPONSABILIDAD - COPYRIGHT - [Español]
+ ================================================================================
+ El Suri - Entorno JAVA de Trabajo y Desarrollo para Gobierno Electrónico
+ ================================================================================
+
+ Información del Proyecto:  http://elsuri.sourceforge.net
+
+ Copyright (C) 2007-2010 por D'AMBROSIO MARCELO E CASSINA SANTIAGO SOC DE HECHO.
+ D'AMBROSIO MARCELO E CASSINA SANTIAGO SOC DE HECHO es propiedad de
+ Lic. Santiago Cassina (santiago@digitallsh.com.ar - scap2000@yahoo.com) y
+ Marcelo D'Ambrosio (marcelo@digitallsh.com.ar - marcelodambrosio@gmail.com)
+ http://www.digitallsh.com.ar
+
+ Este programa es software libre: usted puede redistribuirlo y/o modificarlo
+ bajo los términos de la Licencia Pública General GNU publicada
+ por la Fundación para el Software Libre, ya sea la versión 3
+ de la Licencia, o (a su elección) cualquier versión posterior.
+
+ Este programa se distribuye con la esperanza de que sea útil, pero
+ SIN GARANTÍA ALGUNA; ni siquiera la garantía implícita
+ MERCANTIL o de APTITUD PARA UN PROPÓSITO DETERMINADO.
+ Consulte los detalles de la Licencia Pública General GNU para obtener
+ una información más detallada.
+
+ Debería haber recibido una copia de la Licencia Pública General GNU
+ junto a este programa.
+ En caso contrario, consulte <http://www.gnu.org/licenses/>.
+
+ DISCLAIMER - COPYRIGHT - [English]
+ =====================================================================================
+ El Suri - JAVA Management & Development Environment for Electronic Government
+ =====================================================================================
+
+ Project Info:  http://elsuri.sourceforge.net
+
+ Copyright (C) 2007-2010 by D'AMBROSIO MARCELO E CASSINA SANTIAGO SOC DE HECHO.
+ D'AMBROSIO MARCELO E CASSINA SANTIAGO SOC DE HECHO is owned by
+ Lic. Santiago Cassina (santiago@digitallsh.com.ar - scap2000@yahoo.com) and
+ Marcelo D'Ambrosio (marcelo@digitallsh.com.ar - marcelodambrosio@gmail.com)
+ http://www.digitallsh.com.ar
+
+ This program is free software: you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation, either version 3 of the License, or
+ (at your option) any later version.
+
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public License for more details.
+
+ You should have received a copy of the GNU General Public License
+ along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+-->
+<!--
+  CertificadoLibreDeudaInmob.xml
+-->
+
+<report xmlns="http://jfreereport.sourceforge.net/namespaces/reports/legacy/simple" name="Certificado de Libre Deuda" pageformat="A4"
+       topmargin="25" leftmargin="25" bottommargin="10" rightmargin="10">
+	
+        <reportheader fontname="SanSerif" fontstyle="plain" fontsize="08">
+        
+            <!-- INICIO HEADER 1 -->
+	    
+	    <line x1="0" y1="80"  x2="550" y2="80"  weight=".75" color="#AAAAAA"/>
+            <line x1="370" y1="0" x2="370" y2="80"  weight=".75" color="#AAAAAA"/>
+            
+            <image-field name="logo" x="0" y="5" width="52" height="30"  scale="true" fieldname="logo"/>
+            <string-field        x="70"  y="00" width="300" height="28" dynamic="false" alignment="center" vertical-aligment="middle" fontsize="14" fsbold="true" fieldname="orgtitle"/>
+            <rectangle name="ta" x="70"  y="30" width="300" height="10" draw="false" fill="false" color="#0000FF"/>
+            <string-field        x="70"  y="30" width="300" height="10" dynamic="false" alignment="center" fontsize="08" fsbold="false" vertical-aligment="middle" fieldname="locationdata"/>
+
+            <rectangle name="ta" x="0"   y="52" width="230" height="10" draw="false" fill="false" color="#0000FF"/>
+	    <string-field        x="0"   y="52" width="230" height="10" dynamic="false" alignment="left" fontsize="08" fieldname="address"/>
+            
+            <rectangle name="ta" x="240" y="52" width="45"  height="10" draw="false" fill="false" color="#0000FF"/>
+            <label     name="ti" x="240" y="52" width="45"  height="10" dynamic="false" alignment="left" fontsize="08" fsbold="false">Teléfonos:</label>
+            <rectangle name="ta" x="290" y="52" width="75" height="10" draw="false" fill="false" color="#0000FF"/>
+	    <string-field        x="290" y="52" width="75" height="10" dynamic="false" alignment="left" fontsize="08" fieldname="phonenumber1"/>
+            <rectangle name="ta" x="290" y="65" width="75" height="10" draw="false" fill="false" color="#0000FF"/>
+	    <string-field        x="290" y="65" width="75" height="10" dynamic="false" alignment="left" fontsize="08" fieldname="phonenumber2"/>
+            <rectangle name="ta" x="0"   y="65" width="190" height="10" draw="false" fill="false" color="#0000FF"/>
+	    <string-field        x="0"   y="65" width="190" height="10" dynamic="false" alignment="left" fontsize="08" fieldname="webaddress"/>
+            
+
+            <label     name="zo" x="380" y="00"  width="200" height="10" fontsize="08" dynamic="false" alignment="center" vertical-aligment="middle" fsbold="true">CERTIFICADO DE LIBRE DEUDA</label>
+	    <label     name="z1" x="380" y="10"  width="200" height="08" fontsize="05" dynamic="false" alignment="center" vertical-aligment="middle" fsbold="true">IMPUESTO INMOBILIARIO</label>
+	    
+	    <label     name="zo" x="380" y="35"  width="80"  height="10" fontsize="08" dynamic="false" alignment="left" vertical-aligment="middle" fsbold="true">Comprobante Nº: </label>
+            <rectangle name="ta" x="470" y="35"  width="80" height="12" draw="false" fill="false" color="#0000FF"/>
+            <string-field        x="470" y="35"  width="80"  height="12" fontsize="08" dynamic="false" alignment="left" fsbold="true" fieldname="table_0.numero"/>
+            
+            <rectangle name="ta" x="380" y="30"  width="240" height="12" draw="false" fill="false" color="#0000FF"/>
+            <rectangle name="ta" x="380" y="52"  width="60"  height="10" draw="false" fill="false" color="#0000FF"/>
+            <label     name="zo" x="380" y="52"  width="60"  height="10" fontsize="08" dynamic="false" alignment="left" vertical-aligment="middle" fsbold="false">C.U.I.T.:</label>
+            <rectangle name="ta" x="470" y="52"  width="200" height="10" draw="false" fill="false" color="#0000FF"/>
+	    <string-field        x="470" y="52"  width="200" height="10" alignment="left" dynamic="false" fontsize="08" fsbold="false" fieldname="cuit"/>
+            <rectangle name="ta" x="380" y="55"  width="60"  height="10" draw="false" fill="false" color="#0000FF"/>
+            <label     name="zo" x="380" y="65"  width="60"  height="10" fontsize="08" dynamic="false" alignment="left" vertical-aligment="middle" fsbold="false">Fecha Impr.:</label>
+            <rectangle name="ta" x="470" y="65"  width="200" height="10" draw="false" fill="false" color="#0000FF"/>
+            <string-field          x="470" y="65"  width="200" height="10" fontsize="08" dynamic="true"  alignment="left" fieldname="actualdate"/>
+            
+            <!-- FIN HEADER 1 -->
+            
+            <!-- INICIO HEADER 2 -->
+            
+            <rectangle  name="ta" x="0"   y="90"  width="40"  height="12" draw="false" fill="false" color="#0000FF"/>
+            <label      name="zo" x="0"   y="90"  width="40"  height="12" fontsize="10" dynamic="false" alignment="left" vertical-aligment="middle" fsbold="false">Titular:</label>
+            <rectangle  name="ta" x="45"  y="90"  width="315" height="12" draw="false" fill="false" color="#0000FF"/>
+            <string-field         x="45"  y="90"  width="315" height="12" alignment="left" dynamic="false" fontsize="10" fsbold="true" fieldname="contribuyente"/>
+            <rectangle  name="ta" x="0"   y="105" width="70"  height="12" draw="false" fill="false" color="#0000FF"/>
+            <label      name="zo" x="0"   y="105" width="70"  height="12" fontsize="10" dynamic="false" alignment="left" vertical-aligment="middle">Apoderado/a:</label>
+            <rectangle  name="ta" x="75"  y="105" width="295" height="12" draw="false" fill="false" color="#0000FF"/>
+            <string-field         x="75"  y="105" width="295" height="12" alignment="left" dynamic="false" fontsize="10"  fsbold="false" fieldname="apoderado"/>
+            <rectangle  name="ta" x="0"   y="120" width="50"  height="12" draw="false" fill="false" color="#0000FF"/>
+            <label      name="zo" x="0"   y="120" width="50"  height="12" fontsize="10" dynamic="false" alignment="left" vertical-aligment="middle">Domicilio:</label>
+	    <rectangle  name="ta" x="55"  y="120" width="305" height="12" draw="false" fill="false" color="#0000FF"/>
+	    <string-field         x="55"  y="120" width="305" height="12" alignment="left" dynamic="false" fontsize="10" fsbold="false" fieldname="domicilio"/>
+            <rectangle name="ta"  x="0"   y="135" width="40"  height="12" draw="false" fill="false" color="#0000FF"/>
+            <label     name="zo"  x="0"   y="135" width="40"  height="12" fontsize="10" dynamic="false" alignment="left" vertical-aligment="middle" fsbold="false">C.C.M.:</label>
+            <rectangle name="ta"  x="45"  y="135" width="315" height="12" draw="false" fill="false" color="#0000FF"/>
+            <string-field         x="45"  y="135" width="315" height="12" fontsize="10" dynamic="false" alignment="left" fsbold="false" fieldname="cuentacorriente"/>
+            
+            <rectangle name="ta" x="380" y="90"  width="50"  height="12" draw="false" fill="false" color="#0000FF"/>
+            <string-field        x="380" y="90"  width="50" height="12" fontsize="10" alignment="left" vertical-aligment="middle" dynamic="false" fieldname="titulobien"/>
+            <rectangle name="ta" x="435" y="90"  width="110" height="12" draw="false" fill="false" color="#0000FF"/>
+            <string-field        x="435" y="90"  width="110" height="12" fontsize="10" alignment="left" vertical-aligment="middle" dynamic="false" fieldname="bien"/>
+	    <rectangle name="ta" x="380" y="105" width="60"  height="12" draw="false" fill="false" color="#0000FF"/>
+            <string-field        x="380" y="105" width="60"  height="12" fontsize="10" alignment="left" vertical-aligment="middle" dynamic="false" fieldname="titulovalorfiscal"/>
+            <rectangle name="ta" x="445" y="105" width="100" height="12" draw="false" fill="false" color="#0000FF"/>
+            <number-field        x="445" y="105" width="100" height="12" fontsize="10" alignment="left"  dynamic="true" format="$ #,##0.00" fsbold="false" fieldname="valorfiscal"/>
+            
+            <rectangle  name="ta" x="375" y="125"  width="175"  height="12" draw="false" fill="false" color="#0000FF"/>
+            <image-field name="t" x="390" y="125"  width="130"  height="20"  scale="true" alignment="center" fieldname="barcode"/>
+            
+            <!-- FIN HEADER 2 -->
+            
+            <!-- INICIO ESTADO DE DEUDA -->
+            
+	    <line x1="0" y1="150" x2="550" y2="150" weight="1.00" color="#AAAAAA"/>
+	    
+	    <string-field        x="0" y="160"  width="550" height="40" fontsize="14" dynamic="false" alignment="center" vertical-aligment="middle" fsbold="true" fsunderline = "true" fieldname="impuesto"/>
+
+	    <rectangle name="ta"      x="0"   y="190" width="550" height="140" draw="true" fill="false" color="#AAAAAA"/>
+	    <rectangle      name="ta" x="5"   y="200" width="540" height="120" draw="true" fill="true" color="#E5E5E5"/>
+	    <string-field             x="5"   y="200" width="540" height="120" fontsize="10" dynamic="true" trim-text-content="false" line-height="15" fieldname="leyenda"/>
+
+            
+	</reportheader>
+	
+	<pagefooter height="20" fontname="Monospaced" fontstyle="bold" fontsize="9">
+		<line x1="0" y1="0" x2="550" y2="0" weight="0.5"/>
+	</pagefooter>
+	
+	<functions>
+
+	</functions>
+</report>
+

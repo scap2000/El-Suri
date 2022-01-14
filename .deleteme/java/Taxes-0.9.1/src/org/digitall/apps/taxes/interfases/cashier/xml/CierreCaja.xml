@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!--
+ LIMITACIÓN DE RESPONSABILIDAD - COPYRIGHT - [Español]
+ ================================================================================
+ El Suri - Entorno JAVA de Trabajo y Desarrollo para Gobierno Electrónico
+ ================================================================================
+
+ Información del Proyecto:  http://elsuri.sourceforge.net
+
+ Copyright (C) 2007-2010 por D'AMBROSIO MARCELO E CASSINA SANTIAGO SOC DE HECHO.
+ D'AMBROSIO MARCELO E CASSINA SANTIAGO SOC DE HECHO es propiedad de
+ Lic. Santiago Cassina (santiago@digitallsh.com.ar - scap2000@yahoo.com) y
+ Marcelo D'Ambrosio (marcelo@digitallsh.com.ar - marcelodambrosio@gmail.com)
+ http://www.digitallsh.com.ar
+
+ Este programa es software libre: usted puede redistribuirlo y/o modificarlo
+ bajo los términos de la Licencia Pública General GNU publicada
+ por la Fundación para el Software Libre, ya sea la versión 3
+ de la Licencia, o (a su elección) cualquier versión posterior.
+
+ Este programa se distribuye con la esperanza de que sea útil, pero
+ SIN GARANTÍA ALGUNA; ni siquiera la garantía implícita
+ MERCANTIL o de APTITUD PARA UN PROPÓSITO DETERMINADO.
+ Consulte los detalles de la Licencia Pública General GNU para obtener
+ una información más detallada.
+
+ Debería haber recibido una copia de la Licencia Pública General GNU
+ junto a este programa.
+ En caso contrario, consulte <http://www.gnu.org/licenses/>.
+
+ DISCLAIMER - COPYRIGHT - [English]
+ =====================================================================================
+ El Suri - JAVA Management & Development Environment for Electronic Government
+ =====================================================================================
+
+ Project Info:  http://elsuri.sourceforge.net
+
+ Copyright (C) 2007-2010 by D'AMBROSIO MARCELO E CASSINA SANTIAGO SOC DE HECHO.
+ D'AMBROSIO MARCELO E CASSINA SANTIAGO SOC DE HECHO is owned by
+ Lic. Santiago Cassina (santiago@digitallsh.com.ar - scap2000@yahoo.com) and
+ Marcelo D'Ambrosio (marcelo@digitallsh.com.ar - marcelodambrosio@gmail.com)
+ http://www.digitallsh.com.ar
+
+ This program is free software: you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation, either version 3 of the License, or
+ (at your option) any later version.
+
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public License for more details.
+
+ You should have received a copy of the GNU General Public License
+ along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+-->
+<!--
+  CierreCaja.xml
+-->
+
+<report xmlns="http://jfreereport.sourceforge.net/namespaces/reports/legacy/simple" name="Cierre de Caja" pageformat="A4"
+       topmargin="25" leftmargin="25" bottommargin="10" rightmargin="10">
+	
+        <reportheader fontname="SanSerif" fontstyle="plain" fontsize="08">
+        
+            <!-- INICIO HEADER 1 -->
+	    
+	    <line x1="0" y1="80"  x2="550" y2="80"  weight=".75" color="#AAAAAA"/>
+            <line x1="370" y1="0" x2="370" y2="80"  weight=".75" color="#AAAAAA"/>
+            
+            <image-field name="logo" x="0" y="5" width="52" height="30"  scale="true" fieldname="logo"/>
+            <string-field        x="70"  y="00" width="300" height="28" dynamic="false" alignment="center" vertical-aligment="middle" fontsize="14" fsbold="true" fieldname="orgtitle"/>
+            <rectangle name="ta" x="70"  y="30" width="300" height="10" draw="false" fill="false" color="#0000FF"/>
+	    <string-field           x="70" y="30" width="300" height="10" dynamic="false" alignment="center" fontsize="08" fsbold="true" vertical-aligment="middle" fieldname="locationdata"/>
+            <rectangle name="ta" x="0"   y="52" width="230" height="10" draw="false" fill="false" color="#0000FF"/>
+	    <string-field        x="0"   y="52" width="230" height="10" dynamic="false" alignment="left" fontsize="08" fieldname="address"/>
+            
+            <rectangle name="ta" x="240" y="52" width="45"  height="10" draw="false" fill="false" color="#0000FF"/>
+            <label     name="ti" x="240" y="52" width="45"  height="10" dynamic="false" alignment="left" fontsize="08" fsbold="false">Teléfonos:</label>
+            <rectangle name="ta" x="290" y="52" width="75" height="10" draw="false" fill="false" color="#0000FF"/>
+	    <string-field        x="290" y="52" width="75" height="10" dynamic="false" alignment="left" fontsize="08" fieldname="phonenumber1"/>
+            <rectangle name="ta" x="290" y="65" width="75" height="10" draw="false" fill="false" color="#0000FF"/>
+	    <string-field        x="290" y="65" width="75" height="10" dynamic="false" alignment="left" fontsize="08" fieldname="phonenumber2"/>
+            <rectangle name="ta" x="0"   y="65" width="190" height="10" draw="false" fill="false" color="#0000FF"/>
+	    <string-field        x="0"   y="65" width="190" height="10" dynamic="false" alignment="left" fontsize="08" fieldname="webaddress"/>
+            
+
+            <label     name="zo" x="380" y="00"  width="200" height="10" fontsize="08" dynamic="false" alignment="center" vertical-aligment="middle" fsbold="true">CIERRE DE CAJA</label>
+	    <string-field        x="380" y="10"  width="200" height="08" fontsize="05" dynamic="false" alignment="center" fieldname="caja"/>
+            
+            <rectangle name="ta" x="380" y="30"  width="240" height="12" draw="false" fill="false" color="#0000FF"/>
+            <rectangle name="ta" x="380" y="52"  width="60"  height="10" draw="false" fill="false" color="#0000FF"/>
+            <label     name="zo" x="380" y="52"  width="60"  height="10" fontsize="08" dynamic="false" alignment="left" vertical-aligment="middle" fsbold="false">C.U.I.T.:</label>
+            <rectangle name="ta" x="470" y="52"  width="200" height="10" draw="false" fill="false" color="#0000FF"/>
+	    <string-field        x="470" y="52"  width="200" height="10" alignment="left" dynamic="false" fontsize="08" fsbold="false" fieldname="cuit"/>
+            <rectangle name="ta" x="380" y="55"  width="60"  height="10" draw="false" fill="false" color="#0000FF"/>
+            <label     name="zo" x="380" y="65"  width="60"  height="10" fontsize="08" dynamic="false" alignment="left" vertical-aligment="middle" fsbold="false">Fecha Impr.:</label>
+            <rectangle name="ta" x="470" y="65"  width="200" height="10" draw="false" fill="false" color="#0000FF"/>
+            <string-field          x="470" y="65"  width="200" height="10" fontsize="08" dynamic="true"  alignment="left" fieldname="actualdate"/>
+            
+            <!-- FIN HEADER 1 -->
+            
+            <!-- INICIO HEADER 2 -->
+            
+            <rectangle  name="ta" x="0"   y="90"  width="60"  height="12" draw="false" fill="false" color="#0000FF"/>
+            <label      name="zo" x="0"   y="90"  width="60"  height="12" fontsize="10" dynamic="false" alignment="left" vertical-aligment="middle" fsbold="false">Cajero:</label>
+            <rectangle  name="ta" x="65"  y="90"  width="300" height="12" draw="false" fill="false" color="#0000FF"/>
+            <string-field x="65"  y="90"  width="300" height="12" alignment="left" dynamic="false" fontsize="10" fsbold="true" fieldname="cajero"/>
+
+            <label      name="zo" x="0"   y="110"  width="100"  height="12" fontsize="10" dynamic="false" alignment="left" vertical-aligment="middle" fsbold="false">Fecha de Apertura:</label>
+            <string-field x="105"  y="110"  width="70" height="12" alignment="left" dynamic="false" fontsize="10" fsbold="true" fieldname="fechaapertura"/>
+            <label      name="zo" x="300"   y="110"  width="100"  height="12" fontsize="10" dynamic="false" alignment="left" vertical-aligment="middle" fsbold="false">Fecha de Cierre:</label>
+            <string-field x="405"  y="110"  width="70" height="12" alignment="left" dynamic="false" fontsize="10" fsbold="true" fieldname="fechacierre"/>
+            <label      name="zo" x="0"   y="125"  width="100"  height="12" fontsize="10" dynamic="false" alignment="left" vertical-aligment="middle" fsbold="false">Hora de Apertura:</label>
+            <string-field x="105"  y="125"  width="70" height="12" alignment="left" dynamic="false" fontsize="10" fsbold="true" fieldname="horaapertura"/>
+            <label      name="zo" x="300"   y="125"  width="100"  height="12" fontsize="10" dynamic="false" alignment="left" vertical-aligment="middle" fsbold="false">Hora de Cierre:</label>
+            <string-field x="405"  y="125"  width="70" height="12" alignment="left" dynamic="false" fontsize="10" fsbold="true" fieldname="horacierre"/>
+            <label      name="zo" x="0"   y="140"  width="100"  height="12" fontsize="10" dynamic="false" alignment="left" vertical-aligment="middle" fsbold="false">Monto de Apertura:</label>
+            <number-field x="105"  y="140"  width="70" height="12" alignment="left" dynamic="false" fontsize="10" fsbold="true" format="$ #,##0.00" fieldname="montoapertura"/>
+            <label      name="zo" x="300"   y="140"  width="100"  height="12" fontsize="10" dynamic="false" alignment="left" vertical-aligment="middle" fsbold="false">Monto de Cierre:</label>
+            <number-field x="405"  y="140"  width="70" height="12" alignment="left" dynamic="false" fontsize="10" fsbold="true" format="$ #,##0.00" fieldname="montocierre"/>
+            <!-- FIN HEADER 2 -->
+            
+    
+	</reportheader>
+	
+         <groups>
+		<group name="table_1">
+			<fields>
+				<field>table_1.idplandepago</field> 
+		 	</fields>
+		
+			<groupheader repeat="false" layout-cachable="false" pagebreak-before-print="false" fontname="SanSerif" fontstyle="plain">
+				<band name="table_1" height="15" fontname="SansSerif" fontstyle="bold" fontsize="10" >
+				<label x="0"   y="0" name="lbltitle" dynamic="true" width="150" alignment="center">Firma</label>
+				</band>
+			</groupheader>
+		</group>
+
+                <group name="Header-Footer">
+			<groupfooter height="18" fontname="Monospaced" fontstyle="bold" fontsize="9">
+				<label name="l" x="210" y="7"  width="55"  fontsize="10" dynamic="true" alignment="right" fontname="SansSerif" fsbold="true" >Total:</label>
+				<rectangle      x="290" y="5"  width="130" height="15" color="#F6F6F6" draw="true" fill="true"/>
+				<rectangle      x="290" y="5"  width="130" height="15" color="#000000" draw="true" fill="false"/>
+				<number-field   x="290" y="7"  width="120" dynamic="true" alignment="right" fontname="SansSerif" fontsize="9" fsbold="false" format="$ #,##0.00" fieldname="totalamount" />
+				<rectangle      x="0"   y="35" width="550" height="40" color="#E5E5E5" draw="true" fill="true"/>
+				<string-field   x="05"  y="37"  width="545" height="12" dynamic="true" alignment="left" fontsize="09" fsbold="false" fsitalic="true" fieldname="ordenanza"/>
+				<string-field   x="05"  y="50"  width="545" height="12" dynamic="true" alignment="center" fontsize="09" fsbold="false" fsitalic="true" fieldname="rescision"/>
+				
+				
+				<line x1="0"   y1="140" x2="150" y2="140" weight="0.25"/>
+				<line x1="200" y1="140" x2="350" y2="140" weight="0.25"/>
+				<line x1="390" y1="140" x2="540" y2="140" weight="0.25"/>
+				
+				<label x="0"   y="143" name="lbltitle" dynamic="true" width="150" alignment="center">Firma</label>
+				<label x="200" y="143" name="lbltitle" dynamic="true" width="150" alignment="center">Aclaración</label>
+				<label x="390" y="143" name="lbltitle" dynamic="true" width="150" alignment="center">DNI</label>
+				
+				
+      			</groupfooter>
+		</group>
+		
+
+	</groups>
+
+        <items layout-cachable="false" >
+            <band name="table_1" fontsize="08">
+                    
+                    <line x1="130" y1="0" x2="130" y2="100%" weight="0.25"/>
+                    <line x1="210" y1="0" x2="210" y2="100%" weight="0.25"/>
+                    <line x1="290" y1="0" x2="290" y2="100%" weight="0.25"/>
+                    <line x1="420" y1="0" x2="420" y2="100%" weight="0.25"/>
+
+                    <date-field   name="expn" x="130" y="2"  width="77"  height="10" alignment="center" vertical-alignment="middle" dynamic="false" format="dd/MM/yyyy" fieldname="table_0.fecha"/>
+                    <date-field   name="expn" x="200" y="2"  width="77"  height="10" alignment="center" vertical-alignment="middle" dynamic="false" format="HH:mm:ss" fieldname="table_0.hora"/>
+                    <number-field name="dias" x="280" y="2"  width="77"  height="10" alignment="center" vertical-alignment="middle" dynamic="false" fieldname="table_0.monto1"/>
+                    <number-field name="tott" x="390" y="2"  width="120" height="10" alignment="right"  vertical-alignment="middle" dynamic="false" format="$ #,##0.00" fieldname="table_0.totalamount"/>
+
+            </band>
+	</items>
+
+	<pagefooter height="20" fontname="Monospaced" fontstyle="bold" fontsize="9">
+<!--
+		<line x1="0"   y1="00" x2="150" y2="00" weight="0.25"/>
+		<line x1="200" y1="00" x2="350" y2="00" weight="0.25"/>
+		<line x1="390" y1="00" x2="540" y2="00" weight="0.25"/>
+		
+		<label x="0"   y="03" name="lbltitle" dynamic="true" width="150" alignment="center">Firma</label>
+		<label x="200" y="03" name="lbltitle" dynamic="true" width="150" alignment="center">Aclaración</label>
+		<label x="390" y="03" name="lbltitle" dynamic="true" width="150" alignment="center">DNI</label>
+		
+		<line x1="390" y1="25" x2="540" y2="25" weight="0.25"/>
+-->
+	</pagefooter>
+
+	<functions>
+		<function class="org.jfree.report.function.HideElementByNameFunction" name="hideHeader">
+			<properties>
+				<property name="element">table_0</property>
+				<property name="field">TablePrefix</property>
+			</properties>
+		</function>
+		
+		<function class="org.jfree.report.function.HideElementByNameFunction" name="hideDetail">
+			<properties>
+				<property name="element">table_0</property>
+				<property name="field">TablePrefix</property>
+			</properties>
+		</function>
+		
+
+                <function class="org.jfree.report.function.ItemSumFunction" name="totalamount">
+			<properties>
+				<property name="field">table_0.monto1</property>
+				<property name="group">Header-Footer</property>
+			</properties>
+		</function>
+                
+	</functions>
+</report>
+
+

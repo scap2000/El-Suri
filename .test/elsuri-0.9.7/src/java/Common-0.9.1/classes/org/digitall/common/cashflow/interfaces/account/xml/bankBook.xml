@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!--
+ LIMITACIÓN DE RESPONSABILIDAD - COPYRIGHT - [Español]
+ ================================================================================
+ El Suri - Entorno JAVA de Trabajo y Desarrollo para Gobierno Electrónico
+ ================================================================================
+
+ Información del Proyecto:  http://elsuri.sourceforge.net
+
+ Copyright (C) 2007-2010 por D'AMBROSIO MARCELO E CASSINA SANTIAGO SOC DE HECHO.
+ D'AMBROSIO MARCELO E CASSINA SANTIAGO SOC DE HECHO es propiedad de
+ Lic. Santiago Cassina (santiago@digitallsh.com.ar - scap2000@yahoo.com) y
+ Marcelo D'Ambrosio (marcelo@digitallsh.com.ar - marcelodambrosio@gmail.com)
+ http://www.digitallsh.com.ar
+
+ Este programa es software libre: usted puede redistribuirlo y/o modificarlo
+ bajo los términos de la Licencia Pública General GNU publicada
+ por la Fundación para el Software Libre, ya sea la versión 3
+ de la Licencia, o (a su elección) cualquier versión posterior.
+
+ Este programa se distribuye con la esperanza de que sea útil, pero
+ SIN GARANTÍA ALGUNA; ni siquiera la garantía implícita
+ MERCANTIL o de APTITUD PARA UN PROPÓSITO DETERMINADO.
+ Consulte los detalles de la Licencia Pública General GNU para obtener
+ una información más detallada.
+
+ Debería haber recibido una copia de la Licencia Pública General GNU
+ junto a este programa.
+ En caso contrario, consulte <http://www.gnu.org/licenses/>.
+
+ DISCLAIMER - COPYRIGHT - [English]
+ =====================================================================================
+ El Suri - JAVA Management & Development Environment for Electronic Government
+ =====================================================================================
+
+ Project Info:  http://elsuri.sourceforge.net
+
+ Copyright (C) 2007-2010 by D'AMBROSIO MARCELO E CASSINA SANTIAGO SOC DE HECHO.
+ D'AMBROSIO MARCELO E CASSINA SANTIAGO SOC DE HECHO is owned by
+ Lic. Santiago Cassina (santiago@digitallsh.com.ar - scap2000@yahoo.com) and
+ Marcelo D'Ambrosio (marcelo@digitallsh.com.ar - marcelodambrosio@gmail.com)
+ http://www.digitallsh.com.ar
+
+ This program is free software: you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation, either version 3 of the License, or
+ (at your option) any later version.
+
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public License for more details.
+
+ You should have received a copy of the GNU General Public License
+ along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+-->
+<!--
+  bankBook.xml
+-->
+<!--
+    ~ Copyright (c) 2007, Your Corporation. All Rights Reserved.
+    -->
+
+<report xmlns="http://jfreereport.sourceforge.net/namespaces/reports/legacy/simple" name="Libro Banco (CONTABLE)" pageformat="A4"
+       topmargin="20" leftmargin="50" bottommargin="30" rightmargin="30">
+	
+	<pageheader height="12">
+		<string-field  fontname="SansSerif" fontsize="16" fsbold="true" width="100%" dynamic="true" alignment="center" fieldname="location"></string-field>
+		<band name="table_0" fontname="SansSerif" fsbold="true" fontsize="10">
+
+		    <line x1="0" y1="31" x2="100%" y2="31" weight="3"/>
+		    <label name="lbltitle" x="0" y="35" width="280" dynamic="true" alignment="left" fsbold="true">Libro Banco (CONTABLE)</label>
+		    
+		    <label name="lblAccount" x="0" y="55" width="40" dynamic="true" alignment="left" fsbold="true">Cuenta:</label>
+		    <string-field name="account" fsbold="false" fieldname="table_0.bankaccount" x="45" y="55" width="220" dynamic="false" height="12" alignment="left"/>
+
+		    <label name="lbldate" x="400" y="35" width="45" dynamic="true" alignment="right" fsbold="true">Fecha:</label>
+		    <date-field x="450" y="35" width="65" dynamic="true" fieldname="report.date" alignment="left"  format="dd/MM/yyyy" />
+		    <label name="lblInitDate" x="285" y="55" width="45" dynamic="true" alignment="right" fsbold="true">Desde:</label>
+		    <string-field x="335" y="55" width="65" dynamic="true" alignment="left" fieldname="startdate" fsbold="true"/>    
+		    <label name="lblEndDate" x="400" y="55" width="45" dynamic="true" alignment="right" fsbold="true">Hasta:</label>
+		    <string-field x="450" y="55" width="65" dynamic="true" alignment="left" fieldname="enddate" fsbold="true"/>    
+
+		    <line x1="0" y1="70" x2="100%" y2="70" weight="3"/>
+		    <line x1="0" y1="73" x2="100%" y2="73" weight="1"/>
+
+		    <rectangle name="tangle"  x="0"    y="85" width="55"  height="18"  draw="true" fill="false" color="#000000"/>
+		    <rectangle name="tangle"  x="55"   y="85" width="70"  height="18"  draw="true" fill="false" color="#000000"/>
+		    <rectangle name="tangle"  x="125"  y="85" width="130"  height="18"  draw="true" fill="false" color="#000000"/>
+		    <rectangle name="tangle"  x="255"  y="85" width="60"  height="18"  draw="true" fill="false" color="#000000"/>
+		    <rectangle name="tangle"  x="315"  y="85" width="60" height="18"  draw="true" fill="false" color="#000000"/>
+		    <rectangle name="tangle"  x="375"  y="85" width="70"  height="18"  draw="true" fill="false" color="#000000"/>
+		    <rectangle name="tangle"  x="445"  y="85" width="70"  height="18"  draw="true" fill="false" color="#000000"/>
+
+		    <label x="0"   y="85" width="55"  height="18" dynamic="false" alignment="center" vertical-alignment="middle" fontsize="10">Fecha</label>
+		    <label x="55"  y="85" width="70"  height="18" dynamic="false" alignment="center" vertical-alignment="middle" fontsize="10">Nº Cheque</label>
+		    <label x="125" y="85" width="130"  height="18" dynamic="false" alignment="center" vertical-alignment="middle" fontsize="10">Concepto/Beneficiario</label>
+		    <label x="255" y="85" width="60"  height="18" dynamic="false" alignment="center" vertical-alignment="middle" fontsize="10">Depósitos</label>
+		    <label x="315" y="85" width="60"  height="18" dynamic="false" alignment="center" vertical-alignment="middle" fontsize="10">Retiros</label>
+		    <label x="375" y="85" width="70"  height="18" dynamic="false" alignment="center" vertical-alignment="middle" fontsize="10">Saldo</label>
+		    <label x="445" y="85" width="70"  height="18" dynamic="false" alignment="center" vertical-alignment="middle" fontsize="10">Operación</label>
+		</band>
+	</pageheader>
+	
+	<groups>
+		<group name="table_0">
+			<fields>
+				<field>table_0.idaccount</field>
+			</fields>
+			
+			<groupheader layout-cachable="false" pagebreak-before-print="true">
+			</groupheader>
+		</group>
+	</groups>
+	
+	<items layout-cachable="false" >
+		<band name="table_0" fontsize="7">
+
+			<line x1="0"    y1="2" x2="0"    y2="12" weight="0.75" stroke-style="dashed" color="#AAAAAA"/>
+			<line x1="55"   y1="2" x2="55"   y2="12" weight="0.75" stroke-style="dashed" color="#AAAAAA"/>
+			<line x1="125"  y1="2" x2="125"  y2="12" weight="0.75" stroke-style="dashed" color="#AAAAAA"/>
+			<line x1="255"  y1="2" x2="255"  y2="12" weight="0.75" stroke-style="dashed" color="#AAAAAA"/>
+			<line x1="315"  y1="2" x2="315"  y2="12" weight="0.75" stroke-style="dashed" color="#AAAAAA"/>
+			<line x1="375"  y1="2" x2="375"  y2="12" weight="0.75" stroke-style="dashed" color="#AAAAAA"/>
+			<line x1="445"  y1="2" x2="445"  y2="12" weight="0.75" stroke-style="dashed" color="#AAAAAA"/>
+			<line x1="100%" y1="2" x2="100%" y2="12" weight="0.75" stroke-style="dashed" color="#AAAAAA"/>
+
+			<date-field   x="0"  y="2" width="55" dynamic="true" fieldname="table_0.date" alignment="center"  format="dd/MM/yyyy" />
+			<string-field x="55" y="2" width="65" alignment="right"  dynamic="true" fieldname="table_0.refnumber"/>
+			<string-field x="130" y="2" width="125" alignment="left" dynamic="true" fieldname="table_0.concept"/>
+			<number-field x="255" y="2" width="58" alignment="right" format="$ #,##0.00" dynamic="true" fieldname="table_0.debitamount"/>
+			<number-field x="315" y="2" width="58" alignment="right" format="$ #,##0.00" dynamic="true" fieldname="table_0.creditamount"/>
+			<number-field x="375" y="2" width="68" alignment="right" format="$ #,##0.00" dynamic="true" fieldname="table_0.availableamount"/>
+			<string-field x="445" y="2" width="68" alignment="center" dynamic="true" fieldname="table_0.link"/>
+		</band>
+	</items>
+	
+    <pagefooter height="24">
+	<rectangle name="PF0" x="0" y="0" width="100%" height="100%" color="#FFFFFF" weight="0" draw="false" fill="true"/>
+	<line x1="0" y1="0" x2="100%" y2="0" weight="0.5"/>
+	<string-field fieldname="pageXofY" x="0" y="2" width="100%" height="100%" alignment="right" vertical-alignment="top"/>
+    </pagefooter>
+
+    <functions>
+	<property-ref name="report.date"/>
+	    <function class="org.jfree.report.function.PageOfPagesFunction" name="pageXofY">
+		<properties>
+			<property name="format">Página {0} de {1}</property>
+		</properties>
+	    </function>
+    
+    </functions>
+</report>

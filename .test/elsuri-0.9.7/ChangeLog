@@ -1,0 +1,459 @@
+**********
+
+  Copyright (C) 2007-2010 por D'AMBROSIO MARCELO E CASSINA SANTIAGO SOC DE HECHO.
+  D'AMBROSIO MARCELO E CASSINA SANTIAGO SOC DE HECHO es propiedad de
+  Lic. Santiago Cassina (santiago@digitallsh.com.ar - scap2000@yahoo.com) y
+  Marcelo D'Ambrosio (marcelo@digitallsh.com.ar - marcelodambrosio@gmail.com)
+  http://www.digitallsh.com.ar
+
+  La copia y distribución de este archivo, con o sin modificaciones,
+  están permitidas por cualquier medio sin cargo mientras se preserven
+  el Aviso de Copyright y este mismo aviso.
+
+  Copyright (C) 2007-2010 by D'AMBROSIO MARCELO E CASSINA SANTIAGO SOC DE HECHO.
+  D'AMBROSIO MARCELO E CASSINA SANTIAGO SOC DE HECHO is owned by
+  Lic. Santiago Cassina (santiago@digitallsh.com.ar - scap2000@yahoo.com) and
+  Marcelo D'Ambrosio (marcelo@digitallsh.com.ar - marcelodambrosio@gmail.com)
+  http://www.digitallsh.com.ar
+
+  Copying and distribution of this file, with or without modification,
+  are permitted in any medium without royalty provided the copyright
+  notice and this notice are preserved.
+
+**********
+
+2010-10-12
+
+    * Se removieron dependencias de código propietario de Java (Sun)
+    para hacer este software 100% compatible con IcedTea 1.7.0
+    * Se creó la lista de correo electrónico: elsuri-bugs@lists.sourceforge.net
+    cualquiera es bienvenido a la lista; para suscribirse visite
+    https://lists.sourceforge.net/lists/listinfo/elsuri-bugs
+    * Se actualizó el archivo INSTALL
+
+2010-10-11
+
+    * En la pantalla inicial ya no se pregunta si está de acuerdo
+    con la licencia, sólo se informa de ella.
+    * Se quitó el mensaje de ayuda para conectarse
+    * El sistema antes de iniciar revisa si existen los
+    certificados SSL necesarios para conectarse
+    * Se generaron los archivos XML para Apache-Ant
+    * Se generaron scripts de automatización para:
+	    - Instalación del sistema
+	    - Generación de Certificados SSL
+	    - Inicio de la base de datos
+
+2010-10-05
+
+    * El Suri es Open Source bajo GPLv3
+
+2010-04-20
+
+    * Se agregó la funcionalidad de configurar url, base de datos, usuario y clave
+    para que CADA grupo de geometrías tenga la posibilidad
+    de obtener los datos de otro servidor
+    * Se agregó la funcionalidad de configurar qué layers podrán ser evaluados
+    al momento de ejecutar una consulta múltiple en el GIS, ya sea en un
+    rectángulo o en un polígono especificado
+    * Se agregó la funcionalidad de imprimir fichas catastrales
+    para más de un catastro
+
+2010-04-09
+
+    * Se modificó el Panel Principal del Sistema, agregando la versión del sistema
+    y base de datos en la esquina inferior derecha
+    * Se creó un método en el motor de dibujo del GIS para generar el croquis
+    de un catastro (parcela, manzana  calles)
+    * Se concluyó el informe Ficha Catastral (accesible desde el GIS únicamente)
+
+2010-04-06
+
+    * Se agregó un pequeño módulo para el desglosado de publicidades
+    * Se agregaron capas de publicidades desglosadas para su consulta
+    * Se corrigieron los bugs del sistema Servidor para el control de accesos y auditorías
+
+2010-03-31
+
+    * Se agregaron bonificaciones
+    * Se modificó el cajero para permitir pagos de $ 0,00 con y sin efectivo. CashierMgmt.java
+    * Se corrigió un bug de BarCode.java
+
+2010-03-26
+
+    * Se modificó el formato de SYSTEM_VERSION al tipo El Suri V.20100326-ß.ø 
+    * Para generar filtros o elegir columnas de etiquetas en el GIS,
+    ahora aparece la descripción de la columna (si tiene) de la tabla (Beta),
+    aunque esto está presentando muchos problemas
+    * El motor detecta el rendimiento de la computadora y modifica a
+    modo RASTER o VECTOR según cree conveniente
+    * El cliente de Chat envía información estadística del usuario,
+    el servidor del sistema (ServicesLoader.jar) recolecta esta información
+    y la envía a un motor de bases de datos remoto para generar auditorías de uso del sistema
+    * Se arregló la funcionalidad de ZOOM_OUT en la barra de herramientas del GIS
+
+2009-09-03
+
+    * BUG 2009_09_03_0001: Se encontraron dos SP exactamente iguales,
+    con diferente nombre: taxes.getObjectTipoPlanDePago(integer idtipoplandepago)
+    y taxes.getTipoPlanDePago(integer idtipoplandepago). También la clase
+    TipoPlanDePago.java contiene dos métodos exactamente iguales:
+    public void retrieveData() y public void retrieveDataTipoPlanDePago().
+    La clase PlanOfPaymentsAdminMgmt.java es la única que usa el método
+    retrieveDataTipoPlanDePago(). REPARADO
+    * BUG 2009_09_03_0002: En la clase PlanOfPaymentsAdminMgmt.java, se encontró la
+    línea private TFInput tfResicion = new TFInput(DataTypes.STRING,"Rescición",false);
+    cuando debería ser private TFInput tfRescision = new TFInput(DataTypes.STRING,"Rescisión",false),
+    sin embargo, en la clase TipoPlanDePago y en la tabla tiposplanesdepago
+    está bien escrito. REPARADO
+    * BUG 2009_09_03_0003: De la manera que trabaja actualmente la ventana de administración
+    de impuestos, no pueden convivir en el tiempo dos planes de
+    pago (o moratorias) para el  mismo impuesto. NO REPARADO
+    * BUG 2009_09_03_0004: En la clase PlanOfPaymentsAdminMgmt.java se detectó que
+    en el método private void loadData(TipoPlanDePago _tipoPlanDePago)
+    se utiliza un método de carga de datos incorrectamente:
+	    Integer.parseInt(""+tfMaxCuotas.getValue().toString())
+		cuando podría utilizarse tfMaxCuotas.getInteger(),
+	    Double.parseDouble("" + tfPorcentajeDtoCancelacion.getValue().toString())
+		cuando podría utilizarse tfPorcentajeDtoCancelacion.getDouble()
+	REPARADO --> Se modificaron las asignaciones de datos de la manera propuesta
+
+    * Se modificó el SP de carga addtipoplandepago agregándole dos
+    campos más (porcentajecondonacionintereses y obligatorio)
+    * Se detectó un posible problema con las órdenes de pago y cheques.
+    Parece ser que en algún momento al grabar un cheque, se graba el monto
+    además en otro cheque (el anterior)
+    * BUG 2009_09_03_0005: Se encontraron reportes que arrojan los errores
+	WARN:  Mixing relative and absolute sizes in 'null'. The definition is ambigous. (12.0, -100.0)
+	WARN:  Mixing relative and absolute positions in 'null'. The definition is ambigous. (12.0, -100.0)
+    Este problema ya fue reportado anteriormente y no ha sido reparado
+
+    * Se reparó el informe PaymentPlanVoucher.xml acorde a Moratorias y Planes de Pago,
+    se actualizaron las clases correspondientes que le enviaban datos
+    al mismo. REPARADO
+    * BUG 2009_09_03_0006: Se detectó que el reporte InmobVoucher.xml
+    tiene los datos de la municipalidad incrustados (hard-coded). REPARADO
+    * BUG 2009_09_03_0007: El reporte ContratoMoratoria.xml, al hacer un plan
+    de pago para un automotor, muestra los campos Apoderado y Catastro
+    en el encabezado, y en los talones muestra los campos Apoderado, Zona,
+    Terreno, Valor Edif. y Valor Fiscal. NO REPARADO. Sólo se cambió el campo
+    Catastro para que sea un poco más coherente
+    * BUG 2009_09_03_0008: En la clase CashierPrinter, en el método
+    loadPrintBoletaMoratoria (int _idboleta) se detectó que se llama al
+    método BasicReport.addTableModel de la siguiente manera:
+
+	    String param = "" + boletaMoratoria.getIdBoletaPlanDePago();
+	    report.addTableModel("modelo", param);
+	Cuando se lo debería llamar directamente: 
+	    report.addTableModel("modelo", objeto);
+	    ya que no se requiere que sea explícitamente un String, sino un objeto. - 
+	    REPARADO, revisar en el resto del sistema
+
+    * BUG 2009_09_03_0009: Se detectó que SIEMPRE se grababa el nombre "MORATORIA Nº"
+    en la tabla taxes.planesdepago y por arrastre en la tabla
+    taxes.contratosmoratoria. REPARADO, se tuvo que rastrear dificultosamente
+    hasta encontrar que el problema era que estaba "hard-coded" en un SP, el cual
+    se actualizó agregándole un campo más, pero NO SE REVISÓ si crearía problemas
+    con otros SP (addplandepagomanual por ejemplo)
+    * BUG 2009_09_03_0010: Clase TaxesMgmt, método caltTotalAmount() mal codificado,
+    al seleccionar descuento DISCAPACITADO me da como total deuda $ 0,00 pero cuando
+    paso a ver planes de pago, no me realiza el descuento y además tiene varios errores
+    de cálculo, estructuras de control, conceptos, método setDecimales
+    incorrectamente implementado. REPARADO
+    * BUG 2009_09_03_0011: Se calcula mal el valor final del anticipo para los
+    impuestos. REPARADO, se cambió la manera de calcular para no perder centavos,
+    en los métodos taxes.setautomotorfees(_idautomotor integer), 
+	+ _interestrate double precision = 0;
+	+ _accruedinterest double precision = 0;
+	+ _totalamount double precision = 0;
+	+ _basicamount double precision = 0;
+	+ _basicamount = ROUND(_rs.basicamount::numeric, 2);
+	+ _interestrate = ROUND(( ( (interesmensual * 12)/diasdelanio ) * diasdemora) ::numeric,2);
+	+ _accruedinterest = ROUND(( ( _interestrate/100) * _basicamount) ::numeric,2);
+	+ _totalamount = ROUND((_basicamount + _accruedinterest)::numeric,2);
+	+ SET 	interestrate = _interestrate,
+	+	accruedinterest = _accruedinterest,
+	+	totalamount = _totalamount,
+	+ 	basicamount = _basicamount
+
+    * BUG 2009_09_03_0012: Se detectó un uso incorrecto del método calculate()
+    de la grilla en algunas clases: PayMoratoriumFeesMgmt, TaxesMgmt, y otras.
+    REPARADO --> Se creó un nuevo método finishedLoading() en GridPanel para
+    evitar el uso de calculate() para controles, y ahora, al hacer click en el
+    CheckBox que selecciona TODO en el GridPanel, automáticamente ejecuta calculate()
+    (cosa que antes no hacía), por lo tanto hay que rastrear los "overrides" de
+    este método que necesiten cambiarse por el nuevo.
+    * BUG 2009_09_03_0013: La clase CashierPaymentList tenía Objetos que no
+    estaban definidos como private (ni public, ni protected). REPARADO --> Se los borró
+    porque estaban sin uso, lo cual se descubrió sólo con agregar a
+    cada Objeto la palabra "private"
+    * BUG 2009_09_03_0014: La tabla detalleboletasinmob no tiene una llave
+    foránea boletasinmob(ibboletainmob) - NO REPARADO
+    * BUG 2009_09_03_0015: Los reportes PaymentPlanVoucher.xml, ContratoMoratoria.xml,
+    TgsVoucher.xml, CarVoucher.xml e InmobVoucher.xml carecen de:
+	    Encabezado de página, cuando son muchas hojas, queda el
+		encabezado vacío y no se sabe de qué es el reporte
+	    Pie de página, cuando son muchas hojas, no tiene un contador
+		Página X de Y, y no se sabe qué página es
+	    Encabezado de Grupo: para que se repitan las cabeceras de las
+		tablas cada vez que cambia de hoja, sino queda la
+		tabla sin cabecera y no se sabe qué es cada columna
+	REPARADO --> Se corrigieron TODOS los reportes NOMBRADOS.
+
+    * BUG 2009_09_03_0016: En algunas clases (TaxesMgmt, PayMoratoriumFeesMgmt y PayFeesMgmt),
+    para el cálculo de totales se utilizaba una función con un objeto de la
+    clase BigDecimal("string").setScale(2, BigDecimal.ROUND_HALF_DOWN),
+    que nunca fue revisada ni autorizada. REPARADO --> Se borraron todas
+    las llamadas y usos a dicha clase y método
+
+    * BUG 2009_09_04_0001: En la mayoría de las clases y reportes de
+    Taxes-0.9.1 el sistema tiene los nombres de los impuestos "hard-coded",
+    debería tomar dichos nombres de la base de datos (taxes.tiposimpuesto),
+    además habría que arreglar la nomenclatura de los tipos de impuesto
+    ya que, por ejemplo "Impuesto a los Alquileres" es incorrecto,
+    pues no se cobra una tasa o impuesto a los alquileres, sino que se
+    cobran alquileres literalmente. NO REPARADO
+
+    * BUG 2009_09_04_0002: Al actualizar los datos de un catastro,
+    debería actualizarse la deuda (valores de las cuotas) con los
+    SP settgsfeesmf(_idcatastro), settgsfees(_idcatastro), setinmobfees(_idcatastro),
+    supongo que así también con el resto de los impuestos (Automotor, Act. Varias, etc.) - NO REPARADO
+    * BUG 2009_09_04_0003: El reporte EstadoCuentaYMoratoriaReport.xml está imprimiendo
+    datos erróneos por culpa de que la clase que lo administra, PlansOfPaymentMgmt no
+    está completamente parametrizada y le envía dichos datos. NO REPARADO
+    * BUG 2009_09_04_0004: En la llamada al SP taxes.addBoletaTgs() se demora muchísimo, 
+    y además está enviando datos "double precision" con más de dos decimales
+    (estilo 414.00000000000034; 308.87000000000023) - NO REPARADO
+    * REQ 2009_09_04_0001: Se solicitó que en la boleta impresa figure
+    el vencimiento del próximo anticipo/cuota
+    * REQ 2009_09_04_0002: Se solicitó que en la boleta donde se paga
+    la última cuota de un plan de pago, se inscriba una leyenda notificando
+    que se ha cancelado dicho plan completamente
+    * REQ 2009_09_04_0003: Se solicitó que en la boleta de pago de
+    cuotas de un plan de pago, figure el saldo (cantidad de cuotas) adeudado
+
+2009-09-02
+
+    * BUG 2009_09_02_0001: En la ventana Administración de Impuestos, se realizó lo siguiente:
+	1) Se eligió un dominio al azar que tuviera bastante deuda
+	2) Se generó una boleta por unos cuantos anticipos (3) (Boleta 2009-00000n)
+	3) Se generó una boleta por otros anticipos (10) (Boleta 2009-00000n+1)
+	4) Se generó una boleta por el resto de los anticipos (x) (Boleta 2009-00000n+2)
+	5) Se pagó la última boleta generada (Boleta 2009-00000n+2) y se cancelaron
+	    las boletas anteriores: PERMITE PAGAR ANTICIPOS SALTEADOS - NO REPARADO
+    * BUG 2009_09_02_0002: Cuando se quiere hacer una apertura de caja,
+    y no hay cajas disponibles, permite hacer igual la apertura, luego el
+    sistema se vuelve inestable, no permite hacer pagos, cierres de caja y hay que
+    entrar por la base de datos a arreglar todo. - NO REPARADO
+    * BUG 2009_09_02_0003: La tabla cashier.payments tiene una columna (ya reportada)
+    con nombre incorrecto (se llama idaccountingentry y debería llamarse idbookkeepingentry),
+    y gracias a esto se detectaron varios (29) stored procedures y tablas con el mismo error. - NO REPARADO
+    * BUG 2009_09_02_0004: En el concepto del asiento que se graba al pagar
+    una boleta, el número de dicha boleta se graba mal, '2009- 000132' con
+    un espacio en blanco luego del carácter '-', lo cual es incorrecto, debería
+    grabarse sin dicho espacio en blanco: '2009-000132'. REPARADO
+    * BUG 2009_09_02_0005: Las ventanas de "Apertura" y "Cierre" de caja se pueden minimizar
+    y/o cerrar, no debería poder hacerse eso, debería ser más bien un BasicDialog.
+    NO REPARADO, se quitaron las opciones de minimizar y cerrar. Aún queda hacerlo modal.
+    * BUG 2009_09_02_0006: Se detectó que en algunos reportes XML, había una línea de
+    texto "hard-coded" (dura) con la leyenda "Provincia de Salta - República Argentina",
+    la cual debía ser tomada de OrganizationInfo,
+    el mismo error se detectó en los siguientes archivos
+    
+	taxes/interfases/clearfees/xml/TgsFeesReport.xml/
+	taxes/interfases/xml/ActVariasVoucher.xml
+	taxes/interfases/xml/CarVoucher.xml
+	taxes/interfases/xml/InmobVoucher.xml
+	taxes/interfases/xml/TgsVoucher.xml
+	taxes/interfases/cashier/TicketCaja.xml
+	taxes/interfases/cashier/xml/CierreCaja.xml
+	taxes/interfases/cashier/xml/ContratoMoratoria.xml
+	taxes/interfases/cashier/xml/ReciboContribucion.xml
+	taxes/interfases/cashier/xml/TicketCaja.xml
+	taxes/interfases/clearfees/xml/InmobFeesReport.xml
+	taxes/interfases/feesadmin/xml/EstadoCuentaYMoratoriaReport.xml
+	taxes/interfases/feesadmin/xml/EstadoDeCuenta.xml
+	taxes/interfases/xml/CertificadoLibreDeudaAutomotor.xml
+	taxes/interfases/xml/CertificadoLibreDeudaCatastro.xml
+	taxes/interfases/xml/CertificadoLibreDeudaInmob.xml
+	taxes/interfases/xml/CertificadoLibreDeudaTGS.xml
+	taxes/interfases/xml/EstadoCuentaYMoratoriaReport.xml
+	taxes/interfases/xml/PaymentPlanVoucher.xml
+	taxes/interfases/xml/PaymentPlansContract.xml
+	taxes/interfases/xml/ReciboContribucion.xml
+	personalfiles/interfaces/xml/InformeBajas.xml
+	personalfiles/interfaces/xml/InformeGral.xml
+	personalfiles/interfaces/xml/InformeGralValorado.xml
+	personalfiles/interfaces/xml/InformePersonasDependencia.xml
+	personalfiles/interfaces/xml/InformePersonasOrganigrama.xml
+	personalfiles/interfaces/xml/NotaMensualIntendente.xml
+	personalfiles/interfaces/xml/ResourcesDependency.xml
+	personalfiles/interfaces/xml/ResourcesPerson.xml
+	
+	Se debería llamar al campo "locationdata" desde el XML directamente. REPARADO
+
+    * BUG 2009_09_02_0007: Se detectó que la clase OrganizationInfo fue modificada
+    sin aviso, agregando el atributo "provinceCountry" y sus correspondientes accesores.
+    REPARADO: Se borraron tanto el atributo como sus accesores
+    * BUG 2009_09_02_0008: Se detectó en la clase PopUpImprimirReportesComercios que
+    para generar reportes se estaban re-enviando TODOS los atributos de la clase
+    OrganizationInfo. REPARADO, se borraron las líneas comprometidas
+	phonenumber1: CommerceFeesMgmt(2), GaiaFormAdminyServ, GaiaFormComercios, 
+		    GaiaFormCultoyCultura, GaiaFormDelito, GaiaFormEducacion,
+		    GaiaFormIndustria, GaiaFormProduccion, GaiaFormSalud,
+		    GaiaFormSeguridad, GaiaFormServUrbanos, GaiaFormTurismo
+	phonenumber2: CommerceFeesMgmt(2), GaiaFormAdminyServ, GaiaFormComercios,
+		    GaiaFormCultoyCultura, GaiaFormDelito, GaiaFormEducacion,
+		    GaiaFormIndustria, GaiaFormProduccion, GaiaFormSalud, GaiaFormSeguridad,
+		    GaiaFormServUrbanos, GaiaFormTurismo
+	fechaimpresion --> actualdate: en la clase CashierPrinter,
+		    en el método public static void imprimirContrato(int _idBoletaMoratoria),
+		    se detectó que se mandaba otra fecha de impresión (contratoPlanDePago.getFechaAceptacion()),
+		    línea que fue comentada para revisión, ClearTaxesTGS(2), CommerceFeesMgmt(2),
+		    PlansOfPaymentMgmt, TaxesMgmt, GaiaFormAdminyServ, GaiaFormComercios,
+		    GaiaFormCultoyCultura, GaiaFormDelito, GaiaFormEducacion, GaiaFormIndustria,
+		    GaiaFormProduccion, GaiaFormSalud, GaiaFormSeguridad, GaiaFormServUrbanos,
+		    GaiaFormTurismo, InformeBajasPanel, NotaInformePanel, PopupPrinter(6),
+		    PopUpImprimirReportesComercios(3),  TgsFeesReport.xml, AdminyServReport.xml,
+		    ComerciosReport.xml, CultoyCulturaReport.xml, EducacionReport.xml, IndustriaReport.xml,
+		    ProduccionReport.xml, SaludReport.xml, SeguridadReport.xml, ServUrbanosReport.xml,
+		    TurismoReport.xml, AuditoriaCensoComercialReport.xml, EncuestasComercialesDCReport.xml,
+		    EncuestasComercialesReport.xml, InformeBajas.xml, InformeGral.xml, InformeGralValorado.xml,
+		    InformePersonasDependencia.xml, InformePersonasOrganigrama.xml, NotaMensualIntendente.xml,
+		    ResourcesDependency.xml, ResourcesPerson.xml, TicketCaja.xml, CierreCaja.xml,
+		    ContratoMoratoria.xml, ReciboContribucion.xml, InmobFeesReport.xml,
+		    EstadoCuentaYMoratoriaReport.xml, EstadoDeCuenta.xml, ActVariasVoucher.xml, CarVoucher.xml,
+		    CertificadoLibreDeudaAutomotor.xml, CertificadoLibreDeudaCatastro.xml,
+		    CertificadoLibreDeudaInmob.xml, CertificadoLibreDeudaTGS.xml, EstadoCuentaYMoratoriaReport.xml,
+		    InmobVoucher.xml, PaymentPlansContract.xml, PaymentPlanVoucher.xml, ReciboContribucion.xml,
+		    RentVoucher.xml, TgsVoucher.xml
+	direccionweb --> address: CommerceFeesMgmt(2), GaiaFormAdminyServ, GaiaFormComercios, GaiaFormCultoyCultura,
+		    GaiaFormDelito, GaiaFormEducacion, GaiaFormIndustria, GaiaFormProduccion, GaiaFormSalud,
+		    GaiaFormSeguridad, GaiaFormServUrbanos, GaiaFormTurismo
+	direccionmunicipal --> address: CommerceFeesMgmt(2), GaiaFormAdminyServ, GaiaFormComercios,
+		    GaiaFormCultoyCultura, GaiaFormDelito, GaiaFormEducacion, GaiaFormIndustria,
+		    GaiaFormProduccion, GaiaFormSalud, GaiaFormSeguridad, GaiaFormServUrbanos,
+		    GaiaFormTurismo, PopUpImprimirReportesComercios(3)
+	cuitmunicipal y cuit --> cuit: CommerceFeesMgmt(2), ActVariasVoucher.xml, GaiaFormAdminyServ,
+		    GaiaFormComercios, GaiaFormCultoyCultura, GaiaFormDelito, GaiaFormEducacion,
+		    GaiaFormIndustria, GaiaFormProduccion, GaiaFormSalud, GaiaFormSeguridad,
+		    GaiaFormServUrbanos, GaiaFormTurismo
+	organization y organismo --> orgname: CarVoucher.xml, InmobVoucher.xml, PaymentPlanVoucher.xml,
+		    RentVoucher.xml, TgsVoucher.xml, PopUpImprimirReportesComercios, Cadastral.java,
+		    Car.java, TaxesRent.java, CashierPrinter.java, CommerceFeesMgmt.java,
+		    AuditoriaCensoComercialReport.xml, EncuestasComercialesDCReport.xml,
+		    EncuestasComercialesReport.xml,
+	Environment.organization.toUpperCase(): TaxesInmob, TaxesRent, TaxesTGS, CashierPrinter (2)
+	Y un montón más que no se transcribieron porque llevaba mucho tiempo
+	
+	* BUG 2009_09_02_0009: Se detectó duplicidad en el archivo TicketCaja.xml
+	(taxes/interfaces/cashier/ y otro en taxes/interfaces/cashier/xml). REPARADO, se eliminó
+	el archivo duplicado en taxes/interfaces/cashier
+	* BUG 2009_09_02_0010: En la clase ClearCarTaxes.java, línea 340, hay un
+	mensaje extrañísimo: Advisor.messageBox("Debe seleccionar una Empresa", "Error"); NO REPARADO
+	* BUG 2009_09_02_0011: La ventana de Cierre de Caja, parece que permite
+	cerrar con $ 0,00 --> REPARADO
+	* BUG 2009_09_02_0012: La tabla cashier.cajas no tiene la llave
+	foránea idresponsable(persons) (¿y de qué tabla persons?) - REPARADO
+	* BUG 2009_09_02_0013: La clase MovimientoCaja.java, en su método retrieveData()
+	no recupera el idCaja, - REPARADO: se agregó la línea
+	    + setIdCaja(result.getInt("idcaja"));
+
+2009-09-01
+
+    * BUG 2009_09_01_0001: En la ventana de administración de impuestos, al calcular
+    la deuda TOTAL, hace: monto + intereses, en lugar de la sumatoria de la grilla,
+    por lo tanto da error de algunos centavos. REPARADO - VER BUG 2009_09_03_0011
+    * BUG 2009_09_01_0002: La función taxes.getCuotas(_tipoimpuesto integer, _idbien integer,
+    _veradelantos boolean, _limit integer, _offset integer) no está trayendo la cantidad
+    de días de vencimiento de la cuota, por lo que en la página deja de mostrar dichos datos
+    REPARADO, se agregó la columna "dias", con el siguiente código:
+	    + CASE WHEN expiration<now() THEN date(now()) - date(expiration)
+	    + ELSE 0
+	    + END AS dias
+    * BUG 2009_09_01_0003: Corregido un error en taxes.getCuotas(integer, integer, boolean, integer, integer)
+    y en taxes.setautomotorfees(_idautomotor integer)
+	    + basicamount = ROUND(_rs.basicamount::numeric, 2)
+	    en lugar de basicamount = _rs.basicamount
+    y en taxes.setinmobfees(_idcatastro integer)
+	    + basicamount = ROUND(valorcuota::numeric, 2)
+	    en lugar de basicamount = valorcuota
+    * Se detectaron VARIOS stored procedures con la siguiente observación: RAISE EXCEPTION'ALGUN_TEXTO'
+    cuando debería tener un espacio en blanco luego de la palabra EXCEPTION,
+    quedando de esta manera: RAISE EXCEPTION 'ALGUN_TEXTO'.
+    Se fueron arreglando los detectados. NO SE REPARARON TODOS
+    * BUG 2009_09_01_0004: En la pestaña "Pago cuotas", la cual debería decir
+    "Cuotas de Moratoria/Plan de Pago" (revisar el resto de los nombres de las pestañas),
+    al seleccionar más de una cuota, suma incorrectamente, porque no tiene en cuenta
+    que la última cuota generalmente es de un monto diferente.
+    Se probó con un plan de pago de 60 cuotas, 59 de $ 12,04 y una de $ 11,88 y al elegir
+    pagar 2 cuotas da como resultado un monto de $ 24,08 ( $ 12,04 x 2 ), si bien en la
+    boleta figura un monto de $ 23,92 ( $ 12,04 + $ 11,88 ) - REPARADO
+    * REVISAR el tema del redondeo a favor del contribuyente, cuando se pague, por ejemplo
+    $ 23,92 y se cobre $ 23,90, de guardar esa diferencia de caja como pérdida
+    o ajuste por redondeo, para evitar imputarle como pérdida al cajero encargado de la
+    cobranza, así también cuando falten monedas, tener en cuenta que se le puede cobrar de
+    menos, lo cual DEBE aparecer como detalle en el ticket (en caso de dar un vuelto
+    diferente al que figura en pantalla)
+    * BUG 2009_09_01_0005: continuando con las funciones taxes.setinmobfees(_idcatastro integer),
+    taxes.setautomotorfees(_idautomotor integer), taxes.settgsfees(_idcatastro integer) y
+    taxes.settgsfeesmf(_idcatastro integer), se observó que las siguientes variables
+    estaban de más y se procedió a su borrado:
+	    _mesvencimiento integer; (en todos los casos)
+	    _aniovencimiento integer; (en todos los casos)
+	    _mes double precision := -1; (¿¿¿DOUBLE PRECISION???) (en todos los casos)
+	    valorcuota double precision := 0.0; (sólo en caso de setautomotorfees)
+    * BUG 2009_09_01_0006: En la tabla cashier.tiposmovimientoscaja, se detectaron nombres
+    fuera de coherencia (Egreso de Caja, en lugar de Egreso de Dinero, por ejemplo). REPARADO
+    * BUG 2009_09_01_0007: En el sitio web no se actualizaba la deuda antes de mostrarla,
+    porque se estaba llamando a un SP viejo, ya se corrigió el problema y
+    se actualizaron los privilegios en las funciones necesarias para actualizar y mostrar la deuda
+    * BUG 2009_09_01_0008: En la ventana Administración de Impuestos, se realizó lo siguiente: 
+	1) Se generó un plan de pago (catastro NN, TGS), 2 cuotas
+	2) Se generó la boleta y se pagó la primer cuota del plan de pago
+	3) Se pulsó el botón "Siguiente" para ir a la pestaña de anticipos
+	4) Se tildó el botón "Mostrar adelantos", se seleccionó el anticipo adelantado de octubre (01/10/2009) y se generó la boleta
+	5) Cuando se quiso pagar, salió con valor de $ 0,00 en la ventana del cajero
+	REPARADO
+
+2009-08-31
+
+    * Se actualizaron las manzanas y parcelas del GIS en la base de datos de Salta
+    * Se identificaron y repararon manzanas con geometrías incorrectas para el motor PostGIS
+    y ya se comprendió el por qué del error (a veces una geometría tiene una línea que
+    no encierra superficie y ello produce un error GEOS within()! )
+    * Se comenzó la modificación del sistema de recaudación para que acepte
+    la generación de planes de pago, descubriéndose errores varios de cálculo,
+    conceptos y errores de cp ("copy/paste"). Los errores descubiertos fueron reparados,
+    pero habría que revisar el código más a fondo para optimizarlo.
+    Falta chequear la generación de los reportes de Moratorias y Planes de Pago,
+    mejorar la nomenclatura, ya que en todos lados se hace referencia únicamente a
+    Moratorias. Se descubrió también que al tener la posibilidad de generar planes de
+    pago, no deja avanzar si no se da de alta un plan. Por lo tanto se deberá corregir
+    utilizando una bandera (Obligatorio: true/false) para que permita continuar. REPARADO.
+
+2009-08-28
+
+    * Se cambió la ventana de resultados de Consultas Múltiples del
+    GIS por una ventana que permite formato HTML y AutoScroll
+    * BUG 2009_08_28_0001: Deuda TGS/Inmob en Sitio WEB y
+    Sistema son diferentes. REPARADO, se estaba llamando al SP incorrecto
+    * BUG 2009_08_28_0002: Ventana Asientos, Botón Imprimir (Libro Diario)
+    no funciona. REPARADO, estaba comentada la sección donde activa el Libro Diario
+    con idBookKeepingEntry = -1. Todavía quedan revisar las siguientes clases:
+    CashCountMgmt, BookKeepingEntryByModelMgmt, BookKeepingEntryList y BookKeepingEntryMgmt
+    porque llaman al SP cashflow.getallbookkeepingentrydetail(integer, integer, integer)
+    * Se quitaron los botones "Limpiar Anticipos TGS/Inmob" y "Limpiar Anticipos Automotor" del escritorio.
+    * BUG 2009_08_28_0003: En la ventana del cajero, cuando se hace una apertura
+    o un cierre de caja, el monto, al preguntar si está seguro,
+    tiene el formato incorrecto (un solo decimal y separador de decimales con punto). REPARADO,
+    se llama a un método diferente para obtener el texto del campo.
+    * BUG 2009_08_28_0004:  En la ventana del cajero, cuando se hace una apertura
+    o un cierre de caja, el listener del campo a completar espera que se presione ENTER,
+    habría que activarlo para cualquier tecla (coherentemente). NO REPARADO.
+    * BUG 2009_08_28_0005: No se visualiza la regla en el GIS. REPARADO, se creó
+    una ventana flotante similar al visualizador de coordenadas,
+    para ver los datos Distancia Parcial, Total, Área (m2) y Ángulo,
+    aunque este último todavía no se calcule.
+    * BUG 2009_08_28_0006: No existe manera de imprimir un resumen
+    de las operaciones realizadas por el cajero. NO REPARADO.

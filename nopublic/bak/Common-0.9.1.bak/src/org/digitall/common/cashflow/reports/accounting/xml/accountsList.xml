@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!--
+    ~ Copyright (c) 2007, Your Corporation. All Rights Reserved.
+    -->
+
+<report xmlns="http://jfreereport.sourceforge.net/namespaces/reports/legacy/simple" name="Listado de Cuentas" pageformat="A4"
+       topmargin="20" leftmargin="40" bottommargin="30" rightmargin="20">
+	
+	<pageheader height="12">
+		<string-field  fontname="SansSerif" fontsize="16" fsbold="true" width="100%" dynamic="true" alignment="center" fieldname="location"></string-field>
+		<band name="detail" fontname="SansSerif" fontstyle="plain" fontsize="10">
+                
+		    <line x1="0" y1="22" x2="100%" y2="22" weight="2.5"/>
+		    <label name="1" x="0"   y="25" width="300" dynamic="true" alignment="left"  fsbold="true">Listado de Cuentas Contables</label>
+                    <label name="2" x="420" y="25" width="45"  dynamic="true" alignment="right" fsbold="true">Fecha:</label>
+		    <date-field     x="470" y="25" width="65" dynamic="true" alignment="left"  fieldname="report.date" format="dd/MM/yyyy" />
+                    
+                    <label name="3" x="0"   y="42" width="150" dynamic="true" alignment="left" fsbold="true">Cuentas del tipo:</label>
+		    <string-field   x="160" y="42" width="150" dynamic="true" alignment="left" fieldname="table_0.accounttype"/>
+		    <line x1="0" y1="58" x2="100%" y2="58" weight="2.5"/>
+		    
+                    
+                    <rectangle name="tangle"  x="0"   y="68" width="300" height="16"  draw="true" fill="false" color="#000000"/>
+                    <rectangle name="tangle"  x="300" y="68" width="90"  height="16"  draw="true" fill="false" color="#000000"/>
+                    <rectangle name="tangle"  x="390" y="68" width="65"  height="16"  draw="true" fill="false" color="#000000"/>
+                    <rectangle name="tangle"  x="455" y="68" width="80"  height="16"  draw="true" fill="false" color="#000000"/>
+                    
+		    <label x="5"   y="70" width="300" height="12" alignment="center" dynamic="false" fontsize="10" fsbold="true">Cuenta</label>
+		    <label x="300" y="70" width="90"  height="12" alignment="center" dynamic="false" fontsize="10" fsbold="true">Cuenta Sup.</label>
+                    <label x="390" y="70" width="65"  height="12" alignment="center" dynamic="false" fontsize="10" fsbold="true">Imputable</label>
+                    <label x="455" y="70" width="80"  height="12" alignment="center" dynamic="false" fontsize="10" fsbold="true">Especial</label>
+                    <!--<line x1="0" y1="85" x2="100%" y2="85" weight="0.25"/>-->
+	    </band>
+	</pageheader>
+	
+	<groups>
+		<group name="detail">
+			<fields>
+				<field>table_0.idaccounttype</field>
+			</fields>
+			
+			<groupheader layout-cachable="false" pagebreak-before-print="true">
+				
+			</groupheader>
+		</group>
+	</groups>
+	
+	<items layout-cachable="false" >
+		<band name="detail" fontsize="8">
+                        <line x1="0"   y1="0" x2="0"   y2="100%" weight="0.25"/>
+                        <line x1="300" y1="0" x2="300" y2="100%" weight="0.25"/>
+                        <line x1="390" y1="0" x2="390" y2="100%" weight="0.25"/>
+                        <line x1="455" y1="0" x2="455" y2="100%" weight="0.25"/>
+                        <line x1="535" y1="0" x2="535" y2="100%" weight="0.25"/>
+			<string-field x="005" y="0" width="295" alignment="left"   height="12" dynamic="true" fieldname="table_0.codename"/>
+			<string-field x="305" y="0" width="88"  alignment="center" height="12" dynamic="true" fieldname="table_0.parentcode"/>
+                        <string-field x="395" y="0" width="60"  alignment="center" height="12" dynamic="true" fieldname="table_0.imputable"/>
+                        <string-field x="460" y="0" width="75"  alignment="center" height="12" dynamic="true" fieldname="table_0.special"/>
+		</band>
+	</items>
+	
+	<include src="footerPaginated.xml"/>
+</report>
+

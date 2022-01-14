@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!--
+    ~ Copyright (c) 2007, Your Corporation. All Rights Reserved.
+    -->
+
+<report xmlns="http://jfreereport.sourceforge.net/namespaces/reports/legacy/simple" name="Orden de Compras" pageformat="A4"
+       topmargin="20" leftmargin="50" bottommargin="70" rightmargin="30">
+	
+	<pageheader height="12" fontname="serif" fontsize="16" fsbold="true">
+		<label name="lbltitle" width="100%" dynamic="true" alignment="center">MUNICIPALIDAD DE LAS LAJITAS</label>
+	</pageheader>
+	
+	<groups>
+		<group name="Header">
+			<fields>
+				<field>TablePrefix</field>
+				<field>header.header</field>
+			</fields>
+			
+			<groupheader layout-cachable="false" >
+				<band name="header" fontname="SansSerif" fontstyle="plain" fontsize="10">
+					<line x1="0" y1="15" x2="100%" y2="15" weight="3"/>
+					<label name="lblnumber" x="0" y="20" width="150" dynamic="true" alignment="left" fsbold="true"  fontsize="15">Nota de Recepción</label>
+					<label name="lblnumber" x="190" y="20" width="60" dynamic="true" alignment="right" fsbold="true">Número:</label>
+					<number-field x="255" y="20" width="50" dynamic="true" alignment="left" fieldname="header.idmovement" fsbold="true"/>
+					<label name="lbldate" x="335" y="20" width="90" dynamic="true" alignment="right" fsbold="true">Fecha de N.R. </label>
+					<date-field x="430" y="20" width="80" dynamic="true" fieldname="header.movementsdate" alignment="left"  format="dd/MM/yyyy" />
+					<line x1="0" y1="42" x2="100%" y2="42" weight="3"/>
+					
+					<label name="lblprovider" x="0" y="50" width="100" dynamic="true" alignment="right" fsbold="true">Entréguese a:</label>
+					<!--<string-field x="110" y="50" width="100" alignment="left" dynamic="true"  fieldname="header.identificationnumber"/> -->
+					<string-field x="110" y="50" width="230" alignment="left" dynamic="true" fieldname="header.dispatcher"/>
+					<label name="lblobservations" x="0" y="70" width="300" dynamic="true" alignment="right" fsbold="true">En concepto de: Recepcion de materiales - Ref. Rto. </label>
+					<string-field name="observations" fieldname="header.number" x="305" y="70" width="75%" dynamic="true" alignment="left"/>
+					<line x1="0" y1="90" x2="100%" y2="90" weight="2"/>
+				</band>
+			</groupheader>
+		</group>
+		
+		<group name="Header-Detail" >
+			<fields>
+				<field>TablePrefix</field>
+				<field>header.header</field>
+				<field>dummy-field</field>
+			</fields>
+			
+			<groupheader repeat="false" layout-cachable="false" >
+				<band name="detail" height="30" fontname="SansSerif" fontstyle="bold" fontsize="10" >
+					<line x1="0" y1="0" x2="100%" y2="0" weight="0.25"/>
+					<line x1="0" y1="0" x2="0" y2="100%" weight="0.25"/>
+					<line x1="85" y1="0" x2="85" y2="100%" weight="0.25"/>
+					<line x1="355" y1="0" x2="355" y2="100%" weight="0.25"/>
+					<!-- <line x1="430" y1="0" x2="430" y2="100%" weight="0.25"/> -->
+					<line x1="100%" y1="0" x2="100%" y2="100%" weight="0.25"/>
+			
+					<label name="resource" x="5" y="5" width="80" height="25" alignment="left">O.C.</label>
+					<label name="quantity" x="90" y="5" width="200" dynamic="true" alignment="left">Recurso</label>
+					<label name="debit" x="360" y="5" width="60" dynamic="true" alignment="right">Cantidad</label>
+					<!--<label name="credit" x="445" y="5" width="60" dynamic="true" alignment="right">Crédito</label>-->
+					<line x1="0" y1="25" x2="100%" y2="25" weight="0.25"/>
+				</band>
+			</groupheader>
+			
+			<groupfooter height="18" fontname="Monospaced" fontstyle="bold" fontsize="9">
+			    <line x1="0" y1="2" x2="100%" y2="2" weight="0.25"/>
+      			</groupfooter>
+		</group>
+		
+		<group name="Header-Footer" >
+			<groupfooter height="18" fontname="Monospaced" fontstyle="bold" fontsize="9">
+				<line x1="0" y1="37" x2="150" y2="37" weight="0.25"/>
+				<label x="0" y="40" name="lbltitle" dynamic="true" width="150" alignment="center">Proveedor</label>  
+				<line x1="170" y1="37" x2="320" y2="37" weight="0.25"/>
+				<label x="170" y="40" name="lbltitle" dynamic="true" width="150" alignment="center">Aclaración</label>  
+				<line x1="340" y1="37" x2="490" y2="37" weight="0.25"/>
+				<label x="340" y="40" name="lbltitle" dynamic="true" width="150" alignment="center">Encargado</label>  
+				
+				<line x1="0" y1="70" x2="100%" y2="70" weight="3"/>
+      			</groupfooter>
+		</group>
+		
+	</groups>
+	
+	<items layout-cachable="false" >
+		<band name="detail">
+			<line x1="0" y1="0" x2="0" y2="100%" weight="0.25"/>
+			<line x1="85" y1="0" x2="85" y2="100%" weight="0.25"/>
+			<line x1="355" y1="0" x2="355" y2="100%" weight="0.25"/>
+			<!-- <line x1="430" y1="0" x2="430" y2="100%" weight="0.25"/>-->
+			 <line x1="100%" y1="0" x2="100%" y2="100%" weight="0.25"/>
+			
+			<string-field x="5"   y="0" width="75"  alignment="center"  dynamic="true" fieldname="detail.ponumber"/>
+			<string-field x="90"  y="0" width="200" alignment="left"   dynamic="true" fieldname="detail.resource"/>
+			<number-field x="360" y="0" width="60"  alignment="right"  dynamic="true" fieldname="detail.finalqty"/>
+			<!-- <number-field x="445" y="0" width="60" alignment="right" format="$#,##0.00" dynamic="true" fieldname="detail.credit"/> -->
+			
+		</band>
+	</items>
+	
+	
+	
+	<functions>
+		<function class="org.jfree.report.function.HideElementByNameFunction" name="hideHeader">
+			<properties>
+				<property name="element">header</property>
+				<property name="field">TablePrefix</property>
+			</properties>
+		</function>
+		
+		<function class="org.jfree.report.function.HideElementByNameFunction" name="hideDetail">
+			<properties>
+				<property name="element">detail</property>
+				<property name="field">TablePrefix</property>
+			</properties>
+		</function>
+		<property-ref name="dummy-field"/>
+	</functions>
+	
+</report>

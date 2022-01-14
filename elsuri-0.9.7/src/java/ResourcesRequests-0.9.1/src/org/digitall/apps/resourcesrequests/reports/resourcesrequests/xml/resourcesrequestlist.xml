@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!--
+ LIMITACIÓN DE RESPONSABILIDAD - COPYRIGHT - [Español]
+ ================================================================================
+ El Suri - Entorno JAVA de Trabajo y Desarrollo para Gobierno Electrónico
+ ================================================================================
+
+ Información del Proyecto:  http://elsuri.sourceforge.net
+
+ Copyright (C) 2007-2010 por D'AMBROSIO MARCELO E CASSINA SANTIAGO SOC DE HECHO.
+ D'AMBROSIO MARCELO E CASSINA SANTIAGO SOC DE HECHO es propiedad de
+ Lic. Santiago Cassina (santiago@digitallsh.com.ar - scap2000@yahoo.com) y
+ Marcelo D'Ambrosio (marcelo@digitallsh.com.ar - marcelodambrosio@gmail.com)
+ http://www.digitallsh.com.ar
+
+ Este programa es software libre: usted puede redistribuirlo y/o modificarlo
+ bajo los términos de la Licencia Pública General GNU publicada
+ por la Fundación para el Software Libre, ya sea la versión 3
+ de la Licencia, o (a su elección) cualquier versión posterior.
+
+ Este programa se distribuye con la esperanza de que sea útil, pero
+ SIN GARANTÍA ALGUNA; ni siquiera la garantía implícita
+ MERCANTIL o de APTITUD PARA UN PROPÓSITO DETERMINADO.
+ Consulte los detalles de la Licencia Pública General GNU para obtener
+ una información más detallada.
+
+ Debería haber recibido una copia de la Licencia Pública General GNU
+ junto a este programa.
+ En caso contrario, consulte <http://www.gnu.org/licenses/>.
+
+ DISCLAIMER - COPYRIGHT - [English]
+ =====================================================================================
+ El Suri - JAVA Management & Development Environment for Electronic Government
+ =====================================================================================
+
+ Project Info:  http://elsuri.sourceforge.net
+
+ Copyright (C) 2007-2010 by D'AMBROSIO MARCELO E CASSINA SANTIAGO SOC DE HECHO.
+ D'AMBROSIO MARCELO E CASSINA SANTIAGO SOC DE HECHO is owned by
+ Lic. Santiago Cassina (santiago@digitallsh.com.ar - scap2000@yahoo.com) and
+ Marcelo D'Ambrosio (marcelo@digitallsh.com.ar - marcelodambrosio@gmail.com)
+ http://www.digitallsh.com.ar
+
+ This program is free software: you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation, either version 3 of the License, or
+ (at your option) any later version.
+
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public License for more details.
+
+ You should have received a copy of the GNU General Public License
+ along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+-->
+<!--
+  resourcesrequestlist.xml
+-->
+<!--
+    ~ Copyright (c) 2007, Your Corporation. All Rights Reserved.
+    -->
+
+<report xmlns="http://jfreereport.sourceforge.net/namespaces/reports/legacy/simple" name="Pedido de Materiales" pageformat="A4"
+       topmargin="20" leftmargin="50" bottommargin="70" rightmargin="30">
+	
+	<pageheader height="12" fontname="serif" fontsize="16" fsbold="true">
+		<label name="lbltitle" width="100%" dynamic="true" alignment="center">Pedidos Realizados</label>
+	</pageheader>
+	
+	<groups>
+		<group name="Header">
+			<fields>
+				<field>TablePrefix</field>
+				<field>header.header</field>
+			</fields>
+			
+			<groupheader layout-cachable="false" >
+				<band name="header" fontname="SansSerif" fontstyle="plain" fontsize="10">
+					<line x1="0" y1="15" x2="100%" y2="15" weight="3"/>
+					<label name="lbltitle" x="0" y="20" width="250" dynamic="true" alignment="left" fsbold="true"  fontsize="15">Pedidos de Materiales</label>
+					<label name="lblnumber" x="190" y="20" width="60" dynamic="true" alignment="right" fsbold="true">Número:</label>
+					<number-field x="255" y="20" width="50" dynamic="true" alignment="left" fieldname="header.number" fsbold="true"/>
+					<label name="lbldate" x="335" y="20" width="90" dynamic="true" alignment="right" fsbold="true">Fecha de P.M. </label>
+					<date-field x="430" y="20" width="80" dynamic="true" fieldname="header.date" alignment="left"  format="dd/MM/yyyy" />
+					<line x1="0" y1="42" x2="100%" y2="42" weight="3"/>
+					
+					<label name="lblsolicitor" x="0" y="50" width="100" dynamic="true" alignment="right" fsbold="true">Solicitante:</label>
+					<string-field x="110" y="50" width="230" alignment="left" dynamic="true" fieldname="header.solicitor"/>
+					<label name="lblcostcentre" x="0" y="70" width="100" dynamic="true" alignment="right" fsbold="true">C.C.: </label>
+					<string-field name="costcentre" fieldname="header.costcentre" x="110" y="70" width="75%" dynamic="true" alignment="left"/>
+					<line x1="0" y1="90" x2="100%" y2="90" weight="2"/>
+				</band>
+			</groupheader>
+		</group>
+		
+		<group name="Header-Detail" >
+			<fields>
+				<field>TablePrefix</field>
+				<field>header.header</field>
+			</fields>
+			
+			<groupheader repeat="false" layout-cachable="false" >
+				<band name="detail" height="30" fontname="SansSerif" fontstyle="bold" fontsize="10" >
+					<line x1="0" y1="0" x2="100%" y2="0" weight="0.25"/>
+					<line x1="0" y1="0" x2="0" y2="100%" weight="0.25"/>
+					<line x1="200" y1="0" x2="200" y2="100%" weight="0.25"/>
+					<line x1="380" y1="0" x2="380" y2="100%" weight="0.25"/>
+					<line x1="445" y1="0" x2="445" y2="100%" weight="0.25"/>
+					<line x1="100%" y1="0" x2="100%" y2="100%" weight="0.25"/>
+			
+					<label name="resource" x="5" y="5" width="200" height="25" alignment="left">Recurso</label>
+					<label name="brand" x="205" y="5" width="180" dynamic="true" alignment="left">Marca</label>
+					<label name="quatity" x="385" y="5" width="60" dynamic="true" alignment="left">Cantidad</label>
+					<label name="unit" x="450" y="5" width="60" dynamic="true" alignment="left">Unidad</label>
+					<line x1="0" y1="25" x2="100%" y2="25" weight="0.25"/>
+				</band>
+			</groupheader>
+			
+			<groupfooter height="18" fontname="Monospaced" fontstyle="bold" fontsize="9">
+			    <line x1="0" y1="2" x2="100%" y2="2" weight="0.25"/>
+      			</groupfooter>
+		</group>
+		
+		<group name="Header-Footer" >
+			<groupfooter height="18" fontname="Monospaced" fontstyle="bold" fontsize="9">
+				<line x1="0" y1="37" x2="150" y2="37" weight="0.25"/>
+				<label x="0" y="40" name="lbltitle" dynamic="true" width="150" alignment="center">Solicitante</label>  
+				<line x1="170" y1="37" x2="320" y2="37" weight="0.25"/>
+				<label x="170" y="40" name="lbltitle" dynamic="true" width="150" alignment="center">Aclaración</label>  
+				<line x1="340" y1="37" x2="490" y2="37" weight="0.25"/>
+				<label x="340" y="40" name="lbltitle" dynamic="true" width="150" alignment="center">Receptor</label>  
+				
+				<line x1="0" y1="70" x2="100%" y2="70" weight="3"/>
+      			</groupfooter>
+		</group>
+		
+	</groups>
+	
+	<items layout-cachable="false" >
+		<band name="detail">
+			<line x1="0" y1="0" x2="0" y2="100%" weight="0.25"/>
+			<line x1="200" y1="0" x2="200" y2="100%" weight="0.25"/>
+			<line x1="380" y1="0" x2="380" y2="100%" weight="0.25"/>
+			<line x1="445" y1="0" x2="445" y2="100%" weight="0.25"/>
+			 <line x1="100%" y1="0" x2="100%" y2="100%" weight="0.25"/>
+			
+			<string-field x="5"   y="0" width="200"  alignment="left"  dynamic="true" fieldname="detail.resourcename"/>
+			<string-field x="205"  y="0" width="180" alignment="left"   dynamic="true" fieldname="detail.brandrequested"/>
+			<number-field x="385" y="0" width="60"  alignment="right"  dynamic="true" fieldname="detail.qtyrequest"/>
+			<number-field x="445" y="0" width="60" alignment="center" format="$#,##0.00" dynamic="true" fieldname="detail.unitname"/>
+			
+		</band>
+	</items>
+	
+	
+	
+	<functions>
+		<function class="org.jfree.report.function.HideElementByNameFunction" name="hideHeader">
+			<properties>
+				<property name="element">header</property>
+				<property name="field">TablePrefix</property>
+			</properties>
+		</function>
+		
+		<function class="org.jfree.report.function.HideElementByNameFunction" name="hideDetail">
+			<properties>
+				<property name="element">detail</property>
+				<property name="field">TablePrefix</property>
+			</properties>
+		</function>
+	</functions>
+	
+</report>
+

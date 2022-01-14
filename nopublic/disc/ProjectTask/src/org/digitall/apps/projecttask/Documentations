@@ -1,0 +1,52 @@
+Project Task
+
+A- Proyectos
+    Carga el árbol con todas las tareas y proyectos existentes.
+    Al selecionar un proyecto o tarea en el detalle se pueden observar información 
+    relevante de los mismos.
+
+1- Asignar Tareas Todos
+    Confirma si se quiere asignar esa tarea o proyectos a todos los usuarios 
+    según el elemento selecionado (proyecto/tarea). Si un usuario ya tiene asignada 
+    esa tarea el sistema lo pasa por alto.
+
+2- Agregar una nueva tarea o proyecto
+    Agrega un proyecto o tarea segun el elemento selecionado: si se encuentra
+    seleccionado Proyecto agrega un proyecto al árbol en caso contrario agrega una
+    tarea para que dependerá del proyecto selecionado.
+
+3- Borrar (Proyecto/Tarea)
+    Verifica que el elemento selecionado no este asignado para luego borrar lógicamnete
+    dicho elemento.
+    
+    
+B- Asignar Tareas
+
+1- se elige el usuario al que se le asignaran tareas.
+
+2- Aparece la pantalla con las tareas que aun no se les asignaron y el detalle de 
+    todas las tareas que esta persona realiza o en algun momneto realizó. Para esto
+    existe un filtro que permite ver las tareas que aun no han finalizado.
+    
+    2.1 Al pulsar el botón down la tarea selecionada en el combo box se añade  a 
+    las tareas que ya tiene asignada y es eliminada de la lista de tareas para 
+    asignar.
+
+3- Al hacer doble click en una tarea de la grilla se abre una ventana con el detalle
+    diario de esa tarea que permite ver el tiempo que se llevo a cabo la misma.
+
+4- Finalizar
+    Al estar selecionada una tarea permite finalizarla siempre y cunado esta 
+    tarea no este en estado play o no se haya finalizado anteriormente.
+    
+    (*) Si por error se finaliza una tarea que no correspondía entoces se derbería
+    poder reanudar dicha tarea
+    (*) No deberia permitirse finalizar o tareas generales como las reuniones
+
+5- Borrar
+    Al estar selecionada una tarea permite eliminarla siempre y cuando esta tarea
+    no este en desarrollo (play/stop/suspendido) iniciado o se haya terminado.
+   
+
+    
+    

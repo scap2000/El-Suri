@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!--
+ LIMITACIÓN DE RESPONSABILIDAD - COPYRIGHT - [Español]
+ ================================================================================
+ El Suri - Entorno JAVA de Trabajo y Desarrollo para Gobierno Electrónico
+ ================================================================================
+
+ Información del Proyecto:  http://elsuri.sourceforge.net
+
+ Copyright (C) 2007-2010 por D'AMBROSIO MARCELO E CASSINA SANTIAGO SOC DE HECHO.
+ D'AMBROSIO MARCELO E CASSINA SANTIAGO SOC DE HECHO es propiedad de
+ Lic. Santiago Cassina (santiago@digitallsh.com.ar - scap2000@yahoo.com) y
+ Marcelo D'Ambrosio (marcelo@digitallsh.com.ar - marcelodambrosio@gmail.com)
+ http://www.digitallsh.com.ar
+
+ Este programa es software libre: usted puede redistribuirlo y/o modificarlo
+ bajo los términos de la Licencia Pública General GNU publicada
+ por la Fundación para el Software Libre, ya sea la versión 3
+ de la Licencia, o (a su elección) cualquier versión posterior.
+
+ Este programa se distribuye con la esperanza de que sea útil, pero
+ SIN GARANTÍA ALGUNA; ni siquiera la garantía implícita
+ MERCANTIL o de APTITUD PARA UN PROPÓSITO DETERMINADO.
+ Consulte los detalles de la Licencia Pública General GNU para obtener
+ una información más detallada.
+
+ Debería haber recibido una copia de la Licencia Pública General GNU
+ junto a este programa.
+ En caso contrario, consulte <http://www.gnu.org/licenses/>.
+
+ DISCLAIMER - COPYRIGHT - [English]
+ =====================================================================================
+ El Suri - JAVA Management & Development Environment for Electronic Government
+ =====================================================================================
+
+ Project Info:  http://elsuri.sourceforge.net
+
+ Copyright (C) 2007-2010 by D'AMBROSIO MARCELO E CASSINA SANTIAGO SOC DE HECHO.
+ D'AMBROSIO MARCELO E CASSINA SANTIAGO SOC DE HECHO is owned by
+ Lic. Santiago Cassina (santiago@digitallsh.com.ar - scap2000@yahoo.com) and
+ Marcelo D'Ambrosio (marcelo@digitallsh.com.ar - marcelodambrosio@gmail.com)
+ http://www.digitallsh.com.ar
+
+ This program is free software: you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation, either version 3 of the License, or
+ (at your option) any later version.
+
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public License for more details.
+
+ You should have received a copy of the GNU General Public License
+ along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+-->
+<!--
+  invoicesNotPaid.xml
+-->
+<!--
+    ~ Copyright (c) 2007, Your Corporation. All Rights Reserved.
+    -->
+
+<report xmlns="http://jfreereport.sourceforge.net/namespaces/reports/legacy/simple" name="Facturas Impagas" pageformat="A4"
+       topmargin="20" leftmargin="50" bottommargin="70" rightmargin="30">
+	
+	<pageheader height="12" fontname="SansSerif" fontsize="16" fsbold="true">
+		<string-field  width="100%" dynamic="true" alignment="center" fieldname="location"></string-field>
+	</pageheader>
+	
+	<groups>
+		<group name="table_0">
+			<fields>
+				<field>TablePrefix</field>
+				<field>table_0.header</field>
+			</fields>
+			
+			<groupheader layout-cachable="false" >
+				<band name="table_0" fontname="SansSerif" fontstyle="plain" fontsize="10">
+					<line x1="0" y1="15" x2="100%" y2="15" weight="3"/>
+                                        <label name="lbltitle" x="0" y="20" width="200" dynamic="true" alignment="left" fsbold="true" fontsize="15">Facturas Impagas</label>
+					<label name="lbldate" x="335" y="20" width="90" dynamic="true" alignment="right" fsbold="true">Fecha:</label>
+					<string-field x="430" y="20" width="80" dynamic="true" fieldname="actualdate" alignment="left" format="dd/MM/yyyy" />
+					<!-- Agrego un label vacío para bajar un poco la tabla -->
+					<label name="dummy" width="20" x="0" y="40" dynamic="false" height="10"/>
+					<!--<line x1="0" y1="42" x2="100%" y2="42" weight="3"/>
+					<label name="lblmovementtype" x="35" y="50" width="150" dynamic="true" alignment="left" fsbold="true">Tipo de Movimiento:</label>
+					<string-field name="movementtype" fieldname="cashmovementtype" x="150" y="50" width="75%" dynamic="true" alignment="left"/>
+                                        <label name="lbldatefrom" x="35" y="70" width="80" dynamic="true" alignment="left" fsbold="true">Desde:</label>
+					<string-field name="datefrom" fieldname="from" x="75" y="70" width="75%" dynamic="true" alignment="left"/>
+                                        <label name="lbldateto" x="200" y="70" width="80" dynamic="true" alignment="left" fsbold="true">Hasta:</label>
+					<string-field name="dateto" fieldname="to" x="235" y="70" width="75%" dynamic="true" alignment="left"/>
+					<line x1="0" y1="90" x2="100%" y2="90" weight="2"/>-->
+				</band>
+			</groupheader>
+		</group>
+		
+		<group name="Header-Detail" >
+			<fields>
+				<field>TablePrefix</field>
+				<field>table_0.header</field>
+				<field>dummy-field</field>
+			</fields>
+			
+			<groupheader repeat="false" layout-cachable="false" >
+				<band name="table_0" height="30" fontname="SansSerif" fontstyle="bold" fontsize="10" >
+					<line x1="0" y1="0" x2="100%" y2="0" weight="0.25"/>
+					<line x1="0" y1="0" x2="0" y2="100%" weight="0.25"/>
+					<line x1="85" y1="0" x2="85" y2="100%" weight="0.25"/>
+					<line x1="150" y1="0" x2="150" y2="100%" weight="0.25"/>
+                                        <line x1="400" y1="0" x2="400" y2="100%" weight="0.25"/>
+					<line x1="100%" y1="0" x2="100%" y2="100%" weight="0.25"/>
+			
+					<label name="date" x="5" y="5" width="80" height="25" alignment="center">Fecha</label>
+					<label name="type" x="90" y="5" width="65" dynamic="true" alignment="center">Tipo</label>
+					<label name="concept" x="155" y="5" width="200" dynamic="true" alignment="center">Proveedor</label>
+                                        <label name="concept" x="405" y="5" width="100" dynamic="true" alignment="center">($) Monto</label>
+					<line x1="0" y1="25" x2="100%" y2="25" weight="0.25"/>
+				</band>
+			</groupheader>
+			
+			<groupfooter height="18" fontname="Monospaced" fontstyle="bold" fontsize="9">
+			    <line x1="0" y1="2" x2="100%" y2="2" weight="0.25"/>
+      			</groupfooter>
+		</group>
+		
+		<group name="Header-Footer" >
+			<groupfooter height="18" fontname="Monospaced" fontstyle="bold" fontsize="9">
+
+				<label x="340" y="3" name="lblTotal" fontsize="12" dynamic="true" width="55" alignment="right">Total:</label>
+				<rectangle x="400" y="0" width="120" height="15" color="#FFFF00" draw="true" fill="true"/>
+				<rectangle x="400" y="0" width="120" height="15" color="#000000" draw="true" fill="false"/>
+				<number-field x="400" y="3" format="$ #,##0.00" fieldname="totalAmount" dynamic="true" width="110" alignment="right"/>
+                                <line x1="0" y1="52" x2="150" y2="52" weight="0.25"/>
+				<label x="0" y="55" name="lbltitle" dynamic="true" width="150" alignment="center">Confeccionó</label>  
+				<line x1="170" y1="52" x2="320" y2="52" weight="0.25"/>
+				<label x="170" y="55" name="lbltitle" dynamic="true" width="150" alignment="center">Tesorero</label>  
+				<line x1="340" y1="52" x2="490" y2="52" weight="0.25"/>
+				<label x="340" y="55" name="lbltitle" dynamic="true" width="150" alignment="center">Intendente</label>  
+				
+				<line x1="0" y1="122" x2="150" y2="122" weight="0.25"/>
+				<label x="0" y="130" name="lbltitle" dynamic="true" width="150" alignment="center">FIRMA</label>  
+				<line x1="170" y1="122" x2="320" y2="122" weight="0.25"/>
+				<label x="170" y="130" name="lbltitle" dynamic="true" width="150" alignment="center">Aclaración</label>  
+				<line x1="340" y1="122" x2="490" y2="122" weight="0.25"/>
+				<label x="340" y="130" name="lbltitle" dynamic="true" width="150" alignment="center">DNI-CUIT-CUIL</label>  
+				
+				<line x1="0" y1="145" x2="100%" y2="145" weight="3"/>
+                                
+      			</groupfooter>
+		</group>
+		
+	</groups>
+	
+	<items layout-cachable="false" >
+		<band name="table_0">
+			<line x1="0" y1="0" x2="0" y2="100%" weight="0.25"/>
+			<line x1="85" y1="0" x2="85" y2="100%" weight="0.25"/>
+			<line x1="150" y1="0" x2="150" y2="100%" weight="0.25"/>
+                        <line x1="400" y1="0" x2="400" y2="100%" weight="0.25"/>
+                        <line x1="100%" y1="0" x2="100%" y2="100%" weight="0.25"/>
+			
+			<date-field x="5" y="0" width="80" alignment="center"  dynamic="true" fieldname="table_0.date" format="dd/MM/yyyy"/>
+                        <string-field x="85" y="0" width="65" alignment="center"  dynamic="true" fieldname="table_0.name"/>
+			<string-field x="155" y="0" width="150" alignment="left" dynamic="true" fieldname="table_0.provider"/>
+                        <number-field x="405" y="0" width="105" alignment="right" format="$ #,##0.00" dynamic="true" fieldname="table_0.amount"/>
+			
+		</band>
+	</items>
+	
+	
+	
+	<functions>
+		<function class="org.jfree.report.function.HideElementByNameFunction" name="hideHeader">
+			<properties>
+				<property name="element">table_0</property>
+				<property name="field">TablePrefix</property>
+			</properties>
+		</function>
+
+		<function class="org.jfree.report.function.ItemSumFunction" name="totalAmount">
+			<properties>
+				<property name="field">table_0.amount</property>
+			</properties>
+		</function>
+		
+		<property-ref name="dummy-field"/>
+	</functions>
+	
+</report>
+
+
+

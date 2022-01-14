@@ -1,0 +1,67 @@
+* Partida Presupuestaria
+
+cashflow.getallBudgets
+cashflow.addBudget
+cashflow.setBudget
+cashflow.getBudget
+cashflow.setBudgetTotalToCC	--> (Actualiza el monto total asignado a los centro de costos)
+cashflow.setBudgetTotalToET	--> (Actualiza el monto total asignado a los tipos de gastos)
+---------------------------------------
+
+* Tipo de Gastos
+
+tabs.setExpenditureType --> Modificada por Santiago para la nueva versión: accounting.setAccount
+tabs.addExpenditureType --> Modificada por Santiago para la nueva versión: accounting.addExpenditureAccount
+tabs.getExpenditureType  --> Modificada por Santiago para la nueva versión: accounting.getExpenditureAccount
+tabs.setExpenditureTypeColor --> Modificada por Santiago para la nueva versión: accounting.setAccountColor
+tabs.getAllExpenditureType --> Modificada por Santiago para la nueva versión: accounting.getAllExpenditureAccounts
+----------------------------------------
+
+* Partidas asignadas en Tipos de Gastos -> ver tabla 'tabs.expendituretype_tabs'
+
+cashflow.getallBudgetByExpenditureType		--> (Arbol para Asignar partida a los T.G.)  --> Modificada por Santiago para la nueva versión: cashflow.getallBudgetsByExpenditureAccount
+cashflow.setBudgetExpenditureTypeTotalToCC	--> (Actualiza el monto asignado par los CC)
+cashflow.savebudgetexpendituretype		--> (Asigna partida a un TG)
+    1. Si es nueva la asignacion llama a la funcion 'cashflow.addBudgetexpendituretype'
+    2. Si es Re-Asignacion llama a la funcion 'cashflow.setBudgetExpenditureType'
+
+-------------------------------------------
+
+* Partidas asignadas en Centros de Costos por Tipos de Gastos
+
+cashflow.getAllBudgetCostsCentres				-> (Listado de las asignaciones de la partida seleccionada en los diferentes CC)
+cashflow.getAllCostsCentresByBudget				-> (Arbol - Nodo Root)
+cashflow.getAllBudgetCostsCentreDetailByExpenditureType		-> (Arbol - Completo)  --> Modificada por Santiago para la nueva versión: cashflow.getAllBudgetCostsCentreDetailByExpenditureAccount
+
+cashflow.addBudgetCostCentre		--> (si se asigna por primera vez la partida, relacion Partida con Centro de Costo)
+cashflow.addBudgetCostCentreDetail	--> (asigna el detalle de la asignacion de la Partida por tipo de gastos)
+
+cashflow.setBudgetCostCentreAmount	--> (actualiza el total asignado al Centro de Costos por Partida Presupuestaria)
+cashflow.setBudgetCostCentreDetail	--> (reasignacion de la Partida por tipo de gastos)
+
+cashflow.addBudgetCostCentreDetailForParent	--> (asigna automaticamente el monto de los padres segun el monto del hijo - tipo de gasto)
+cashflow.setBudgetCostCentreDetailForParent	--> (actualiza automaticamente el monto de los padres segun el monto del hijo - tipo de gasto)
+-------------------------------------------
+
+* Centros de Costos
+
+cashflow.getAllCostsCentres	--> (listado gral.)
+cashflow.getCostsCentre
+
+cashflow.setCostsCentreAssignedAmount		--> (actualiza los montos totales de un Centro de Costos)
+cashflow.addCostsCentreAmountDetail		--> (agrega los montos totales asignado/gastado por tipo de gasto para un Centro de Cotos)
+cashflow.addCostsCentreAmountDetailForParent
+cashflow.addCostsCentreAmounts			--> (inicializa los montos totales de un Centro de Costos, se ejecuta cuando se agrega un  CC nuevo)
+cashflow.setCostsCentreAssignedAmountDetail	--> (actualiza los montos totales por Tipos de Gastos, de un Centro de Costos)
+
+cashflow.getAllExpenditureTypeByCostCentre	--> (listado de los tipos de gastos asociado al Centro de Costo <Gastos y Partida>)
+  --> Modificada por Santiago para la nueva versión: cashflow.getAllExpenditureAccountsByCostCentre
+cashflow.getAllCostsCentreAssignedAmount	--> (listado de Montos Asignado por Tipo de Gastos)
+-------------------------------------------
+
+* Gastos del Centro de Costo
+
+cashflow.addCostsCentreExpense			--> (agrega gasto por tipo de gastos)
+cashflow.setCostsCentreSpentAmountDetail	--> (actualiza el total de gastos por tipo de gastos)
+<VER!!! - BORRAR> cashflow.setCostsCentreSpentAmountForParent	--> (actualiza el total de gastos por tipo de gastos - forma jerarquica)
+cashflow.setCostsCentreSpentAmount		--> (actualiza la cantidad total de gastos)

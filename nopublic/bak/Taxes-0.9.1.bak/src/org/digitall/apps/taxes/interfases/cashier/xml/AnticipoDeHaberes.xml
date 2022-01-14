@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+
+<report xmlns="http://jfreereport.sourceforge.net/namespaces/reports/legacy/simple" name="Anticipo de Haberes" pageformat="A4"
+       topmargin="25" leftmargin="25" bottommargin="10" rightmargin="10">
+	
+        <pageheader fontname="SanSerif" fontstyle="plain" fontsize="08">
+        
+            <!-- INICIO HEADER ORIGINAL -->
+	    <line x1="0"   y1="40"  x2="550" y2="40"  weight=".75" color="#AAAAAA"/>
+            <line x1="370" y1="0"   x2="370" y2="40"  weight=".75" color="#AAAAAA"/>
+            
+            <rectangle name="ta"  x="0"   y="00" width="052" height="30" draw="false" fill="false" color="#0000FF"/>
+            <image-field name="l" x="0"   y="00" width="052" height="30"  scale="true" fieldname="logo"/>
+            <rectangle name="ta"  x="52"  y="00" width="318" height="28" draw="false" fill="false" color="#0000FF"/>
+            <string-field         x="52"  y="00" width="318" height="28" dynamic="false" alignment="center" vertical-aligment="middle" fontsize="14" fsbold="true" fieldname="orgtitle"/>
+            <rectangle name="ta"  x="52"  y="30" width="318" height="10" draw="false" fill="false" color="#0000FF"/>
+            <string-field         x="52"  y="30" width="318" height="10" dynamic="false" alignment="center" fontsize="08" fsbold="false" vertical-aligment="middle" fieldname="locationdata"/>
+
+            <rectangle name="ta"  x="370" y="00"  width="180" height="10" draw="false" fill="false" color="#0000FF"/>
+            <label     name="zo"  x="370" y="00"  width="180" height="10" fontsize="08" dynamic="false" alignment="center" vertical-aligment="middle" fsbold="true">ANTICIPO DE HABERES</label>
+            <rectangle name="ta"  x="380" y="18"  width="75"  height="10" draw="false" fill="false" color="#0000FF"/>
+	    <label     name="ti"  x="380" y="18"  width="75"  height="10" fontsize="08" dynamic="false" alignment="left" fsbold="false">Comprobante Nº:</label>
+            <rectangle  name="t"  x="470" y="18"  width="23"  height="10" draw="false" fill="false" color="#0000FF"/>
+            <string-field         x="470" y="18"  width="23"  height="10" fontsize="08" dynamic="false" alignment="left" fsbold="true" fieldname="anio"/>
+            <rectangle  name="t"  x="492" y="18"  width="10"  height="10" draw="false" fill="false" color="#0000FF"/>
+            <label     name="ti"  x="492" y="18"  width="10"  height="10" fontsize="08" dynamic="false" alignment="center" fsbold="true">-</label>
+            <rectangle  name="t"  x="502" y="18"  width="048" height="10" draw="false" fill="false" color="#0000FF"/>
+            <number-field         x="502" y="18"  width="048" height="10" fontsize="08" dynamic="false" alignment="left" fsbold="true" format="000000" fieldname="numero"/>
+
+            <rectangle name="ta"  x="380" y="30"  width="50"  height="10" draw="false" fill="false" color="#0000FF"/>
+	    <label     name="ti"  x="380" y="30"  width="50"  height="10" fontsize="08" dynamic="false" alignment="left" fsbold="false">Legajo Nº:</label>
+            <rectangle name="ta"  x="470" y="30"  width="080" height="10" draw="false" fill="false" color="#0000FF"/>
+            <number-field         x="470" y="30"  width="080" height="10" alignment="left" dynamic="false" fontsize="08" fsbold="true" fieldname="legajo"/>
+            
+            <!-- DETALLE ORIGINAL-->
+            <rectangle   name="t"  x="000" y="050"  width="550" height="170" draw="true" fill="false" color="#000000"/>
+                        
+            <rectangle   name="ta" x="140" y="055"  width="400" height="12" draw="false" fill="false" color="#0000FF"/>
+            <string-field          x="140" y="055"  width="400" height="12" alignment="right" dynamic="false" fontname="SanSerif" fontsize="08" fsbold="false" fieldname="fechadelanota"/>
+            <rectangle  name="ta"  x="020" y="070"  width="160" height="12" draw="false" fill="false" color="#0000FF"/>
+            <label      name="zo"  x="020" y="070"  width="160" height="12" fontsize="08" dynamic="false" alignment="left" vertical-aligment="middle" fsbold="true">SEÑOR INTENDENTE:</label>
+            <rectangle  name="ta"  x="020" y="090"  width="500" height="60" draw="false" fill="false" color="#0000FF"/>
+            <string-field          x="020" y="090"  width="500" height="60" line-height="12" alignment="left" dynamic="true" fontsize="10" fsbold="false" fieldname="textonota"/>
+
+            <rectangle  name="ta" x="010" y="205" width="100"  height="12" draw="false" fill="false" color="#0000FF"/>
+            <line       x1="020" y1="205" x2="100" y2="205" weight="1.00" color="#AAAAAA"/>
+            <label      name="zo" x="010" y="205" width="100"  height="12" fontsize="08" dynamic="false" alignment="center" vertical-aligment="middle">Firma</label>
+            
+            <rectangle  name="ta" x="220" y="205" width="100"  height="12" draw="false" fill="false" color="#0000FF"/>
+            <line       x1="220" y1="205" x2="320" y2="205" weight="1.00" color="#AAAAAA"/>
+            <label      name="zo" x="220" y="205" width="100"  height="12" fontsize="08" dynamic="false" alignment="center" vertical-aligment="middle">Aclaración</label>
+            
+            <rectangle   name="t"  x="000" y="230"  width="550" height="120" draw="true" fill="false" color="#000000"/>
+            
+            <rectangle   name="ta" x="000" y="240"  width="550" height="12" draw="false" fill="false" color="#0000FF"/>
+            <label       name="zo" x="000" y="240"  width="550" height="12" fontsize="08" dynamic="false" alignment="center" vertical-aligment="middle" fsbold="true">ANTICIPO DE HABERES</label>
+            
+            <rectangle  name="ta"  x="020" y="260"  width="500" height="80" draw="false" fill="false" color="#0000FF"/>
+            <string-field          x="020" y="260"  width="500" height="80" line-height="12" alignment="left" dynamic="false" fontsize="10" fsbold="false" fieldname="textoautorizacion"/>
+            
+            <rectangle  name="ta" x="040" y="335" width="60"  height="12" draw="false" fill="false" color="#0000FF"/>
+            <line       x1="020" y1="335" x2="100" y2="335" weight="1.00" color="#AAAAAA"/>
+            <label      name="zo" x="010" y="335" width="100"  height="12" fontsize="08" dynamic="false" alignment="center" vertical-aligment="middle">Intendente</label>
+            
+            <image-field name="t" x="000" y="358"  width="121" height="20"  scale="true" fieldname="barcode"/>
+            <rectangle  name="ta" x="450" y="360" width="095" height="08" draw="false" fill="false" color="#0000FF"/>
+            <label      name="zo" x="450" y="355" width="095" height="08" fontsize="07" dynamic="false" alignment="right" vertical-aligment="middle">ORIGINAL</label>
+            
+            <!-- ACA TIENE QUE IR UNA LINEA DIVISORIA --> 
+            <line x1="0" y1="393" x2="550" y2="393" weight=".75" stroke-style="dashed" color="#AAAAAA"/>
+            
+            <!-- ***************************** -->                        
+            <!-- DUPLICADO-->
+            <line x1="0"   y1="440"  x2="550" y2="440"  weight=".75" color="#AAAAAA"/>
+            
+            <rectangle name="ta"  x="0"  y="400" width="052" height="30" draw="false" fill="false" color="#0000FF"/>
+            <image-field name="l" x="0"  y="400" width="052" height="30" scale="true"    fieldname="logo"/>
+            <rectangle name="ta"  x="52" y="400" width="318" height="28" draw="false" fill="false" color="#0000FF"/>
+            <string-field         x="52" y="400" width="318" height="28" dynamic="false" alignment="center" vertical-aligment="middle" fontsize="14" fsbold="true" fieldname="orgtitle"/>
+            <rectangle name="ta"  x="52" y="430" width="318" height="10" draw="false" fill="false" color="#0000FF"/>
+            <string-field         x="52" y="430" width="318" height="10" dynamic="false" alignment="center" fontsize="08" fsbold="false" vertical-aligment="middle" fieldname="locationdata"/>
+
+            <rectangle name="ta" x="370" y="400"  width="180" height="10" draw="false" fill="false" color="#0000FF"/>
+            <label     name="zo" x="370" y="400"  width="180" height="10" fontsize="08" dynamic="false" alignment="center" vertical-aligment="middle" fsbold="true">ANTICIPO DE HABERES</label>
+            <rectangle name="ta" x="380" y="418"  width="75"  height="10" draw="false" fill="false" color="#0000FF"/>
+	    <label     name="ti" x="380" y="418"  width="75"  height="10" fontsize="08" dynamic="false" alignment="left" fsbold="false">Comprobante Nº:</label>
+            <rectangle  name="t" x="470" y="418"  width="23"  height="10" draw="false" fill="false" color="#0000FF"/>
+            <string-field        x="470" y="418"  width="23"  height="10" fontsize="08" dynamic="false" alignment="left" fsbold="true" fieldname="anio"/>
+            <rectangle  name="t" x="492" y="418"  width="10"  height="10" draw="false" fill="false" color="#0000FF"/>
+            <label     name="ti" x="492" y="418"  width="10"  height="10" fontsize="08" dynamic="false" alignment="center" fsbold="true">-</label>
+            <rectangle  name="t" x="502" y="418"  width="048" height="10" draw="false" fill="false" color="#0000FF"/>
+            <number-field        x="502" y="418"  width="048" height="10" fontsize="08" dynamic="false" alignment="left" fsbold="true" format="000000" fieldname="numero"/>
+            
+            <rectangle name="ta" x="380" y="430"  width="50"  height="10" draw="false" fill="false" color="#0000FF"/>
+	    <label     name="ti" x="380" y="430"  width="50"  height="10" fontsize="08" dynamic="false" alignment="left" fsbold="false">Legajo Nº:</label>
+            <rectangle name="ta" x="470" y="430"  width="080" height="10" draw="false" fill="false" color="#0000FF"/>
+            <number-field        x="470" y="430"  width="080" height="10" alignment="left" dynamic="false" fontsize="08" fsbold="true" fieldname="legajo"/>
+            
+            <!-- DETALLE DUPLICADO -->
+            
+            <rectangle   name="t"  x="000" y="450"  width="550" height="170" draw="true" fill="false" color="#000000"/>
+                        
+            <rectangle   name="ta" x="140" y="455"  width="400" height="12" draw="false" fill="false" color="#0000FF"/>
+            <string-field          x="140" y="455"  width="400" height="12" alignment="right" dynamic="false" fontname="SanSerif" fontsize="08" fsbold="false" fieldname="fechadelanota"/>
+            <rectangle  name="ta"  x="020" y="470"  width="160" height="12" draw="false" fill="false" color="#0000FF"/>
+            <label      name="zo"  x="020" y="470"  width="160" height="12" fontsize="08" dynamic="false" alignment="left" vertical-aligment="middle" fsbold="true">SEÑOR INTENDENTE:</label>
+            <rectangle  name="ta"  x="020" y="490"  width="500" height="60" draw="false" fill="false" color="#0000FF"/>
+            <string-field          x="020" y="490"  width="500" height="60" line-height="12" alignment="left" dynamic="true" fontsize="10" fsbold="false" fieldname="textonota"/>
+
+            <rectangle  name="ta" x="010" y="605" width="100"  height="12" draw="false" fill="false" color="#0000FF"/>
+            <line       x1="020" y1="605" x2="100" y2="605" weight="1.00" color="#AAAAAA"/>
+            <label      name="zo" x="010" y="605" width="100"  height="12" fontsize="08" dynamic="false" alignment="center" vertical-aligment="middle">Firma</label>
+            
+            <rectangle  name="ta" x="220" y="605" width="100"  height="12" draw="false" fill="false" color="#0000FF"/>
+            <line       x1="220" y1="605" x2="320" y2="605" weight="1.00" color="#AAAAAA"/>
+            <label      name="zo" x="220" y="605" width="100"  height="12" fontsize="08" dynamic="false" alignment="center" vertical-aligment="middle">Aclaración</label>
+            
+            <rectangle   name="t"  x="000" y="630"  width="550" height="120" draw="true" fill="false" color="#000000"/>
+            
+            <rectangle   name="ta" x="000" y="640"  width="550" height="12" draw="false" fill="false" color="#0000FF"/>
+            <label       name="zo" x="000" y="640"  width="550" height="12" fontsize="08" dynamic="false" alignment="center" vertical-aligment="middle" fsbold="true">ANTICIPO DE HABERES</label>
+            
+            <rectangle  name="ta"  x="020" y="660"  width="500" height="80" draw="false" fill="false" color="#0000FF"/>
+            <string-field          x="020" y="660"  width="500" height="80" line-height="12" alignment="left" dynamic="false" fontsize="10" fsbold="false" fieldname="textoautorizacion"/>
+            
+            <rectangle  name="ta" x="040" y="735" width="60"  height="12" draw="false" fill="false" color="#0000FF"/>
+            <line       x1="020" y1="735" x2="100" y2="735" weight="1.00" color="#AAAAAA"/>
+            <label      name="zo" x="010" y="735" width="100"  height="12" fontsize="08" dynamic="false" alignment="center" vertical-aligment="middle">Intendente</label>
+            
+            <image-field name="t" x="000" y="758" width="121" height="20"  scale="true" fieldname="barcode"/>
+            <rectangle  name="ta" x="450" y="755" width="095" height="08" draw="false" fill="false" color="#0000FF"/>
+            <label      name="zo" x="450" y="755" width="095" height="08" fontsize="07" dynamic="false" alignment="right" vertical-aligment="middle">DUPLICADO</label>
+            
+	</pageheader>
+
+</report>
+
+

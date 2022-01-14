@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<report xmlns="http://jfreereport.sourceforge.net/namespaces/reports/legacy/simple" name="Convenio de Recursos por Persona" pageformat="A4"
+       topmargin="25" leftmargin="25" bottommargin="10" rightmargin="10">
+
+	<pageheader height="12" fontname="SansSerif" fontsize="16" fsbold="true">
+		
+	    <line x1="370" y1="0" x2="370" y2="80"  weight=".75" color="#AAAAAA"/>
+	    <line x1="0" y1="80"  x2="550" y2="80"  weight=".75" color="#AAAAAA"/>
+            
+            <image-field name="logo" x="0" y="5" width="52" height="30"  scale="true" fieldname="logo"/>
+            <string-field        x="70"  y="00" width="300" height="28" dynamic="false" alignment="center" vertical-aligment="middle" fontsize="14" fsbold="true" fieldname="orgtitle"/>
+            <rectangle name="ta" x="70"  y="30" width="300" height="10" draw="false" fill="false" color="#0000FF"/>
+            <string-field        x="70"  y="30" width="300" height="10" dynamic="false" alignment="center" fontsize="08" fsbold="false" vertical-aligment="middle" fieldname="locationdata"/>
+            
+            <rectangle name="ta" x="0"   y="52" width="230" height="10" draw="false" fill="false" color="#0000FF"/>
+	    <string-field        x="0"   y="52" width="230" height="10" dynamic="false" alignment="left" fontsize="08" fsbold="false" fieldname="address"/>
+            
+            <rectangle name="ta" x="240" y="52" width="45"  height="10" draw="false" fill="false" color="#0000FF"/>
+            <label     name="ti" x="240" y="52" width="45"  height="10" dynamic="false" alignment="left" fontsize="08" fsbold="false">Teléfonos:</label>
+            <rectangle name="ta" x="290" y="52" width="75" height="10" draw="false" fill="false" color="#0000FF"/>
+	    <string-field        x="290" y="52" width="75" height="10" dynamic="false" alignment="left" fontsize="08" fsbold="false" fieldname="phonenumber1"/>
+            <rectangle name="ta" x="290" y="65" width="75" height="10" draw="false" fill="false" color="#0000FF"/>
+	    <string-field        x="290" y="65" width="75" height="10" dynamic="false" alignment="left" fontsize="08" fsbold="false" fieldname="phonenumber2"/>
+            <rectangle name="ta" x="0"   y="65" width="190" height="10" draw="false" fill="false" color="#0000FF"/>
+	    <string-field        x="0"   y="65" width="190" height="10" dynamic="false" alignment="left" fontsize="08" fsbold="false" fieldname="webaddress"/>
+            
+
+            <label     name="zo" x="380" y="00"  width="200" height="10" fontsize="08" dynamic="false" alignment="center" vertical-aligment="middle" fsbold="true">CONVENIO DE RECURSOS POR PERSONA</label>
+            <rectangle name="ta" x="380" y="30"  width="240" height="12" draw="false" fill="false" color="#0000FF"/>
+            <rectangle name="ta" x="380" y="52"  width="60"  height="10" draw="false" fill="false" color="#0000FF"/>
+            <label     name="zo" x="380" y="52"  width="60"  height="10" fontsize="08" dynamic="false" alignment="left" vertical-aligment="middle" fsbold="false">C.U.I.T.:</label>
+            <rectangle name="ta" x="470" y="52"  width="200" height="10" draw="false" fill="false" color="#0000FF"/>
+	    <string-field        x="470" y="52"  width="200" height="10" alignment="left" dynamic="false" fontsize="08" fsbold="false" fieldname="cuit"/>
+            <rectangle name="ta" x="380" y="55"  width="60"  height="10" draw="false" fill="false" color="#0000FF"/>
+            <label     name="zo" x="380" y="65"  width="60"  height="10" fontsize="08" dynamic="false" alignment="left" vertical-aligment="middle" fsbold="false">Fecha Impr.:</label>
+            <rectangle name="ta" x="470" y="65"  width="200" height="10" draw="false" fill="false" color="#0000FF"/>
+            <string-field          x="470" y="65"  width="200" height="10" fontsize="08" dynamic="true"  alignment="left" fsbold="false" fieldname="actualdate"/>
+            
+            <rectangle  name="ta" x="0"   y="90"  width="60"  height="12" draw="false" fill="false" color="#0000FF"/>
+            <label      name="zo" x="0"   y="90"  width="60"  height="12" fontsize="10" dynamic="false" alignment="left" vertical-aligment="middle" fsbold="false">Empleado:</label>
+            <rectangle  name="ta" x="75"  y="90"  width="450" height="12" draw="false" fill="false" color="#0000FF"/>
+	    <string-field         x="75"  y="90"  width="450" height="12" alignment="left" dynamic="false" fontsize="10"  fsbold="true" fieldname="persona"/>
+            <rectangle  name="ta" x="0"   y="110" width="60"  height="12" draw="false" fill="false" color="#0000FF"/>
+            <label      name="zo" x="0"   y="110" width="80"  height="12" fontsize="10" dynamic="false" alignment="left" vertical-aligment="middle" fsbold="false">Dependencia:</label>
+            <rectangle  name="ta" x="75"  y="110" width="450" height="12" draw="false" fill="false" color="#0000FF"/>
+	    <string-field         x="75"  y="110" width="450" height="12" alignment="left" dynamic="false" fontsize="10" fsbold="true" fieldname="dependencia"/>
+            <label      name="zo" x="0"   y="135" width="80"  height="12" fontsize="10" dynamic="false" alignment="left" vertical-aligment="middle" fsbold="false">Responsable:</label>
+	    <rectangle  name="ta" x="75"  y="135" width="450" height="12" draw="false" fill="false" color="#0000FF"/>
+	    <string-field         x="75"  y="135" width="450" height="12" alignment="left" dynamic="false" fontsize="10" fsbold="false" fieldname="responsable"/>
+            
+            <rectangle name="tangle"  x="0"     y="155" width="290"  height="16"  draw="true" fill="false" color="#000000"/>
+	    <rectangle name="tangle"  x="290"   y="155" width="100"  height="16"  draw="true" fill="false" color="#000000"/>
+	    <rectangle name="tangle"  x="390"   y="155" width="80"  height="16"  draw="true" fill="false" color="#000000"/>
+	    <rectangle name="tangle"  x="470"   y="155" width="80"  height="16"  draw="true" fill="false" color="#000000"/>
+	    
+	    <label name="resource"     x="0"   y="155" width="300" height="16" fontsize="08" dynamic="true" alignment="center" vertical-alignment="middle">Recurso</label>
+	    <label name="marca"        x="290" y="155" width="100" height="16" fontsize="08" dynamic="true" alignment="center" vertical-alignment="middle">Marca</label>
+	    <label name="patrimonio"   x="390" y="155" width="80"  height="16" fontsize="08" dynamic="true" alignment="center" vertical-alignment="middle">Patrimonio</label>
+	    <label name="dateassigned" x="470" y="155" width="80"  height="16" fontsize="08" dynamic="true" alignment="center" vertical-alignment="middle">Fch.	 de Asignación</label>
+		
+
+	</pageheader>
+	
+	<groups>
+		<group name="Header-Detail" >
+			<fields>
+				<field>TablePrefix</field>
+				<field>table_0.header</field>
+			</fields>
+			
+			<groupheader repeat="false" layout-cachable="false" >
+			</groupheader>
+			
+			<groupfooter height="10" fontname="Monospaced" fontstyle="bold" fontsize="9">
+			    <line x1="0" y1="0" x2="550" y2="0" weight="0.5" color="#000000"/>
+      			</groupfooter>
+		</group>
+		
+	</groups>
+	
+	<items layout-cachable="false" >
+		<band name="table_0">
+                        
+		    <line x1="0"   y1="0" x2="0"   y2="100%" weight="0.25"/>
+                    <line x1="290" y1="0" x2="290" y2="100%" weight="0.25"/>
+                    <line x1="390" y1="0" x2="390" y2="100%" weight="0.25"/>
+                    <line x1="470" y1="0" x2="470" y2="100%" weight="0.25"/>
+                    <line x1="550" y1="0" x2="550" y2="100%" weight="0.25"/>
+
+                    <string-field name="Recurso"                 x="3"    y="2"  width="287" height="10" alignment="left"   vertical-alignment="middle" dynamic="false" fieldname="table_0.resourcename"/>
+                    <string-field name="Marca"                   x="293"  y="2"  width="97"  height="10" alignment="left"   vertical-alignment="middle" dynamic="false" fieldname="table_0.brandname"/>
+                    <string-field name="Nro. Patrimonio"         x="390"  y="2"  width="80"  height="10" alignment="center" vertical-alignment="middle" dynamic="false" format="dd/MM/yyyy" fieldname="table_0.numpatrimonio"/>
+                    <date-field   name="Fecha de Asignacion"     x="470"  y="2"  width="80"  height="10" alignment="center" vertical-alignment="middle" dynamic="false" fieldname="table_0.dateassigned"/>
+
+		</band>
+	</items>
+	
+    <pagefooter height="20" fontsize="9">
+		<line                              x1="0"    y1="40"   x2="100"     y2="40"     weight="0.5"/>
+		<label name="Patrimonio"           x="0"     y="50"    width="100"  height="12" fontsize="08" dynamic="true" alignment="center" vertical-alignment="middle">Patrimonio</label>
+		<line                              x1="450"  y1="40"   x2="550"     y2="40"     weight="0.5"/>
+		<label name="Empleado"             x="450"   y="50"    width="100"  height="12" fontsize="08" dynamic="true" alignment="center" vertical-alignment="middle">Empleado</label>
+		<line                              x1="0"    y1="70"   x2="550"     y2="70"    weight="0.5"/>
+                <string-field fieldname="location" x="0"     y="75"     width="100%" height="12" alignment="left" vertical-alignment="middle"/>
+		<string-field fieldname="pageXofY" x="0"     y="75"    width="550"  height="12" alignment="right" vertical-alignment="top"/> 
+    </pagefooter>
+	
+
+    <functions>
+	<property-ref name="report.date"/>
+	    <function class="org.jfree.report.function.PageOfPagesFunction" name="pageXofY">
+		<properties>
+			<property name="format">Página {0} de {1}</property>
+		</properties>
+	    </function>
+    
+    </functions>
+    
+</report>

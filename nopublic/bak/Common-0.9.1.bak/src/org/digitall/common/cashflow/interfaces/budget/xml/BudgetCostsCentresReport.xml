@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!--
+    ~ Copyright (c) 2007, Your Corporation. All Rights Reserved.
+    -->
+
+<report xmlns="http://jfreereport.sourceforge.net/namespaces/reports/legacy/simple" name="Ejercicio Financiero 2008" pageformat="A4"
+       orientation="landscape" topmargin="20" leftmargin="50" bottommargin="70" rightmargin="30" >
+	
+	<pageheader height="12" fontname="SansSerif" fontsize="16" fsbold="true">
+		<string-field  width="100%" dynamic="true" alignment="center" fieldname="location"></string-field>
+                <band name="table_0" height="30" fontname="SansSerif" fontstyle="bold" fontsize="10" >
+
+                    <line x1="0" y1="20" x2="100%" y2="20" weight="3"/>
+                    <label name="budgetcostscentre" x="0" y="25" width="590" dynamic="true" alignment="center">ASIGNACIÓN DE LA PARTIDA PRESUPUESTARIA POR CENTRO DE COSTOS</label>
+                    <label name="label" x="560" y="25" width="80" height="13" dynamic="false" alignment="left">Fecha y Hora:</label>
+                    <date-field fieldname="report.date" x="640" y="25" width="120" dynamic="true" alignment="left" format="dd/MM/yyyy  HH:mm"/>
+                    <string-field x="0" y="38" width="300" dynamic="true" fieldname="title" alignment="center"/>
+                    <label name="costscentre" x="400" y="38" width="100" dynamic="true" alignment="right">Centro de Costos: </label>
+                    <string-field x="500" y="38" width="275" dynamic="true" fieldname="table_0.costscentre" alignment="left"/>
+                    <line x1="0" y1="60" x2="100%" y2="60" weight="3"/>
+                    <line x1="0" y1="65" x2="100%" y2="65" weight="2"/>
+
+                    <rectangle name="tangle"  x="0"   y="75" width="200" height="18"  draw="true" fill="false" color="#000000"/>
+                    <rectangle name="tangle"  x="200" y="75" width="80" height="18"  draw="true" fill="false" color="#000000"/>
+                    <rectangle name="tangle"  x="280" y="75" width="80" height="18"  draw="true" fill="false" color="#000000"/>
+                    <rectangle name="tangle"  x="360" y="75" width="80" height="18"  draw="true" fill="false" color="#000000"/>
+                    <rectangle name="tangle"  x="440" y="75" width="80" height="18"  draw="true" fill="false" color="#000000"/>
+                    <rectangle name="tangle"  x="520" y="75" width="80" height="18"  draw="true" fill="false" color="#000000"/>
+                    <rectangle name="tangle"  x="600" y="75" width="80" height="18"  draw="true" fill="false" color="#000000"/>
+                    <rectangle name="tangle"  x="680" y="75" width="80" height="18"  draw="true" fill="false" color="#000000"/>
+                    
+                    <label name="partpres"  x="0"   y="75" width="200" height="18"   alignment="center" vertical-alignment="middle">Partidas Presupuestarias</label>
+                    <label name="partida"   x="200" y="75" width="80"  height="18"   alignment="center" vertical-alignment="middle">Partida</label>
+                    <label name="subtotal"  x="280" y="75" width="80"  height="18"   alignment="center" vertical-alignment="middle">Modificación</label>
+                    <label name="total"     x="360" y="75" width="80"  height="18"   alignment="center" vertical-alignment="middle">P. Modificado</label>
+                    <label name="modified"  x="440" y="75" width="80"  height="18"   alignment="center" vertical-alignment="middle">Ejecutado</label>
+                    <label name="spent"     x="520" y="75" width="80"  height="18"   alignment="center" vertical-alignment="middle">Disponible</label>
+                    <label name="predicted" x="600" y="75" width="80"  height="18"   alignment="center" vertical-alignment="middle">Preventivo</label>
+                    <label name="predicted" x="680" y="75" width="80"  height="18"   alignment="center" vertical-alignment="middle">P. Proyectado</label>
+
+                </band>
+	</pageheader>
+	
+	<groups>
+
+		<group name="Header-Detail">
+			<fields>
+				<field>TablePrefix</field>
+				<field>table_0.idcostcentre</field>
+			</fields>
+			
+			<groupheader repeat="false" layout-cachable="false" pagebreak-before-print="true">
+				<!--<band name="table_0" height="30" fontname="SansSerif" fontstyle="bold" fontsize="10" >
+
+					<line x1="0" y1="10" x2="100%" y2="10" weight="3"/>
+                                        <label name="budgetcostscentre" x="0" y="20" width="590" dynamic="true" alignment="center">ASIGNACIÓN DE LA PARTIDA PRESUPUESTARIA POR CENTRO DE COSTOS</label>
+                                        <label name="label" x="590" y="20" width="70" height="13" dynamic="false" alignment="left">Fecha y Hora:</label>
+                                        <date-field fieldname="report.date" x="660" y="20" width="100" dynamic="true" alignment="left" format="dd/MM/yyyy  HH:mm"/>
+                                        <string-field x="0" y="38" width="300" dynamic="true" fieldname="title" alignment="center"/>
+                                        <label name="costscentre" x="400" y="38" width="100" dynamic="true" alignment="right">Centro de Costos: </label>
+					<string-field x="500" y="38" width="275" dynamic="true" fieldname="table_0.costscentre" alignment="left"/>
+					<line x1="0" y1="56" x2="100%" y2="56" weight="3"/>
+					<line x1="0" y1="60" x2="100%" y2="60" weight="2"/>
+
+                                        <rectangle name="tangle"  x="0"   y="75" width="200" height="18"  draw="true" fill="false" color="#000000"/>
+                                        <rectangle name="tangle"  x="200" y="75" width="80" height="18"  draw="true" fill="false" color="#000000"/>
+                                        <rectangle name="tangle"  x="280" y="75" width="80" height="18"  draw="true" fill="false" color="#000000"/>
+                                        <rectangle name="tangle"  x="360" y="75" width="80" height="18"  draw="true" fill="false" color="#000000"/>
+                                        <rectangle name="tangle"  x="440" y="75" width="80" height="18"  draw="true" fill="false" color="#000000"/>
+                                        <rectangle name="tangle"  x="520" y="75" width="80" height="18"  draw="true" fill="false" color="#000000"/>
+                                        <rectangle name="tangle"  x="600" y="75" width="80" height="18"  draw="true" fill="false" color="#000000"/>
+                                        <rectangle name="tangle"  x="680" y="75" width="80" height="18"  draw="true" fill="false" color="#000000"/>
+                                        
+					<label name="partpres"  x="0"   y="75" width="200" height="18"   alignment="center" vertical-alignment="middle">Partidas Presupuestarias</label>
+					<label name="partida"   x="200" y="75" width="80"  height="18"   alignment="center" vertical-alignment="middle">Partida</label>
+					<label name="subtotal"  x="280" y="75" width="80"  height="18"   alignment="center" vertical-alignment="middle">Modificación</label>
+                                        <label name="total"     x="360" y="75" width="80"  height="18"   alignment="center" vertical-alignment="middle">P. Modificado</label>
+                                        <label name="modified"  x="440" y="75" width="80"  height="18"   alignment="center" vertical-alignment="middle">Ejecutado</label>
+                                        <label name="spent"     x="520" y="75" width="80"  height="18"   alignment="center" vertical-alignment="middle">Disponible</label>
+                                        <label name="predicted" x="600" y="75" width="80"  height="18"   alignment="center" vertical-alignment="middle">Preventivo</label>
+                                        <label name="predicted" x="680" y="75" width="80"  height="18"   alignment="center" vertical-alignment="middle">P. Proyectado</label>
+
+				</band> -->
+			</groupheader>
+			
+			<groupfooter height="18" fontname="Monospaced" fontstyle="bold" fontsize="9">
+			    <line x1="0" y1="0" x2="760" y2="0" weight="0.25"/>
+      			</groupfooter>
+		</group>
+		
+		<group name="Header-Footer" >
+			<groupfooter height="18" fontname="Monospaced" fontstyle="bold" fontsize="9">
+                                <line x1="0" y1="10" x2="100%" y2="10" weight="3"/>
+      			</groupfooter>
+		</group>
+		
+	</groups>
+	
+	<items layout-cachable="false">
+		<band name="table_0" fontname="SansSerif" fontstyle="plain" fontsize="8">
+			<line x1="0"    y1="0" x2="0"    y2="100%" weight="0.25"/>
+			<line x1="200"  y1="0" x2="200"  y2="100%" weight="0.25"/>
+			<line x1="280"  y1="0" x2="280"  y2="100%" weight="0.25"/>
+			<line x1="360"  y1="0" x2="360"  y2="100%" weight="0.25"/>
+                        <line x1="440"  y1="0" x2="440"  y2="100%" weight="0.25"/>
+                        <line x1="520"  y1="0" x2="520"  y2="100%" weight="0.25"/>
+			<line x1="600"  y1="0" x2="600"  y2="100%" weight="0.25"/>
+                        <line x1="680"  y1="0" x2="680"  y2="100%" weight="0.25"/>
+			<line x1="760"  y1="0" x2="760"  y2="100%" weight="0.25"/>
+			
+                        <string-field x="3"   y="0" width="195" height="12" alignment="left"  dynamic="false" vertical-alignment="middle" fieldname="table_0.name"/>
+			<number-field x="200" y="0" width="77"  height="12" alignment="right" dynamic="true" vertical-alignment="middle" format="$#,##0.00" fieldname="table_0.assignedamount"/>
+			<number-field x="280" y="0" width="77"  height="12" alignment="right" dynamic="true" vertical-alignment="middle" format="$#,##0.00" fieldname="table_0.modifiedamount"/>
+                        <number-field x="360" y="0" width="77"  height="12" alignment="right" dynamic="true" vertical-alignment="middle" format="$#,##0.00" fieldname="table_0.modifiedbudget"/>
+                        <number-field x="440" y="0" width="77"  height="12" alignment="right" dynamic="true" vertical-alignment="middle" format="$#,##0.00" fieldname="table_0.spentamount"/>
+			<number-field x="520" y="0" width="77"  height="12" alignment="right" dynamic="true" vertical-alignment="middle" format="$#,##0.00" fieldname="table_0.availableamount"/>
+                        <number-field x="600" y="0" width="77"  height="12" alignment="right" dynamic="true" vertical-alignment="middle" format="$#,##0.00" fieldname="table_0.predictedamount"/>
+                        <number-field x="680" y="0" width="77"  height="12" alignment="right" dynamic="true" vertical-alignment="middle" format="$#,##0.00" fieldname="table_0.predictedbudget"/>
+		</band>
+	</items>
+	
+	
+	
+	<functions>
+		<function class="org.jfree.report.function.HideElementByNameFunction" name="hideHeader">
+			<properties>
+				<property name="element">table_0</property>
+				<property name="field">TablePrefix</property>
+			</properties>
+		</function>
+		
+	</functions>
+	
+</report>
+

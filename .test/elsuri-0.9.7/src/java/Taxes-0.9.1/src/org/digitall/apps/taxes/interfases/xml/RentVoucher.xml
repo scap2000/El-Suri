@@ -1,0 +1,332 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!--
+ LIMITACIÓN DE RESPONSABILIDAD - COPYRIGHT - [Español]
+ ================================================================================
+ El Suri - Entorno JAVA de Trabajo y Desarrollo para Gobierno Electrónico
+ ================================================================================
+
+ Información del Proyecto:  http://elsuri.sourceforge.net
+
+ Copyright (C) 2007-2010 por D'AMBROSIO MARCELO E CASSINA SANTIAGO SOC DE HECHO.
+ D'AMBROSIO MARCELO E CASSINA SANTIAGO SOC DE HECHO es propiedad de
+ Lic. Santiago Cassina (santiago@digitallsh.com.ar - scap2000@yahoo.com) y
+ Marcelo D'Ambrosio (marcelo@digitallsh.com.ar - marcelodambrosio@gmail.com)
+ http://www.digitallsh.com.ar
+
+ Este programa es software libre: usted puede redistribuirlo y/o modificarlo
+ bajo los términos de la Licencia Pública General GNU publicada
+ por la Fundación para el Software Libre, ya sea la versión 3
+ de la Licencia, o (a su elección) cualquier versión posterior.
+
+ Este programa se distribuye con la esperanza de que sea útil, pero
+ SIN GARANTÍA ALGUNA; ni siquiera la garantía implícita
+ MERCANTIL o de APTITUD PARA UN PROPÓSITO DETERMINADO.
+ Consulte los detalles de la Licencia Pública General GNU para obtener
+ una información más detallada.
+
+ Debería haber recibido una copia de la Licencia Pública General GNU
+ junto a este programa.
+ En caso contrario, consulte <http://www.gnu.org/licenses/>.
+
+ DISCLAIMER - COPYRIGHT - [English]
+ =====================================================================================
+ El Suri - JAVA Management & Development Environment for Electronic Government
+ =====================================================================================
+
+ Project Info:  http://elsuri.sourceforge.net
+
+ Copyright (C) 2007-2010 by D'AMBROSIO MARCELO E CASSINA SANTIAGO SOC DE HECHO.
+ D'AMBROSIO MARCELO E CASSINA SANTIAGO SOC DE HECHO is owned by
+ Lic. Santiago Cassina (santiago@digitallsh.com.ar - scap2000@yahoo.com) and
+ Marcelo D'Ambrosio (marcelo@digitallsh.com.ar - marcelodambrosio@gmail.com)
+ http://www.digitallsh.com.ar
+
+ This program is free software: you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation, either version 3 of the License, or
+ (at your option) any later version.
+
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public License for more details.
+
+ You should have received a copy of the GNU General Public License
+ along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+-->
+<!--
+  RentVoucher.xml
+-->
+<!--
+    ~ Copyright (c) 2007, Your Corporation. All Rights Reserved.
+    -->
+
+<report xmlns="http://jfreereport.sourceforge.net/namespaces/reports/legacy/simple" name="Impuesto a los Alquileres" pageformat="A4"
+       topmargin="25" leftmargin="25" bottommargin="10" rightmargin="10">
+	
+	<pageheader height="12" fontname="serif" fontsize="16" fsbold="true">
+		
+	</pageheader>
+	
+	<groups>
+		<group name="table_0">
+			<fields>
+				<field>TablePrefix</field>
+				<field>table_0.header</field> 
+		 	</fields>
+			
+			<groupheader layout-cachable="false" >
+				<band name="table_0" fontname="SansSerif" fontstyle="plain" fontsize="08">
+					<!-- PARA LA MUNICIPALIDAD -->
+                                        <rectangle name="tangle"  x="0" y="40" width="260"  height="148"  draw="false" fill="false" color="#000000"/>
+                                        
+                                        <rectangle name="tangle" x="0" y="05" width="260" height="14" draw="false" fill="false" color="#00ff00"/>
+                                        <rectangle name="tangle" x="0" y="05" width="55"  height="14" draw="false" fill="false" color="#0000FF"/>
+					<!--<label     name="titulo" x="0" y="5" width="260" height="14" dynamic="false" alignment="center" fontsize="10" fsbold="true">MUNICIPALIDAD DE GENERAL ENRIQUE MOSCONI</label>-->
+                                        <string-field            x="0" y="05"  width="260" height="14" dynamic="false" alignment="center" vertical-aligment="middle" fontsize="10" fsbold="true" fieldname="orgname"/>
+                                        <rectangle name="tangle" x="0"   y="20" width="260" height="12"  draw="false" fill="false" color="#0000ff"/>
+                                        <image-field name="logo" x="0"   y="17" width="35"  height="30"  scale="true" fieldname="escudo"/>
+					<label name="impuesto"   x="0"   y="25" width="260" height="12" dynamic="false" alignment="center" fontsize="09" fsbold="false">IMPUESTO A LOS ALQULERES DE PREDIOS</label>
+                                        <!--<label name="impuesto"   x="0"   y="35" width="265" height="12" dynamic="false" alignment="center" fontsize="05" fsbold="false"></label>-->
+                                        <image-field name="logo" x="230" y="17" width="35"  height="30"  scale="true" fieldname="escudo"/>
+					
+                                        <rectangle name="tangle" x="0"   y="50" width="85" height="14"  draw="true" fill="false" color="#000000"/>
+                                        <label name="impuesto"   x="03"  y="51" width="85" height="12" dynamic="false" alignment="center" vertical-aligment="middle" fontsize="08" fsbold="false">Anticipos</label>
+                                        <string-field            x="0"   y="66" width="85" height="14" alignment="center" vertical-aligment="middle" dynamic="false" fieldname="table_0.concepto"/>
+                                        <rectangle name="tangle" x="85"  y="50" width="90" height="14"  draw="true" fill="false" color="#000000"/>
+                                        <label name="impuesto"   x="85"  y="51" width="85" height="12" dynamic="false" alignment="center" vertical-aligment="middle" fontsize="08" fsbold="false">Vencimiento</label>
+                                        <date-field              x="85"  y="66" width="85" height="12" dynamic="true"  alignment="center"  format="dd/MM/yyyy" fieldname="actualdate"/>
+                                        <rectangle name="tangle" x="175" y="50" width="85" height="14"  draw="true" fill="false" color="#000000"/>
+                                        <label name="impuesto"   x="175" y="51" width="85" height="12" dynamic="false" alignment="center" vertical-aligment="middle" fontsize="08" fsbold="false">CUIT</label>
+                                        <string-field            x="175" y="66" width="85" height="14" alignment="center" vertical-aligment="middle" dynamic="false" fieldname="table_0.cuit"/>
+                                        
+                                        <rectangle name="tangle" x="0"   y="64" width="85"  height="14"  draw="true" fill="false" color="#000000"/>
+                                        <rectangle name="tangle" x="85"  y="64" width="90"  height="14"  draw="true" fill="false" color="#000000"/>
+                                        <rectangle name="tangle" x="175" y="64" width="85"  height="14"  draw="true" fill="false" color="#000000"/>
+                                        
+                                        <rectangle name="tangle" x="0"   y="77" width="260" height="50"  draw="true" fill="false" color="#000000"/>
+                                        
+                                        <rectangle name="t" x="03"  y="83"  width="48"  height="10"  draw="false" fill="false" color="#FF0000"/>
+                                        <rectangle name="t" x="55"  y="83"  width="200" height="10"  draw="false" fill="false" color="#0000FF"/>
+                                        <rectangle name="t" x="03"  y="98"  width="48"  height="10"  draw="false" fill="false" color="#FF0000"/>
+                                        <rectangle name="t" x="55"  y="98"  width="200" height="10"  draw="false" fill="false" color="#0000FF"/>
+                                        <rectangle name="t" x="03"  y="113" width="48"  height="10"  draw="false" fill="false" color="#FF0000"/>
+                                        <rectangle name="t" x="55"  y="113" width="200" height="10"  draw="false" fill="false" color="#0000FF"/>
+                                        <label name="impue" x="03"  y="83"  width="48"  height="10" dynamic="false" alignment="left" fontsize="08" vertical-aligment="middle" >Empresa:</label>
+                                        <string-field       x="55"  y="83"  width="200" height="10" dynamic="false" alignment="left"  fontsize="08" fieldname="table_0.empresa"/>
+                                        <label name="impue" x="03"  y="98"  width="48"  height="10" dynamic="false" alignment="left" fontsize="08" vertical-aligment="middle" >Reponsable:</label>
+                                        <string-field       x="55"  y="98"  width="200" height="10" dynamic="false" alignment="left"  fontsize="08" fieldname="table_0.responsable"/>
+                                        <label name="impue" x="03"  y="113" width="48"  height="10" dynamic="false" alignment="left" fontsize="08" vertical-aligment="middle" >D.N.I.:</label>
+                                        <string-field       x="55"  y="113" width="200" height="10" dynamic="false" alignment="left"  fontsize="08" fieldname="table_0.dni"/>
+                                        
+                                        <rectangle name="tangle"  x="0"   y="128" width="175" height="70"  draw="true" fill="false" color="#000000"/>
+                                        <rectangle name="tangle"  x="175" y="128" width="85"  height="70"  draw="true" fill="false" color="#000000"/>
+                                        
+                                        <label name="zona"  x="03" y="140" width="30"  height="10" dynamic="true"  alignment="left" fontsize="08" vertical-aligment="middle">Predio:</label>
+                                        <string-field       x="35" y="140" width="135" height="10" dynamic="false" alignment="left" fontsize="08" fieldname="table_0.domicilio"/>
+                                        <rectangle name="t" x="03" y="140" width="30"  height="10"  draw="false" fill="false" color="#0000FF"/>
+                                        <rectangle name="t" x="35" y="140" width="135" height="10"  draw="false" fill="false" color="#0000FF"/>
+                                        
+                                        <label name="zona"  x="03" y="170" width="65"  height="10" dynamic="true" alignment="left" fontsize="08" vertical-aligment="middle">Base Imponible:</label>
+                                        <number-field       x="70" y="170" width="100" height="10" dynamic="true" alignment="left" fontsize="08"  format="$ #,##0.00" fieldname="table_0.importe"/>
+                                        <rectangle name="t" x="03" y="170" width="65"  height="10"  draw="false" fill="false" color="#FF0000"/>
+                                        <rectangle name="t" x="70" y="170" width="100" height="10"  draw="false" fill="false" color="#0000FF"/>
+                                        
+                                        
+                                        <label name="zona" x="185"   y="145" width="55" height="12" dynamic="false" alignment="center" vertical-aligment="middle" fontsize="08" fsbold="true">Importe Vto.</label>
+                                        <rectangle name="tangle" x="180"  y="155"  width="75"  height="12"  draw="true" fill="true" color="#DCD4D9"/>
+                                        <rectangle name="tangle" x="180"  y="155"  width="75"  height="12"  draw="true" fill="false" color="#000000"/>
+                                        <number-field      x="180" y="156" width="75"  alignment="center" format="$ #,##0.00" dynamic="true" fontsize="09" fsbold="true" fieldname="table_0.total"/>
+                                        
+                                        <label     name="zona"   x="0"  y="205" width="35" height="12" dynamic="false" alignment="right" vertical-aligment="middle" fontsize="07" fsbold="false">fch. imp.:</label>
+                                        <date-field              x="40" y="205" width="100" height="12" dynamic="true"  alignment="left"  format="dd/MM/yyyy - hh:mm:ss" fontsize="07" fieldname="actualdate"/>
+                                        <label     name="zona"   x="0"  y="220" width="35" height="12" dynamic="false" alignment="right" vertical-aligment="middle" fontsize="07" fsbold="false">Usuario:</label>
+                                        <string-field            x="40" y="220" width="90" alignment="left" height="12" dynamic="false" fontsize="07" fieldname="table_0.usuario"/>
+                                        <rectangle name="tangle" x="33" y="220" width="115" height="12"  draw="false" fill="false" color="#0000FF"/>
+                                        
+                                        <image-field name="tangle3"  x="150"   y="205"  width="121"  height="20"  scale="true" fieldname="barcode"/>
+                                        
+                                        <label name="zona" x="100"   y="230" width="160" height="14" dynamic="false" alignment="right" vertical-aligment="middle" fontsize="07" fsbold="false">Para la Municipalidad</label>
+					
+					<!-- FIN PARA LA MUNICIPALIDAD -->
+
+					<line x1="0" y1="245" x2="550" y2="245"  weight=".75" stroke-style="dashed" color="#AAAAAA"/>
+                                        <line x1="275" y1="0" x2="275" y2="100%" weight=".75" stroke-style="dashed" color="#AAAAAA"/>
+                                        
+
+					<!-- PARA EL CONTRIBUYENTE -->
+                                        
+                                        <rectangle name="tangle"  x="2900" y="40" width="260"  height="148"  draw="true" fill="false" color="#000000"/>
+                                        
+                                        <rectangle name="tangle" x="290" y="5"  width="260" height="14" draw="false" fill="false" color="#00ff00"/>
+                                        <rectangle name="tangle" x="290" y="5"  width="55" height="14" draw="false" fill="false" color="#00ff00"/>
+					<!--<label name="titulo"     x="290" y="5"  width="260" height="14" dynamic="false" alignment="center" fontsize="10" fsbold="true">MUNICIPALIDAD DE GENERAL ENRIQUE MOSCONI</label>-->
+                                        <string-field            x="290" y="05"  width="260" height="14" dynamic="false" alignment="center" vertical-aligment="middle" fontsize="10" fsbold="true" fieldname="orgname"/>
+                                        <rectangle name="tangle" x="290" y="18" width="260"  height="12"  draw="false" fill="false" color="#0000ff"/>
+                                        <image-field name="logo" x="290" y="17" width="35"  height="30"  scale="true" fieldname="escudo"/>
+					<label name="impuesto"   x="290" y="25" width="260" height="12" dynamic="false" alignment="center" fontsize="09" fsbold="false">IMPUESTO A LOS ALQUILERES DE PREDIOS</label>
+                                        <!--<label name="impuesto"   x="290" y="35" width="265" height="12" dynamic="false" alignment="center" fontsize="05" fsbold="false"></label>-->
+					<image-field name="logo" x="515" y="17" width="35"  height="30"  scale="true" fieldname="escudo"/>
+                                        
+                                        
+                                        <rectangle name="tangle" x="290" y="50" width="85"  height="14"  draw="true" fill="false" color="#000000"/>
+                                        <label name="impuesto"   x="293" y="51" width="85" height="12" dynamic="false" alignment="center" vertical-aligment="middle" fontsize="08" fsbold="false">Período</label>
+                                        <string-field            x="293" y="66" width="85" height="14" alignment="center" vertical-aligment="middle" dynamic="false" fieldname="table_0.concepto"/>
+                                        <rectangle name="tangle" x="375" y="50" width="90"  height="14"  draw="true" fill="false" color="#000000"/>
+                                        <label name="impuesto"   x="375" y="51" width="85" height="12" dynamic="false" alignment="center" vertical-aligment="middle" fontsize="08" fsbold="false">Vencimiento</label>
+                                        <date-field              x="375" y="66" width="85" height="12" dynamic="true"  alignment="center"  format="dd/MM/yyyy" fieldname="actualdate"/>
+                                        <rectangle name="tangle" x="465" y="50" width="85"  height="14"  draw="true" fill="false" color="#000000"/>
+                                        <label name="impuesto"   x="465" y="51" width="85" height="12" dynamic="false" alignment="center" vertical-aligment="middle" fontsize="08" fsbold="false">CUIT</label>
+                                        <string-field            x="465" y="66" width="85" height="14" alignment="center" vertical-aligment="middle" dynamic="false" fieldname="table_0.cuit"/>
+                                        
+                                        <rectangle name="tangle" x="290" y="64" width="85"  height="14"  draw="true" fill="false" color="#000000"/>
+                                        <rectangle name="tangle" x="375" y="64" width="90"  height="14"  draw="true" fill="false" color="#000000"/>
+                                        <rectangle name="tangle" x="465" y="64" width="85"  height="14"  draw="true" fill="false" color="#000000"/>
+                                        <rectangle name="tangle" x="290" y="77" width="260"  height="50"  draw="true" fill="false" color="#000000"/>
+                                        
+                                        
+                                        <rectangle name="t" x="293" y="83"  width="48"  height="10"  draw="false" fill="false" color="#FF0000"/>
+                                        <rectangle name="t" x="348" y="83"  width="200" height="10"  draw="false" fill="false" color="#0000FF"/>
+                                        <rectangle name="t" x="293" y="98"  width="48"  height="10"  draw="false" fill="false" color="#FF0000"/>
+                                        <rectangle name="t" x="348" y="98"  width="200" height="10"  draw="false" fill="false" color="#0000FF"/>
+                                        <rectangle name="t" x="293" y="113" width="48"  height="10"  draw="false" fill="false" color="#FF0000"/>
+                                        <rectangle name="t" x="348" y="113" width="200" height="10"  draw="false" fill="false" color="#0000FF"/>
+                                        <label name="impue" x="293" y="83"  width="48"  height="10" dynamic="false" alignment="left" fontsize="08" vertical-aligment="middle" fsbold="false">Empresa:</label>
+                                        <string-field       x="348" y="83"  width="200" height="10" dynamic="false" alignment="left" fontsize="08" fieldname="table_0.empresa"/>
+                                        <label name="impue" x="293" y="98"  width="48"  height="10" dynamic="false" alignment="left" fontsize="08" vertical-aligment="middle" >Reponsable:</label>
+                                        <string-field       x="348" y="98"  width="200" height="10" dynamic="false" alignment="left" fontsize="08" fieldname="table_0.responsable"/>
+                                        <label name="impue" x="293" y="113" width="48"  height="10" dynamic="false" alignment="left" fontsize="08" vertical-aligment="middle" fsbold="false">D.N.I.:</label>
+                                        <string-field       x="348" y="113" width="200" height="10" dynamic="false" alignment="left" fontsize="08" fieldname="table_0.dni"/>
+                                        
+                                        <rectangle name="tangle"  x="293" y="85" width="50" height="12"  draw="false" fill="false" color="#FF0000"/>
+                                        <rectangle name="tangle"  x="348" y="85" width="200"  height="12"  draw="false" fill="false" color="#0000FF"/>
+                                        
+                                        <rectangle name="tangle"  x="290" y="128" width="175" height="70"  draw="true" fill="false" color="#000000"/>
+                                        <rectangle name="tangle"  x="465" y="128" width="85"  height="70"  draw="true" fill="false" color="#000000"/>
+                                        
+                                        
+                                        <label name="zona"  x="293" y="140" width="30"  height="10" dynamic="false" alignment="left" fontsize="08" vertical-aligment="middle">Predio:</label>
+                                        <string-field       x="327" y="140" width="133" height="10" dynamic="false" alignment="left"  fontsize="08" fieldname="table_0.domicilio"/>
+                                        <rectangle name="t" x="293" y="140" width="30"  height="10" draw="false" fill="false" color="#FF0000"/>
+                                        <rectangle name="t" x="327" y="140" width="133" height="10" draw="false" fill="false" color="#0000FF"/>
+                                        
+                                        <label name="zona"  x="293" y="170" width="65"  height="10" dynamic="true" alignment="left" fontsize="08" vertical-aligment="middle">Base Imponible:</label>
+                                        <number-field       x="360" y="170" width="100" height="10" dynamic="true" alignment="left" fontsize="08"  format="$ #,##0.00" fieldname="table_0.importe"/>
+                                        <rectangle name="t" x="293" y="170" width="65"  height="10"  draw="false" fill="false" color="#FF0000"/>
+                                        <rectangle name="t" x="360" y="170" width="100" height="10"  draw="false" fill="false" color="#0000FF"/>
+                                        
+                                        <label name="zona"       x="475" y="145" width="55" height="12" dynamic="false" alignment="center" vertical-aligment="middle" fontsize="08" fsbold="true">Importe Vto.</label>
+                                        <rectangle name="tangle" x="470" y="155" width="75"  height="12"  draw="true" fill="true" color="#DCD4D9"/>
+                                        <rectangle name="tangle" x="470" y="155" width="75"  height="12"  draw="true" fill="false" color="#000000"/>
+                                        <number-field            x="470" y="156" width="75"  alignment="center" format="$ #,##0.00" dynamic="true" fontsize="09" fsbold="true" fieldname="table_0.total"/>
+                                        
+                                        <rectangle name="tangle" x="290" y="205" width="35" height="12"  draw="false" fill="false" color="#0000FF"/>
+                                        <label     name="zona"   x="290" y="205" width="35" height="12" dynamic="false" alignment="right" vertical-aligment="middle" fontsize="07" fsbold="false">fch. imp.:</label>
+                                        <date-field              x="330" y="205" width="100" height="12" dynamic="true"  alignment="left"  format="dd/MM/yyyy - hh:mm:ss" fontsize="07" fieldname="actualdate"/>
+                                        <label     name="zona"   x="290" y="220" width="35" height="12" dynamic="false" alignment="right" vertical-aligment="middle" fontsize="07" fsbold="false">Usuario:</label>
+                                        <string-field x="330" y="220" width="115" alignment="left" height="12" dynamic="false" fontsize="07" fieldname="table_0.usuario"/>
+                                        <image-field name="tangle3"  x="440"   y="205"  width="121"  height="20"  scale="true" fieldname="barcode"/>
+                                        
+                                        <label name="zona" x="390"   y="230" width="160" height="14" dynamic="false" alignment="right" vertical-aligment="middle" fontsize="07" fsbold="false">Para el Contribuyente</label>
+					
+					<!-- FIN PARA EL CONTRIBUYENTE -->
+
+					
+					<!-- PARA ENTE RECAUDADOR -->
+                                        
+                                        <rectangle name="tangle"  x="0" y="240" width="260" height="14" draw="false" fill="false" color="#00ff00"/>
+                                        <rectangle name="tangle"  x="0" y="240" width="55" height="14" draw="false" fill="false" color="#00ff00"/>
+                                        
+					<!--<label     name="titulo"   x="0"   y="250" width="260" height="14" dynamic="false" alignment="center" fontsize="10" fsbold="true">MUNICIPALIDAD DE GENERAL ENRIQUE MOSCONI</label>-->
+                                        <string-field            x="0" y="250"  width="260" height="14" dynamic="false" alignment="center" vertical-aligment="middle" fontsize="10" fsbold="true" fieldname="orgname"/>
+                                        <rectangle name="tangle"   x="0"   y="265" width="260" height="12"  draw="false" fill="false" color="#0000ff"/>
+                                        <image-field name="logo"   x="0"   y="262" width="35"  height="30"  scale="true" fieldname="escudo"/>
+					<label     name="imp"      x="0"   y="270" width="260" height="12" dynamic="false" alignment="center" fontsize="09" fsbold="false">IMPUESTO A LOS ALQUILERES DE PREDIOS</label>
+                                        <!--<label     name="impuesto" x="0"   y="280" width="270" height="12" dynamic="false" alignment="center" fontsize="05" fsbold="false"></label>-->
+                                        <image-field name="logo"   x="230" y="262" width="35"  height="30"  scale="true" fieldname="escudo"/>
+                                        
+                                        <rectangle name="tangle"  x="0"   y="295" width="175" height="15" draw="true" fill="false" color="#000000"/>
+                                        <label     name="titulo"  x="3"   y="297" width="40"  height="10" dynamic="false" alignment="left"  vertical-aligment="middle" fontsize="08" fsbold="true">CUIT</label>
+                                        <string-field             x="45"  y="297" width="125" height="10" dynamic="false" alignment="left"  vertical-aligment="middle" fontsize="08"  fieldname="table_0.cuit"/>
+
+                                        <rectangle name="tangle"  x="175" y="295" width="85"  height="15" draw="true" fill="false" color="#000000"/>
+                                        <label     name="titulo"  x="177" y="296" width="8"  height="15" dynamic="false" alignment="left" vertical-aligment="middle" fontsize="08" fsbold="true">A.</label>
+                                        <string-field             x="182" y="296" width="80"  height="15" alignment="center" vertical-aligment="middle" dynamic="false" fontsize="08" fieldname="table_0.concepto"/>
+                                        
+                                        <rectangle name="tangle"  x="0"   y="310" width="175" height="65" draw="true" fill="false" color="#000000"/>
+                                        <rectangle name="tangle"  x="175" y="310" width="85"  height="65" draw="true" fill="false" color="#000000"/>
+                                        
+                                        <label name="zona"  x="03"  y="313" width="45"  height="10" dynamic="false" alignment="left"  vertical-aligment="middle" fontsize="07" fsbold="false">Empresa:</label>
+                                        <string-field       x="50"  y="313" width="120" height="10" dynamic="false"  alignment="left" vertical-aligment="middle" fontsize="07" fieldname="table_0.empresa"/>
+                                        <rectangle name="t" x="3"   y="313" width="45"  height="10" draw="false" fill="false" color="#FF0000"/>
+                                        <rectangle name="t" x="50"  y="313" width="120" height="10" draw="false" fill="false" color="#0000FF"/>
+                                        
+                                        <label name="zona"  x="03"  y="325" width="45"  height="10" dynamic="false" alignment="left"  vertical-aligment="middle" fontsize="07" fsbold="false">Responsable:</label>
+                                        <string-field       x="50"  y="325" width="120" height="10" dynamic="false"  alignment="left" vertical-aligment="middle" fontsize="07" fieldname="table_0.responsable"/>
+                                        <rectangle name="t" x="3"   y="325" width="45"  height="10" draw="false" fill="false" color="#FF0000"/>
+                                        <rectangle name="t" x="50"  y="325" width="120" height="10" draw="false" fill="false" color="#0000FF"/>
+                                        
+                                        
+                                        <label name="zona"  x="3"   y="338" width="30"  height="10" dynamic="false" alignment="left" vertical-aligment="middle" fontsize="07" fsbold="false">D.N.I.:</label>
+                                        <string-field       x="35"  y="338" width="120" height="10" dynamic="false" alignment="left" vertical-aligment="middle" fontsize="07" fieldname="table_0.dni"/>
+                                        <rectangle name="t" x="3"   y="338" width="45"  height="10" draw="false" fill="false" color="#FF0000"/>
+                                        <rectangle name="t" x="50"  y="338" width="120" height="10" draw="false" fill="false" color="#0000FF"/>
+                                        
+                                        <label name="zona"  x="3"   y="350" width="25"  height="10" dynamic="false" alignment="left" vertical-aligment="middle" fontsize="07" fsbold="false">Predio:</label>
+                                        <string-field       x="30"  y="350" width="140" height="10" dynamic="false" alignment="left" vertical-aligment="middle" fontsize="07" fieldname="table_0.domicilio"/>
+                                        <rectangle name="t" x="3"   y="350" width="25"  height="10" draw="false" fill="false" color="#FF0000"/>
+                                        <rectangle name="t" x="30"  y="350" width="140" height="10" draw="false" fill="false" color="#0000FF"/>
+                                        
+                                        <label name="zona"  x="3"   y="363" width="60"  height="10" dynamic="false" alignment="left" vertical-aligment="middle" fontsize="07" fsbold="false">Base Imponible:</label>
+                                        <number-field       x="65"  y="363" width="105" height="10" dynamic="false" alignment="left" vertical-aligment="middle" fontsize="07" format="$ #,##0.00" fieldname="table_0.importe"/>
+                                        <rectangle name="t" x="3"   y="363" width="60"  height="10" draw="false" fill="false" color="#FF0000"/>
+                                        <rectangle name="t" x="65"  y="363" width="105" height="10" draw="false" fill="false" color="#0000FF"/>
+                                        
+                                        <label name="zona" x="185"   y="325" width="55" height="12" dynamic="false" alignment="center" vertical-aligment="middle" fontsize="08" fsbold="true">Importe Vto.</label>
+                                        <rectangle name="tangle" x="180"  y="335"  width="75"  height="12"  draw="true" fill="true" color="#DCD4D9"/>
+                                        <rectangle name="tangle" x="180"  y="335"  width="75"  height="12"  draw="true" fill="false" color="#000000"/>
+                                        <number-field      x="180" y="335" width="75"  alignment="center" format="$ #,##0.00" dynamic="true" fontsize="09" fsbold="true" fieldname="table_0.total"/>
+                                        <label name="zona" x="100"   y="380" width="160" height="14" dynamic="false" alignment="right" vertical-aligment="middle" fontsize="07" fsbold="false">Para Ente Recaudador</label>
+                                        
+                                        <line x1="0" y1="395" x2="550" y2="395"  weight=".75" stroke-style="dashed" color="#AAAAAA"/>
+                                        
+                                        <!-- FIN PARA ENTE RECAUDADOR -->
+                                        
+                                        <!-- INFORMACION PARA CONTRIBUYENTE -->
+                                        
+                                        <rectangle name="tangle" x="290"  y="250"  width="260"  height="12"  draw="false" fill="false" color="#0000FF"/>
+                                        <label name="zona" x="290"   y="250" width="260" height="12" dynamic="false" alignment="left" vertical-aligment="middle" fontsize="08" fsbold="true">Comunicación - Información para el contribuyente</label>
+
+                                        <!-- FIN INFORMACION PARA CONTRIBUYENTE --> 
+					
+				</band>
+			</groupheader>
+		</group>
+		
+		
+	</groups>
+	
+	<functions>
+		<function class="org.jfree.report.function.HideElementByNameFunction" name="hideHeader">
+			<properties>
+				<property name="element">table_0</property>
+				<property name="field">TablePrefix</property>
+			</properties>
+		</function>
+		
+		<function class="org.jfree.report.function.HideElementByNameFunction" name="hideDetail">
+			<properties>
+				<property name="element">table_0</property>
+				<property name="field">TablePrefix</property>
+			</properties>
+		</function>
+                
+	</functions>
+	
+</report>
+
+
+
+
+

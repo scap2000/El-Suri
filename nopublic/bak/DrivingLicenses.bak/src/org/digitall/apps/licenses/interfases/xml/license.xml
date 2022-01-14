@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!--
+    ~ Copyright (c) 2007, Your Corporation. All Rights Reserved.
+    -->
+
+<report xmlns="http://jfreereport.sourceforge.net/namespaces/reports/legacy/simple" name="Licencia de Conducir" pageformat="A4" orientation="portrait"
+       topmargin="20" leftmargin="20" bottommargin="20" rightmargin="20">
+	
+	<pageheader height="12" fontname="SansSerif" fontsize="16" fsbold="true">
+
+	</pageheader>
+	
+	<groups>
+		<group name="table_0">
+			<fields>
+				<field>TablePrefix</field>
+				<field>table_0.header</field>
+			</fields>
+			
+			<groupheader layout-cachable="false" >
+				<band name="table_0" fontname="SansSerif" fontstyle="plain" fontsize="10">
+					<rectangle name="tangle1"  x="0"    y="0"   width="482" height="152"  draw="true" fill="false" color="#000000"/>
+                                        <rectangle name="tangle2"  x="241"  y="0"   width="241" height="152"  draw="true" fill="false" color="#000000"/>
+                                        <rectangle name="tangle3"  x="174"   y="52"  width="63"  height="63"  draw="true" fill="false" color="#000000"/>
+                                        
+					<string-field name="lbltitle1" x="0" y="3" width="241" height="10" dynamic="false" alignment="center" fsbold="true" fontsize="10" fieldname="location"/>
+					<string-field name="lbltitle1" x="0" y="16" width="241" height="10" dynamic="false" alignment="center" fsbold="true" fontsize="8" fieldname="country"/>
+					<string-field name="lbltitle1" x="0" y="26" width="241" height="10" dynamic="false" alignment="center" fsbold="true" fontsize="8" fieldname="province"/>
+                                        <label color="#FF0000" name="lbldate" x="0" y="36" width="241" dynamic="false" height="14" alignment="center" vertical-alignment="middle" fsbold="true" fontsize="11">LICENCIA de CONDUCIR</label>
+					<string-field color="#3650BB" x="0" y="50" width="241" dynamic="false" height="14" alignment="center" vertical-alignment="middle"  fontsize="13" fsbold="true" fieldname="table_0.licensenumber" />
+                                        <image-field x="174" y="52" scale="true" width="63" height="63" fieldname="photo"/>
+                                        
+                                        <string-field x="10"  y="60" width="170" dynamic="false" height="12" alignment="left" vertical-alignment="middle" fontsize="12" fsbold="true" fieldname="table_0.lastname"/>
+                                        <string-field x="10"  y="73" width="170" dynamic="false" height="12" alignment="left" vertical-alignment="middle" fontsize="12" fsbold="true" fieldname="table_0.name"/>
+                                        
+					<string-field x="10"  y="86" width="170" dynamic="false" height="14" alignment="left" vertical-alignment="middle" fontsize="8" fieldname="table_0.address"/>
+                                        
+                                        <label name="lbldate" x="5" y="105" width="60" dynamic="false" height="8" alignment="center" vertical-alignment="middle" fsbold="true" fontsize="8">Otorgado el</label>
+                                        <date-field   x="5"  y="115" width="60" dynamic="false" height="8" alignment="center" vertical-alignment="middle" fsbold="true" fontsize="8" format="dd/MM/yyyy" fieldname="table_0.datefrom" />
+
+                                        <label name="lbldate" x="5" y="130" width="60" dynamic="false" height="8" alignment="center" vertical-alignment="middle" fsbold="true" fontsize="8">Nacido/a el</label>
+                                        <date-field   x="5"  y="140" width="60" dynamic="false" height="8" alignment="center" vertical-alignment="middle" fsbold="true" fontsize="8" format="dd/MM/yyyy" fieldname="table_0.birthday" />
+                                        
+                                        <label name="lbldate" x="0" y="106" width="231" dynamic="false" height="14" alignment="center" vertical-alignment="middle" fsbold="true" fontsize="12">Vencimiento</label>
+					<date-field color="#FF0000" x="0" y="120" width="231" dynamic="false" height="14" alignment="center" vertical-alignment="middle"  fontsize="13" fsbold="true" format="dd/MM/yyyy" fieldname="table_0.dateto" />
+                                        
+                                        <rectangle name="tangle3"  x="160"   y="118"  width="77"  height="25"  draw="true" fill="false" color="#000000"/>
+                                        <label name="lbldate" x="160" y="143" width="77" dynamic="false" height="8" alignment="center" vertical-alignment="middle" fontsize="6">Firma del Titular</label>
+
+                                        <label name="legajo"  x="364" y="7"  width="50" dynamic="false" height="14" alignment="right" vertical-alignment="middle" fontsize="9">Legajo Nº:</label>
+                                        <string-field x="415"  y="7" width="115" dynamic="false" height="14" alignment="left" vertical-alignment="middle" fontsize="11" fsbold="true" fieldname="table_0.iddriverform"/>
+                                        
+                                        <label name="lblfactor" x="246" y="25"  width="40" dynamic="true" height="12" alignment="center" vertical-alignment="middle" fontsize="6">Grupo Sanguíneo</label>
+                                        <string-field x="246"  y="39" width="40" dynamic="false" height="14" alignment="center" vertical-alignment="middle" fontsize="8" fieldname="table_0.rhfactor"/>
+
+                                        <label name="lblfactor" x="292" y="25"  width="40" dynamic="true" height="12" alignment="center" vertical-alignment="middle" fontsize="6">Usa anteojos</label>
+                                        <string-field x="292"  y="39" width="40" dynamic="false" height="14" alignment="center" vertical-alignment="middle" fontsize="8" fieldname="table_0.hasglasses"/>
+
+                                        <label name="lblfactor" x="336" y="25"  width="40" dynamic="true" height="12" alignment="center" vertical-alignment="middle" fontsize="6">Usa audífono</label>
+                                        <string-field x="336"  y="39" width="40" dynamic="false" height="14" alignment="center" vertical-alignment="middle" fontsize="8" fieldname="table_0.hashearingaid"/>
+
+                                        <label name="lblfactor" x="380" y="25"  width="40" dynamic="true" height="12" alignment="center" vertical-alignment="middle" fontsize="6">Dona sus órganos</label>
+                                        <string-field x="380"  y="39" width="40" dynamic="false" height="14" alignment="center" vertical-alignment="middle" fontsize="8" fieldname="table_0.organdonor"/>
+
+                                        <label name="lblfactor" x="424" y="25"  width="40" dynamic="true" height="12" alignment="center" vertical-alignment="middle" fontsize="6">Vehículo adaptado</label>
+                                        <string-field x="424"  y="39" width="40" dynamic="false" height="14" alignment="center" vertical-alignment="middle" fontsize="8" fieldname="table_0.adaptedvehicle"/>
+
+                                        <string-field x="241"  y="55" width="241" dynamic="false" height="14" alignment="center" vertical-alignment="middle" fontsize="10" fsbold="true" fieldname="table_0.category"/>
+
+                                        <label name="lblfactor" x="251" y="85"  width="60" dynamic="false" height="12" alignment="left" vertical-alignment="middle" fontsize="8">Alérgico/a a:</label>
+                                        <string-field x="305"  y="85" width="177" dynamic="false" height="12" alignment="left" vertical-alignment="middle" fontsize="8" fieldname="table_0.allergies"/>
+
+                                        <label name="lblfactor" x="251" y="100"  width="80" dynamic="false" height="12" alignment="left" vertical-alignment="middle" fontsize="8">Inhabilitado/a para:</label>
+                                        <string-field x="332"  y="100" width="150" dynamic="false" height="12" alignment="left" vertical-alignment="middle" fontsize="8" fieldname="table_0.disqualifications"/>
+                                        
+                                        <line x1="301" y1="141" x2="422" y2="141" weight="0.2"/>-->
+                                        <label name="lblbloodg" x="241" y="143" width="241" height="14" dynamic="false" alignment="center" fontsize="6">Sello y firma de la Autoridad Municipal</label>
+
+                                        <image-field name="tangle3"  x="244"   y="3"  width="121"  height="17"  scale="true" fieldname="barcode"/>
+					
+				</band>
+			</groupheader>
+		</group>
+		
+	</groups>
+	
+	<functions>
+		<function class="org.jfree.report.function.HideElementByNameFunction" name="hideHeader">
+			<properties>
+				<property name="element">table_0</property>
+				<property name="field">TablePrefix</property>
+			</properties>
+		</function>
+	</functions>
+	
+</report>
+

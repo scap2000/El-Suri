@@ -1,0 +1,63 @@
+TABLAS
+1. CREATE TABLE "lifetimetypes_tabs" ("idlifetimetype" integer, "name" character varying(255) NOT NULL, "estado" character(1) NOT NULL, PRIMARY KEY ("idlifetimetype"));
+COMMENT ON TABLE "lifetimetypes_tabs" IS 'Tipo de Periodo de Vida Util';;
+ALTER TABLE "lifetimetypes_tabs" RENAME TO "lifetimetype_tabs";
+
+------------------
+* Recursos
+
+resourcescontrol.getAllResources
+resourcescontrol.addResource
+resourcescontrol.setResource
+------------------
+
+* Recursos x Marcas
+
+resourcescontrol.getAllResourceBrands
+resourcescontrol.addResourceBrand
+resourcescontrol.setResourceBrand
+--------------------
+
+* Skill
+
+tabs.getAllSkillForPersons
+-----------------------------
+
+* Recursos Compuestos
+
+resourcescontrol.saveResourceComponent
+resourcescontrol.getAllResourcesForComponent
+-----------------------------------------------
+
+* Recursos asignados a Centros de Costos
+
+logistics.getAllAssignedHumanResources
+logistics.getAllAssignedMaterialResources
+logistics.saveAsignedResource
+resourcescontrol.getAllMaterialResources
+resourcescontrol.getAllHumanResources
+------------------------------------------------
+
+* Unidades
+
+tabs.getAllUnits
+tabs.saveUnit
+---------------------------------------------
+
+* Marcas
+
+resourcescontrol.getAllBrands
+resourcescontrol.saveBrand
+---------------------------------
+
+* Tipo de Recurso
+
+resourcescontrol.getAllResourceTypes
+resourcescontrol.saveResourceType
+-----------------------------------
+
+* Empleados
+
+org.addEmployee
+org.setEmployee
+org.getAllPersonal

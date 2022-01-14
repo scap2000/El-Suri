@@ -1,0 +1,6 @@
+************************	28/11/2007	********************************
+1) calendar.getIdUserByIdPerson(integer)
+    Funcionalidad: Recupera el id de usuario, ingresando el id de la persona.-
+    nota: Se supone un usuario por persona.-
+    
+

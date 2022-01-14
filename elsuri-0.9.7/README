@@ -1,0 +1,55 @@
+Este es el archivo README para la distribuciÃ³n GNU de El Suri.
+El Suri es un entorno JAVA de trabajo y desarrollo para Gobierno ElectrÃ³nico.
+
+  Copyright (C) 2007-2010 por D'AMBROSIO MARCELO E CASSINA SANTIAGO SOC DE HECHO.
+  D'AMBROSIO MARCELO E CASSINA SANTIAGO SOC DE HECHO es propiedad de
+  Lic. Santiago Cassina (santiago@digitallsh.com.ar - scap2000@yahoo.com) y
+  Marcelo D'Ambrosio (marcelo@digitallsh.com.ar - marcelodambrosio@gmail.com)
+  http://www.digitallsh.com.ar
+
+  La copia y distribuciÃ³n de este archivo, con o sin modificaciones,
+  estÃ¡n permitidas por cualquier medio sin cargo mientras se preserven
+  el Aviso de Copyright y este mismo aviso.
+
+  Copyright (C) 2007-2010 by D'AMBROSIO MARCELO E CASSINA SANTIAGO SOC DE HECHO.
+  D'AMBROSIO MARCELO E CASSINA SANTIAGO SOC DE HECHO is owned by
+  Lic. Santiago Cassina (santiago@digitallsh.com.ar - scap2000@yahoo.com) and
+  Marcelo D'Ambrosio (marcelo@digitallsh.com.ar - marcelodambrosio@gmail.com)
+  http://www.digitallsh.com.ar
+
+  Copying and distribution of this file, with or without modification,
+  are permitted in any medium without royalty provided the copyright
+  notice and this notice are preserved.
+
+Ver el archivo ./INSTALL para instrucciones de instalaciÃ³n.
+
+Punto principal de distribuciÃ³n: http://elsuri.sourceforge.net/files
+
+PÃ¡gina principal: http://elsuri.sourceforge.net/
+
+Lista de correo electrÃ³nico: elsuri-bugs@lists.sourceforge.net
+- por favor usar la lista para todos los temas: reportes de errores, mejoras, etc.
+- cualquiera es bienvenido a la lista; para suscribirse visite
+  https://lists.sourceforge.net/lists/listinfo/elsuri-bugs
+- no existe un grupo de noticias.
+
+Reporte de Errores:
+ Por favor incluya informaciÃ³n suficiente para reproducir el error.
+ En tÃ©rminos generales, esto quiere decir:
+- los contenidos de cualquier archivo necesario para reproducir el error,
+  los datos principales y los parÃ¡metros de ejecuciÃ³n del programa (Â¡crucial!).
+- una descripciÃ³n del problema y algÃºn ejemplo del mensaje de error.
+- el nÃºmero de versiÃ³n del programa.
+- hardware, sistema operativo, versiones Java y compilador Java.
+- cualquier otra cosa que considere que sea Ãºtil para la revisiÃ³n.
+
+Parches y correcciones son bienvenidos; si es posible crÃ©elos
+con diff -c y registros de ChangeLog.
+
+Lea README-dev para informaciÃ³n sobre el entorno de desarrollo, cualquier
+participaciÃ³n es bienvenida. Si es programador y desea contribuir, deberÃ­a
+comenzar por aquÃ­. Si no es un programador, apreciaremos su ayuda escribiendo
+casos de prueba, revisando la documentaciÃ³n contra la implementaciÃ³n,
+traduciendo los textos del programa a otros idiomas, etc.
+
+El Suri es Software Libre. Lea el archivo COPYING por las condiciones de copia.

@@ -1,0 +1,19 @@
+ ********************************************* 22/10 **************************************   
+ 1 - calendar.getallstickynote    -> obtiene los stikynotes de un usuario
+ 
+ ********************************************* 23/10  **************************************
+ 
+ 2 - calendar.getuser          -> obtiene los datos de un usuario 
+ 3 - calendar.addupdatestickynote -> inserta o actualiza las notas segun el el parametro idStickyNote
+ 4 - calendar.getallusersbyfilter -> permite obtener los usuarios del sistema
+ 
+ ******************************************** 25/10 ****************************************
+ 
+ 5 - calendar.getallnews   -> obtiene las noticias del usuario conectado
+ 6 - calendar.addnews	-> agrega una novedad
+ 
+ ******************************************** 26/10 ****************************************
+ 
+ 7 - calendar.setnewsstatus -> cambia el estado de statusread = true o statusanswer = true segun el valor de type
+ 8 - calendar.delnews -> elimina logicamente una novedad
+ 9 - calendar.getdatarecipient -> obtiene los datos del receptor

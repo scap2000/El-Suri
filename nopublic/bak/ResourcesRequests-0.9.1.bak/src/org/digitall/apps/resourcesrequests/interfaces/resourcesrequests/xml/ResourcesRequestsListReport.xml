@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!--
+    ~ Copyright (c) 2007, Your Corporation. All Rights Reserved.
+    -->
+
+<report xmlns="http://jfreereport.sourceforge.net/namespaces/reports/legacy/simple" name="Pedidos de Materiales Realizados" pageformat="A4"
+       topmargin="20" leftmargin="50" bottommargin="22" rightmargin="30" orientation="portrait">
+	
+        <pageheader height="12" fontname="SansSerif" fontsize="16" fsbold="true">
+            <line x1="0" y1="80"  x2="550" y2="80"  weight=".75" color="#AAAAAA"/>
+            <line x1="370" y1="0" x2="370" y2="80"  weight=".75" color="#AAAAAA"/>
+            
+            <line x1="0" y1="80"  x2="550" y2="80"  weight=".75" color="#AAAAAA"/>
+            <line x1="370" y1="0" x2="370" y2="80"  weight=".75" color="#AAAAAA"/>
+                    
+            <!-- INICIO HEADER 1 -->                                        
+            <image-field name="logo" x="0" y="5" width="52"  height="30"  scale="true" fieldname="logo"/>
+            <rectangle name="ta" x="70"  y="0"  width="300" height="14" draw="false" fill="false" color="#0000FF"/>
+	    <string-field        x="70"  y="00" width="300" height="28" dynamic="false" alignment="center" vertical-aligment="middle" fontsize="14" fsbold="true" fieldname="orgtitle"/>
+            <rectangle name="ta" x="70"  y="30" width="300" height="10" draw="false" fill="false" color="#0000FF"/>
+            <string-field        x="70"  y="30" width="300" height="10" dynamic="false" alignment="center" fontsize="08" fsbold="false" vertical-aligment="middle" fieldname="locationdata"/>
+            <rectangle name="ta" x="0"   y="52" width="230" height="10" draw="false" fill="false" color="#0000FF"/>
+	    <string-field        x="0"   y="52" width="230" height="10" dynamic="false" alignment="left" fontsize="08" fsbold="false" fieldname="address"/>
+            
+            <rectangle name="ta" x="240" y="52" width="45"  height="10" draw="false" fill="false" color="#0000FF"/>
+            <label     name="ti" x="240" y="52" width="45"  height="10" dynamic="false" alignment="left" fontsize="08" fsbold="false">Teléfonos:</label>
+            <rectangle name="ta" x="290" y="52" width="75" height="10" draw="false" fill="false" color="#0000FF"/>
+            <string-field        x="290" y="52" width="75" height="10" dynamic="false" alignment="left" fontsize="08" fsbold="false"  fieldname="phonenumber1"/>
+            <rectangle name="ta" x="290" y="65" width="75" height="10" draw="false" fill="false" color="#0000FF"/>
+            <string-field        x="290" y="65" width="75" height="10" dynamic="false" alignment="left" fontsize="08" fsbold="false"  fieldname="phonenumber2"/>
+            <rectangle name="ta" x="0"   y="65" width="190" height="10" draw="false" fill="false" color="#0000FF"/>
+            <string-field        x="0"   y="65" width="190" height="10" dynamic="false" alignment="left" fontsize="08" fsbold="false" fieldname="webaddress"/>
+            
+            <label     name="ti" x="380" y="00" width="135" height="11" dynamic="true" alignment="center" fontsize="09" fsbold="true">PEDIDOS DE MATERIALES REALIZADOS</label>
+            
+            <label     name="zo" x="380" y="52"  width="60"  height="10" fontsize="08" dynamic="false" alignment="left" vertical-aligment="middle" fsbold="false">C.U.I.T.:</label>
+            <rectangle name="ta" x="450" y="52"  width="200" height="10" draw="false" fill="false" color="#0000FF"/>
+	    <string-field        x="450" y="52"  width="200" height="10" alignment="left" dynamic="false" fontsize="08" fsbold="false" fieldname="cuit"/>
+            <rectangle name="ta" x="380" y="55"  width="60"  height="10" draw="false" fill="false" color="#0000FF"/>
+            <label     name="zo" x="380" y="65"  width="60"  height="10" fontsize="08" dynamic="false" alignment="left" vertical-aligment="middle" fsbold="false">Fecha Impr.:</label>
+            <rectangle name="ta" x="450" y="65"  width="200" height="10" draw="false" fill="false" color="#0000FF"/>
+            <string-field          x="450" y="65"  width="200" height="10" alignment="left" fontsize="08" fsbold="false" dynamic="true" format="dd/MM/yyyy" fieldname="actualdate"/>
+            
+            <label  x="0"   y="85"  width="100%" dynamic="true" fontsize="09" fsbold="true" alignment="center">PEDIDOS DE MATERIALES REALIZADOS</label>
+            <label name="lbl"         x="090" y="100" width="100" dynamic="true" alignment="right" fontsize="09" fsbold="true">Centro de Costos: </label>
+            <rectangle name="tac"     x="200" y="100" width="450" height="10" dynamic="true" fill="false" draw="false" alignment="left" fontsize="09" fsbold="false"/>
+            <string-field name="cc"   x="200" y="100" width="450" dynamic="true" alignment="left"  fontsize="08" fsbold="false" fieldname="costcentre"/>
+            <label name="lblInitDate" x="100" y="115" width="045" dynamic="true" alignment="right" fontsize="08" fsbold="false">Desde:</label>
+            <string-field             x="150" y="115" width="065" dynamic="true" alignment="left"  fontsize="08" fieldname="startdate" fsbold="false"/>
+            <label name="lblEndDate"  x="220" y="115" width="045" dynamic="true" alignment="right" fontsize="08" fsbold="false">Hasta:</label>
+            <string-field             x="270" y="115" width="065" dynamic="true" alignment="left"  fontsize="08" fieldname="enddate" fsbold="false"/>    
+	</pageheader>
+        
+	<groups>
+		<group name="table_0">
+			<fields>
+				<field>TablePrefix</field>
+			</fields>
+			
+			<groupheader repeat="true" layout-cachable="false" pagebreak-before-print="false">
+                            <band name="table_0" height="15" fontname="SansSerif" fontsize="09" >
+                                        <rectangle name="tangle"  x="0"   y="12" width="60"  height="12"  draw="true" fill="true" color="#E5E5E5"/>
+                                        <rectangle name="tangle"  x="60"  y="12" width="60"  height="12"  draw="true" fill="true" color="#E5E5E5"/>
+                                        <rectangle name="tangle"  x="120" y="12" width="100" height="12"  draw="true" fill="true" color="#E5E5E5"/>
+                                        <rectangle name="tangle"  x="220" y="12" width="70"  height="12"  draw="true" fill="true" color="#E5E5E5"/>
+                                        <rectangle name="tangle"  x="290" y="12" width="60" height="12"  draw="true" fill="true" color="#E5E5E5"/>
+                                        <!--<rectangle name="tangle"  x="390" y="12" width="80"  height="12"  draw="true" fill="true" color="#E5E5E5"/>-->
+                                        <rectangle name="tangle"  x="350" y="12" width="160" height="12"  draw="true" fill="true" color="#E5E5E5"/>
+                                        
+                                        <rectangle name="tangle"  x="0"   y="12" width="60"  height="12"  draw="true" fill="false" color="#000000"/>
+                                        <rectangle name="tangle"  x="60"  y="12" width="60"  height="12"  draw="true" fill="false" color="#000000"/>
+                                        <rectangle name="tangle"  x="120" y="12" width="100" height="12"  draw="true" fill="false" color="#000000"/>
+                                        <rectangle name="tangle"  x="220" y="12" width="70"  height="12"  draw="true" fill="false" color="#000000"/>
+                                        <rectangle name="tangle"  x="290" y="12" width="60" height="12"  draw="true" fill="false" color="#000000"/>
+                                        <!--<rectangle name="tangle"  x="390" y="12" width="80"  height="12"  draw="true" fill="false" color="#000000"/>-->
+                                        <rectangle name="tangle"  x="350" y="12" width="160" height="12"  draw="true" fill="false" color="#000000"/>
+                                        
+					<label name="resou" x="0"   y="13" width="60"  height="11" dynamic="true" alignment="center" fsbold="true">Nº Pedido</label>
+					<label name="brand" x="60"  y="13" width="60"  height="11" dynamic="true" alignment="center" fsbold="true">Fecha</label>
+					<label name="quati" x="120" y="13" width="100" height="11" dynamic="true" alignment="center" fsbold="true">Solicitante</label>
+					<label name="unit"  x="220" y="13" width="70"  height="11" dynamic="true" alignment="center" fsbold="true">($) Costo</label>
+                                        <label name="brand" x="290" y="13" width="60" height="11" dynamic="true" alignment="center" fsbold="true">Estado</label>
+					<!--<label name="quati" x="390" y="13" width="80"  height="11" dynamic="true" alignment="center" fsbold="true">Prioridad</label>-->
+					<label name="unit"  x="350" y="13" width="160" height="11" dynamic="true" alignment="center" fsbold="true">Observaciones</label>
+                                        
+				</band>
+			</groupheader>
+			
+			<groupfooter height="18" fontname="Monospaced" fontstyle="bold" fontsize="9">
+                            <band name="table_0" height="15" fontname="SansSerif" fontsize="09" >
+				<line x1="0" y1="0" x2="510" y2="0" weight="0.25"/>
+			    </band>
+      			</groupfooter>
+		</group>
+		
+		
+	</groups>
+	
+	<items layout-cachable="false" >
+		<band name="table_0" fontsize="08">
+			<line x1="0"   y1="0" x2="0"   y2="100%" weight="0.25"/>
+			<line x1="60"  y1="0" x2="60"  y2="100%" weight="0.25"/>
+			<line x1="120" y1="0" x2="120" y2="100%" weight="0.25"/>
+			<line x1="220" y1="0" x2="220" y2="100%" weight="0.25"/>
+                        <line x1="290" y1="0" x2="290" y2="100%" weight="0.25"/>
+                        <line x1="350" y1="0" x2="350" y2="100%" weight="0.25"/>
+                        <line x1="510" y1="0" x2="510" y2="100%" weight="0.25"/>
+			<!--<line x1="760" y1="0" x2="760" y2="100%" weight="0.25"/>-->
+			
+			<number-field x="5"   y="2" width="55"  alignment="center"  vertical-alignment="middle" height="10" dynamic="false" format="000000" fieldname="table_0.number"/>
+			<date-field   x="62"  y="2" width="60"  alignment="center"  vertical-alignment="middle" height="10" dynamic="false" fieldname="table_0.date" format="dd/MM/yyyy"/>
+			<string-field x="125" y="2" width="95" alignment="left"     vertical-alignment="middle" height="10" dynamic="false" fieldname="table_0.solicitor"/>
+			<number-field x="220" y="2" width="65"  alignment="right"   vertical-alignment="middle" height="10" dynamic="false" fieldname="table_0.estimateamount" format="$ #,##0.00"/>
+                        <string-field x="295" y="2" width="55"  alignment="left"    vertical-alignment="middle" height="10" dynamic="false" fieldname="table_0.requeststatus"/>
+                        <!--<string-field x="502" y="2" width="78"  alignment="center"  height="08" dynamic="false" fieldname="table_0.priorityrequest"/>-->
+                        <string-field x="355" y="2" width="158" alignment="left"    vertical-alignment="middle" height="10" dynamic="false" fieldname="table_0.description"/>
+		</band>
+	</items>
+	
+        <pagefooter height="24">
+                <rectangle name="PF0" x="0" y="0" width="100%" height="100%" color="#FFFFFF" weight="0" draw="false" fill="true"/>
+                <line x1="0" y1="0" x2="100%" y2="0" weight="0.5"/>
+                <string-field fieldname="location" x="0" y="4" width="100%" height="100%" alignment="left" vertical-alignment="middle"/>
+                <string-field fieldname="pageXofY" x="0" y="4" width="100%" height="100%" alignment="right" vertical-alignment="middle"/>
+        </pagefooter>
+
+    <functions>
+	<property-ref name="report.date"/>
+	    <function class="org.jfree.report.function.PageOfPagesFunction" name="pageXofY">
+		<properties>
+			<property name="format">Página {0} de {1}</property>
+		</properties>
+	    </function>
+    
+	    <function class="org.jfree.report.function.HideElementByNameFunction" name="hideHeader">
+		    <properties>
+			    <property name="element">table_0</property>
+			    <property name="field">TablePrefix</property>
+		    </properties>
+	    </function>
+    </functions>
+	
+</report>
+
+

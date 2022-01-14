@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!--
+ LIMITACIÓN DE RESPONSABILIDAD - COPYRIGHT - [Español]
+ ================================================================================
+ El Suri - Entorno JAVA de Trabajo y Desarrollo para Gobierno Electrónico
+ ================================================================================
+
+ Información del Proyecto:  http://elsuri.sourceforge.net
+
+ Copyright (C) 2007-2010 por D'AMBROSIO MARCELO E CASSINA SANTIAGO SOC DE HECHO.
+ D'AMBROSIO MARCELO E CASSINA SANTIAGO SOC DE HECHO es propiedad de
+ Lic. Santiago Cassina (santiago@digitallsh.com.ar - scap2000@yahoo.com) y
+ Marcelo D'Ambrosio (marcelo@digitallsh.com.ar - marcelodambrosio@gmail.com)
+ http://www.digitallsh.com.ar
+
+ Este programa es software libre: usted puede redistribuirlo y/o modificarlo
+ bajo los términos de la Licencia Pública General GNU publicada
+ por la Fundación para el Software Libre, ya sea la versión 3
+ de la Licencia, o (a su elección) cualquier versión posterior.
+
+ Este programa se distribuye con la esperanza de que sea útil, pero
+ SIN GARANTÍA ALGUNA; ni siquiera la garantía implícita
+ MERCANTIL o de APTITUD PARA UN PROPÓSITO DETERMINADO.
+ Consulte los detalles de la Licencia Pública General GNU para obtener
+ una información más detallada.
+
+ Debería haber recibido una copia de la Licencia Pública General GNU
+ junto a este programa.
+ En caso contrario, consulte <http://www.gnu.org/licenses/>.
+
+ DISCLAIMER - COPYRIGHT - [English]
+ =====================================================================================
+ El Suri - JAVA Management & Development Environment for Electronic Government
+ =====================================================================================
+
+ Project Info:  http://elsuri.sourceforge.net
+
+ Copyright (C) 2007-2010 by D'AMBROSIO MARCELO E CASSINA SANTIAGO SOC DE HECHO.
+ D'AMBROSIO MARCELO E CASSINA SANTIAGO SOC DE HECHO is owned by
+ Lic. Santiago Cassina (santiago@digitallsh.com.ar - scap2000@yahoo.com) and
+ Marcelo D'Ambrosio (marcelo@digitallsh.com.ar - marcelodambrosio@gmail.com)
+ http://www.digitallsh.com.ar
+
+ This program is free software: you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation, either version 3 of the License, or
+ (at your option) any later version.
+
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public License for more details.
+
+ You should have received a copy of the GNU General Public License
+ along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+-->
+<!--
+  FilesList.xml
+-->
+<!--
+    ~ Copyright (c) 2007, Your Corporation. All Rights Reserved.
+    -->
+
+<report xmlns="http://jfreereport.sourceforge.net/namespaces/reports/legacy/simple" name="Expedientes" pageformat="A4"
+       topmargin="20" leftmargin="50" bottommargin="70" rightmargin="30" orientation="landscape">
+	
+	<pageheader height="12" fontname="SansSerif" fontsize="16" fsbold="true">
+		<string-field  width="100%" dynamic="true" alignment="center" fieldname="location"></string-field>
+                
+                <band name="table_0" height="30" fontname="SansSerif" fontstyle="bold" fontsize="10" >
+                                        
+                                        <line x1="0" y1="20" x2="100%" y2="20" weight="3"/>
+                                        <label name="lbltitle" x="0" y="25" width="280" dynamic="true" alignment="left" fsbold="true">Listado de Documentos/Expedientes</label>
+					<label name="lbldate" x="545" y="25" width="145" dynamic="true" alignment="right" fsbold="true">Fecha de impresión:</label>
+					<date-field x="695" y="25" width="65" dynamic="true" fieldname="report.date" alignment="left"  format="dd/MM/yyyy" />
+                                        <line x1="0" y1="40" x2="100%" y2="40" weight="3"/>
+                                        <line x1="0" y1="43" x2="100%" y2="43" weight="1"/>
+                                        
+                                        <rectangle name="tangle01" x="0"   y="60" width="110" height="18"  draw="true" fill="false" color="#000000"/>
+                                        <rectangle name="tangle02" x="110" y="60" width="65"  height="18"  draw="true" fill="false" color="#000000"/>
+                                        <rectangle name="tangle03" x="175" y="60" width="65"  height="18"  draw="true" fill="false" color="#000000"/>
+                                        <rectangle name="tangle04" x="240" y="60" width="185" height="18"  draw="true" fill="false" color="#000000"/>
+                                        <rectangle name="tangle05" x="425" y="60" width="35"  height="18"  draw="true" fill="false" color="#000000"/>
+                                        <rectangle name="tangle06" x="460" y="60" width="60"  height="18"  draw="true" fill="false" color="#000000"/>
+                                        <rectangle name="tangle07" x="520" y="60" width="180" height="18"  draw="true" fill="false" color="#000000"/>
+                                        <rectangle name="tangle08" x="700" y="60" width="65"  height="18"  draw="true" fill="false" color="#000000"/>
+                                        
+					<label name="label01"  x="0"   y="60" width="110" height="18" dynamic="true" alignment="center" vertical-alignment="middle">Nº Expediente</label>
+					<label name="label02"  x="110" y="60" width="65"  height="18" dynamic="true" alignment="center" vertical-alignment="middle">Nº Catastro</label>
+					<label name="label03"  x="175" y="60" width="65"  height="18" dynamic="true" alignment="center" vertical-alignment="middle">Fecha</label>
+                                        <label name="label04"  x="240" y="60" width="185" height="18" dynamic="true" alignment="center" vertical-alignment="middle">Iniciante</label>
+                                        <label name="label05"  x="425" y="60" width="35"  height="18" dynamic="true" alignment="center" vertical-alignment="middle">Folios</label>
+                                        <label name="label06"  x="460" y="60" width="60"  height="18" dynamic="true" alignment="center" vertical-alignment="middle">Estado</label>
+                                        <label name="label07"  x="520" y="60" width="180" height="18" dynamic="true" alignment="center" vertical-alignment="middle">Oficina Actual</label>
+                                        <label name="label08"  x="700" y="60" width="65"  height="18" dynamic="true" alignment="center" vertical-alignment="middle">Fch. Rec.</label>
+				</band>
+	</pageheader>
+	
+	<groups>
+                <group name="detail">
+                        <groupheader layout-cachable="false" pagebreak-before-print="true">
+                        </groupheader>
+                </group>
+	</groups>
+	
+	<items layout-cachable="false" >
+		<band name="table_0">
+			
+                        <line x1="0"   y1="0" x2="0"   y2="100%" weight="0.25"/>
+			<line x1="110" y1="0" x2="110"  y2="100%" weight="0.25"/>
+			<line x1="175" y1="0" x2="175" y2="100%" weight="0.25"/>
+                        <line x1="240" y1="0" x2="240" y2="100%" weight="0.25"/>
+                        <line x1="425" y1="0" x2="425" y2="100%" weight="0.25"/>
+                        <line x1="460" y1="0" x2="460" y2="100%" weight="0.25"/>
+                        <line x1="520" y1="0" x2="520" y2="100%" weightp="0.25"/>
+                        <line x1="700" y1="0" x2="700" y2="100%" weight="0.25"/>
+                        <line x1="762" y1="0" x2="762" y2="100%" weight="0.25"/>
+                        
+			<string-field x="2"   y="0" width="108" height="15" alignment="left"   vertical-alignment="middle" dynamic="false" fontsize="09" fieldname="table_0.expte"/>
+			<string-field x="112" y="0" width="63"  height="15" alignment="center" vertical-alignment="middle" dynamic="false" fontsize="09" fieldname="table_0.catastro"/>
+			<date-field   x="175" y="0" width="65"  height="15" alignment="center" vertical-alignment="middle" dynamic="false"  fontsize="09" format="dd/MM/yyyy" fieldname="table_0.fechaexp"/>
+                        <string-field x="243" y="0" width="182" height="15" alignment="left"   vertical-alignment="middle" dynamic="true" fontsize="09" fieldname="table_0.iniciante"/>
+			<number-field x="425" y="0" width="35"  height="15" alignment="center" vertical-alignment="middle" dynamic="false" fontsize="09" fieldname="table_0.cantfolios"/>
+                        <string-field x="462" y="0" width="58"  height="15" alignment="center" vertical-alignment="middle" dynamic="false" fontsize="09" fieldname="table_0.estadoexp"/>
+                        <string-field x="522" y="0" width="178" height="15" alignment="left"   vertical-alignment="middle" dynamic="true" fontsize="09" fieldname="table_0.ofic_rec"/>
+                        <date-field   x="700" y="0" width="65"  height="15" alignment="center" vertical-alignment="middle" dynamic="false"  fontsize="09" format="dd/MM/yyyy" fieldname="table_0.fechaexp"/>
+                        
+		</band>
+	</items>
+	
+	<functions>
+		<!--<function class="org.jfree.report.function.HideElementByNameFunction" name="hideHeader">
+			<properties>
+				<property name="element">table_0</property>
+				<property name="field">TablePrefix</property>
+			</properties>
+		</function>
+		-->
+		<property-ref name="dummy-field"/>
+	</functions>
+        
+        <include src="footerPaginated.xml"/>
+	
+</report>
+
+
+
+
+
+

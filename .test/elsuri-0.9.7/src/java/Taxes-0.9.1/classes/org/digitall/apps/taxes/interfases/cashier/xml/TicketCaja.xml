@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!--
+ LIMITACIÓN DE RESPONSABILIDAD - COPYRIGHT - [Español]
+ ================================================================================
+ El Suri - Entorno JAVA de Trabajo y Desarrollo para Gobierno Electrónico
+ ================================================================================
+
+ Información del Proyecto:  http://elsuri.sourceforge.net
+
+ Copyright (C) 2007-2010 por D'AMBROSIO MARCELO E CASSINA SANTIAGO SOC DE HECHO.
+ D'AMBROSIO MARCELO E CASSINA SANTIAGO SOC DE HECHO es propiedad de
+ Lic. Santiago Cassina (santiago@digitallsh.com.ar - scap2000@yahoo.com) y
+ Marcelo D'Ambrosio (marcelo@digitallsh.com.ar - marcelodambrosio@gmail.com)
+ http://www.digitallsh.com.ar
+
+ Este programa es software libre: usted puede redistribuirlo y/o modificarlo
+ bajo los términos de la Licencia Pública General GNU publicada
+ por la Fundación para el Software Libre, ya sea la versión 3
+ de la Licencia, o (a su elección) cualquier versión posterior.
+
+ Este programa se distribuye con la esperanza de que sea útil, pero
+ SIN GARANTÍA ALGUNA; ni siquiera la garantía implícita
+ MERCANTIL o de APTITUD PARA UN PROPÓSITO DETERMINADO.
+ Consulte los detalles de la Licencia Pública General GNU para obtener
+ una información más detallada.
+
+ Debería haber recibido una copia de la Licencia Pública General GNU
+ junto a este programa.
+ En caso contrario, consulte <http://www.gnu.org/licenses/>.
+
+ DISCLAIMER - COPYRIGHT - [English]
+ =====================================================================================
+ El Suri - JAVA Management & Development Environment for Electronic Government
+ =====================================================================================
+
+ Project Info:  http://elsuri.sourceforge.net
+
+ Copyright (C) 2007-2010 by D'AMBROSIO MARCELO E CASSINA SANTIAGO SOC DE HECHO.
+ D'AMBROSIO MARCELO E CASSINA SANTIAGO SOC DE HECHO is owned by
+ Lic. Santiago Cassina (santiago@digitallsh.com.ar - scap2000@yahoo.com) and
+ Marcelo D'Ambrosio (marcelo@digitallsh.com.ar - marcelodambrosio@gmail.com)
+ http://www.digitallsh.com.ar
+
+ This program is free software: you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation, either version 3 of the License, or
+ (at your option) any later version.
+
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public License for more details.
+
+ You should have received a copy of the GNU General Public License
+ along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+-->
+<!--
+  TicketCaja.xml
+-->
+
+<report xmlns="http://jfreereport.sourceforge.net/namespaces/reports/legacy/simple" name="Ticket Caja" pageformat="A4"
+       topmargin="25" leftmargin="25" bottommargin="10" rightmargin="10">
+	
+        <reportheader fontname="SanSerif" fontstyle="plain" >
+        
+            <!-- INICIO CABECERA -->
+	    
+	    <rectangle name="ta" x="0"   y="0" width="270" height="50" draw="true" fill="false" color="#000000"/>
+	    <image-field name="logo" x="5" y="5" width="32" height="15"  scale="true" fieldname="logo"/>
+            <string-field        x="40"  y="00" width="220" height="28" dynamic="false" alignment="center" vertical-aligment="middle" fontsize="10" fsbold="true" fieldname="orgtitle"/>
+            <rectangle name="ta" x="40"  y="25" width="220" height="10" draw="false" fill="false" color="#0000FF"/>
+            <string-field        x="40"  y="25" width="220" height="10" dynamic="false" alignment="center" fontsize="08" fsbold="false" fieldname="locationdata"/>
+	    <string-field        x="02"  y="40" width="230" height="10" dynamic="false" alignment="left"   fontsize="08" fieldname="address"/>
+	    
+	    <rectangle name="ta"  x="280"  y="00" width="270" height="50" draw="true" fill="false" color="#000000"/>
+            <image-field name="l" x="285"  y="05" width="32"  height="15"  scale="true" fieldname="logo"/>
+            <string-field         x="320"  y="00" width="220" height="28" dynamic="false" alignment="center" vertical-aligment="middle" fontsize="10" fsbold="true" fieldname="orgtitle"/>
+            <rectangle name="ta"  x="320"  y="25" width="220" height="10" draw="false" fill="false" color="#0000FF"/>
+            <string-field         x="320"  y="25" width="220" height="10" dynamic="false" alignment="center" fontsize="08" fsbold="false" fieldname="locationdata"/>
+	    <string-field         x="282"  y="40" width="230" height="10" dynamic="false" alignment="left" fontsize="08" fieldname="address"/>
+	    <rectangle name="ta"  x="0"    y="40" width="230" height="10" draw="false" fill="false" color="#0000FF"/>
+	    
+	    <rectangle name="ta" x="0"   y="60"  width="270" height="90" draw="true" fill="false" color="#000000"/>
+            <label     name="zo" x="0"   y="65"  width="270" height="10" fontsize="08" dynamic="false" alignment="center" vertical-aligment="middle" fsbold="true">TICKET CAJA</label>
+            <rectangle name="ta" x="10"  y="80"  width="240" height="12" draw="false" fill="false" color="#0000FF"/>
+	    <label     name="zo" x="10"  y="80"  width="60"  height="10" fontsize="08" dynamic="false" alignment="left" vertical-aligment="middle" fsbold="false">Ticket Nº:</label>
+	    <string-field        x="60"  y="80"  width="200" height="10" fontsize="08" dynamic="false" alignment="left" fsbold="false" fieldname="nroticket"/>
+	    
+	    <rectangle name="ta" x="10" y="95"  width="60"  height="10" draw="false" fill="false" color="#0000FF"/>
+            <label     name="zo" x="10" y="95"  width="60"  height="10" fontsize="08" dynamic="false" alignment="left" vertical-aligment="middle" fsbold="false">Caja Nº:</label>
+	    <string-field        x="60" y="95"  width="20"  height="10" alignment="left" dynamic="false" fontsize="08" fsbold="false" fieldname="nrocaja"/>
+	    
+            <rectangle name="ta" x="10"  y="110"  width="60"  height="10" draw="false" fill="false" color="#0000FF"/>
+            <label     name="zo" x="10"  y="110"  width="60"  height="10" fontsize="08" dynamic="false" alignment="left" vertical-aligment="middle" fsbold="false">Atendido por:</label>
+            <rectangle name="ta" x="65"  y="110"  width="200" height="10" draw="false" fill="false" color="#0000FF"/>
+	    <string-field        x="65"  y="110"  width="200" height="10" alignment="left" dynamic="false" fontsize="08" fsbold="false" fieldname="leatendio"/>
+	    
+            <rectangle name="ta" x="10"  y="125" width="60"  height="10" draw="false" fill="false" color="#0000FF"/>
+            <label     name="zo" x="10"  y="125" width="60"  height="10" fontsize="08" dynamic="false" alignment="left" vertical-aligment="middle" fsbold="false">Fecha Impr.:</label>
+            <rectangle name="ta" x="65"  y="125" width="200" height="10" draw="false" fill="false" color="#0000FF"/>
+            <string-field        x="65"  y="125" width="60"  height="10" fontsize="08" dynamic="true"  alignment="left" fieldname="fechapago"/>
+	    
+	    <image-field name="t" x="149" y="80"  width="120"  height="20"  scale="true" fieldname="barcode"/>
+	    
+	    <rectangle name="ta" x="280"   y="60" width="270" height="90" draw="true" fill="false" color="#000000"/>
+            <label     name="zo" x="280"   y="65"  width="270" height="10" fontsize="08" dynamic="false" alignment="center" vertical-aligment="middle" fsbold="true">TICKET CAJA</label>
+            <rectangle name="ta" x="290"  y="80"  width="240" height="12" draw="false" fill="false" color="#0000FF"/>
+	    <label     name="zo" x="290"  y="80"  width="60"  height="10" fontsize="08" dynamic="false" alignment="left" vertical-aligment="middle" fsbold="false">Ticket Nº:</label>
+	    <string-field        x="340"  y="80"  width="200" height="10" fontsize="08" dynamic="false" alignment="left" fsbold="false" fieldname="nroticket"/>
+	    
+	    <image-field name="t" x="429" y="80"  width="120"  height="20"  scale="true" fieldname="barcode"/>
+	    
+	    <rectangle name="ta" x="290" y="95"  width="60"  height="10" draw="false" fill="false" color="#0000FF"/>
+            <label     name="zo" x="290" y="95"  width="60"  height="10" fontsize="08" dynamic="false" alignment="left" vertical-aligment="middle" fsbold="false">Caja Nº:</label>
+	    <string-field        x="340" y="95"  width="20"  height="10" alignment="left" dynamic="false" fontsize="08" fsbold="false" fieldname="nrocaja"/>
+	    
+            <rectangle name="ta" x="290"  y="110"  width="60"  height="10" draw="false" fill="false" color="#0000FF"/>
+            <label     name="zo" x="290"  y="110"  width="60"  height="10" fontsize="08" dynamic="false" alignment="left" vertical-aligment="middle" fsbold="false">Atendido por:</label>
+            <rectangle name="ta" x="345"  y="110"  width="200" height="10" draw="false" fill="false" color="#0000FF"/>
+	    <string-field        x="345"  y="110"  width="200" height="10" alignment="left" dynamic="false" fontsize="08" fsbold="false" fieldname="leatendio"/>
+	    
+            <rectangle name="ta" x="290"  y="125" width="60"  height="10" draw="false" fill="false" color="#0000FF"/>
+            <label     name="zo" x="290"  y="125" width="60"  height="10" fontsize="08" dynamic="false" alignment="left" vertical-aligment="middle" fsbold="false">Fecha Impr.:</label>
+            <rectangle name="ta" x="345"  y="125" width="200" height="10" draw="false" fill="false" color="#0000FF"/>
+            <string-field        x="345"  y="125" width="200" height="10" fontsize="08" dynamic="true"  alignment="left" fieldname="fechapago"/>
+	    
+	</reportheader>
+         <groups>
+		<group name="table_0.tipo">
+			<fields>
+				<field>TablePrefix</field>
+				<field>table_0.tipo</field>
+		 	</fields>
+			<groupheader repeat="false" layout-cachable="false" pagebreak-before-print="false" fontname="SanSerif" fontstyle="plain">
+			    <line x1="0"   y1="12" x2="270"   y2="12" weight="0.25"/>
+			    <line x1="280" y1="12" x2="550"   y2="12" weight="0.25"/>
+			    <string-field name="tipo" x="0"   y="12"  width="270" height="14" alignment="center" vertical-alignment="middle" dynamic="false" fieldname="table_0.tipo"/>
+			    <string-field name="tipo" x="280" y="12"  width="270" height="14" alignment="center" vertical-alignment="middle" dynamic="false" fieldname="table_0.tipo"/>
+			    <line x1="0"   y1="26" x2="270" y2="26"   weight="0.25"/>
+			    <line x1="280" y1="26" x2="550" y2="26"   weight="0.25"/>
+			    <line x1="0"   y1="12" x2="0"   y2="26" weight="0.25"/>
+			    <line x1="280" y1="12" x2="280" y2="26" weight="0.25"/>
+			    <line x1="270" y1="12" x2="270" y2="26" weight="0.25"/>
+			    <line x1="550" y1="12" x2="550" y2="26" weight="0.25"/>
+			</groupheader>
+		
+			<groupfooter height="18" fontname="SanSerif" fontstyle="plain" fontsize="9">
+                                <line x1="0"   y1="0" x2="270" y2="0" weight="0.25"/>
+				<line x1="280" y1="0" x2="550" y2="0" weight="0.25"/>
+      			</groupfooter>
+
+		</group>
+	</groups>
+
+	<items layout-cachable="false" >
+	    <band name="table_0" fontsize="08" fontname="SanSerif" fontstyle="plain">
+		    <!-- LINEAS DE LAS TABLAS DE LA IZQUIERDA -->
+		    <line x1="0"   y1="0" x2="0"   y2="100%" weight="0.25"/>
+		    <line x1="200" y1="0" x2="200" y2="100%" weight="0.25"/>
+		    <line x1="270" y1="0" x2="270" y2="100%" weight="0.25"/>
+		    <line x1="480" y1="0" x2="480" y2="100%" weight="0.25"/>
+		    <line x1="0"   y1="0" x2="270"   y2="0" weight="0.25"/>
+		    
+		    <!-- LINEAS DE LAS TABLAS DE LA DERECHA -->
+		    <line x1="280" y1="0" x2="280" y2="100%" weight="0.25"/>
+		    <line x1="550" y1="0" x2="550" y2="100%" weight="0.25"/>
+		    <line x1="280" y1="0" x2="550" y2="0" weight="0.25"/>
+
+		    <string-field name="year" x="3"   y="0"  width="197" height="10" alignment="left"  vertical-alignment="middle" dynamic="true" fieldname="table_0.concepto"/>
+		    <number-field name="tott" x="200" y="0"  width="067" height="10" alignment="right" vertical-alignment="middle" dynamic="false" format="$ #,##0.00" fieldname="table_0.amount"/>
+		    
+		    <string-field name="year" x="283" y="0"  width="197" height="10" alignment="left"  vertical-alignment="middle" dynamic="true" fieldname="table_0.concepto"/>
+		    <number-field name="tott" x="480" y="0"  width="067" height="10" alignment="right" vertical-alignment="middle" dynamic="false" format="$ #,##0.00" fieldname="table_0.amount"/>
+		    
+	    </band>
+	</items>
+
+	<functions>
+
+		<function class="org.jfree.report.function.HideElementByNameFunction" name="hideHeader">
+			<properties>
+				<property name="element">table_0</property>
+				<property name="field">TablePrefix</property>
+			</properties>
+		</function>
+		
+		<function class="org.jfree.report.function.HideElementByNameFunction" name="hideDetail">
+			<properties>
+				<property name="element">table_0</property>
+				<property name="field">TablePrefix</property>
+			</properties>
+		</function>
+	</functions>
+	
+</report>
+
+

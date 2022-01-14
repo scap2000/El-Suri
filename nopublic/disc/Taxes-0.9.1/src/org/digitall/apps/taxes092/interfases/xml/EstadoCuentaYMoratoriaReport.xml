@@ -1,0 +1,449 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!--
+ LIMITACIÓN DE RESPONSABILIDAD - COPYRIGHT - [Español]
+ ================================================================================
+ El Suri - Entorno JAVA de Trabajo y Desarrollo para Gobierno Electrónico
+ ================================================================================
+
+ Información del Proyecto:  http://elsuri.sourceforge.net
+
+ Copyright (C) 2007-2010 por D'AMBROSIO MARCELO E CASSINA SANTIAGO SOC DE HECHO.
+ D'AMBROSIO MARCELO E CASSINA SANTIAGO SOC DE HECHO es propiedad de
+ Lic. Santiago Cassina (santiago@digitallsh.com.ar - scap2000@yahoo.com) y
+ Marcelo D'Ambrosio (marcelo@digitallsh.com.ar - marcelodambrosio@gmail.com)
+ http://www.digitallsh.com.ar
+
+ Este programa es software libre: usted puede redistribuirlo y/o modificarlo
+ bajo los términos de la Licencia Pública General GNU publicada
+ por la Fundación para el Software Libre, ya sea la versión 3
+ de la Licencia, o (a su elección) cualquier versión posterior.
+
+ Este programa se distribuye con la esperanza de que sea útil, pero
+ SIN GARANTÍA ALGUNA; ni siquiera la garantía implícita
+ MERCANTIL o de APTITUD PARA UN PROPÓSITO DETERMINADO.
+ Consulte los detalles de la Licencia Pública General GNU para obtener
+ una información más detallada.
+
+ Debería haber recibido una copia de la Licencia Pública General GNU
+ junto a este programa.
+ En caso contrario, consulte <http://www.gnu.org/licenses/>.
+
+ DISCLAIMER - COPYRIGHT - [English]
+ =====================================================================================
+ El Suri - JAVA Management & Development Environment for Electronic Government
+ =====================================================================================
+
+ Project Info:  http://elsuri.sourceforge.net
+
+ Copyright (C) 2007-2010 by D'AMBROSIO MARCELO E CASSINA SANTIAGO SOC DE HECHO.
+ D'AMBROSIO MARCELO E CASSINA SANTIAGO SOC DE HECHO is owned by
+ Lic. Santiago Cassina (santiago@digitallsh.com.ar - scap2000@yahoo.com) and
+ Marcelo D'Ambrosio (marcelo@digitallsh.com.ar - marcelodambrosio@gmail.com)
+ http://www.digitallsh.com.ar
+
+ This program is free software: you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation, either version 3 of the License, or
+ (at your option) any later version.
+
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public License for more details.
+
+ You should have received a copy of the GNU General Public License
+ along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+-->
+<!--
+  EstadoCuentaYMoratoriaReport.xml
+-->
+
+<report xmlns="http://jfreereport.sourceforge.net/namespaces/reports/legacy/simple" name="Estado Cta. y Moratoria/Plan de Pago" pageformat="A4"
+       topmargin="25" leftmargin="25" bottommargin="10" rightmargin="10">
+	
+        <reportheader fontname="SanSerif" fontstyle="plain" fontsize="08">
+        
+            <line x1="0" y1="80"  x2="550" y2="80"  weight=".75" color="#AAAAAA"/>
+            <line x1="370" y1="0" x2="370" y2="80"  weight=".75" color="#AAAAAA"/>
+            
+            <!-- INICIO HEADER 1 -->                                        
+            <image-field name="logo" x="0" y="5" width="52" height="30"  scale="true" fieldname="logo"/>
+            <string-field        x="70"  y="00" width="300" height="28" dynamic="false" alignment="center" vertical-aligment="middle" fontsize="14" fsbold="true" fieldname="orgtitle"/>
+            <rectangle name="ta" x="70"  y="30" width="300" height="10" draw="false" fill="false" color="#0000FF"/>
+	    <string-field        x="70"  y="30" width="300" height="10" dynamic="false" alignment="center" fontsize="08" fsbold="false" fieldname="locationdata"/>
+            <rectangle name="ta" x="0"   y="52" width="230" height="10" draw="false" fill="false" color="#0000FF"/>
+	    <string-field        x="0"   y="52" width="230" height="10" dynamic="false" alignment="left" fontsize="08" fieldname="address"/>
+            
+            <rectangle name="ta" x="240" y="52" width="45"  height="10" draw="false" fill="false" color="#0000FF"/>
+            <label     name="ti" x="240" y="52" width="45"  height="10" dynamic="false" alignment="left" fontsize="08" fsbold="false">Teléfonos:</label>
+            <rectangle name="ta" x="290" y="52" width="75" height="10" draw="false" fill="false" color="#0000FF"/>
+	    <string-field        x="290" y="52" width="75" height="10" dynamic="false" alignment="left" fontsize="08" fieldname="phonenumber1"/>
+            <rectangle name="ta" x="290" y="65" width="75" height="10" draw="false" fill="false" color="#0000FF"/>
+	    <string-field        x="290" y="65" width="75" height="10" dynamic="false" alignment="left" fontsize="08" fieldname="phonenumber2"/>
+            <rectangle name="ta" x="0"   y="65" width="190" height="10" draw="false" fill="false" color="#0000FF"/>
+	    <string-field        x="0"   y="65" width="190" height="10" dynamic="false" alignment="left" fontsize="08" fieldname="webaddress"/>
+            
+
+            <label     name="zo" x="380" y="00"  width="200" height="10" fontsize="08" dynamic="false" alignment="center" vertical-aligment="middle" fsbold="true">ESTADO DE CUENTA Y MORATORIA/P.P.</label>
+	    <string-field        x="380" y="10"  width="200" height="08" fontsize="05" dynamic="false" alignment="center" fieldname="impuesto"/>
+            
+            <rectangle name="ta" x="380" y="30"  width="240" height="12" draw="false" fill="false" color="#0000FF"/>
+            <rectangle name="ta" x="380" y="52"  width="60"  height="10" draw="false" fill="false" color="#0000FF"/>
+            <label     name="zo" x="380" y="52"  width="60"  height="10" fontsize="08" dynamic="false" alignment="left" vertical-aligment="middle" fsbold="false">C.U.I.T.:</label>
+            <rectangle name="ta" x="470" y="52"  width="200" height="10" draw="false" fill="false" color="#0000FF"/>
+	    <string-field        x="470" y="52"  width="200" height="10" alignment="left" dynamic="false" fontsize="08" fsbold="false" fieldname="cuit"/>
+            <rectangle name="ta" x="380" y="55"  width="60"  height="10" draw="false" fill="false" color="#0000FF"/>
+            <label     name="zo" x="380" y="65"  width="60"  height="10" fontsize="08" dynamic="false" alignment="left" vertical-aligment="middle" fsbold="false">Fecha Impr.:</label>
+            <rectangle name="ta" x="470" y="65"  width="200" height="10" draw="false" fill="false" color="#0000FF"/>
+            <string-field          x="470" y="65"  width="200" height="10" fontsize="08" dynamic="true"  alignment="left" fieldname="actualdate"/>
+            <!-- FIN HEADER 1 -->
+            
+            <!-- INICIO HEADER 2 -->
+            <rectangle  name="ta" x="0"   y="90"  width="60"  height="12" draw="false" fill="false" color="#0000FF"/>
+            <label      name="zo" x="0"   y="90"  width="60"  height="12" fontsize="10" dynamic="false" alignment="left" vertical-aligment="middle" fsbold="false">Titular:</label>
+            <rectangle  name="ta" x="65"  y="90"  width="300" height="12" draw="false" fill="false" color="#0000FF"/>
+            <string-field         x="65"  y="90"  width="300" height="12" alignment="left" dynamic="false" fontsize="10" fsbold="true" fieldname="contribuyente"/>
+            <rectangle  name="ta" x="0"   y="110" width="60"  height="12" draw="false" fill="false" color="#0000FF"/>
+            <!--<label      name="zo" x="0"   y="110" width="60"  height="12" fontsize="10" dynamic="false" alignment="left" vertical-aligment="middle">Apoderado:</label>-->
+	    <string-field        x="0" y="110" width="60" height="12" fontsize="10" alignment="left" vertical-aligment="middle" dynamic="false" fieldname="tituloapoderado"/>
+            <rectangle  name="ta" x="65"  y="110" width="300" height="12" draw="false" fill="false" color="#0000FF"/>
+            <string-field         x="65"  y="110" width="300" height="12" alignment="left" dynamic="false" fontsize="10"  fsbold="false" fieldname="apoderado"/>
+            
+            <label      name="zo" x="0"   y="135" width="60"  height="12" fontsize="10" dynamic="false" alignment="left" vertical-aligment="middle">Domicilio:</label>
+	    <rectangle  name="ta" x="65"  y="135" width="300" height="12" draw="false" fill="false" color="#0000FF"/>
+	    <string-field         x="65"  y="135" width="300" height="12" alignment="left" dynamic="false" fontsize="10" fsbold="false" fieldname="domicilio"/>
+            
+            <rectangle name="ta" x="380" y="90" width="50"  height="12" draw="false" fill="false" color="#0000FF"/>
+            <label     name="zo" x="380" y="90" width="50"  height="12" fontsize="10" dynamic="false" alignment="left" vertical-aligment="middle" fsbold="false">C.C.M.:</label>
+            <rectangle name="ta" x="450" y="90" width="100" height="12" draw="false" fill="false" color="#0000FF"/>
+            <string-field        x="450" y="90" width="100" height="12" fontsize="10" dynamic="false" alignment="left" fsbold="false" fieldname="cuentacorriente"/>
+            
+            <rectangle name="ta" x="380" y="105" width="50"  height="12" draw="false" fill="false" color="#0000FF"/>
+            <string-field        x="380" y="105" width="50" height="12" fontsize="10" alignment="left" vertical-aligment="middle" dynamic="false" fieldname="titulobien"/>
+            <rectangle name="ta" x="450" y="105" width="100" height="12" draw="false" fill="false" color="#0000FF"/>
+            <string-field        x="450" y="105" width="100" height="12" fontsize="10" alignment="left" vertical-aligment="middle" dynamic="false" fieldname="bien"/>
+	    
+	    <rectangle name="ta" x="380" y="120" width="50"  height="12" draw="false" fill="false" color="#0000FF"/>
+            <string-field        x="380" y="120" width="50" height="12" fontsize="10" alignment="left" vertical-aligment="middle" dynamic="false" fieldname="titulovalorfiscal"/>
+            <rectangle name="ta" x="450" y="120" width="100" height="12" draw="false" fill="false" color="#0000FF"/>
+            <number-field        x="450" y="120" width="100" height="12" fontsize="10" alignment="left" vertical-aligment="middle" dynamic="false" format="$ #,##0.00" fieldname="valorFiscal"/>
+            
+            <rectangle name="ta" x="375" y="135" width="175"  height="40" draw="true" fill="true" color="#F7F6F6"/>
+            <rectangle name="ta" x="375" y="140" width="175"  height="12" draw="false" fill="false" color="#0000FF"/>
+            <label     name="zo" x="375" y="145" width="175"  height="12" fontsize="10" dynamic="true" alignment="center" vertical-aligment="middle" fsbold="false" fsitalic="true">DOCUMENTO NO VÁLIDO COMO COMPROBANTE DE PAGO</label>
+            <!-- FIN HEADER 2 -->
+            
+            <!-- INICIO HEADER 3 -->
+            <label     name="zo" x="0" y="170" width="200"  height="12" fontsize="10" dynamic="false" alignment="left" vertical-aligment="middle" fsbold="true">Resumen de Estado de Cuenta:</label>
+	    <line x1="0" y1="185" x2="550" y2="185" weight="1.00" color="#AAAAAA"/>
+            
+            <rectangle name="ta" x="0"   y="195" width="550" height="10" draw="true" fill="true" color="#E5E5E5"/>
+            <label     name="zo" x="0"   y="195" width="130" height="10" fontsize="09" dynamic="false" alignment="left" vertical-aligment="middle" fsbold="false">Período de Pago:</label>
+	    <rectangle name="ta" x="165" y="195" width="280" height="10" draw="false" fill="false" color="#000FFF"/>
+            <string-field        x="165" y="195" width="280" height="10" fontsize="09" alignment="left" vertical-aligment="middle" dynamic="false" fieldname="periodos"/>
+
+            <label     name="zo" x="0"   y="210" width="130" height="10" fontsize="09" dynamic="false" alignment="left" vertical-aligment="middle" fsbold="false">Cantidad de Anticipos:</label>
+	    <rectangle name="ta" x="165" y="210" width="280" height="10" draw="false" fill="false" color="#000FFF"/>
+            <number-field        x="165" y="210" width="280" height="10" fontsize="09" dynamic="true"  alignment="left" vertical-aligment="middle" fsbold="false" fieldname="cantperiodos"/>
+             
+            
+            <rectangle name="ta" x="0"   y="225" width="550" height="10" draw="true" fill="true" color="#E5E5E5"/>
+            <label     name="zo" x="0"   y="225" width="130" height="10" fontsize="09" dynamic="false" alignment="left" vertical-aligment="middle" fsbold="false">Deuda Parcial:</label>
+	    <rectangle name="ta" x="465" y="225" width="80" height="10" draw="false" fill="false" color="#000FFF"/>
+            <number-field        x="465" y="225" width="80" height="10" fontsize="09" alignment="right" format="$ #,##0.00" dynamic="true" fsbold="false" fieldname="deudaparcial"/>
+
+            <label     name="zo" x="0"   y="240" width="130" height="10" fontsize="09" dynamic="false" alignment="left" vertical-aligment="middle" fsbold="false">Interés por Mora:</label>
+	    <rectangle name="ta" x="465" y="240" width="80" height="10" draw="false" fill="false" color="#000FFF"/>
+            <number-field        x="465" y="240" width="80" height="10" fontsize="09" alignment="right" format="$ #,##0.00" dynamic="true" fsbold="false" fieldname="interespormora"/>
+	    
+            <rectangle name="ta" x="0"   y="255" width="550" height="10" draw="true" fill="true" color="#E5E5E5"/>
+	    <line x1="0" y1="253"  x2="550" y2="253"  weight=".75" color="#AAAAAA"/>
+	    <label     name="zo" x="0"   y="255" width="130" height="10" fontsize="09" dynamic="false" alignment="left" vertical-aligment="middle" fsbold="false">Subtotal Deuda:</label>
+	    <rectangle name="ta" x="465" y="255" width="80" height="10" draw="false" fill="false" color="#000FFF"/>
+            <number-field        x="465" y="255" width="80" height="10" fontsize="09" alignment="right" format="$ #,##0.00" dynamic="true" fsbold="true" fieldname="subtotaldeuda"/>
+	    
+	    <label     name="zo" x="0"   y="270" width="160" height="10" fontsize="09" dynamic="false" alignment="left" vertical-aligment="middle" fsbold="false">Bonificación Especial:</label>
+	    <string-field        x="165" y="270" width="215" height="10" fontsize="09" dynamic="true"  alignment="left" vertical-aligment="middle" fsbold="false" fieldname="titulodtoespecial"/>
+	    <rectangle name="ta" x="465" y="270" width="80"  height="10" draw="false" fill="false" color="#000FFF"/>
+            <number-field        x="465" y="270" width="80"  height="10" fontsize="09" alignment="right" format="- $ #,##0.00" vertical-aligment="middle" dynamic="false" fieldname="bonificacionespecialoriginal"/>
+	    
+	    <line x1="0" y1="283"  x2="550" y2="283"  weight=".75" color="#AAAAAA"/>
+	    <rectangle name="ta" x="0"   y="285" width="550" height="12" draw="true" fill="true" color="#E5E5E5"/>
+            <label     name="zo" x="0"   y="285" width="130" height="10" fontsize="09" dynamic="false" alignment="left" vertical-aligment="middle" fsbold="false">Total Deuda:</label>
+	    <rectangle name="ta" x="455" y="285" width="90"  height="10" draw="false" fill="false" color="#000FFF"/>
+            <number-field        x="455" y="285" width="90"  height="12" fontsize="11" alignment="right" format="$ #,##0.00" dynamic="true" fsbold="true" fieldname="montototalconintereses"/>
+            <!-- FIN HEADER 3 -->
+	    
+            <!-- INICIO PAGO AL CONTADO-->
+            <label     name="zo" x="0" y="310" width="200"  height="12" fontsize="10" dynamic="false" alignment="left" vertical-aligment="middle" fsbold="true">Moratoria Pago al Contado:</label>
+            <line x1="0" y1="325" x2="550" y2="325" weight="1.0" color="#AAAAAA"/>
+
+            <rectangle name="ta" x="0"   y="335" width="550" height="10" draw="true" fill="true" color="#E5E5E5"/>
+            <label     name="zo" x="0"   y="335" width="130" height="10" fontsize="09" dynamic="false" alignment="left" vertical-aligment="middle" fsbold="false">Período de Pago:</label>
+	    <rectangle name="ta" x="165" y="335" width="280" height="10" draw="false" fill="false" color="#000FFF"/>
+            <string-field        x="165" y="335" width="280" height="10" fontsize="09" alignment="left" vertical-aligment="middle" dynamic="false" fieldname="periodosCtdo"/>
+
+            <label     name="zo" x="0"   y="350" width="130" height="10" fontsize="09" dynamic="false" alignment="left" vertical-aligment="middle" fsbold="false">Cantidad de Anticipos:</label>
+	    <rectangle name="ta" x="165" y="350" width="280" height="10" draw="false" fill="false" color="#000FFF"/>
+            <number-field        x="165" y="350" width="280" height="10" fontsize="09" dynamic="true"  alignment="left" vertical-aligment="middle" fsbold="false" fieldname="cantperiodosCtdo"/>
+            
+            <rectangle name="ta" x="0"   y="365" width="550" height="10" draw="true" fill="true" color="#E5E5E5"/> 
+            <label     name="zo" x="0"   y="365" width="130" height="10" fontsize="09" dynamic="false" alignment="left" vertical-aligment="middle" fsbold="false">Deuda Parcial:</label>
+	    <rectangle name="ta" x="465" y="365" width="80" height="10" draw="false" fill="false" color="#000FFF"/>
+            <number-field        x="465" y="365" width="80" height="10" fontsize="09" alignment="right" format="$ #,##0.00" dynamic="true" fsbold="false" fieldname="deudaparcialctdo"/>
+	    
+            <label     name="zo" x="0"   y="380" width="130" height="10" fontsize="09" dynamic="false" alignment="left" vertical-aligment="middle" fsbold="false">Interés por Mora:</label>
+	    <rectangle name="ta" x="465" y="380" width="80" height="10" draw="false" fill="false" color="#000FFF"/>
+            <number-field        x="465" y="380" width="80" height="10" fontsize="09" alignment="right" format="$ #,##0.00" dynamic="true" fsbold="false" fieldname="interespormoractdo"/>
+            
+	    <rectangle name="ta" x="0"   y="395" width="550" height="10" draw="true" fill="true" color="#E5E5E5"/>
+	    <line 	x1="0"   y1="393"  x2="550" y2="393"  weight=".75" color="#AAAAAA"/>
+            <label     name="zo" x="0"   y="395" width="130" height="10" fontsize="09" dynamic="false" alignment="left" vertical-aligment="middle" fsbold="false">Subtotal Deuda:</label>
+	    <rectangle name="ta" x="465" y="395" width="80" height="10" draw="false" fill="false" color="#000FFF"/>
+            <number-field        x="465" y="395" width="80" height="10" fontsize="09" alignment="right" format="$ #,##0.00" dynamic="true" fsbold="true" fieldname="subtotaldeudactdo"/>
+    	    
+            <!--<label     name="zo" x="0"   y="380" width="190" height="10" fontsize="09" dynamic="false" alignment="left" vertical-aligment="middle" fsbold="false">Bonif. de Int. por Moratoria/Plan de Pago:</label>
+	    <string-field               x="190" y="380" width="115" height="10" fontsize="09" alignment="left" vertical-aligment="middle" dynamic="false" fieldname="lblbonifintereses"/>
+	    <rectangle name="ta" x="465" y="380" width="80" height="10" draw="false" fill="false" color="#000FFF"/>
+            <number-field        x="465" y="380" width="80" height="10" fontsize="09" alignment="right" format="- $ #,##0.00" vertical-aligment="middle" dynamic="false" fieldname="condonacionintereses"/>-->
+	    
+	    
+            <label     name="zo" x="0"   y="410" width="160" height="10" fontsize="09" dynamic="false" alignment="left" vertical-aligment="middle" fsbold="false">Bonificación Especial:</label>
+	    <string-field        x="165" y="410" width="215" height="10" fontsize="09" dynamic="true"  alignment="left" vertical-aligment="middle" fsbold="false" fieldname="titulodtoespecialcontado"/>
+	    <rectangle name="ta" x="465" y="410" width="80"  height="10" draw="false" fill="false" color="#000FFF"/>
+            <number-field        x="465" y="410" width="80"  height="10" fontsize="09" alignment="right" format="- $ #,##0.00" vertical-aligment="middle" dynamic="false" fieldname="bonificacionespecialcontado"/>
+	    
+	    
+	    
+            <rectangle name="ta" x="0"   y="425" width="550" height="10" draw="true" fill="true" color="#E5E5E5"/>
+            <label     name="zo" x="0"   y="425" width="160" height="10" fontsize="09" dynamic="false" alignment="left" vertical-aligment="middle" fsbold="false">Bonificación por pago al Contado:</label>
+	    <rectangle name="ta" x="465" y="425" width="80" height="10" draw="false" fill="false" color="#000FFF"/>
+            <number-field        x="465" y="425" width="80" height="10" fontsize="09" alignment="right" format="- $ #,##0.00" vertical-aligment="middle" dynamic="false" fieldname="bonificacioncontadoplandepago"/>
+            <string-field               x="165" y="425" width="250" height="10" fontsize="09" alignment="left" vertical-aligment="middle" dynamic="false" fieldname="lblbonifcontado"/>
+	    
+	    <line 	x1="0"   y1="440"  x2="550" y2="440"  weight=".75" color="#AAAAAA"/>
+            <label     name="zo" x="0"   y="440" width="160" height="10" fontsize="09" dynamic="false" alignment="left" vertical-aligment="middle" fsbold="false">Total a pagar:</label>
+	    <rectangle name="ta" x="455" y="440" width="90"  height="10" draw="false" fill="false" color="#000FFF"/>
+            <number-field        x="455" y="440" width="90"  height="12" fontsize="11" alignment="right" format="$ #,##0.00" dynamic="true" fsbold="true" fieldname="montocontado"/>
+	    <!-- FIN PAGO AL CONTADO-->
+	    
+	    <!-- INICIO PAGO DE CUOTAS-->
+
+	    <label     name="zo" x="0" y="465" width="200"  height="12" fontsize="10" dynamic="false" alignment="left" vertical-aligment="middle" fsbold="true">Moratoria Pago en Cuotas:</label>
+            <line x1="0" y1="480" x2="550" y2="480" weight="1.00" color="#AAAAAA"/>
+
+	    <rectangle name="ta" x="0"   y="490" width="550" height="10" draw="true" fill="true" color="#E5E5E5"/>
+            <label     name="zo" x="0"   y="490" width="130" height="10" fontsize="09" dynamic="false" alignment="left" vertical-aligment="middle" fsbold="false">Entrega:</label>
+	    <rectangle name="ta" x="465" y="490" width="80" height="10" draw="false" fill="false" color="#000FFF"/>
+            <number-field        x="465" y="490" width="80" height="10" fontsize="09" alignment="right" format="$ #,##0.00" dynamic="true" fsbold="false" fieldname="entrega"/>
+            
+            <line 	x1="0"   y1="505"  x2="550" y2="505"  weight=".75" color="#AAAAAA"/>
+	    
+            <label     name="zo" x="0"   y="510" width="130" height="10" fontsize="09" dynamic="false" alignment="left" vertical-aligment="middle" fsbold="false">Deuda Parcial:</label>
+	    <rectangle name="ta" x="465" y="510" width="80" height="10" draw="false" fill="false" color="#000FFF"/>
+            <number-field        x="465" y="510" width="80" height="10" fontsize="09" alignment="right" format="$ #,##0.00" dynamic="true" fsbold="false" fieldname="deudaparcialpp"/>
+            
+            <rectangle name="ta" x="0"   y="525" width="550" height="10" draw="true" fill="true" color="#E5E5E5"/>
+            <label     name="zo" x="0"   y="525" width="130" height="10" fontsize="09" dynamic="false" alignment="left" vertical-aligment="middle" fsbold="false">Interés por Mora:</label>
+	    <rectangle name="ta" x="465" y="525" width="80" height="10" draw="false" fill="false" color="#000FFF"/>
+            <number-field        x="465" y="525" width="80" height="10" fontsize="09" alignment="right" format="$ #,##0.00" dynamic="true" fsbold="false" fieldname="interespormorapp"/>
+            
+            <line x1="0" y1="540" x2="550" y2="540" weight="1.00" color="#AAAAAA"/>
+            
+            <label     name="zo" x="0"   y="545" width="130" height="10" fontsize="09" dynamic="false" alignment="left" vertical-aligment="middle" fsbold="false">Subtotal Deuda:</label>
+	    <rectangle name="ta" x="465" y="545" width="80" height="10" draw="false" fill="false" color="#000FFF"/>
+            <number-field        x="465" y="545" width="80" height="10" fontsize="09" alignment="right" format="$ #,##0.00" dynamic="true" fsbold="true" fieldname="subtotaldeudapp"/>
+            
+            <rectangle name="ta" x="0"   y="560" width="550" height="10" draw="true" fill="true" color="#E5E5E5"/>
+            <label     name="zo" x="0"   y="560" width="160" height="10" fontsize="09" dynamic="false" alignment="left" vertical-aligment="middle" fsbold="false">Bonificación:</label>
+	    <string-field        x="165" y="560" width="215" height="10" fontsize="09" dynamic="true"  alignment="left" vertical-aligment="middle" fsbold="false" fieldname="titulodtoespecialpp"/>
+	    <rectangle name="ta" x="465" y="560" width="80"  height="10" draw="false" fill="false" color="#000FFF"/>
+            <number-field        x="465" y="560" width="80"  height="10" fontsize="09" alignment="right" format="- $ #,##0.00" vertical-aligment="middle" dynamic="false" fieldname="bonificacionespecialplandepago"/>
+            
+            <line x1="0" y1="575" x2="550" y2="575" weight="1.00" color="#AAAAAA"/>
+            
+            <label     name="zo" x="0"   y="580" width="130" height="10" fontsize="09" dynamic="false" alignment="left" vertical-aligment="middle" fsbold="false">Subtotal Deuda:</label>
+	    <rectangle name="ta" x="465" y="580" width="80" height="10" draw="false" fill="false" color="#000FFF"/>
+            <number-field        x="465" y="580" width="80" height="10" fontsize="09" alignment="right" format="$ #,##0.00" dynamic="true" fsbold="true" fieldname="subtotalpp"/>
+            
+            <rectangle name="ta" x="0"   y="595" width="550" height="10" draw="true" fill="true" color="#E5E5E5"/>
+            <label     name="zo" x="0"   y="595" width="130" height="10" fontsize="09" dynamic="false" alignment="left" vertical-aligment="middle" fsbold="false">Cubre Entrega:</label>
+	    <rectangle name="ta" x="465" y="595" width="80" height="10" draw="false" fill="false" color="#000FFF"/>
+            <number-field        x="465" y="595" width="80" height="10" fontsize="09" alignment="right" format="$ #,##0.00" dynamic="true" fsbold="true" fieldname="cubreentrega"/>
+            <string-field        x="165" y="595" width="215" height="10" fontsize="09" dynamic="true"  alignment="left" vertical-aligment="middle" fsbold="false" fieldname="periodoanticipos"/>
+            
+            <line x1="0" y1="610" x2="550" y2="610" weight="1.00" color="#AAAAAA"/>
+            
+            <label     name="zo" x="0"   y="615" width="130" height="10" fontsize="09" dynamic="false" alignment="left" vertical-aligment="middle" fsbold="false">Saldo a Financiar:</label>
+	    <rectangle name="ta" x="465" y="615" width="80" height="10" draw="false" fill="false" color="#000FFF"/>
+            <number-field        x="465" y="615" width="80" height="10" fontsize="09" alignment="right" format="$ #,##0.00" dynamic="true" fsbold="true" fieldname="saldoafinanciar"/>
+            <string-field        x="165" y="615" width="215" height="10" fontsize="09" dynamic="true"  alignment="left" vertical-aligment="middle" fsbold="false" fieldname="periodoplandepago"/>
+
+            <rectangle name="ta" x="0"   y="630" width="550" height="10" draw="true" fill="true" color="#E5E5E5"/>
+            <label     name="zo" x="0"   y="630" width="190" height="10" fontsize="09" dynamic="false" alignment="left" vertical-aligment="middle" fsbold="false">Bonif. de Int. por Moratoria/Plan de Pago:</label>
+	    <string-field        x="190" y="630" width="115" height="10" fontsize="09" alignment="left" vertical-aligment="middle" dynamic="false" fieldname="lblbonifintereses"/>
+	    <rectangle name="ta" x="465" y="630" width="80" height="10" draw="false" fill="false" color="#000FFF"/>
+            <number-field        x="465" y="630" width="80" height="10" fontsize="09" alignment="right" format="- $ #,##0.00" vertical-aligment="middle" dynamic="false" fieldname="condonacionintereses"/>
+            
+            <label     name="zo" x="0"   y="645" width="160" height="10" fontsize="09" dynamic="false" alignment="left" vertical-aligment="middle" fsbold="false">Interés por Financiación:</label>
+	    <string-field        x="120" y="645" width="300" height="10" fontsize="09" dynamic="true"  alignment="left" vertical-aligment="middle" fsbold="false" fieldname="lblporcentajeinteresporfinanciacion"/>
+	    <rectangle name="ta" x="465" y="645" width="80"  height="10" draw="false" fill="false" color="#000FFF"/>
+            <number-field        x="465" y="645" width="80"  height="10" fontsize="09" alignment="right" format="$ #,##0.00" vertical-aligment="middle" dynamic="false" fieldname="porcentajeinteresporfinanciacion"/>
+            
+            <line 	x1="0"   y1="660"  x2="550" y2="660"  weight=".75" color="#AAAAAA"/>
+            
+            <label     name="zo" x="0"   y="665" width="160" height="10" fontsize="09" dynamic="false" alignment="left" vertical-aligment="middle" fsbold="false">Total:</label>
+	    <rectangle name="ta" x="465" y="665" width="80"  height="10" draw="false" fill="false" color="#000FFF"/>
+            <number-field        x="465" y="665" width="80"  height="10" fontsize="09" alignment="right" format="$ #,##0.00" vertical-aligment="middle" dynamic="false" fsbold="true" fieldname="totalpp"/>
+            
+            <rectangle name="ta" x="0"   y="680" width="550" height="12" draw="true" fill="true" color="#E5E5E5"/>
+            <label     name="zo" x="0"   y="680" width="160" height="10" fontsize="09" dynamic="false" alignment="left" vertical-aligment="middle" fsbold="false">Cuotas:</label>
+	    <rectangle name="ta" x="120" y="680" width="300" height="12" draw="false" fill="false" color="#000FFF"/>
+	    <string-field        x="120" y="680" width="300" height="12" fontsize="11" dynamic="true"  alignment="left" vertical-aligment="middle" fsbold="true" fieldname="leyendacuotas"/>
+        
+	</reportheader>
+	
+         <groups>
+		<group name="table_0">
+			<fields>
+				<field>TablePrefix</field>
+		 	</fields>
+		
+			<groupheader repeat="true" layout-cachable="false" pagebreak-before-print="true" fontname="SanSerif" fontstyle="plain">
+				<line x1="0" y1="80"  x2="550" y2="80"  weight=".75" color="#AAAAAA"/>
+				<line x1="370" y1="0" x2="370" y2="80"  weight=".75" color="#AAAAAA"/>
+				<line x1="0" y1="80"  x2="550" y2="80"  weight=".75" color="#AAAAAA"/>
+				
+				
+                                <image-field name="logo" x="0" y="5" width="52"  height="30"  scale="true" fieldname="logo"/>
+				<rectangle name="ta" x="70"  y="0"  width="300" height="28" draw="false" fill="false" color="#0000FF"/>
+				<string-field        x="70"  y="00" width="300" height="28" dynamic="false" alignment="center" vertical-aligment="middle" fontsize="14" fsbold="true" fieldname="orgtitle"/>
+				<rectangle name="ta" x="70"   y="30" width="300" height="10" draw="false" fill="false" color="#0000FF"/>
+				<string-field        x="70"  y="30" width="300" height="10" dynamic="false" alignment="center" fontsize="08" fsbold="false" fieldname="locationdata"/>
+				<rectangle name="ta" x="0"   y="52" width="230" height="10" draw="false" fill="false" color="#0000FF"/>
+				<string-field        x="0"   y="52" width="230" height="10" dynamic="false" alignment="left" fontsize="08" fieldname="address"/>
+				
+				<rectangle name="ta" x="240" y="52" width="45"  height="10" draw="false" fill="false" color="#0000FF"/>
+				<label     name="ti" x="240" y="52" width="45"  height="10" dynamic="false" alignment="left" fontsize="08" fsbold="false">Teléfonos:</label>
+				<rectangle name="ta" x="290" y="52" width="75" height="10" draw="false" fill="false" color="#0000FF"/>
+				<string-field        x="290" y="52" width="75" height="10" dynamic="false" alignment="left" fontsize="08" fieldname="phonenumber1"/>
+				<rectangle name="ta" x="290" y="65" width="75" height="10" draw="false" fill="false" color="#0000FF"/>
+				<string-field        x="290" y="65" width="75" height="10" dynamic="false" alignment="left" fontsize="08" fieldname="phonenumber2"/>
+				<rectangle name="ta" x="0"   y="65" width="190" height="10" draw="false" fill="false" color="#0000FF"/>
+				<string-field        x="0"   y="65" width="190" height="10" dynamic="false" alignment="left" fontsize="08" fieldname="webaddress"/>
+				
+				<label     name="zo" x="380" y="00"  width="200" height="10" fontsize="08" dynamic="false" alignment="center" vertical-aligment="middle" fsbold="true">ESTADO DE CUENTA Y MORATORIA/P.P.</label>
+				<string-field        x="380" y="10"  width="200" height="08" fontsize="05" dynamic="false" alignment="center" fieldname="impuesto"/>
+				
+				<rectangle name="ta" x="380" y="30"  width="240" height="12" draw="false" fill="false" color="#0000FF"/>
+				<rectangle name="ta" x="380" y="52"  width="60"  height="10" draw="false" fill="false" color="#0000FF"/>
+				<label     name="zo" x="380" y="52"  width="60"  height="10" fontsize="08" dynamic="false" alignment="left" vertical-aligment="middle" fsbold="false">C.U.I.T.:</label>
+				<rectangle name="ta" x="470" y="52"  width="200" height="10" draw="false" fill="false" color="#0000FF"/>
+					    <string-field        x="470" y="52"  width="200" height="10" alignment="left" dynamic="false" fontsize="08" fsbold="false" fieldname="cuit"/>
+				<rectangle name="ta" x="380" y="55"  width="60"  height="10" draw="false" fill="false" color="#0000FF"/>
+				<label     name="zo" x="380" y="65"  width="60"  height="10" fontsize="08" dynamic="false" alignment="left" vertical-aligment="middle" fsbold="false">Fecha Impr.:</label>
+				<rectangle name="ta" x="470" y="65"  width="200" height="10" draw="false" fill="false" color="#0000FF"/>
+				<string-field          x="470" y="65"  width="200" height="10" fontsize="08" dynamic="true"  alignment="left" fieldname="actualdate"/>
+				
+                                    <label     name="zo" x="0"   y="85"  width="230"  height="10" fontsize="10" dynamic="false" alignment="left" vertical-aligment="middle" fsbold="false">Detalle del Estado de Cuenta</label>
+                                    
+                                    <rectangle name="tangle"  x="0"     y="100" width="40"  height="14"  draw="true" fill="false" color="#000000"/>
+                                    <rectangle name="tangle"  x="40"    y="100" width="40"  height="14"  draw="true" fill="false" color="#000000"/>
+                                    <rectangle name="tangle"  x="80"    y="100" width="50"  height="14"  draw="true" fill="false" color="#000000"/>
+                                    <rectangle name="tangle"  x="130"   y="100" width="80"  height="14"  draw="true" fill="false" color="#000000"/>
+                                    <rectangle name="tangle"  x="210"   y="100" width="80" height="14"  draw="true" fill="false" color="#000000"/>
+                                    <rectangle name="tangle"  x="290"   y="100" width="80"  height="14"  draw="true" fill="false" color="#000000"/>
+                                    <rectangle name="tangle"  x="370"   y="100" width="80"  height="14"  draw="true" fill="false" color="#000000"/>
+                                    <rectangle name="tangle"  x="450"   y="100" width="100" height="14"  draw="true" fill="false" color="#000000"/>
+                                    
+                                    <label name="costcentre"    x="0"   y="100" width="40"  height="14" fontsize="08" dynamic="true" alignment="center" vertical-alignment="middle">Año</label>
+                                    <label name="date"          x="40"  y="100" width="40"  height="14" fontsize="08" dynamic="true" alignment="center" vertical-alignment="middle">Mes</label>
+                                    <label name="purchaseorder" x="80"  y="100" width="50"  height="14" fontsize="08" dynamic="true" alignment="center" vertical-alignment="middle">Fecha Vto.</label>
+                                    <label name="status"        x="130" y="100" width="80"  height="14" fontsize="08" dynamic="true" alignment="center" vertical-alignment="middle">Días Vto.</label>
+                                    <label name="status"        x="210" y="100" width="80"  height="14" fontsize="08" dynamic="true" alignment="center" vertical-alignment="middle">Importe</label>
+                                    <label name="amount"        x="290" y="100" width="80"  height="14" fontsize="08" dynamic="true" alignment="center" vertical-alignment="middle">Recargo</label>
+                                    <label name="amount"        x="370" y="100" width="80"  height="14" fontsize="08" dynamic="true" alignment="center" vertical-alignment="middle">Deducción</label>
+                                    <label name="amount"        x="450" y="100" width="100" height="14" fontsize="08" dynamic="true" alignment="center" vertical-alignment="middle">Monto Total</label>
+                                    
+			</groupheader>
+		</group>
+                
+                <group name="Header-Footer">
+			<groupfooter height="18" fontname="Monospaced" fontstyle="bold" fontsize="9">
+                                <line x1="0" y1="0" x2="550" y2="0" weight="0.25"/>
+				<label name="l" x="360" y="13" width="55"  fontsize="10" dynamic="true" alignment="right" fontname="SansSerif" fsbold="true" >Total:</label>
+				<rectangle      x="430" y="10" width="120" height="15" color="#F6F6F6" draw="true" fill="true"/>
+				<rectangle      x="430" y="10" width="120" height="15" color="#000000" draw="true" fill="false"/>
+				<number-field   x="430" y="13" width="117" fontsize="9" format="$ #,##0.00" dynamic="true" alignment="right" fontname="SansSerif" fsbold="false" fieldname="totalAmount" />
+      			</groupfooter>
+		</group>
+		
+		
+	</groups>
+		
+        <items layout-cachable="false" >
+            <band name="table_0" fontsize="08">
+                    
+                    <line x1="0"   y1="0" x2="0"   y2="100%" weight="0.25"/>
+                    <line x1="40"  y1="0" x2="40"  y2="100%" weight="0.25"/>
+                    <line x1="80"  y1="0" x2="80"  y2="100%" weight="0.25"/>
+                    <line x1="130" y1="0" x2="130" y2="100%" weight="0.25"/>
+                    <line x1="210" y1="0" x2="210" y2="100%" weight="0.25"/>
+                    <line x1="290" y1="0" x2="290" y2="100%" weight="0.25"/>
+                    <line x1="370" y1="0" x2="370" y2="100%" weight="0.25"/>
+                    <line x1="450" y1="0" x2="450" y2="100%" weight="0.25"/>
+                    
+                    <line x1="550" y1="0" x2="550" y2="100%" weight="0.25"/>
+
+                    <string-field name="year" x="0"   y="2"  width="40" height="12" alignment="center" vertical-alignment="middle" dynamic="false" fieldname="table_0.year"/>
+                    <string-field name="numr" x="40"  y="2"  width="40" height="12" alignment="center" vertical-alignment="middle" dynamic="false" fieldname="table_0.number"/>
+                    <date-field   name="expn" x="80"  y="2"  width="50" height="12" alignment="center" vertical-alignment="middle" dynamic="false" format="dd/MM/yyyy" fieldname="table_0.expiration"/>
+                    <number-field name="dias" x="130" y="2"  width="77" height="12" alignment="center" vertical-alignment="middle" dynamic="false" fieldname="table_0.dias"/>
+                    <number-field name="bast" x="210" y="2"  width="77" height="12" alignment="right"  vertical-alignment="middle" dynamic="false" format="$ #,##0.00" fieldname="table_0.basicamount"/>
+                    <number-field name="acct" x="290" y="2"  width="77" height="12" alignment="right"  vertical-alignment="middle" dynamic="false" format="$ #,##0.00" fieldname="table_0.accruedinterest"/>
+                    <number-field name="acct" x="370" y="2"  width="77" height="12" alignment="right"  vertical-alignment="middle" dynamic="false" format="$ #,##0.00" fieldname="table_0.accrueddiscount"/> 
+                    <number-field name="tott" x="450" y="2"  width="97" height="12" alignment="right"  vertical-alignment="middle" dynamic="false" format="$ #,##0.00" fieldname="table_0.totalamount"/>
+
+            </band>
+	</items>
+
+        <pagefooter height="24">
+                <rectangle name="PF0" x="0" y="0" width="100%" height="100%" color="#FFFFFF" weight="0" draw="false" fill="true"/>
+                <line x1="0" y1="0" x2="100%" y2="0" weight="0.5"/>
+                <string-field fieldname="location" x="0" y="4" width="100%" height="100%" alignment="left" vertical-alignment="middle"/>
+                <string-field fieldname="pageXofY" x="0" y="4" width="100%" height="100%" alignment="right" vertical-alignment="middle"/>
+        </pagefooter>
+
+	<functions>
+		<function class="org.jfree.report.function.HideElementByNameFunction" name="hideHeader">
+			<properties>
+				<property name="element">table_0</property>
+				<property name="field">TablePrefix</property>
+			</properties>
+		</function>
+		
+		<function class="org.jfree.report.function.HideElementByNameFunction" name="hideDetail">
+			<properties>
+				<property name="element">table_0</property>
+				<property name="field">TablePrefix</property>
+			</properties>
+		</function>
+
+                <function class="org.jfree.report.function.ItemSumFunction" name="totalAmount">
+			<properties>
+				<property name="field">table_0.totalamount</property>
+				<property name="group">Header-Detail</property>
+			</properties>
+		</function>
+                
+		
+		<function class="org.jfree.report.function.PageOfPagesFunction" name="pageXofY">
+		<properties>
+			<property name="format">Página {0} de {1}</property>
+		</properties>
+	    </function>
+
+	</functions>
+	
+</report>

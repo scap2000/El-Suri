@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!--
+    ~ Copyright (c) 2007, Your Corporation. All Rights Reserved.
+    -->
+
+<report xmlns="http://jfreereport.sourceforge.net/namespaces/reports/legacy/simple" name="Ficha de Licencia de Conducir" pageformat="A4" orientation="portrait"
+       topmargin="20" leftmargin="50" bottommargin="70" rightmargin="30">
+	
+	<pageheader height="12" fontname="SansSerif" fontsize="16" fsbold="true">
+		<!--<string-field  width="100%" dynamic="true" alignment="center" fieldname="location"></string-field>-->
+	</pageheader>
+	
+	<groups>
+		<group name="table_0">
+			<fields>
+				<field>TablePrefix</field>
+				<field>table_0.header</field>
+			</fields>
+			
+			<groupheader layout-cachable="false" >
+				<band name="table_0" fontname="SansSerif" fontstyle="plain" fontsize="10">
+					<rectangle name="tangle1"  x="0"    y="0"   width="500"  height="300"  draw="true" fill="false" color="#000000"/>
+                                        <rectangle name="tangle3"  x="20"   y="80"  width="113"  height="113"  draw="true" fill="false" color="#000000"/>
+                                        
+                                        <image-field x="20" y="80" scale="true" width="113" height="113" fieldname="photo"/>
+                                        
+					<string-field           x="0"  y="10" width="500" dynamic="false" height="16" alignment="center" vertical-alignment="middle" fsbold="true" fontsize="15" fieldname="description"/>
+					
+                                        <rectangle name="te10"  x="20" y="45" width="300" height="16"  draw="false" fill="false" color="#00FF00"/>
+					<label name="lbltitle3" x="20" y="45" width="300" dynamic="false" height="16" alignment="right" vertical-alignment="middle" fsbold="true"  fontsize="15">FICHA DE LICENCIA DE CONDUCIR</label>
+                                        
+					<rectangle name="te10"  x="330" y="45" width="20" height="16"  draw="false" fill="false" color="#00FF00"/>
+					<label name="lb" x="330" y="45" width="20"  dynamic="false" height="16" alignment="left" vertical-alignment="middle" fsbold="true"  fontsize="15">Nº</label>
+					<rectangle name="te10"  x="360" y="45" width="100" height="16"  draw="false" fill="false" color="#00FF00"/>
+                                        <string-field    x="360" y="45" width="100" dynamic="true" alignment="left" vertical-alignment="middle" fontsize="15" fieldname="table_0.identificationnumber" fsbold="true"/>
+					
+                                        <label name="lbltitle1"  x="140" y="80" width="50" dynamic="false" height="14" alignment="center" vertical-alignment="middle" fontsize="10">Apellido:</label>
+                                        <string-field x="195"  y="80" width="290" dynamic="false" height="14" alignment="left" vertical-alignment="middle" fontsize="10" fieldname="table_0.lastname"/>
+                                        <line x1="195" y1="95" x2="485" y2="95" weight="0.2"/>
+                                        
+                                        <label name="lbllastname" x="140" y="100"  width="50" dynamic="false" height="14"  alignment="center" vertical-alignment="middle" fontsize="10">Nombres:</label>
+                                        <string-field x="195"  y="100" width="290" dynamic="false" height="14" alignment="left" vertical-alignment="middle" fontsize="10" fieldname="table_0.name"/>
+                                        <line x1="195" y1="115" x2="485" y2="115" weight="0.2"/>
+                                        
+                                        
+                                        <label name="lblbirhtdate" x="140" y="120"  width="75" dynamic="false" height="14" alignment="center" vertical-alignment="middle" fontsize="10">Fecha de Nac.:</label>
+                                        <date-field          x="220" y="120"  width="75" dynamic="false" height="14" alignment="center" vertical-alignment="middle" fontsize="10" format="dd/MM/yyyy" fieldname="table_0.birthdate" />
+                                        <line x1="220" y1="135" x2="295" y2="135" weight="0.2"/>
+                                        
+                                        <label name="lbldni"   x="300" y="120"  width="80" dynamic="false" height="14" alignment="center" vertical-alignment="middle" fontsize="10">Doc. Tipo y Nº:</label>
+                                        <string-field x="385"  y="120" width="80" dynamic="false" alignment="left" height="14" fontsize="10" vertical-alignment="middle" fieldname="table_0.identificationtype"/>
+                                        <string-field x="420"  y="120" width="65" dynamic="false" alignment="left" height="14" fontsize="10" vertical-alignment="middle" fieldname="table_0.identificationnumber"/>
+                                        <line x1="385" y1="135" x2="485" y2="135" weight="0.2"/>
+                                        
+                                        
+                                        <label name="lbladdress"  x="140" y="140"  width="50" dynamic="false" height="14" alignment="center" vertical-alignment="middle" fontsize="10">Domicilio:</label>
+                                        <string-field x="195"  y="143" width="290" dynamic="false" height="28" alignment="left" vertical-alignment="top" fontsize="10" line-height="14" fieldname="table_0.address"/>
+                                        <line x1="195" y1="155" x2="485" y2="155" weight="0.2"/>
+                                        <line x1="195" y1="170" x2="485" y2="170" weight="0.2"/>
+                                        
+                                        <label name="lblnation" x="140" y="175"  width="90" dynamic="false" height="14" alignment="center" vertical-alignment="middle" fontsize="10">Grupo Sanguineo:</label>
+                                        <string-field           x="235" y="175"  width="50" dynamic="false" height="14" alignment="center" vertical-alignment="middle" fontsize="10" fieldname="table_0.bloodgroup"/>
+                                        <line x1="235" y1="190" x2="285" y2="190" weight="0.2"/>
+                                        
+                                        <label name="lblfactor" x="295" y="175"  width="35" dynamic="false" height="14" alignment="center" vertical-alignment="middle" fontsize="10">Factor:</label>
+                                        <string-field           x="330" y="175"  width="170" dynamic="false" height="14" alignment="center" vertical-alignment="middle" fontsize="10" fieldname="table_0.rhfactor"/>
+                                        <line x1="335" y1="190" x2="485" y2="190" weight="0.2"/>
+                                        
+                                        <!--<rectangle name="tangle10"  x="10"  y="210" width="180"  height="16"  draw="true" fill="false" color="#00FF00"/>-->
+                                        <label name="lblfactor" x="10" y="210"  width="180" dynamic="false" height="14" alignment="center" vertical-alignment="middle" fsbold="true" fontsize="12">VIGENCIA</label>
+                                        
+                                        <!--<rectangle name="tangle10"  x="10"  y="230" width="20"  height="16"  draw="true" fill="false" color="#00FF00"/>
+                                        <rectangle name="tangle10"  x="30"  y="230" width="70"  height="16"  draw="true" fill="false" color="#00FF00"/>
+                                        <rectangle name="tangle10"  x="100" y="230" width="20"  height="16"  draw="true" fill="false" color="#00FF00"/>
+                                        <rectangle name="tangle10"  x="120" y="230" width="70"  height="16"  draw="true" fill="false" color="#00FF00"/>-->
+                                        
+                                        <label name="lblfactor" x="10"  y="230" width="20" dynamic="false" height="14" alignment="center" vertical-alignment="middle" fsbold="true" fontsize="10">del</label>
+                                        <date-field    x="30" y="230"  width="70" dynamic="false" height="14" alignment="center" vertical-alignment="middle" fontsize="10" format="dd/MM/yyyy" fieldname="table_0.datefrom" />
+                                        <line   x1="30" y1="245" x2="100" y2="245" weight="0.2"/>
+                                        <label     name="lblfactor" x="100"  y="230" width="20" dynamic="false" height="14" alignment="center" vertical-alignment="middle" fsbold="true" fontsize="10">al</label>
+                                        <date-field    x="120" y="230"  width="70" dynamic="false" height="14" alignment="center" vertical-alignment="middle" fontsize="10" format="dd/MM/yyyy" fieldname="table_0.dateto" />
+                                        <line   x1="120" y1="245" x2="190" y2="245" weight="0.2"/>
+                                        
+                                        <!--<rectangle name="tangle10"  x="275"  y="275" width="205"  height="16"  draw="true" fill="false" color="#00FF00"/> -->
+                                        <line   x1="275" y1="275" x2="480" y2="275" weight="0.2"/>
+                                        <label name="lblbloodg" x="275" y="275" width="205" dynamic="false" height="14" alignment="center" vertical-alignment="middle" fontsize="10">FIRMA Y SELLO AUTORIZADO</label>
+					
+				</band>
+			</groupheader>
+		</group>
+		
+	</groups>
+	
+	<functions>
+		<function class="org.jfree.report.function.HideElementByNameFunction" name="hideHeader">
+			<properties>
+				<property name="element">table_0</property>
+				<property name="field">TablePrefix</property>
+			</properties>
+		</function>
+	</functions>
+	
+</report>
+
+

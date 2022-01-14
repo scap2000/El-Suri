@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!--
+ LIMITACIÓN DE RESPONSABILIDAD - COPYRIGHT - [Español]
+ ================================================================================
+ El Suri - Entorno JAVA de Trabajo y Desarrollo para Gobierno Electrónico
+ ================================================================================
+
+ Información del Proyecto:  http://elsuri.sourceforge.net
+
+ Copyright (C) 2007-2010 por D'AMBROSIO MARCELO E CASSINA SANTIAGO SOC DE HECHO.
+ D'AMBROSIO MARCELO E CASSINA SANTIAGO SOC DE HECHO es propiedad de
+ Lic. Santiago Cassina (santiago@digitallsh.com.ar - scap2000@yahoo.com) y
+ Marcelo D'Ambrosio (marcelo@digitallsh.com.ar - marcelodambrosio@gmail.com)
+ http://www.digitallsh.com.ar
+
+ Este programa es software libre: usted puede redistribuirlo y/o modificarlo
+ bajo los términos de la Licencia Pública General GNU publicada
+ por la Fundación para el Software Libre, ya sea la versión 3
+ de la Licencia, o (a su elección) cualquier versión posterior.
+
+ Este programa se distribuye con la esperanza de que sea útil, pero
+ SIN GARANTÍA ALGUNA; ni siquiera la garantía implícita
+ MERCANTIL o de APTITUD PARA UN PROPÓSITO DETERMINADO.
+ Consulte los detalles de la Licencia Pública General GNU para obtener
+ una información más detallada.
+
+ Debería haber recibido una copia de la Licencia Pública General GNU
+ junto a este programa.
+ En caso contrario, consulte <http://www.gnu.org/licenses/>.
+
+ DISCLAIMER - COPYRIGHT - [English]
+ =====================================================================================
+ El Suri - JAVA Management & Development Environment for Electronic Government
+ =====================================================================================
+
+ Project Info:  http://elsuri.sourceforge.net
+
+ Copyright (C) 2007-2010 by D'AMBROSIO MARCELO E CASSINA SANTIAGO SOC DE HECHO.
+ D'AMBROSIO MARCELO E CASSINA SANTIAGO SOC DE HECHO is owned by
+ Lic. Santiago Cassina (santiago@digitallsh.com.ar - scap2000@yahoo.com) and
+ Marcelo D'Ambrosio (marcelo@digitallsh.com.ar - marcelodambrosio@gmail.com)
+ http://www.digitallsh.com.ar
+
+ This program is free software: you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation, either version 3 of the License, or
+ (at your option) any later version.
+
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public License for more details.
+
+ You should have received a copy of the GNU General Public License
+ along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+-->
+<!--
+  PaymentOrderListReport.xml
+-->
+<!--
+    ~ Copyright (c) 2007, Your Corporation. All Rights Reserved.
+    -->
+
+<report xmlns="http://jfreereport.sourceforge.net/namespaces/reports/legacy/simple" name="Órdenes de Pago" pageformat="A4"
+       topmargin="20" leftmargin="50" bottommargin="10" rightmargin="30">
+	
+	<pageheader height="12" fontname="SansSerif" fontsize="16" fsbold="true">
+		<string-field  width="100%" dynamic="true" alignment="center" fieldname="location"></string-field>
+	</pageheader>
+	
+	<groups>
+		
+		<group name="Header-Detail" >
+			<fields>
+				<field>TablePrefix</field>
+				<field>table_0.idprovider</field>
+			</fields>
+			
+			<groupheader repeat="false" layout-cachable="false" pagebreak-before-print="true">
+				<band name="table_0" height="30" fontname="SansSerif" fontstyle="bold" fontsize="10">
+                                        
+                                        <line x1="0" y1="15" x2="100%" y2="15" weight="3"/>
+                                        <label name="lbltitle" x="0" y="20" width="280" dynamic="true" alignment="left" fsbold="true">Listado de Órdenes de Pago Emitidas</label>
+					<label name="lbldate" x="400" y="20" width="45" dynamic="true" alignment="right" fsbold="true">Fecha:</label>
+					<date-field x="450" y="20" width="65" dynamic="true" fieldname="report.date" alignment="left"  format="dd/MM/yyyy" />
+					
+					<label name="lblProvider" x="0" y="40" width="55" dynamic="true" alignment="left" fsbold="true">Proveedor:</label>
+					<string-field name="provider" fsbold="false" fieldname="table_0.identification" x="60" y="40" width="220" dynamic="false" height="12" alignment="left"/>
+                                        <label name="lblInitDate" x="285" y="40" width="45" dynamic="true" alignment="right" fsbold="true">Desde:</label>
+					<string-field x="335" y="40" width="65" dynamic="true" alignment="left" fieldname="startdate" fsbold="true"/>    
+                                        <label name="lblEndDate" x="400" y="40" width="45" dynamic="true" alignment="right" fsbold="true">Hasta:</label>
+					<string-field x="450" y="40" width="65" dynamic="true" alignment="left" fieldname="enddate" fsbold="true"/>    
+                                        <line x1="0" y1="55" x2="100%" y2="55" weight="3"/>
+                                        <line x1="0" y1="58" x2="100%" y2="58" weight="1"/>
+                                        
+                                        <rectangle name="tangle"  x="0"     y="70" width="50"  height="18"  draw="true" fill="false" color="#000000"/>
+                                        <rectangle name="tangle"  x="50"    y="70" width="70"  height="18"  draw="true" fill="false" color="#000000"/>
+                                        <rectangle name="tangle"  x="120"   y="70" width="60"  height="18"  draw="true" fill="false" color="#000000"/>
+                                        <rectangle name="tangle"  x="180"   y="70" width="240" height="18"  draw="true" fill="false" color="#000000"/>
+                                        <rectangle name="tangle"  x="420"   y="70" width="95"  height="18"  draw="true" fill="false" color="#000000"/>
+                                        
+					<label name="paymentorder"  x="0"   y="70" width="50"  height="18" dynamic="true" alignment="center" vertical-alignment="middle" fontsize="09">O.P.</label>
+					<label name="date"          x="50"  y="70" width="70"  height="18" dynamic="true" alignment="center" vertical-alignment="middle" fontsize="09">Fecha</label>
+					<label name="bookkentry"    x="120" y="70" width="60"  height="18" dynamic="true" alignment="center" vertical-alignment="middle" fontsize="09">Nº Asiento</label>
+                                        <label name="concept"       x="180" y="70" width="240" height="18" dynamic="true" alignment="center" vertical-alignment="middle" fontsize="09">Observaciones</label>
+                                        <label name="amount"        x="420" y="70" width="95"  height="18" dynamic="true" alignment="center" vertical-alignment="middle" fontsize="09">Monto</label>
+				</band>
+			</groupheader>
+			
+			<groupfooter height="18" fontname="Monospaced" fontstyle="bold" fontsize="9">
+			    <line x1="0" y1="0" x2="515" y2="0" weight="0.25"/>
+			    <label x="315" y="13" name="lblTotal" fontname="SansSerif" fsbold="true" fontsize="10" dynamic="true" width="75" alignment="right">Subtotal:</label>
+			    <rectangle    x="400" y="10" width="115" height="15" color="#FFFF00" draw="true" fill="true"/>
+			    <rectangle    x="400" y="10" width="115" height="15" color="#000000" draw="true" fill="false"/>
+			    <number-field x="400" y="13" width="110" format="$ #,##0.00" fieldname="partialAmount" dynamic="true" fontname="SansSerif" fsbold="false" fontsize="9" alignment="right"/>
+
+      			</groupfooter>
+		</group>
+		
+		<group name="Header-Footer" >
+			<groupfooter height="18" fontname="Monospaced" fontstyle="bold" fontsize="9">
+                                <label x="340" y="13" name="lblTotal" dynamic="true" width="55" fontname="SansSerif" fsbold="true" fontsize="10" alignment="right">Total:</label>
+				<rectangle x="400" y="10" width="115" height="15" color="#FFFF00" draw="true" fill="true"/>
+				<rectangle x="400" y="10" width="115" height="15" color="#000000" draw="true" fill="false"/>
+				<number-field x="400" y="13" format="$ #,##0.00" fieldname="totalAmount" dynamic="true" width="110" fontname="SansSerif" fsbold="false" fontsize="9" alignment="right"/>
+      			</groupfooter>
+		</group>
+		
+	</groups>
+	
+	<items layout-cachable="false" >
+		<band name="table_0">
+			<line x1="0"   y1="0" x2="0"   y2="100%" weight="0.25"/>
+			<line x1="50"  y1="0" x2="50"  y2="100%" weight="0.25"/>
+			<line x1="120" y1="0" x2="120" y2="100%" weight="0.25"/>
+                        <line x1="180" y1="0" x2="180" y2="100%" weight="0.25"/>
+                        <line x1="420" y1="0" x2="420" y2="100%" weight="0.25"/>
+                        <line x1="515" y1="0" x2="515" y2="100%" weight="0.25"/>
+                        
+			<string-field x="0"   y="2" width="50"  height="12" alignment="center" dynamic="false" fieldname="table_0.number"/>
+			<date-field   x="50"  y="2" width="70"  height="12" alignment="center" dynamic="false" format="dd/MM/yyyy" fieldname="table_0.date"/>
+			<string-field x="120" y="2" width="60"  height="12" alignment="center" dynamic="false" fieldname="table_0.bookkeepingentrynumber"/>
+                        <string-field x="185" y="2" width="240" height="12" alignment="left"   dynamic="false" fieldname="table_0.observations"/>
+			<number-field x="425" y="2" width="85"  height="12" alignment="right"  dynamic="false" format="$#,##0.00" fieldname="table_0.amount"/>
+		</band>
+	</items>
+	
+	<functions>
+		<function class="org.jfree.report.function.HideElementByNameFunction" name="hideHeader">
+			<properties>
+				<property name="element">table_0</property>
+				<property name="field">TablePrefix</property>
+			</properties>
+		</function>
+		
+		<function class="org.jfree.report.function.ItemSumFunction" name="partialAmount">
+			<properties>
+				<property name="field">table_0.amount</property>
+				<property name="group">Header-Detail</property>
+			</properties>
+		</function>
+		
+		<function class="org.jfree.report.function.ItemSumFunction" name="totalAmount">
+			<properties>
+				<property name="field">table_0.amount</property>
+			</properties>
+		</function>
+                
+                <function class="org.jfree.report.function.PageOfPagesFunction" name="pageXofY">
+		    <properties>
+			    <property name="format">Página {0} de {1}</property>
+		    </properties>
+		</function>
+                
+	</functions>
+        
+        <pagefooter height="24">
+                <rectangle name="PF0" x="0" y="0" width="100%" height="100%" color="#FFFFFF" weight="0" draw="false" fill="true"/>
+                <line x1="0" y1="0" x2="100%" y2="0" weight="0.5"/>
+                <string-field fieldname="location" x="0" y="4" width="100%" height="100%" alignment="left" vertical-alignment="middle"/>
+                <string-field fieldname="pageXofY" x="0" y="4" width="100%" height="100%" alignment="right" vertical-alignment="middle"/>
+        </pagefooter>
+	
+</report>
+
+
+
+
+

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+
+<report xmlns="http://jfreereport.sourceforge.net/namespaces/reports/legacy/simple" name="Credencial" pageformat="A4" orientation="portrait"
+       topmargin="20" leftmargin="20" bottommargin="20" rightmargin="20">
+	
+	<pageheader height="12" fontname="SansSerif" fontsize="16" fsbold="true">
+
+	</pageheader>
+	
+	<!--<groups>
+		<group name="table_0">
+			<fields>
+				<field>TablePrefix</field>
+				<field>table_0.header</field>
+			</fields>
+			
+			<groupheader layout-cachable="false" >-->
+			    <items>
+				<band name="table_0" fontname="SansSerif" fontstyle="plain" fontsize="10">
+					<rectangle name="tangle1"  x="0"    y="5"   width="482" height="152"  draw="true" fill="false" color="#000000"/>
+                                        <rectangle name="tangle2"  x="241"  y="5"   width="241" height="152"  draw="true" fill="false" color="#000000"/>
+                                        <rectangle name="tangle3"  x="10"   y="47"  width="73"  height="73"  draw="true" fill="false" color="#000000"/>
+                                        
+					<string-field name="lbl1" x="0"   y="8"  width="241" height="10" dynamic="false" alignment="center" fsbold="true" fontsize="10" fieldname="location"/>
+					<string-field name="lbl1" x="0"   y="20" width="140" height="10" dynamic="false" alignment="right" fsbold="true" fontsize="8" fieldname="country"/>
+					<label        name="lble" x="145" y="20" width="10"  height="10" dynamic="false"  alignment="center" vertical-alignment="middle" fsbold="true" fontsize="08">-</label>
+					<string-field name="lbe1" x="155" y="20" width="90" height="10" dynamic="false" alignment="left" fsbold="true" fontsize="8" fieldname="province"/>
+					<rectangle name="ta"  x="90"     y="30"  width="145"  height="12"  draw="false" fill="false" color="#0000FF"/>
+                                        <!--<label name="lbldate"     x="0"   y="26" width="241" dynamic="false" height="14" alignment="center" vertical-alignment="middle" fsbold="true" fontsize="11" color="#FF0000" >DIRECCION DE RENTAS</label>-->
+					<string-field x="3"  y="29" width="237" dynamic="false" height="14" alignment="center" vertical-alignment="middle" fontsize="08" fsbold="true" color="#FF0000" fieldname="table_0.dependencia"/>
+					
+                                        <!--<image-field x="10" y="47" scale="true" width="73" height="73" fieldname="photo"/>-->
+                                        <image-field x="10" y="47" scale="true" width="73" height="73" fieldname="table_0.photo"/>
+                                        <rectangle name="ta"  x="90"   y="55"  width="145"  height="12"  draw="false" fill="false" color="#0000FF"/>
+					<string-field x="90"  y="55" width="145" dynamic="false" height="12" alignment="left" vertical-alignment="middle" fontsize="11" fsbold="true" fieldname="table_0.apellido"/>
+                                        <string-field x="90"  y="68" width="145" dynamic="false" height="12" alignment="left" vertical-alignment="middle" fontsize="11" fsbold="true" fieldname="table_0.nombres"/>
+                                        
+					<label name="lbl" x="90"  y="81" width="25"  dynamic="false" height="12"   alignment="left" vertical-alignment="middle" fontsize="10" fsbold="true" >DNI:</label>
+					<string-field     x="120" y="81" width="120" dynamic="false" height="12"   alignment="left" vertical-alignment="middle" fontsize="10" fsbold="true" fieldname="table_0.dni"/>
+					<string-field     x="90" y="94"  width="120" dynamic="true"  height="12"  alignment="left" vertical-alignment="middle" fontsize="09" fsbold="true" fieldname="table_0.cargo"/>
+					
+					<!--<image-field name="logo" x="170" y="98" width="52"  height="30"  scale="true" fieldname="logo"/>-->
+                                        
+					<rectangle name="ta"  x="100"   y="130"  width="60"  height="08"  draw="false" fill="false" color="#0000FF"/>
+                                        <label name="lbe" x="100" y="130" width="60" dynamic="false" height="08" alignment="center" vertical-alignment="middle" fsbold="true" fontsize="8">Válida desde</label>
+                                        <date-field       x="100" y="140" width="60" dynamic="false" height="08" alignment="center" vertical-alignment="middle" fsbold="true" fontsize="8" format="dd/MM/yyyy" fieldname="table_0.fechaini" />
+
+                                        <rectangle name="ta"  x="170"   y="130"  width="60"  height="08"  draw="false" fill="false" color="#0000FF"/>
+                                        <label name="lbl" x="170" y="130" width="60" dynamic="false" height="08" alignment="center" vertical-alignment="middle" fsbold="true" fontsize="08">Válida hasta</label>
+					<date-field       x="170" y="140" width="60" dynamic="false" height="08" alignment="center" vertical-alignment="middle"  fontsize="08" fsbold="true" format="dd/MM/yyyy" color="#FF0000"  fieldname="table_0.fechafin" />
+                                        
+                                        <rectangle name="ta3"  x="08" y="123"  width="77"  height="25"  draw="true" fill="false" color="#000000"/>
+                                        <label     name="lbl"  x="08" y="148"  width="77" dynamic="false" height="8" alignment="center" vertical-alignment="middle" fontsize="6">Firma del Titular</label>
+
+                                        <!-- logo -->
+					<!--<image-field name="t"  x="280" y="18"  width="170"  height="25"  scale="true" fieldname="barcode"/>-->
+					<image-field name="t"  x="280" y="18"  width="170"  height="25"  scale="true" fieldname="table_0.barcodeimage"/>
+					
+					<image-field name="logo" x="250" y="60" width="80"  height="50"  scale="true" fieldname="logo"/>
+					
+                                        <line x1="360" y1="125" x2="470" y2="125" weight="0.2"/>
+                                        <label name="lblbloodg" x="295" y="125" width="241" height="10" dynamic="false" alignment="center" fontsize="6">Sello y firma de la Autoridad Municipal</label>
+					
+					<rectangle name="ta"  x="250"   y="135"  width="230"  height="12"  draw="false" fill="false" color="#0000FF"/>
+                                        <string-field x="250"  y="135" width="230" dynamic="true" height="08" alignment="left" vertical-alignment="middle" fontsize="06" fsitalic="true" fieldname="table_0.leyenda1"/>
+
+				</band>
+			    </items>
+			<!--</groupheader>
+		</group>
+		
+	</groups>-->
+	
+	<functions>
+		<function class="org.jfree.report.function.HideElementByNameFunction" name="hideHeader">
+			<properties>
+				<property name="element">table_0</property>
+				<property name="field">TablePrefix</property>
+			</properties>
+		</function>
+	</functions>
+	
+</report>
+
+

@@ -1,0 +1,23 @@
+Se debe llenar la tabla de ReportByUser con una funcion que utilize el la siguiente
+consulta SQL:
+
+	SELECT 
+			taskbyuser.idtaskbyuser,
+			detail.iddetail,
+			task.name,
+			detail.date,
+			detail.startworktime,
+			detail.endworktime,
+			detail.workedhours,
+			detail.estado
+                 FROM 
+			task.taskbyuser
+		 INNER JOIN 
+			task.detail  on detail.idtaskbyuser = taskbyuser.idtaskbyuser
+		 INNER JOIN
+			task.task  on task.idtask = taskbyuser.idtask
+		 WHERE  taskbyuser.iduser = 1 and current_date = detail.date
+		 ORDER BY iddetail
+		 
+donde el parametro estará represntando por el iduser y este se obtendra del cbusers definido en
+ReportByUser y se actualizara la tabla de abajo con los datos de ese nuevo usuario.

@@ -1,0 +1,49 @@
+Instrucciones de Instalación
+****************************
+
+  Copyright (C) 2007-2010 por D'AMBROSIO MARCELO E CASSINA SANTIAGO SOC DE HECHO.
+  D'AMBROSIO MARCELO E CASSINA SANTIAGO SOC DE HECHO es propiedad de
+  Lic. Santiago Cassina (santiago@digitallsh.com.ar - scap2000@yahoo.com) y
+  Marcelo D'Ambrosio (marcelo@digitallsh.com.ar - marcelodambrosio@gmail.com)
+  http://www.digitallsh.com.ar
+
+  La copia y distribución de este archivo, con o sin modificaciones,
+  están permitidas por cualquier medio sin cargo mientras se preserven
+  el Aviso de Copyright y este mismo aviso.
+
+  Copyright (C) 2007-2010 by D'AMBROSIO MARCELO E CASSINA SANTIAGO SOC DE HECHO.
+  D'AMBROSIO MARCELO E CASSINA SANTIAGO SOC DE HECHO is owned by
+  Lic. Santiago Cassina (santiago@digitallsh.com.ar - scap2000@yahoo.com) and
+  Marcelo D'Ambrosio (marcelo@digitallsh.com.ar - marcelodambrosio@gmail.com)
+  http://www.digitallsh.com.ar
+
+  Copying and distribution of this file, with or without modification,
+  are permitted in any medium without royalty provided the copyright
+  notice and this notice are preserved.
+
+Notas de Instalación
+====================
+
+Requerimientos mínimos:
+	* CPU 800 Mhz
+	* 256 MB de RAM
+	* Java JRE 1.6 (descarga desde http://www.java.com)
+
+Configuración recomendada:
+	* CPU 2.2 Ghz
+	* 2 GB de RAM
+	* Java JRE 1.6 actualizado (descarga desde http://www.java.com)
+
+Al instalar en LINUX, si el ícono en el escritorio no funciona,
+click derecho sobre el ícono, elegir Propiedades, en la pestaña Aplicación,
+completar el campo Ruta de trabajo con la ruta de instalación del Sistema.
+
+El Suri necesita acceso a la red, en general esto no es un problema a menos
+que se intente usar a través de una red que bloquee tráfico de salida.
+Si este fuera el caso solicitar al administrador de la red que permita el
+tráfico de salida por los puertos 2000 al 2003 del protocolo TCP para
+que El Suri encripte toda la información enviada y recibida.
+
+Para iniciar el sistema deberá aceptar el acuerdo de licencia y conectarse
+con el usuario "demo" y contraseña "demo123" (sin las comillas)
+

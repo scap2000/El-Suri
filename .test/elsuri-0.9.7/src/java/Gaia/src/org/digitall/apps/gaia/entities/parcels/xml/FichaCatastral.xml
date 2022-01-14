@@ -1,0 +1,361 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!--
+ LIMITACIÓN DE RESPONSABILIDAD - COPYRIGHT - [Español]
+ ================================================================================
+ El Suri - Entorno JAVA de Trabajo y Desarrollo para Gobierno Electrónico
+ ================================================================================
+
+ Información del Proyecto:  http://elsuri.sourceforge.net
+
+ Copyright (C) 2007-2010 por D'AMBROSIO MARCELO E CASSINA SANTIAGO SOC DE HECHO.
+ D'AMBROSIO MARCELO E CASSINA SANTIAGO SOC DE HECHO es propiedad de
+ Lic. Santiago Cassina (santiago@digitallsh.com.ar - scap2000@yahoo.com) y
+ Marcelo D'Ambrosio (marcelo@digitallsh.com.ar - marcelodambrosio@gmail.com)
+ http://www.digitallsh.com.ar
+
+ Este programa es software libre: usted puede redistribuirlo y/o modificarlo
+ bajo los términos de la Licencia Pública General GNU publicada
+ por la Fundación para el Software Libre, ya sea la versión 3
+ de la Licencia, o (a su elección) cualquier versión posterior.
+
+ Este programa se distribuye con la esperanza de que sea útil, pero
+ SIN GARANTÍA ALGUNA; ni siquiera la garantía implícita
+ MERCANTIL o de APTITUD PARA UN PROPÓSITO DETERMINADO.
+ Consulte los detalles de la Licencia Pública General GNU para obtener
+ una información más detallada.
+
+ Debería haber recibido una copia de la Licencia Pública General GNU
+ junto a este programa.
+ En caso contrario, consulte <http://www.gnu.org/licenses/>.
+
+ DISCLAIMER - COPYRIGHT - [English]
+ =====================================================================================
+ El Suri - JAVA Management & Development Environment for Electronic Government
+ =====================================================================================
+
+ Project Info:  http://elsuri.sourceforge.net
+
+ Copyright (C) 2007-2010 by D'AMBROSIO MARCELO E CASSINA SANTIAGO SOC DE HECHO.
+ D'AMBROSIO MARCELO E CASSINA SANTIAGO SOC DE HECHO is owned by
+ Lic. Santiago Cassina (santiago@digitallsh.com.ar - scap2000@yahoo.com) and
+ Marcelo D'Ambrosio (marcelo@digitallsh.com.ar - marcelodambrosio@gmail.com)
+ http://www.digitallsh.com.ar
+
+ This program is free software: you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation, either version 3 of the License, or
+ (at your option) any later version.
+
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public License for more details.
+
+ You should have received a copy of the GNU General Public License
+ along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+-->
+<!--
+  FichaCatastral.xml
+-->
+
+<report xmlns="http://jfreereport.sourceforge.net/namespaces/reports/legacy/simple" name="Ficha Catastral" pageformat="A4"
+       topmargin="25" leftmargin="50" bottommargin="10" rightmargin="10" orientation="portrait">
+
+    <reportheader fontname="SanSerif" fontstyle="plain" fontsize="08">
+        
+            <line x1="000" y1="70" x2="780" y2="70"  weight=".75" color="#AAAAAA"/>
+            <line x1="360" y1="00" x2="360" y2="70"  weight=".75" color="#AAAAAA"/>
+            
+            <!-- INICIO HEADER 1 -->                                        
+            <image-field name="logo" x="0" y="5" width="52"  height="30"  scale="true" fieldname="logo"/>
+            <!--<rectangle name="ta" x="70"  y="0"  width="300" height="14" draw="false" fill="false" color="#0000FF"/>-->
+            <string-field        x="70"  y="00" width="300" height="28" dynamic="false" alignment="center" vertical-aligment="middle" fontsize="14" fsbold="true" fieldname="orgtitle"/>
+            <rectangle name="ta" x="70"  y="30" width="300" height="10" draw="false" fill="false" color="#0000FF"/>
+            <string-field        x="70"  y="30" width="300" height="10" dynamic="false" alignment="center" fontsize="08" fsbold="false" vertical-aligment="middle" fieldname="locationdata"/>
+            <rectangle name="ta" x="0"   y="42" width="230" height="10" draw="false" fill="false" color="#0000FF"/>
+            <string-field        x="0"   y="42" width="230" height="10" dynamic="false" alignment="left" fontsize="06" fieldname="address"/>
+            
+            <rectangle name="ta" x="240" y="45" width="45"  height="10" draw="false" fill="false" color="#0000FF"/>
+            <label     name="ti" x="240" y="45" width="45"  height="10" dynamic="false" alignment="left" fontsize="06" fsbold="false">Teléfonos:</label>
+            <rectangle name="ta" x="290" y="45" width="75" height="10" draw="false" fill="false" color="#0000FF"/>
+            <string-field        x="290" y="45" width="75" height="10" dynamic="false" alignment="left" fontsize="06" fieldname="phonenumber1"/>
+            <rectangle name="ta" x="290" y="55" width="75" height="10" draw="false" fill="false" color="#0000FF"/>
+            <string-field        x="290" y="55" width="75" height="10" dynamic="false" alignment="left" fontsize="06" fieldname="phonenumber2"/>
+            <rectangle name="ta" x="0"   y="55" width="190" height="10" draw="false" fill="false" color="#0000FF"/>
+            <string-field        x="0"   y="55" width="190" height="10" dynamic="false" alignment="left" fontsize="06" fieldname="webaddress"/>
+            
+            <string-field name="zo" x="380" y="00"  width="200" height="12" fontsize="12" dynamic="false" alignment="center" vertical-aligment="middle" fsbold="true" fieldname="title"/>
+            
+            <rectangle name="ta" x="380" y="55"  width="60"  height="10" draw="false" fill="false" color="#000000"/>
+            <label     name="zo" x="380" y="55"  width="60"  height="10" fontsize="08" dynamic="false" alignment="left" vertical-aligment="middle" fsbold="false">Fecha Impr.:</label>
+            <rectangle name="ta" x="470" y="55"  width="200" height="10" draw="false" fill="false" color="#0000FF"/>
+            <string-field        x="470" y="55"  width="200" height="10" fontsize="08" dynamic="true"  alignment="left" fieldname="actualdate"/>
+            
+            <!-- RECTANGULO PARA LA IMAGEN DEL MAPA (GRANDE) -->
+            <image-field dynamic="false" name="logo" x="0" y="80" width="250" height="250"  scale="true" keepAspectRatio="true" fieldname="mapImage"/>
+            <rectangle name="tangle00" x="0" y="80" width="250" height="250"  draw="true" fill="false" color="#000000"/>
+            
+            <!-- RECTANGULO PARA LA IMAGEN DEL MAPA (CHICA) -->
+            <rectangle name="tangle01" x="260" y="80" width="100" height="100"  draw="true" fill="false" color="#000000"/>
+            
+            <!-- RECTANGULO PARA EL NUMERO DE CATASTRO -->
+            <rectangle    name="tangle02" x="370" y="080" width="160" height="020"  draw="true" fill="true" color="#E0E0E0"/>
+            <rectangle    name="tangle08" x="370" y="080" width="160" height="020"  draw="true" fill="false" color="#000000"/>
+            <rectangle    name="tangle08" x="370" y="100" width="160" height="030"  draw="true" fill="false" color="#000000"/>
+            
+            <label        name="catastro" x="370" y="085" width="160" height="20" fontsize="08" dynamic="false" alignment="center" vertical-aligment="middle" fsbold="false">Catastro</label>
+            <string-field name="seccion"  x="370" y="105" width="160" height="16" fontsize="16" dynamic="false" alignment="center" vertical-aligment="middle" fsbold="true" fieldname="catastro"/>
+            
+            
+            <!-- RECTANGULO PARA LA SECCION - MANAZANA - PARCELA -->
+            <rectangle name="tangle02" x="370" y="130" width="050" height="020"  draw="true" fill="true" color="#E0E0E0"/>
+            <rectangle name="tangle02" x="370" y="130" width="050" height="020"  draw="true" fill="false" color="#000000"/>
+            <rectangle name="tangle03" x="420" y="130" width="055" height="020"  draw="true" fill="true" color="#E0E0E0"/>
+            <rectangle name="tangle03" x="420" y="130" width="055" height="020"  draw="true" fill="false" color="#000000"/>
+            <rectangle name="tangle04" x="475" y="130" width="055" height="020"  draw="true" fill="true" color="#E0E0E0"/>
+            <rectangle name="tangle04" x="475" y="130" width="055" height="020"  draw="true" fill="false" color="#000000"/>
+            
+            <label     name="seccion"  x="370" y="135" width="50" height="12" fontsize="08" dynamic="false" alignment="center" vertical-aligment="middle" fsbold="false">Sección</label>
+            <label     name="manzana"  x="420" y="135" width="55" height="12" fontsize="08" dynamic="false" alignment="center" vertical-aligment="middle" fsbold="false">Manzana</label>
+            <label     name="parcela"  x="475" y="135" width="55" height="12" fontsize="08" dynamic="false" alignment="center" vertical-aligment="middle" fsbold="false">Parcela</label>
+            
+            <rectangle name="tangle05" x="370" y="150" width="050" height="030"  draw="true" fill="false" color="#000000"/>
+            <rectangle name="tangle06" x="420" y="150" width="055" height="030"  draw="true" fill="false" color="#000000"/>
+            <rectangle name="tangle07" x="475" y="150" width="055" height="030"  draw="true" fill="false" color="#000000"/>
+            
+            <string-field name="seccion" x="370" y="158"  width="050" height="30" fontsize="12" dynamic="false" alignment="center" vertical-aligment="middle" fsbold="true" fieldname="seccion"/>
+            <string-field name="manzana" x="420" y="158"  width="055" height="30" fontsize="12" dynamic="false" alignment="center" vertical-aligment="middle" fsbold="true" fieldname="manzana"/>
+            <string-field name="parcela" x="475" y="158"  width="055" height="30" fontsize="12" dynamic="false" alignment="center" vertical-aligment="middle" fsbold="true" fieldname="parcela"/>
+            
+            <!-- DATOS CATASTRALES -->
+            <rectangle name="tangle09" x="260" y="190" width="270" height="140"  draw="true" fill="false" color="#000000"/>
+            <label     name="datoscat" x="260" y="190" width="270" height="12" fontsize="12" dynamic="false" alignment="center" vertical-aligment="middle" fsbold="false" fsunderline="true" >Datos Catastrales</label>
+            
+            <rectangle    name="tangle10"  x="260" y="210" width="045" height="10"  draw="false" fill="false" color="#000000"/>
+            <label        name="direccion" x="261" y="210" width="044" height="10" fontsize="08" dynamic="false" alignment="left" vertical-aligment="middle" fsbold="false" fsundeline="true" >Dirección:</label>
+            <rectangle    name="tangle11"  x="305" y="210" width="177" height="10"  draw="false" fill="false" color="#000000"/>
+            <string-field name="direccion" x="307" y="210" width="177" height="10" fontsize="08" dynamic="false" alignment="left" vertical-aligment="middle" fsbold="false" fieldname="direccion"/>
+            <rectangle    name="tangle12"  x="485" y="210" width="015" height="10"  draw="false" fill="false" color="#000000"/>
+            <label        name="direccion" x="486" y="210" width="014" height="10" fontsize="08" dynamic="false" alignment="left" vertical-aligment="middle" fsbold="false">Nº:</label>
+            <rectangle    name="tangle13"  x="500" y="210" width="030" height="10"  draw="false" fill="false" color="#000000"/>
+            <string-field name="direccion" x="501" y="210" width="029" height="10" fontsize="08" dynamic="false" alignment="left" vertical-aligment="middle" fsbold="false" fieldname="direccionnumero"/>
+            
+            <rectangle    name="tangle14" x="260" y="225" width="045" height="10"  draw="false" fill="false" color="#000000"/>
+            <label        name="barrio"   x="261" y="225" width="044" height="10" fontsize="08" dynamic="false" alignment="left" vertical-aligment="middle" fsbold="false" fsundeline="true" >Barrio:</label>
+            <rectangle    name="tangle15" x="305" y="225" width="225" height="10"  draw="false" fill="false" color="#000000"/>
+            <string-field name="barrio"   x="307" y="225" width="223" height="10" fontsize="08" dynamic="false" alignment="left" vertical-aligment="middle" fsbold="false" fieldname="barrio"/>
+            
+            <rectangle    name="tangle16" x="260" y="240" width="065" height="10"  draw="false" fill="false" color="#000000"/>
+            <label        name="dpto"     x="261" y="240" width="064" height="10" fontsize="08" dynamic="false" alignment="left" vertical-aligment="middle" fsbold="false" fsundeline="true" >Departamento:</label>
+            <rectangle    name="tangle17" x="325" y="240" width="205" height="10"  draw="false" fill="false" color="#000000"/>
+            <string-field name="dpto"     x="327" y="240" width="203" height="10" fontsize="08" dynamic="false" alignment="left" vertical-aligment="middle" fsbold="false" fieldname="departamento"/>
+            
+            <rectangle    name="tangle18" x="260" y="255" width="045" height="10"  draw="false" fill="false" color="#000000"/>
+            <label        name="localid"  x="261" y="255" width="044" height="10" fontsize="08" dynamic="false" alignment="left" vertical-aligment="middle" fsbold="false" fsundeline="true" >Localidad:</label>
+            <rectangle    name="tangle19" x="305" y="255" width="225" height="10"  draw="false" fill="false" color="#000000"/>
+            <string-field name="localid"  x="307" y="255" width="223" height="10" fontsize="08" dynamic="false" alignment="left" vertical-aligment="middle" fsbold="false" fieldname="localidad"/>
+            
+            <rectangle    name="tangle16" x="260" y="270" width="060" height="10"  draw="false" fill="false" color="#000000"/>
+            <label        name="dpto"     x="261" y="270" width="059" height="10" fontsize="08" dynamic="false" alignment="left" vertical-aligment="middle" fsbold="false" fsundeline="true" >Cat. Orig. 1:</label>
+            <rectangle    name="tangle17" x="320" y="270" width="075" height="10"  draw="false" fill="false" color="#000000"/>
+            <string-field name="dpto"     x="323" y="270" width="075" height="10" fontsize="08" dynamic="false" alignment="left" vertical-aligment="middle" fsbold="false" fieldname="catoriginal1"/>
+            
+            <rectangle    name="tangle18" x="395" y="270" width="060" height="10"  draw="false" fill="false" color="#000000"/>
+            <label        name="localid"  x="396" y="270" width="059" height="10" fontsize="08" dynamic="false" alignment="left" vertical-aligment="middle" fsbold="false" fsundeline="true" >Cat. Orig. 2:</label>
+            <rectangle    name="tangle19" x="455" y="270" width="075" height="10"  draw="false" fill="false" color="#000000"/>
+            <string-field name="localid"  x="457" y="270" width="075" height="10" fontsize="08" dynamic="false" alignment="left" vertical-aligment="middle" fsbold="false" fieldname="catoriginal2"/>
+            
+            <rectangle    name="tangle20" x="260" y="285" width="060" height="10"  draw="false" fill="false" color="#000000"/>
+            <label        name="supurb"   x="261" y="285" width="059" height="10" fontsize="08" dynamic="false" alignment="left" vertical-aligment="middle" fsbold="false" fsundeline="true" >Sup. Urbana:</label>
+            <rectangle    name="tangle21" x="320" y="285" width="075" height="10"  draw="false" fill="false" color="#000000"/>
+            <string-field name="supurb"   x="323" y="285" width="075" height="10" fontsize="08" dynamic="false" alignment="left" vertical-aligment="middle" fsbold="false" fieldname="supurbana"/>
+            
+            <rectangle    name="tangle22" x="395" y="285" width="060" height="10"  draw="false" fill="false" color="#000000"/>
+            <label        name="localid"  x="396" y="285" width="059" height="10" fontsize="08" dynamic="false" alignment="left" vertical-aligment="middle" fsbold="false" fsundeline="true" >Terreno:</label>
+            <rectangle    name="tangle23" x="455" y="285" width="075" height="10"  draw="false" fill="false" color="#000000"/>
+            <string-field name="localid"  x="457" y="285" width="075" height="10" fontsize="08" dynamic="false" alignment="left" vertical-aligment="middle" fsbold="false" fieldname="terreno"/>
+            
+            <rectangle    name="tangle24" x="260" y="300" width="060" height="10"  draw="false" fill="false" color="#000000"/>
+            <label        name="supurb"   x="261" y="300" width="059" height="10" fontsize="08" dynamic="false" alignment="left" vertical-aligment="middle" fsbold="false" fsundeline="true" >Valor Terreno:</label>
+            <rectangle    name="tangle25" x="320" y="300" width="075" height="10"  draw="false" fill="false" color="#000000"/>
+            <number-field name="supurb"   x="323" y="300" width="075" height="10" fontsize="08" dynamic="false" alignment="left" vertical-aligment="middle" fsbold="false" format="$ #,##0.00" fieldname="valorterreno"/>
+            
+            <rectangle    name="tangle26" x="395" y="300" width="060" height="10"  draw="false" fill="false" color="#000000"/>
+            <label        name="localid"  x="396" y="300" width="059" height="10" fontsize="08" dynamic="false" alignment="left" vertical-aligment="middle" fsbold="false" fsundeline="true" >Valor Mejoras:</label>
+            <rectangle    name="tangle27" x="455" y="300" width="075" height="10"  draw="false" fill="false" color="#000000"/>
+            <number-field name="localid"  x="457" y="300" width="075" height="10" fontsize="08" dynamic="false" alignment="left" vertical-aligment="middle" fsbold="false" format="$ #,##0.00" fieldname="valormejoras"/>
+            
+            <rectangle    name="tangle28" x="260" y="315" width="060" height="10"  draw="false" fill="false" color="#000000"/>
+            <label        name="supurb"   x="261" y="315" width="059" height="10" fontsize="08" dynamic="false" alignment="left" vertical-aligment="middle" fsbold="false" fsundeline="true" >Valor Fiscal:</label>
+            <rectangle    name="tangle29" x="320" y="315" width="075" height="10"  draw="false" fill="false" color="#000000"/>
+            <number-field name="supurb"   x="323" y="315" width="075" height="10" fontsize="08" dynamic="false" alignment="left" vertical-aligment="middle" fsbold="false" format="$ #,##0.00" fieldname="valorfiscal"/>
+            
+            <rectangle    name="tangle26" x="395" y="315" width="060" height="10"  draw="false" fill="false" color="#000000"/>
+            <label        name="localid"  x="396" y="315" width="059" height="10" fontsize="08" dynamic="false" alignment="left" vertical-aligment="middle" fsbold="false" fsundeline="true" >Nº Plano:</label>
+            <rectangle    name="tangle27" x="455" y="315" width="075" height="10"  draw="false" fill="false" color="#000000"/>
+            <string-field name="plano"    x="457" y="315" width="075" height="10" fontsize="08" dynamic="false" alignment="left" vertical-aligment="middle" fsbold="false" fieldname="plano"/>
+            
+              <!-- DATOS TITULAR -->
+            <label        name="datoscat" x="000" y="345" width="530" height="12" fontsize="12" dynamic="false" alignment="center" vertical-aligment="middle" fsbold="false" fsunderline="true" >Titulares</label>
+            
+            <rectangle    name="tangle32" x="000" y="365" width="380" height="020"  draw="true" fill="true" color="#E0E0E0"/>
+            <rectangle    name="tangle32" x="000" y="365" width="380" height="020"  draw="true" fill="false" color="#000000"/>
+            <rectangle    name="tangle33" x="380" y="365" width="090" height="020"  draw="true" fill="true" color="#E0E0E0"/>
+            <rectangle    name="tangle33" x="380" y="365" width="090" height="020"  draw="true" fill="false" color="#000000"/>
+            <rectangle    name="tangle34" x="470" y="365" width="060" height="020"  draw="true" fill="true" color="#E0E0E0"/>
+            <rectangle    name="tangle34" x="470" y="365" width="060" height="020"  draw="true" fill="false" color="#000000"/>
+            
+            <label     name="titular"  x="000" y="368" width="380" height="10" fontsize="10" dynamic="false" alignment="center" vertical-aligment="middle" fsbold="false">Apellido y Nombres</label>
+            <label     name="dni"      x="380" y="368" width="090" height="10" fontsize="10" dynamic="false" alignment="center" vertical-aligment="middle" fsbold="false">DNI</label>
+            <label     name="porcen"   x="470" y="368" width="060" height="10" fontsize="10" dynamic="false" alignment="center" vertical-aligment="middle" fsbold="false">Porcentaje</label>
+            
+            
+    </reportheader>
+    
+        
+    <reportfooter height="18" fontname="SanSerif" fontstyle="plain" fontsize="9">
+        <line x1="000" y1="0" x2="530" y2="0000" weight="0.30"/>
+
+            <!-- DATOS ZONIFICACIÓN -->
+        
+        <label        name="datoscat" x="000" y="015" width="530" height="12" fontsize="12" dynamic="false" alignment="center" vertical-aligment="middle" fsbold="false" fsunderline="true" >Categorización</label>
+        
+        <rectangle    name="tangle31" x="040" y="035" width="090" height="020"  draw="true" fill="true" color="#E0E0E0"/>
+        <rectangle    name="tangle31" x="040" y="035" width="090" height="020"  draw="true" fill="false" color="#000000"/>
+        <rectangle    name="tangle32" x="130" y="035" width="090" height="020"  draw="true" fill="true" color="#E0E0E0"/>
+        <rectangle    name="tangle32" x="130" y="035" width="090" height="020"  draw="true" fill="false" color="#000000"/>
+        <rectangle    name="tangle33" x="220" y="035" width="090" height="020"  draw="true" fill="true" color="#E0E0E0"/>
+        <rectangle    name="tangle33" x="220" y="035" width="090" height="020"  draw="true" fill="false" color="#000000"/>
+        <rectangle    name="tangle34" x="310" y="035" width="090" height="020"  draw="true" fill="true" color="#E0E0E0"/>
+        <rectangle    name="tangle34" x="310" y="035" width="090" height="020"  draw="true" fill="false" color="#000000"/>
+        <rectangle    name="tangle35" x="400" y="035" width="090" height="020"  draw="true" fill="true" color="#E0E0E0"/>
+        <rectangle    name="tangle35" x="400" y="035" width="090" height="020"  draw="true" fill="false" color="#000000"/>
+        
+        <label     name="tgi"   x="040" y="038" width="090" height="10" fontsize="10" dynamic="false" alignment="center" vertical-aligment="middle" fsbold="false">TGI</label>
+        <label     name="inmob" x="130" y="038" width="090" height="10" fontsize="10" dynamic="false" alignment="center" vertical-aligment="middle" fsbold="false">Inmob.</label>
+        <label     name="codp"  x="220" y="038" width="090" height="10" fontsize="10" dynamic="false" alignment="center" vertical-aligment="middle" fsbold="false">Cód. Plan.</label>
+        <label     name="code"  x="310" y="038" width="090" height="10" fontsize="10" dynamic="false" alignment="center" vertical-aligment="middle" fsbold="false">Cód. Edif.</label>
+        <label     name="cyq"   x="400" y="038" width="090" height="10" fontsize="10" dynamic="false" alignment="center" vertical-aligment="middle" fsbold="false">Pub. y Prop.</label>
+        
+        <rectangle    name="tangle36" x="040" y="055" width="090" height="015"  draw="true" fill="false" color="#000000"/>
+        <rectangle    name="tangle37" x="130" y="055" width="090" height="015"  draw="true" fill="false" color="#000000"/>
+        <rectangle    name="tangle38" x="220" y="055" width="090" height="015"  draw="true" fill="false" color="#000000"/>
+        <rectangle    name="tangle39" x="310" y="055" width="090" height="015"  draw="true" fill="false" color="#000000"/>
+        <rectangle    name="tangle40" x="400" y="055" width="090" height="015"  draw="true" fill="false" color="#000000"/>
+        
+        <string-field name="cattgs"   x="040" y="058" width="090" height="10" fontsize="08" dynamic="false" alignment="center" vertical-aligment="middle" fsbold="false" fieldname="categoriatgs"/>
+        
+        <!-- SERVICIOS -->
+        
+        <label        name="datoscat" x="000" y="080" width="510" height="12" fontsize="12" dynamic="false" alignment="center" vertical-aligment="middle" fsbold="false" fsunderline="true" >Servicios</label>
+        
+        <rectangle    name="tangle31" x="020" y="100" width="070" height="020"  draw="true" fill="true" color="#E0E0E0"/>
+        <rectangle    name="tangle31" x="020" y="100" width="070" height="020"  draw="true" fill="false" color="#000000"/>
+        <rectangle    name="tangle32" x="090" y="100" width="070" height="020"  draw="true" fill="true" color="#E0E0E0"/>
+        <rectangle    name="tangle32" x="090" y="100" width="070" height="020"  draw="true" fill="false" color="#000000"/>
+        <rectangle    name="tangle33" x="160" y="100" width="070" height="020"  draw="true" fill="true" color="#E0E0E0"/>
+        <rectangle    name="tangle33" x="160" y="100" width="070" height="020"  draw="true" fill="false" color="#000000"/>
+        <rectangle    name="tangle34" x="230" y="100" width="070" height="020"  draw="true" fill="true" color="#E0E0E0"/>
+        <rectangle    name="tangle34" x="230" y="100" width="070" height="020"  draw="true" fill="false" color="#000000"/>
+        <rectangle    name="tangle35" x="300" y="100" width="070" height="020"  draw="true" fill="true" color="#E0E0E0"/>
+        <rectangle    name="tangle35" x="300" y="100" width="070" height="020"  draw="true" fill="false" color="#000000"/>
+        <rectangle    name="tangle34" x="370" y="100" width="070" height="020"  draw="true" fill="true" color="#E0E0E0"/>
+        <rectangle    name="tangle34" x="370" y="100" width="070" height="020"  draw="true" fill="false" color="#000000"/>
+        <rectangle    name="tangle35" x="440" y="100" width="070" height="020"  draw="true" fill="true" color="#E0E0E0"/>
+        <rectangle    name="tangle35" x="440" y="100" width="070" height="020"  draw="true" fill="false" color="#000000"/>
+        
+        <label     name="tgi"   x="020" y="108" width="070" height="10" fontsize="10" dynamic="false" alignment="center" vertical-aligment="middle" fsbold="false">Luz</label>
+        <label     name="inmob" x="090" y="108" width="070" height="10" fontsize="10" dynamic="false" alignment="center" vertical-aligment="middle" fsbold="false">Agua</label>
+        <label     name="codp"  x="160" y="108" width="070" height="10" fontsize="10" dynamic="false" alignment="center" vertical-aligment="middle" fsbold="false">Gas</label>
+        <label     name="code"  x="230" y="108" width="070" height="10" fontsize="10" dynamic="false" alignment="center" vertical-aligment="middle" fsbold="false">Cloaca</label>
+        <label     name="cyq"   x="300" y="108" width="070" height="10" fontsize="10" dynamic="false" alignment="center" vertical-aligment="middle" fsbold="false">Barrido</label>
+        <label     name="code"  x="370" y="108" width="070" height="10" fontsize="10" dynamic="false" alignment="center" vertical-aligment="middle" fsbold="false">Rec. Resid.</label>
+        <label     name="cyq"   x="440" y="108" width="070" height="10" fontsize="10" dynamic="false" alignment="center" vertical-aligment="middle" fsbold="false">Alumb. Púb.</label>
+        
+        <rectangle    name="tangle36" x="020" y="120" width="070" height="015"  draw="true" fill="false" color="#000000"/>
+        <rectangle    name="tangle37" x="090" y="120" width="070" height="015"  draw="true" fill="false" color="#000000"/>
+        <rectangle    name="tangle38" x="160" y="120" width="070" height="015"  draw="true" fill="false" color="#000000"/>
+        <rectangle    name="tangle39" x="230" y="120" width="070" height="015"  draw="true" fill="false" color="#000000"/>
+        <rectangle    name="tangle40" x="300" y="120" width="070" height="015"  draw="true" fill="false" color="#000000"/>
+        <rectangle    name="tangle39" x="370" y="120" width="070" height="015"  draw="true" fill="false" color="#000000"/>
+        <rectangle    name="tangle40" x="440" y="120" width="070" height="015"  draw="true" fill="false" color="#000000"/>
+        
+        <!-- COMERCIOS Y PUBLICIDAD -->
+        
+        <label        name="datoscat" x="000" y="145" width="530" height="12" fontsize="12" dynamic="false" alignment="center" vertical-aligment="middle" fsbold="false" fsunderline="true" >Comercios y Publicidad</label>
+        
+        <rectangle    name="tangle31" x="040" y="165" width="115" height="020"  draw="true" fill="true" color="#E0E0E0"/>
+        <rectangle    name="tangle31" x="040" y="165" width="115" height="020"  draw="true" fill="false" color="#000000"/>
+        <rectangle    name="tangle32" x="155" y="165" width="110" height="020"  draw="true" fill="true" color="#E0E0E0"/>
+        <rectangle    name="tangle32" x="155" y="165" width="110" height="020"  draw="true" fill="false" color="#000000"/>
+        <rectangle    name="tangle33" x="265" y="165" width="115" height="020"  draw="true" fill="true" color="#E0E0E0"/>
+        <rectangle    name="tangle33" x="265" y="165" width="115" height="020"  draw="true" fill="false" color="#000000"/>
+        <rectangle    name="tangle34" x="380" y="165" width="110" height="020"  draw="true" fill="true" color="#E0E0E0"/>
+        <rectangle    name="tangle34" x="380" y="165" width="110" height="020"  draw="true" fill="false" color="#000000"/>
+        
+        <label     name="tgi"   x="040" y="168" width="115" height="10" fontsize="10" dynamic="false" alignment="center" vertical-aligment="middle" fsbold="false">Tiene Comercios</label>
+        <label     name="inmob" x="155" y="168" width="110" height="10" fontsize="10" dynamic="false" alignment="center" vertical-aligment="middle" fsbold="false">Cant. Comercios</label>
+        <label     name="codp"  x="265" y="168" width="115" height="10" fontsize="10" dynamic="false" alignment="center" vertical-aligment="middle" fsbold="false">Tiene Publicidad</label>
+        <label     name="code"  x="380" y="168" width="110" height="10" fontsize="10" dynamic="false" alignment="center" vertical-aligment="middle" fsbold="false">Cant. Carteles</label>
+        
+        <rectangle name="tangle36" x="040" y="185" width="115" height="015"  draw="true" fill="false" color="#000000"/>
+        <rectangle name="tangle37" x="155" y="185" width="110" height="015"  draw="true" fill="false" color="#000000"/>
+        <rectangle name="tangle38" x="265" y="185" width="115" height="015"  draw="true" fill="false" color="#000000"/>
+        <rectangle name="tangle39" x="380" y="185" width="110" height="015"  draw="true" fill="false" color="#000000"/>
+        
+        <string-field name="titular"  x="040" y="188" width="115" height="10" fontsize="08" dynamic="false" alignment="center" vertical-aligment="middle" fsbold="false" fieldname="comercios"/>
+        <string-field name="titular"  x="155" y="188" width="110" height="10" fontsize="08" dynamic="false" alignment="center" vertical-aligment="middle" fsbold="false" fieldname="cantcomercios"/>
+        <string-field name="titular"  x="265" y="188" width="115" height="10" fontsize="08" dynamic="false" alignment="center" vertical-aligment="middle" fsbold="false" fieldname="carteles"/>
+        <string-field name="titular"  x="380" y="188" width="110" height="10" fontsize="08" dynamic="false" alignment="center" vertical-aligment="middle" fsbold="false" fieldname="cantcarteles"/>
+
+    </reportfooter>
+	
+    
+    <items layout-cachable="false" >
+            <band name="table_0" fontsize="09" fontname="SanSerif" fontstyle="plain">
+                    <line x1="0"   y1="0" x2="0"   y2="100%" weight="0.30"/>
+                    <line x1="380" y1="0" x2="380" y2="100%" weight="0.30"/>
+                    <line x1="470" y1="0" x2="470" y2="100%" weight="0.30"/>
+                    <line x1="530" y1="0" x2="530" y2="100%" weight="0.30"/>
+                    <line x1="000" y1="0" x2="530" y2="0000" weight="0.30"/>
+                                        
+                    <string-field name="year" x="002" y="1"  width="358" height="12" alignment="left"   vertical-alignment="middle" dynamic="false" fieldname="table_0.domape"/>
+                    <string-field name="numr" x="382" y="1"  width="088" height="12" alignment="center" vertical-alignment="middle" dynamic="false" fieldname="table_0.domnudoc"/>
+                    <string-field name="bast" x="480" y="1"  width="060" height="12" alignment="center" vertical-alignment="middle" dynamic="false" fieldname="table_0.dompor"/>
+            </band>
+    </items>
+		    
+    <functions>
+
+		<function class="org.jfree.report.function.HideElementByNameFunction" name="hideHeader">
+			<properties>
+				<property name="element">table_0</property>
+				<property name="field">TablePrefix</property>
+			</properties>
+		</function>
+		
+		<function class="org.jfree.report.function.HideElementByNameFunction" name="hideDetail">
+			<properties>
+				<property name="element">table_0</property>
+				<property name="field">TablePrefix</property>
+			</properties>
+		</function>
+                
+                <function class="org.jfree.report.function.PageOfPagesFunction" name="pageXofY">
+		    <properties>
+			    <property name="format">Página {0} de {1}</property>
+		    </properties>
+		</function>
+                
+	</functions>
+
+
+    <pagefooter height="24" onfirstpage="true">
+	<rectangle name="PF0" x="0" y="0" width="100%" height="100%" color="#FFFFFF" weight="0" draw="false" fill="true"/>
+	<line x1="0" y1="0" x2="520" y2="0" weight="0.5"/>
+	<string-field x="0" y="2" width="520" height="12" alignment="right" vertical-alignment="top" fieldname="pageXofY"/>
+    </pagefooter>
+
+</report>
+

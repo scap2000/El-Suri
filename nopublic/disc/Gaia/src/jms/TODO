@@ -1,0 +1,18 @@
+TODO LIST:
+
+1) LabelObjectPanel (Gráfica, setEmpty(),actPanel() y otros)
+    19/08/05 - Gráfica Terminada
+2) Vincular el LabelObjectPanel con el DialogClass y/o ClassPanel y/o MapPanel
+3) Pantalla principal para abrir|cerrar|guardar|guardar_como del archivo.map
+4) Hay consultas que ocupan más de un renglón y ParseMap no las lee completas =(
+5) Agregar/Excluir/Eliminar los comentarios en ParseMap (Líneas que comiencen con #)
+    18/08/05 - Corregido
+6) La clase jmsConnection no está bien, hay que arreglarla =(
+7) Copiar y pegar
+8) Revisar las actualizaciones de los JComboBox en los JPanel, procedure actPanel(), donde dice "//REVISAR"
+9) Manejar Clones (Sirve para el punto 7: Copiar y pegar)
+.
+.
+.
+n-1) Dibujar el mapa en pantalla :-)
+n) Fin. =)

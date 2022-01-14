@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<report xmlns="http://jfreereport.sourceforge.net/namespaces/reports/legacy/simple" name="Detalle del Remito Seleccionado" pageformat="A4"
+       topmargin="20" leftmargin="50" bottommargin="70" rightmargin="30" orientation="landscape">
+	
+	<pageheader height="12" fontname="SansSerif" fontsize="16" fsbold="true">
+		<string-field  width="100%" dynamic="true" alignment="center" fieldname="location"></string-field>
+	</pageheader>
+	
+	<groups>
+		<group name="table_0">
+			<fields>
+				<field>TablePrefix</field>
+				<field>table_0.header</field>
+			</fields>
+			
+			<groupheader layout-cachable="false" pagebreak-before-print="true">
+				<band name="table_0" fontname="SansSerif" fsbold="true" fontsize="10">
+                                        <line x1="0" y1="15" x2="100%" y2="15" weight="3"/>
+                                        <label name="lbl" x="0"   y="20" width="150" dynamic="true" alignment="left" fsbold="true" fontsize="12">Detalle del Remito Nº </label>
+                                        <string-field     x="150" y="20" width="100"  dynamic="true" alignment="left" fsbold="true" fontsize="12" fieldname="number"/>
+                                        
+					<label name="lbl" x="635" y="20" width="45" dynamic="true" alignment="right" fsbold="true" fontsize="12">Fecha:</label>
+					<date-field       x="685" y="20" width="75" dynamic="true" alignment="left"  fsbold="false" fontsize="12" fieldname="report.date" format="dd/MM/yyyy"/>
+                                        
+                                        <label name="lbl" x="0"  y="35" width="75"  dynamic="true" alignment="left" fsbold="true" fontsize="12">Proveedor:</label>
+					<string-field     x="80" y="35" width="500" dynamic="true" alignment="left" fsbold="false" fontsize="12" fieldname="provider"/>
+                                        
+                                        <label name="lbl" x="0"  y="50" width="105"  dynamic="true" alignment="left" fsbold="true" fontsize="12">Fecha del Rto.:</label>
+					<string-field     x="108" y="50" width="200" dynamic="true" alignment="left" fsbold="false" fontsize="12" fieldname="voucherdate"/>
+                                        
+					<line x1="0" y1="70" x2="100%" y2="70" weight="3"/>
+                                        <line x1="0" y1="73" x2="100%" y2="73" weight="1"/>
+
+                                        <rectangle name="tangle"  x="0"   y="90"  width="370" height="18"  draw="true" fill="false" color="#000000"/>
+                                        <rectangle name="tangle"  x="370" y="90"  width="230" height="18"  draw="true" fill="false" color="#000000"/>
+                                        <rectangle name="tangle"  x="600" y="90"  width="80"  height="18"  draw="true" fill="false" color="#000000"/>
+                                        <rectangle name="tangle"  x="680" y="90"  width="80"  height="18"  draw="true" fill="false" color="#000000"/>
+                                        
+					<label name="emitido" x="0"   y="90" width="370" height="18" alignment="center" vertical-alignment="middle">Recurso</label>
+					<label name="vence"   x="370" y="90" width="230" height="18" alignment="center" vertical-alignment="middle">Marca</label>
+					<label name="numero"  x="600" y="90" width="80"  height="18" alignment="center" vertical-alignment="middle">Cantidad</label>
+                                        <label name="numero"  x="680" y="90" width="80"  height="18" alignment="center" vertical-alignment="middle">Unidad</label>
+				</band>
+			</groupheader>
+		</group>
+		
+		<group name="Header-Detail" >
+			<fields>
+				<field>TablePrefix</field>
+				<field>table_0.header</field>
+			</fields>
+			
+			
+			<groupfooter height="18" fontname="Monospaced" fontstyle="bold" fontsize="9">
+			    <line x1="0" y1="0" x2="760" y2="0" weight="0.25"/>
+      			</groupfooter>
+		</group>
+		
+	</groups>
+	
+	<items layout-cachable="false" >
+		<band name="table_0">
+			
+                        <line x1="0"    y1="0" x2="0"    y2="100%" weight="0.25"/>
+			<line x1="370"  y1="0" x2="370"  y2="100%" weight="0.25"/>
+			<line x1="600"  y1="0" x2="600"  y2="100%" weight="0.25"/>
+			<line x1="680"  y1="0" x2="680"  y2="100%" weight="0.25"/>
+                        <line x1="760"  y1="0" x2="760"  y2="100%" weight="0.25"/>
+			
+			<string-field x="3"   y="2" width="367" height="12" alignment="left" dynamic="false" fieldname="table_0.resource"/>
+			<string-field x="373" y="2" width="227" height="12" alignment="left"   dynamic="false" fieldname="table_0.brand"/>
+                        <number-field x="603" y="2" width="77"  height="12" alignment="center" dynamic="false" fieldname="table_0.finalqty"/>
+			<string-field x="683" y="2" width="77"  height="12" alignment="left"   dynamic="false" vertical-alignment="middle" fieldname="table_0.unit"/>
+		</band>
+	</items>
+	
+	<functions>
+		<function class="org.jfree.report.function.HideElementByNameFunction" name="hideHeader">
+			<properties>
+				<property name="element">table_0</property>
+				<property name="field">TablePrefix</property>
+			</properties>
+		</function>
+
+	</functions>
+	
+</report>
+
+
+
+
+

@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!--
+    ~ Copyright (c) 2007, Your Corporation. All Rights Reserved.
+    -->
+
+<report xmlns="http://jfreereport.sourceforge.net/namespaces/reports/legacy/simple" name="Expediente Seleccionado" pageformat="A4"
+       topmargin="20" leftmargin="50" bottommargin="70" rightmargin="30" orientation="portrait">
+	
+	<pageheader height="12" fontname="SansSerif" fontsize="16" fsbold="true">
+		<string-field  width="100%" dynamic="true" alignment="center" fieldname="location"></string-field>
+	</pageheader>
+	
+	<groups>
+		
+		<group name="Header-Detail" >
+			<fields>
+				<field>TablePrefix</field>
+				<field>table_0.header</field>
+				
+			</fields>
+			
+			<groupheader repeat="false" layout-cachable="false" pagebreak-before-print="true">
+				<band name="table_0" height="30" fontname="SansSerif" fontstyle="bold" fontsize="10" >
+                                        
+                                        <line x1="0" y1="15" x2="100%" y2="15" weight="3"/>
+                                        <label name="lbltitle" x="0" y="20" width="280" dynamic="true" alignment="left" fsbold="true">Expediente Seleccionado</label>
+					<label name="lbldate" x="300" y="20" width="145" dynamic="true" alignment="right" fsbold="true">Fecha de impresión:</label>
+					<date-field x="450" y="20" width="65" dynamic="true" fieldname="report.date" alignment="left"  format="dd/MM/yyyy" />
+					
+                                        <line x1="0" y1="35" x2="100%" y2="35" weight="3"/>
+                                        <line x1="0" y1="38" x2="100%" y2="38" weight="1"/>
+                                        
+                                        <rectangle name="tangle"  x="0" y="50"  width="90"  height="18"  draw="true" fill="false" color="#000000"/>
+                                        <rectangle name="tangle"  x="0" y="68"  width="90"  height="18"  draw="true" fill="false" color="#000000"/>
+                                        <rectangle name="tangle"  x="0" y="86"  width="90"  height="18"  draw="true" fill="false" color="#000000"/>
+                                        <rectangle name="tangle"  x="0" y="104" width="90"  height="18"  draw="true" fill="false" color="#000000"/>
+                                        <rectangle name="tangle"  x="0" y="122" width="90"  height="18"  draw="true" fill="false" color="#000000"/>
+                                        <rectangle name="tangle"  x="0" y="140" width="90"  height="18"  draw="true" fill="false" color="#000000"/>
+                                        
+                                        <rectangle name="tangle"  x="0" y="158" width="90"  height="36"  draw="true" fill="false" color="#000000"/>
+                                        <rectangle name="tangle"  x="0" y="194" width="90"  height="36"  draw="true" fill="false" color="#000000"/>
+                                        <rectangle name="tangle"  x="0" y="230" width="90"  height="18"  draw="true" fill="false" color="#000000"/>
+                                        <rectangle name="tangle"  x="0" y="248" width="90"  height="18"  draw="true" fill="false" color="#000000"/>
+                                        <rectangle name="tangle"  x="0" y="266" width="90"  height="18"  draw="true" fill="false" color="#000000"/>
+                                        
+					<label name="label01"  x="0"   y="50" width="85"  height="18" dynamic="false" alignment="right" vertical-alignment="middle">Nº Expediente:</label>
+                                        <string-field x="95"   y="50" width="425"  height="18" dynamic="false" alignment="left" vertical-alignment="middle" fieldname="table_0.expte"/>
+                                        <rectangle name="tangle"  x="90" y="50" width="425"  height="18"  draw="true" fill="false" color="#000000"/>
+                                        
+					<label name="label02"  x="0"  y="68" width="85"  height="18" dynamic="false" alignment="right" vertical-alignment="middle">Nº Catastro:</label>
+                                        <string-field x="95"   y="68" width="425"  height="18" dynamic="false" alignment="left" vertical-alignment="middle" fieldname="table_0.catastro"/>
+                                        <rectangle name="tangle"  x="90" y="68" width="425"  height="18"  draw="true" fill="false" color="#000000"/>
+                                        
+					<label name="label03"  x="0" y="86" width="85"  height="18" dynamic="false" alignment="right" vertical-alignment="middle">Fecha:</label>
+                                        <date-field x="95"   y="86" width="425"  height="18" dynamic="false" alignment="left" vertical-alignment="middle" format="dd/MM/yyyy" fieldname="table_0.fechaexp"/>
+                                        <rectangle name="tangle"  x="90" y="86" width="425"  height="18"  draw="true" fill="false" color="#000000"/>
+                                        
+                                        <label name="label04"  x="0" y="104" width="85" height="18" dynamic="false" alignment="right" vertical-alignment="middle">Iniciador:</label>
+                                        <string-field x="95"   y="104" width="425"  height="18" dynamic="false" alignment="left" vertical-alignment="middle" fieldname="table_0.iniciador"/>
+                                        <rectangle name="tangle"  x="90" y="104" width="425"  height="18"  draw="true" fill="false" color="#000000"/>
+                                        
+                                        <label name="label05"  x="0" y="122" width="85" height="18" dynamic="false" alignment="right" vertical-alignment="middle">Asunto:</label>
+                                        <string-field x="95"   y="122" width="425"  height="18" dynamic="false" alignment="left" vertical-alignment="middle" fieldname="table_0.asunto"/>
+                                        <rectangle name="tangle"  x="90" y="122" width="425"  height="18"  draw="true" fill="false" color="#000000"/>
+                                        
+                                        <label name="label06"  x="0" y="140" width="85"  height="18" dynamic="false" alignment="right" vertical-alignment="middle">Iniciante:</label>
+                                        <string-field x="95"   y="140" width="425"  height="18" dynamic="false" alignment="left" vertical-alignment="middle" fieldname="table_0.iniciante"/>
+                                        <rectangle name="tangle"  x="90" y="140" width="425"  height="18"  draw="true" fill="false" color="#000000"/>
+                                        
+                                        <label name="label07"  x="0" y="158" width="85" height="18" alignment="right" vertical-alignment="middle">Contenido:</label>
+                                        <string-field x="95"   y="158" width="425"  height="36" dynamic="false" alignment="left" vertical-alignment="middle" fieldname="table_0.extracto"/>
+                                        <rectangle name="tangle"  x="90" y="158" width="425"  height="36"  draw="true" fill="false" color="#000000"/>
+                                        
+                                        <label name="label08"  x="0" y="194" width="85"  height="18" alignment="right" vertical-alignment="middle">Observaciones:</label>
+                                        <string-field x="95"   y="194" width="425"  height="36" dynamic="false" alignment="left" vertical-alignment="middle" fieldname="table_0.observaciones"/>
+                                        <rectangle name="tangle"  x="90" y="194" width="425"  height="36"  draw="true" fill="false" color="#000000"/>
+                                        
+                                        <label name="label09"    x="0" y="230" width="85"  height="18" dynamic="false" alignment="right" vertical-alignment="middle">Folios:</label>
+                                        <string-field x="95"   y="230" width="425"  height="18" dynamic="false" alignment="left" vertical-alignment="middle" fieldname="table_0.cantfolios"/>
+                                        <rectangle name="tangle"  x="90" y="230" width="425"  height="18"  draw="true" fill="false" color="#000000"/>
+                                        
+                                        <label name="label10" x="0" y="248" width="85" height="18" alignment="right" vertical-alignment="middle">Estado:</label>
+                                        <string-field x="95"   y="248" width="425"  height="18" dynamic="false" alignment="left" vertical-alignment="middle" fieldname="table_0.estadoexp"/>
+                                        <rectangle name="tangle"  x="90" y="248" width="425"  height="18"  draw="true" fill="false" color="#000000"/>
+                                        
+                                        <label name="label11" x="0" y="266" width="85"  height="18" alignment="right" vertical-alignment="middle">Profesional:</label>
+                                        <string-field x="95"   y="266" width="425"  height="18" dynamic="false" alignment="left" vertical-alignment="middle" fieldname="table_0.profesional"/>
+                                        <rectangle name="tangle"  x="90" y="266" width="425"  height="18"  draw="true" fill="false" color="#000000"/>
+                                        
+				</band>
+			</groupheader>
+			
+		</group>
+		
+	</groups>
+	
+	<items layout-cachable="false" >
+		<band name="table_0">
+			<!--
+                        <line x1="0"   y1="0" x2="0"   y2="100%" weight="0.25"/>
+			<line x1="50"  y1="0" x2="50"  y2="100%" weight="0.25"/>
+			<line x1="120" y1="0" x2="120" y2="100%" weight="0.25"/>
+                        <line x1="180" y1="0" x2="180"  y2="100%" weight="0.25"/>
+                        <line x1="420" y1="0" x2="420" y2="100%" weight="0.25"/>
+                        <line x1="515" y1="0" x2="515" y2="100%" weight="0.25"/>
+                        
+			<string-field x="0"   y="2" width="50"  height="12" alignment="center" dynamic="false" fieldname="table_0.number"/>
+			<date-field   x="50"  y="2" width="70"  height="12" alignment="center" dynamic="false" format="dd/MM/yyyy" fieldname="table_0.date"/>
+			<string-field x="120" y="2" width="60"  height="12" alignment="center" dynamic="false" fieldname="table_0.bookkeepingentrynumber"/>
+                        <string-field x="185" y="2" width="240" height="12" alignment="left"   dynamic="false" fieldname="table_0.observations"/>
+			<number-field x="425" y="2" width="85"  height="12" alignment="right"  dynamic="false" format="$#,##0.00" fieldname="table_0.amount"/>
+                        -->
+		</band>
+	</items>
+	
+	<functions>
+		<function class="org.jfree.report.function.HideElementByNameFunction" name="hideHeader">
+			<properties>
+				<property name="element">table_0</property>
+				<property name="field">TablePrefix</property>
+			</properties>
+		</function>
+		
+		<property-ref name="dummy-field"/>
+	</functions>
+	
+</report>
+
+
+
+
+
+
+

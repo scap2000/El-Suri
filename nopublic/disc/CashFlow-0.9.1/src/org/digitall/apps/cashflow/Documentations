@@ -1,0 +1,37 @@
+* Montos o Dinero (respentando el orden para mostrarlos)
+1. Monto Inicial
+
+2. Gastado
+3. Gastado (%)
+
+4. Saldo
+5. Saldo (%)
+
+6. Asignado en Tipos de Gastos
+7. Asignado en Tipos de Gastos (%)
+
+8. Sin Asignar en Tipos de Gastos
+9. Sin Asignar en Tipos de Gastos (%)
+
+10. Asignado en Centros de costos
+11. Asignado en Centros de costos (%)
+
+12. Sin Asignar en Centros de Costos
+13. Sin Asignar en Centros de Costos (%)
+
+* Nomenclatura (JAVA y PgSQL)
+Ejemplo: Para el monto y su porcentaje
+    tfInitialAmount	-> Monto Inicial
+    tfInitialAmountP	-> Porcentaje del Monto Inicial
+    
+* Trabajar con TextField de Porcentaje al Valor, aplicando Listener
+Ejemplo
+    tfReference: 'Monto Total';
+    tfSource: 'Monto a Asignar';
+    tfSourceP: '% del Monto a Asignar';
+    
+    tfSourceP.setKeyListener(new PercentageToValueListen(tfSource,Double.parseDouble(tfReference.getText())));
+
+* Trabajar con TextField de Valor al Porcentaje, aplicando Listener
+Ejemplo
+    tfSource.setKeyListener(new ValueToPercentageListen(tfSourceP,Double.parseDouble(tfReference.getText())));

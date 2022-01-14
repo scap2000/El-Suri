@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!--
+    ~ Copyright (c) 2007, Your Corporation. All Rights Reserved.
+    -->
+
+<report xmlns="http://jfreereport.sourceforge.net/namespaces/reports/legacy/simple" name="Orden de Pago" pageformat="A4"
+       topmargin="20" leftmargin="50" bottommargin="30" rightmargin="30">
+	
+	<pageheader height="12" fontname="SansSerif" fontsize="16" fsbold="true">
+		<!--<string-field  width="100%" dynamic="true" alignment="center" fieldname="location"></string-field>-->
+                <line x1="0" y1="80"  x2="550" y2="80"  weight=".75" color="#AAAAAA"/>
+                <line x1="370" y1="0" x2="370" y2="80"  weight=".75" color="#AAAAAA"/>
+                
+                <line x1="0" y1="80"  x2="550" y2="80"  weight=".75" color="#AAAAAA"/>
+                <line x1="370" y1="0" x2="370" y2="80"  weight=".75" color="#AAAAAA"/>
+                        
+                <!-- INICIO HEADER 1 -->                                        
+                <image-field name="logo" x="0" y="5" width="52"  height="30"  scale="true" fieldname="logo"/>
+                <rectangle name="ta" x="70"  y="0"  width="300" height="14" draw="false" fill="false" color="#0000FF"/>
+                <string-field        x="70"  y="00" width="300" height="28" dynamic="false" alignment="center" vertical-aligment="middle" fontsize="14" fsbold="true" fieldname="orgtitle"/>
+                <rectangle name="ta" x="70"  y="30" width="300" height="10" draw="false" fill="false" color="#0000FF"/>
+                <string-field        x="70"  y="30" width="300" height="10" dynamic="false" alignment="center" fontsize="08" fsbold="false" vertical-aligment="middle" fieldname="locationdata"/>
+                <rectangle name="ta" x="0"   y="52" width="230" height="10" draw="false" fill="false" color="#0000FF"/>
+                <string-field        x="0"   y="52" width="230" height="10" dynamic="false" alignment="left" fontsize="08" fsbold="false" fieldname="address"/>
+                
+                <rectangle name="ta" x="240" y="52" width="45"  height="10" draw="false" fill="false" color="#0000FF"/>
+                <label     name="ti" x="240" y="52" width="45"  height="10" dynamic="false" alignment="left" fontsize="08" fsbold="false">Teléfonos:</label>
+                <rectangle name="ta" x="290" y="52" width="75" height="10" draw="false" fill="false" color="#0000FF"/>
+                <string-field        x="290" y="52" width="75" height="10" dynamic="false" alignment="left" fontsize="08" fsbold="false"  fieldname="phonenumber1"/>
+                <rectangle name="ta" x="290" y="65" width="75" height="10" draw="false" fill="false" color="#0000FF"/>
+                <string-field        x="290" y="65" width="75" height="10" dynamic="false" alignment="left" fontsize="08" fsbold="false"  fieldname="phonenumber2"/>
+                <rectangle name="ta" x="0"   y="65" width="190" height="10" draw="false" fill="false" color="#0000FF"/>
+                <string-field        x="0"   y="65" width="190" height="10" dynamic="false" alignment="left" fontsize="08" fsbold="false" fieldname="webaddress"/>
+                
+                <label     name="ti" x="370" y="00" width="180" height="11" dynamic="false" alignment="center" fontsize="09" fsbold="true">ORDEN DE PAGO</label>
+                
+                <label     name="ti" x="380" y="35" width="50" height="08" dynamic="false" alignment="left" fontsize="08" fsbold="true">Número: </label>
+                <number-field        x="450" y="35" width="65"  alignment="left" height="08" dynamic="true" fontsize="08" fsbold="true" format="000000" fieldname="table_0.number"/>
+                
+                <label     name="zo" x="380" y="52"  width="60"  height="10" fontsize="08" dynamic="false" alignment="left" vertical-aligment="middle" fsbold="false">C.U.I.T.:</label>
+                <rectangle name="ta" x="450" y="52"  width="200" height="10" draw="false" fill="false" color="#0000FF"/>
+                <string-field        x="450" y="52"  width="200" height="10" alignment="left" dynamic="false" fontsize="08" fsbold="false" fieldname="cuit"/>
+                <rectangle name="ta" x="380" y="55"  width="60"  height="10" draw="false" fill="false" color="#0000FF"/>
+                <label     name="zo" x="380" y="65"  width="60"  height="10" fontsize="08" dynamic="false" alignment="left" vertical-aligment="middle" fsbold="false">Fecha Impr.:</label>
+                <rectangle name="ta" x="450" y="65"  width="200" height="10" draw="false" fill="false" color="#0000FF"/>
+                <date-field          x="450" y="65"  width="200" height="10" alignment="left" fontsize="08" fsbold="false" dynamic="true" format="dd/MM/yyyy" fieldname="table_0.date"/>
+                <line x1="0" y1="90"  x2="550" y2="90"  weight=".75" color="#FFFFFF" />
+                
+                <label name="lblprovider"   x="0"   y="95" width="100" dynamic="true" alignment="left" fontsize="10" fsbold="true">Páguese a:</label>
+                <string-field               x="100" y="95" width="450" alignment="left" height="12" dynamic="false" fontsize="10" fsbold="false" fieldname="table_0.identification"/>
+                <label name="lblobs"        x="0"   y="115" width="100" dynamic="true" alignment="left" fontsize="10" fsbold="true">En concepto de:</label>
+                <string-field name="obs"    x="100" y="115" width="450" dynamic="true" alignment="left" fontsize="10" fsbold="false" fieldname="table_0.observations"/>
+                
+	</pageheader>
+	
+	<groups>
+		<group name="table_0">
+			<fields>
+				<field>TablePrefix</field>
+			</fields>
+			
+			<groupheader layout-cachable="false" >
+				<band name="table_0" fontname="SansSerif" fontstyle="plain" fontsize="10">
+					<!--<line x1="0" y1="15" x2="100%" y2="15" weight="3"/>
+					<label name="lblnumber" x="0" y="20" width="150" dynamic="true" alignment="left" fsbold="true"  fontsize="15">Orden de Pago</label>
+					<label name="lblnumber" x="190" y="20" width="60" dynamic="true" alignment="right" fsbold="true">Número:</label>
+					<number-field x="255" y="20" width="50" dynamic="true" alignment="left" fieldname="table_0.number" fsbold="true"/>    
+					<label name="lbldate" x="335" y="20" width="90" dynamic="true" alignment="right" fsbold="true">Fecha:</label>
+					<date-field x="430" y="20" width="80" dynamic="true" fieldname="table_0.date" alignment="left"  format="dd/MM/yyyy" />
+	 				<line x1="0" y1="42" x2="100%" y2="42" weight="3"/>
+
+					<label name="lblprovider" x="0" y="50" width="100" dynamic="true" alignment="right" fsbold="true">Páguese a:</label>
+					<string-field x="110" y="50" width="100%" alignment="left" height="12" dynamic="false" fieldname="table_0.identification"/>
+					<label name="lblobservations" x="0" y="70" width="100" dynamic="true" alignment="right" fsbold="true">En concepto de:</label>
+					<string-field name="observations" fieldname="table_0.observations" x="110" y="70" width="75%" dynamic="true" alignment="left"/>
+					<line x1="0" y1="90" x2="100%" y2="90" weight="2"/>-->
+                                        <!--<label name="lblcuit" x="350" y="50" width="40" dynamic="true" alignment="right" fsbold="true">CUIT:</label>
+					<string-field x="395" y="50" width="100" alignment="left" dynamic="true"  fieldname="table_0.identificationnumber"/>-->
+				</band>
+			</groupheader>
+		</group>
+		
+		<group name="Header-Detail" >
+			<fields>
+				<field>TablePrefix</field>
+			</fields>
+			
+			<groupheader repeat="false" layout-cachable="false" >
+				<band name="table_1" height="12" fontname="SansSerif" fontstyle="bold" fontsize="09">
+                                
+                                        <rectangle name="tangle"  x="0"   y="0" width="160" height="12"  draw="true" fill="true" color="#E5E5E5"/>
+                                        <rectangle name="tangle"  x="160" y="0" width="195" height="12"  draw="true" fill="true" color="#E5E5E5"/>
+                                        <rectangle name="tangle"  x="355" y="0" width="80"  height="12"  draw="true" fill="true" color="#E5E5E5"/>
+                                        <rectangle name="tangle"  x="435" y="0" width="80"  height="12"  draw="true" fill="true" color="#E5E5E5"/>
+                                
+                                        <rectangle name="tangle"  x="0"   y="0" width="160" height="12"  draw="true" fill="false" color="#000000"/>
+                                        <rectangle name="tangle"  x="160" y="0" width="195" height="12"  draw="true" fill="false" color="#000000"/>
+                                        <rectangle name="tangle"  x="355" y="0" width="80"  height="12"  draw="true" fill="false" color="#000000"/>
+                                        <rectangle name="tangle"  x="435" y="0" width="80"  height="12"  draw="true" fill="false" color="#000000"/>
+			
+					<label x="0"   y="1" width="157" height="11" dynamic="false" alignment="center">Cuenta</label>
+					<label x="160" y="1" width="195" height="11" dynamic="false" alignment="center">Concepto/Cheque</label>
+					<label x="355" y="1" width="80"  height="11" dynamic="false" alignment="center">Débito</label>
+					<label x="435" y="1" width="80"  height="11" dynamic="false" alignment="center">Crédito</label>
+				</band>
+			</groupheader>
+			
+			<groupfooter height="18" fontname="Monospaced" fontstyle="bold" fontsize="09">
+			    <line x1="0" y1="0" x2="100%" y2="0" weight="0.25"/>
+      			</groupfooter>
+		</group> 
+		 
+		<group name="Header-Footer" >
+			<groupfooter height="18" fontname="Monospaced" fontstyle="bold" fontsize="09">
+                        
+                                <label        x="390" y="3" name="lblTotal" dynamic="true" width="35" alignment="right" fontname="SansSerif" fontstyle="bold" fontsize="10">Total:</label>
+				<rectangle    x="430" y="0" width="85" height="15" color="#FFFF00" draw="true" fill="true"/>
+				<rectangle    x="430" y="0" width="85" height="15" color="#000000" draw="true" fill="false"/>
+				<number-field x="430" y="3" width="80" format="$ #,##0.00 " fieldname="totalAmount" dynamic="true" alignment="right" fontname="SansSerif" fontstyle="plain" fontsize="9"/>
+                        
+                                <label name="lbl" x="0" y="20" width="130" height="12" dynamic="false" alignment="left" fsbold="true">Son Pesos($):</label>
+				<rectangle name="tangle"  x="75" y="20" width="470" height="12" draw="false" fill="false" color="#00ff00"/>
+                                <line x1="75" y1="32" x2="540" y2="32" weight="0.1" stroke-style="dashed"/>
+                                <string-field x="75" y="20" width="470" alignment="left" height="12" dynamic="false" fsbold="false" fieldname="textamount"/>
+                                
+                                <line x1="9" y1="72" x2="159" y2="72" weight="0.25"/>
+				<label x="9" y="75" name="lbltitle" dynamic="true" width="150" alignment="center">Confeccionó</label>  
+				<line x1="179" y1="72" x2="329" y2="72" weight="0.25"/>
+				<label x="179" y="75" name="lbltitle" dynamic="true" width="150" alignment="center">Tesorero/Sec. Hacienda</label>  
+				<line x1="349" y1="72" x2="499" y2="72" weight="0.25"/>
+				<label x="349" y="75" name="lbltitle" dynamic="true" width="150" alignment="center">Intendente</label>  
+				<line x1="0" y1="90" x2="100%" y2="90" weight="3"/>
+                                
+                                <line x1="9" y1="142" x2="159" y2="142" weight="0.25"/>
+				<label x="9" y="145" name="lbltitle" dynamic="true" width="150" alignment="center">Beneficiario</label>  
+				<line x1="179" y1="142" x2="329" y2="142" weight="0.25"/>
+				<label x="179" y="145" name="lbltitle" dynamic="true" width="150" alignment="center">Aclaración</label>  
+				<line x1="349" y1="142" x2="499" y2="142" weight="0.25"/>
+				<label x="349" y="145" name="lbltitle" dynamic="true" width="150" alignment="center">DNI-CUIT-CUIL</label>  
+				<line x1="0" y1="160" x2="100%" y2="160" weight="3"/>
+				
+      			</groupfooter>
+		</group>
+		
+	</groups>
+	
+	<items layout-cachable="false" >
+		<band name="table_1" fontsize="08">
+			<line x1="0" y1="0" x2="0" y2="100%" weight="0.25"/>
+			<line x1="160" y1="0" x2="160" y2="100%" weight="0.25"/>
+			<line x1="355" y1="0" x2="355" y2="100%" weight="0.25"/>
+			<line x1="435" y1="0" x2="435" y2="100%" weight="0.25"/>
+			<line x1="100%" y1="0" x2="100%" y2="100%" weight="0.25"/>
+			
+			<string-field x="2"   y="2" width="158"  alignment="left" height="10" dynamic="false" fieldname="table_1.code"/>
+			<string-field x="162" y="2" width="193" alignment="left"  height="10" dynamic="false" fieldname="table_1.concept"/>
+			<number-field x="355" y="2" width="75"  alignment="right" height="10" dynamic="false" format="$#,##0.00" fieldname="table_1.debit"/>
+			<number-field x="435" y="2" width="75"  alignment="right" height="10" dynamic="false" format="$#,##0.00" fieldname="table_1.credit"/>
+			
+		</band>
+	</items>
+	
+	<pagefooter height="24">
+                <rectangle name="PF0" x="0" y="0" width="100%" height="100%" color="#FFFFFF" weight="0" draw="false" fill="true"/>
+                <line x1="0" y1="0" x2="100%" y2="0" weight="0.5"/>
+                <string-field x="0" y="4" width="100%" height="100%" alignment="left" vertical-alignment="middle" fieldname="location"/>
+        </pagefooter>
+	
+	<functions>
+		<function class="org.jfree.report.function.HideElementByNameFunction" name="hideHeader">
+			<properties>
+				<property name="element">table_0</property>
+				<property name="field">TablePrefix</property>
+			</properties>
+		</function>
+		
+		<function class="org.jfree.report.function.HideElementByNameFunction" name="hideDetail">
+			<properties>
+				<property name="element">table_1</property>
+				<property name="field">TablePrefix</property>
+			</properties>
+		</function>
+                
+                <function class="org.jfree.report.function.PageOfPagesFunction" name="pageXofY">
+			<properties>
+				<property name="format">Página {0} de {1}</property>
+			</properties>
+		</function>
+                
+	</functions>
+	
+</report>

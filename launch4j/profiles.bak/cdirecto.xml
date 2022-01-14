@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<launch4jConfig>
+  <dontWrapJar>false</dontWrapJar>
+  <headerType>console</headerType>
+  <jar>/home/santiago/jdevhome/mywork/El Suri/CDDesktop/deploy/cdirecto-boot.jar</jar>
+  <outfile>/home/santiago/jdevhome/mywork/El Suri/CDDesktop/deploy/CDDesktop.exe</outfile>
+  <errTitle></errTitle>
+  <cmdLine></cmdLine>
+  <chdir>.</chdir>
+  <priority>normal</priority>
+  <downloadUrl>http://java.com/download</downloadUrl>
+  <supportUrl></supportUrl>
+  <stayAlive>true</stayAlive>
+  <restartOnCrash>false</restartOnCrash>
+  <manifest></manifest>
+  <icon></icon>
+  <singleInstance>
+    <mutexName>CDDesktop</mutexName>
+    <windowTitle></windowTitle>
+  </singleInstance>
+  <classPath>
+    <mainClass>org.scassi.projects.contactodirecto.desktop.CDDesktop</mainClass>
+    <cp>./cdirecto-main.jar</cp>
+    <cp>./cdirecto-boot.jar</cp>
+    <cp>./elsuri/elsuri-files.jar</cp>
+    <cp>./elsuri/elsuri-sueldos.jar</cp>
+    <cp>./elsuri/elsuri-common.jar</cp>
+    <cp>./elsuri/elsuri-corporation.jar</cp>
+    <cp>./elsuri/elsuri-ekit.jar</cp>
+    <cp>./elsuri/elsuri-chwy.jar</cp>
+    <cp>./elsuri/elsuri-resourcesrequests.jar</cp>
+    <cp>./elsuri/elsuri-calendar.jar</cp>
+    <cp>./elsuri/elsuri-libs.jar</cp>
+    <cp>./elsuri/elsuri-jpgadmin.jar</cp>
+    <cp>./elsuri/elsuri-logistics.jar</cp>
+    <cp>./elsuri/elsuri-social.jar</cp>
+    <cp>./elsuri/elsuri-dbadmin.jar</cp>
+    <cp>./elsuri/elsuri-taskman.jar</cp>
+    <cp>./elsuri/elsuri-drivinglicenses.jar</cp>
+    <cp>./elsuri/elsuri-gaia.jar</cp>
+    <cp>./elsuri/elsuri-base.jar</cp>
+    <cp>./elsuri/elsuri-cashflowclient.jar</cp>
+    <cp>./elsuri/elsuri-taxes.jar</cp>
+    <cp>./elsuri/elsuri-resourcescontrol.jar</cp>
+    <cp>./elsuri/elsuri-cashflow.jar</cp>
+    <cp>./3rdParty/sql/postgresql-9.4.1208.jre6.jar</cp>
+    <cp>./3rdParty/reporter/libdocbundle-1.1.8.jar</cp>
+    <cp>./3rdParty/reporter/libfonts-1.1.6.jar</cp>
+    <cp>./3rdParty/reporter/librepository-1.1.6.jar</cp>
+    <cp>./3rdParty/reporter/gnujaxp.jar</cp>
+    <cp>./3rdParty/reporter/libformula-1.1.7.jar</cp>
+    <cp>./3rdParty/reporter/libserializer-1.1.6.jar</cp>
+    <cp>./3rdParty/reporter/libxml-1.1.7.jar</cp>
+    <cp>./3rdParty/reporter/jcommon-serializer-0.2.0.jar</cp>
+    <cp>./3rdParty/reporter/bsf-2.4.0.jar</cp>
+    <cp>./3rdParty/reporter/jcommon-1.0.14.jar</cp>
+    <cp>./3rdParty/reporter/pentaho-reporting-engine-classic-core-3.6.1-GA.jar</cp>
+    <cp>./3rdParty/reporter/libloader-1.1.6.jar</cp>
+    <cp>./3rdParty/reporter/jfreechart-1.0.9.jar</cp>
+    <cp>./3rdParty/reporter/jlfgr-1_0.jar</cp>
+    <cp>./3rdParty/reporter/poi-3.7-20101029.jar</cp>
+    <cp>./3rdParty/reporter/commons-logging-1.1.jar</cp>
+    <cp>./3rdParty/reporter/libbase-1.1.6.jar</cp>
+    <cp>./3rdParty/reporter/bsh-1.3.0.jar</cp>
+    <cp>./3rdParty/reporter/pixie-0.8.10.jar</cp>
+    <cp>./3rdParty/reporter/itext-1.5.2.jar</cp>
+    <cp>./3rdParty/reporter/libformat-1.1.6.jar</cp>
+  </classPath>
+  <jre>
+    <path></path>
+    <bundledJre64Bit>false</bundledJre64Bit>
+    <bundledJreAsFallback>false</bundledJreAsFallback>
+    <minVersion>1.5.0</minVersion>
+    <maxVersion></maxVersion>
+    <jdkPreference>preferJre</jdkPreference>
+    <runtimeBits>64/32</runtimeBits>
+    <initialHeapSize>256</initialHeapSize>
+    <maxHeapSize>512</maxHeapSize>
+    <opt>-server</opt>
+  </jre>
+  <messages>
+    <startupErr>Ha ocurrido un error al iniciar la aplicaciÃ³n</startupErr>
+    <bundledJreErr>Esta aplicaciÃ³n se configurÃ³ para utilizar Java Bundled pero estÃ¡ daÃ±ada</bundledJreErr>
+    <jreVersionErr>Esta aplicaciÃ³n requiere Java Runtime Environment</jreVersionErr>
+    <launcherErr>El registro apunta a una instalaciÃ³n de Java Runtime Environment inexistente o daÃ±ada</launcherErr>
+    <instanceAlreadyExistsMsg>La aplicaciÃ³n ya se estÃ¡ ejecutando</instanceAlreadyExistsMsg>
+  </messages>
+</launch4jConfig>

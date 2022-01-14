@@ -1,0 +1,53 @@
+
+SLOC	Directory	SLOC-by-Language (Sorted)
+49282   Common-0.9.1    java=49282
+35533   Taxes-0.9.1     java=35533
+27297   Lib             java=27297
+18759   Gaia            java=18759
+15457   CashFlow-0.9.1  java=15457
+14559   Files           java=14559
+11920   ResourcesControl-0.9.1 java=11920
+10518   DBAdmin-0.9.1   java=10518
+10115   Sueldos         java=10115
+7666    EKit            java=7666
+6004    AccionSocial    java=6004
+3649    SystemManager   java=3649
+3200    Calendar        java=3200
+2941    DrivingLicenses java=2941
+1806    JPGAdmin        java=1806
+1798    ProjectTask     java=1798
+1667    ResourcesControl java=1667
+1593    ElSuriDesktop   java=1593
+1564    Corporation     java=1564
+1347    Logistics       java=1347
+1200    ResourcesRequests-0.9.1 java=1200
+944     FileManager     java=944
+781     ChatWithYou     java=781
+673     TaskMan         java=673
+275     CashFlowClient-0.9.1 java=275
+57      Dictionary      java=57
+43      DDServer        java=43
+0       Resources       (none)
+0       top_dir         (none)
+
+
+Totals grouped by language (dominant language first):
+java:        230648 (100.00%)
+
+
+
+
+Total Physical Source Lines of Code (SLOC)                = 230,648
+Development Effort Estimate, Person-Years (Person-Months) = 60.55 (726.62)
+ (Basic COCOMO model, Person-Months = 2.4 * (KSLOC**1.05))
+Schedule Estimate, Years (Months)                         = 2.55 (30.57)
+ (Basic COCOMO model, Months = 2.5 * (person-months**0.38))
+Estimated Average Number of Developers (Effort/Schedule)  = 23.77
+Total Estimated Cost to Develop                           = $ 8,179,727
+ (average salary = $56,286/year, overhead = 2.40).
+SLOCCount, Copyright (C) 2001-2004 David A. Wheeler
+SLOCCount is Open Source Software/Free Software, licensed under the GNU GPL.
+SLOCCount comes with ABSOLUTELY NO WARRANTY, and you are welcome to
+redistribute it under certain conditions as specified by the GNU GPL license;
+see the documentation for details.
+Please credit this data as "generated using David A. Wheeler's 'SLOCCount'."

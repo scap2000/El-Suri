@@ -1,0 +1,110 @@
+Este es el archivo README-dev para la distribución GNU de El Suri.
+El Suri es un entorno JAVA de trabajo y desarrollo para Gobierno Electrónico.
+
+  Copyright (C) 2007-2010 por D'AMBROSIO MARCELO E CASSINA SANTIAGO SOC DE HECHO.
+  D'AMBROSIO MARCELO E CASSINA SANTIAGO SOC DE HECHO es propiedad de
+  Lic. Santiago Cassina (santiago@digitallsh.com.ar - scap2000@yahoo.com) y
+  Marcelo D'Ambrosio (marcelo@digitallsh.com.ar - marcelodambrosio@gmail.com)
+  http://www.digitallsh.com.ar
+
+  La copia y distribución de este archivo, con o sin modificaciones,
+  están permitidas por cualquier medio sin cargo mientras se preserven
+  el Aviso de Copyright y este mismo aviso.
+
+  Copyright (C) 2007-2010 by D'AMBROSIO MARCELO E CASSINA SANTIAGO SOC DE HECHO.
+  D'AMBROSIO MARCELO E CASSINA SANTIAGO SOC DE HECHO is owned by
+  Lic. Santiago Cassina (santiago@digitallsh.com.ar - scap2000@yahoo.com) and
+  Marcelo D'Ambrosio (marcelo@digitallsh.com.ar - marcelodambrosio@gmail.com)
+  http://www.digitallsh.com.ar
+
+  Copying and distribution of this file, with or without modification,
+  are permitted in any medium without royalty provided the copyright
+  notice and this notice are preserved.
+
+Ver el archivo ./INSTALL para instrucciones de instalación.
+Ver el archivo ./README para notas generales.
+
+Cualquier participación es bienvenida. Si es programador y desea contribuir,
+debería comenzar por aquí. Si no es un programador, apreciaremos su ayuda
+escribiendo casos de prueba, revisando la documentación contra la
+implementación, traduciendo los textos del programa a otros idiomas, etc.
+
+Punto principal de distribución: http://elsuri.sourceforge.net/files
+
+Página principal: http://elsuri.sourceforge.net/
+
+Lista de correo electrónico: elsuri-bugs@lists.sourceforge.net
+- por favor usar la lista para todos los temas: reportes de errores, mejoras, etc.
+- cualquiera es bienvenido a la lista; para suscribirse visite
+  https://lists.sourceforge.net/lists/listinfo/elsuri-bugs
+- no existe un grupo de noticias.
+
+Reporte de Errores:
+ Por favor incluya información suficiente para reproducir el error.
+ En términos generales, esto quiere decir:
+- los contenidos de cualquier archivo necesario para reproducir el error,
+  los datos principales y los parámetros de ejecución del programa (¡crucial!).
+- una descripción del problema y algún ejemplo del mensaje de error.
+- el número de versión del programa.
+- hardware, sistema operativo, versiones Java y compilador Java.
+- cualquier otra cosa que considere que sea útil para la revisión.
+
+Parches y correcciones son bienvenidos; si es posible créelos
+con diff -c y registros de ChangeLog.
+
+Notas para los programadores
+****************************
+
+Si usted es programador, está leyendo el archivo correcto, agradecemos
+su participación en este proyecto
+
+El Suri ha sido desarrollado en JAVA mediante Oracle JDeveloper (versiones 9 a 11g),
+cada archivo del código fuente ha sido clasificado según el módulo al que pertenece
+y ponemos a su disposición el árbol completo de código fuente para facilidad de
+comprensión y desarrollo futuro. El código fuente en SQL ha sido prácticamente escrito
+desde la misma aplicación JPGAdmin incluida en El Suri y los privilegios a los usuarios
+han sido asignados desde la aplicación DBAdmin incluida también en El Suri. Las
+estructuras de datos han sido diseñadas en su mayoría desde phpPgAdmin.
+
+Se recomienda usar versiones de PostgreSQL 8.2 o superiores y Java 1.6 o superiores.
+
+Este paquete contiene:
+
+    * Código fuente de El Suri en Java en ./src/java
+    * Código fuente de El Suri que debe ser incorporado al motor PostgreSQL en ./src/sql
+    * Librerías de contribuciones en ./contrib
+
+	    3rdParty/sql/postgresql-8.2-507.jdbc3.jar
+	    3rdParty/reporter/pixie-0.8.10.jar
+	    3rdParty/reporter/libxml-1.1.7.jar
+	    3rdParty/reporter/poi-3.0.1-jdk122-final-20071014.jar
+	    3rdParty/reporter/bsf-2.4.0.jar
+	    3rdParty/reporter/libserializer-1.1.6.jar
+	    3rdParty/reporter/gnujaxp.jar
+	    3rdParty/reporter/jlfgr-1_0.jar
+	    3rdParty/reporter/libbase-1.1.6.jar
+	    3rdParty/reporter/bsh-1.3.0.jar
+	    3rdParty/reporter/jcommon-1.0.14.jar
+	    3rdParty/reporter/libformat-1.1.6.jar
+	    3rdParty/reporter/itext-1.5.2.jar
+	    3rdParty/reporter/libdocbundle-1.1.8.jar
+	    3rdParty/reporter/libloader-1.1.6.jar
+	    3rdParty/reporter/libformula-1.1.7.jar
+	    3rdParty/reporter/libfonts-1.1.6.jar
+	    3rdParty/reporter/jcommon-serializer-0.2.0.jar
+	    3rdParty/reporter/pentaho-reporting-engine-classic-core-3.6.1-GA.jar
+	    3rdParty/reporter/librepository-1.1.6.jar
+	    3rdParty/reporter/commons-logging-1.1.jar
+	    3rdParty/reporter/jfreechart-1.0.9.jar
+	    
+	    Se incluyen estas librerías en este paquete a fin de brindar mayor
+	    facilidad al momento de iniciar el desarrollo. Recomendamos
+	    mantener dichas librerías actualizadas a las últimas versiones
+	    oficiales que pueden descargarse de las páginas de los autores.
+	    
+    * Archivos binarios en ./lib
+    * Documentación general en ./doc
+    * Algunas capturas de pantalla en ./doc/Screenshots
+
+El Suri es Software Libre. Lea el archivo COPYING por las condiciones de copia.
+Gracias por participar en este proyecto.

@@ -1,0 +1,29 @@
+Cómo saber si una funcion tiene permisos públicos de ejecución:
+Select 
+proname,proisagg, prosecdef, proisstrict, probin, proacl, aclcontains(proacl, '=X/admin')
+ from pg_proc a, pg_namespace b where a.pronamespace = b.oid and b.nspname = 'org'
+ 
+Listado de las tablas con acceso público de LECTURA (SELECT)
+select relname, relacl from pg_class where aclcontains (relacl, '=r/admin')
+
+Listado de las tablas con acceso público de LECTURA (SELECT)
+select nspname || '.' || relname AS table from pg_class
+INNER JOIN pg_namespace ON relnamespace = pg_namespace.oid
+ where aclcontains (relacl, '=r/admin')
+
+Listado de las funciones con acceso público de EJECUCION (EXECUTE)
+SELECT declaration FROM (SELECT n.nspname || '.' || proname || '(' || pg_catalog.oidvectortypes(p.proargtypes) ||  ')' AS declaration,
+proacl FROM pg_catalog.pg_proc p INNER JOIN pg_catalog.pg_namespace n ON n.oid = p.pronamespace
+INNER JOIN pg_catalog.pg_language pl ON pl.oid = p.prolang 
+WHERE NOT p.proisagg  AND lanname = 'plpgsql' 
+AND 
+(aclcontains(proacl, '=X/admin') OR proacl IS NULL) ORDER BY p.proname) AS foo
+
+
+Listado de las todas las funciones de la base de datos 
+
+SELECT p.oid AS prooid, p.proname as name, n.nspname, pg_catalog.format_type(p.prorettype, NULL) AS proresult, 
+CASE WHEN array_to_string(p.proargnames, '') IS NULL THEN '' ELSE array_to_string(p.proargnames, '') END AS proargnames, 
+pg_catalog.oidvectortypes(p.proargtypes) AS proarguments, proname || '(' || pg_catalog.oidvectortypes(p.proargtypes) ||  ')' as declaration 
+FROM pg_catalog.pg_proc p INNER JOIN pg_catalog.pg_namespace n ON n.oid = p.pronamespace  INNER JOIN pg_catalog.pg_language pl ON pl.oid = p.prolang 
+WHERE NOT p.proisagg  AND lanname = 'plpgsql' ORDER BY p.proname, proresult 

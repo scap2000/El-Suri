@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!--
+ LIMITACIÓN DE RESPONSABILIDAD - COPYRIGHT - [Español]
+ ================================================================================
+ El Suri - Entorno JAVA de Trabajo y Desarrollo para Gobierno Electrónico
+ ================================================================================
+
+ Información del Proyecto:  http://elsuri.sourceforge.net
+
+ Copyright (C) 2007-2010 por D'AMBROSIO MARCELO E CASSINA SANTIAGO SOC DE HECHO.
+ D'AMBROSIO MARCELO E CASSINA SANTIAGO SOC DE HECHO es propiedad de
+ Lic. Santiago Cassina (santiago@digitallsh.com.ar - scap2000@yahoo.com) y
+ Marcelo D'Ambrosio (marcelo@digitallsh.com.ar - marcelodambrosio@gmail.com)
+ http://www.digitallsh.com.ar
+
+ Este programa es software libre: usted puede redistribuirlo y/o modificarlo
+ bajo los términos de la Licencia Pública General GNU publicada
+ por la Fundación para el Software Libre, ya sea la versión 3
+ de la Licencia, o (a su elección) cualquier versión posterior.
+
+ Este programa se distribuye con la esperanza de que sea útil, pero
+ SIN GARANTÍA ALGUNA; ni siquiera la garantía implícita
+ MERCANTIL o de APTITUD PARA UN PROPÓSITO DETERMINADO.
+ Consulte los detalles de la Licencia Pública General GNU para obtener
+ una información más detallada.
+
+ Debería haber recibido una copia de la Licencia Pública General GNU
+ junto a este programa.
+ En caso contrario, consulte <http://www.gnu.org/licenses/>.
+
+ DISCLAIMER - COPYRIGHT - [English]
+ =====================================================================================
+ El Suri - JAVA Management & Development Environment for Electronic Government
+ =====================================================================================
+
+ Project Info:  http://elsuri.sourceforge.net
+
+ Copyright (C) 2007-2010 by D'AMBROSIO MARCELO E CASSINA SANTIAGO SOC DE HECHO.
+ D'AMBROSIO MARCELO E CASSINA SANTIAGO SOC DE HECHO is owned by
+ Lic. Santiago Cassina (santiago@digitallsh.com.ar - scap2000@yahoo.com) and
+ Marcelo D'Ambrosio (marcelo@digitallsh.com.ar - marcelodambrosio@gmail.com)
+ http://www.digitallsh.com.ar
+
+ This program is free software: you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation, either version 3 of the License, or
+ (at your option) any later version.
+
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public License for more details.
+
+ You should have received a copy of the GNU General Public License
+ along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+-->
+<!--
+  InvoiceTypeB.xml
+-->
+<!--
+    ~ Copyright (c) 2007, Your Corporation. All Rights Reserved.
+    -->
+
+<report xmlns="http://jfreereport.sourceforge.net/namespaces/reports/legacy/simple" name="Registrar Comprobante" pageformat="A4"
+       topmargin="20" leftmargin="50" bottommargin="10" rightmargin="30">
+	
+	<pageheader height="12" fontname="SansSerif" fontsize="16" fsbold="true">
+		<string-field  width="100%" dynamic="true" alignment="center" fieldname="location"></string-field>
+	</pageheader>
+	
+	<groups>
+		<group name="table_0">
+			<fields>
+				<field>TablePrefix</field>
+				<field>table_0.header</field> 
+			</fields>
+			
+			<groupheader layout-cachable="false" >
+				<band name="table_0" fontname="SansSerif" fontstyle="plain" fontsize="10">
+					<line x1="0" y1="15" x2="100%" y2="15" weight="3"/>
+					<string-field     x="000" y="20" width="250" dynamic="true" alignment="left"  fsbold="true" fieldname="table_0.name"/>
+					<label name="num" x="170" y="20" width="60"  dynamic="true" alignment="right" fsbold="true">Número:</label>
+					<string-field     x="235" y="20" width="100" dynamic="true" alignment="left"  fsbold="true" fieldname="table_0.number"/>
+					<label name="dat" x="355" y="20" width="90"  dynamic="true" alignment="right" fsbold="true">Fecha:</label>
+					<date-field       x="450" y="20" width="80"  dynamic="true" alignment="left"  format="dd/MM/yyyy" fieldname="table_0.date"/>
+					<line x1="0" y1="42" x2="100%" y2="42" weight="3"/>
+	
+					<label name="lbl" x="00" y="50" width="70"   dynamic="true" alignment="right" fsbold="true">Proveedor:</label>
+					<string-field     x="75" y="50" width="100%" dynamic="true" alignment="left" fieldname="table_0.identification"/>
+					<line x1="0" y1="70" x2="100%" y2="70" weight="2"/>
+				</band>
+			</groupheader>
+		</group>
+		
+		<group name="Header-Detail" >
+			<fields>
+				<field>TablePrefix</field>
+				<field>table_0.header</field>
+			</fields>
+			
+			<groupheader repeat="false" layout-cachable="false" >
+				<band name="table_1" height="15" fontname="SansSerif" fontstyle="bold" fontsize="09" >
+					
+                                        <rectangle name="tangle"  x="0"   y="0" width="150" height="18"  draw="true" fill="false" color="#000000"/>
+                                        <rectangle name="tangle"  x="150" y="0" width="90"  height="18"  draw="true" fill="false" color="#000000"/>
+                                        <rectangle name="tangle"  x="240" y="0" width="60"  height="18"  draw="true" fill="false" color="#000000"/>
+                                        <rectangle name="tangle"  x="300" y="0" width="45"  height="18"  draw="true" fill="false" color="#000000"/>
+                                        <rectangle name="tangle"  x="345" y="0" width="55"  height="18"  draw="true" fill="false" color="#000000"/>
+                                        <rectangle name="tangle"  x="400" y="0" width="50"  height="18"  draw="true" fill="false" color="#000000"/>
+                                        <rectangle name="tangle"  x="450" y="0" width="65"  height="18"  draw="true" fill="false" color="#000000"/>
+			
+					<label name="resource" x="0"   y="5" width="160" height="14" dynamic="false" alignment="center">Recurso</label>
+					<label name="brand"    x="150" y="5" width="90"  height="14" dynamic="false" alignment="center">Marca</label>
+					<label name="quatity"  x="240" y="5" width="60"	 height="14" dynamic="false" alignment="center">Cantidad</label>
+					<label name="unit"     x="300" y="5" width="45"	 height="14" dynamic="false" alignment="center">Unidad</label>
+					<label name="price"    x="345" y="5" width="55"	 height="14" dynamic="false" alignment="center">($) P/U</label>
+                                        <label name="price"    x="400" y="5" width="50"	 height="14" dynamic="false" alignment="center">(%) IVA</label>
+					<label name="amount"   x="450" y="5" width="65"	 height="14" dynamic="false" alignment="center">($) SubTotal</label>
+				</band>
+			</groupheader>
+			
+			<groupfooter height="18" fontname="Monospaced" fontstyle="bold" fontsize="9">
+			    <line x1="0" y1="0" x2="100%" y2="0" weight="0.25"/>
+      			</groupfooter>
+		</group>
+                
+                <group name="Header-Footer" >
+			<groupfooter height="18" fontname="Monospaced" fontstyle="bold" fontsize="9">
+				<label name="Total" x="370" y="3" dynamic="true" width="50" alignment="right" fontname="SansSerif" fontstyle="bold" fontsize="10">Total:</label>
+				<rectangle          x="430" y="0" width="85" height="15" color="#FFFF00" draw="true" fill="true"/>
+				<rectangle          x="430" y="0" width="85" height="15" color="#000000" draw="true" fill="false"/>
+				<number-field       x="430" y="3" width="85" alignment="right" fontname="SansSerif" fontstyle="plain" fontsize="08" format="$ #,##0.00 " dynamic="true" fieldname="totalAmount"/>
+                                
+                                <label name="lbl"      x="00"  y="20" width="130" height="12" dynamic="false" alignment="left" fsbold="true">Son Pesos($):</label>
+				<rectangle name="tane" x="75"  y="20" width="470" height="12" draw="false" fill="false" color="#00ff00"/>
+                                <string-field          x="75"  y="20" width="470" height="12" dynamic="false" alignment="left" fsbold="false" fieldname="textamount"/>
+				<line x1="75" y1="30" x2="540" y2="30" weight="0.1" stroke-style="dashed"/>
+                                
+                                
+				<line x1="0" y1="82" x2="150" y2="82" weight="0.25"/>
+				<label x="0" y="85" name="lbltitle" dynamic="true" width="150" alignment="center">Solicitante</label>  
+				<line x1="170" y1="82" x2="320" y2="82" weight="0.25"/>
+				<label x="170" y="85" name="lbltitle" dynamic="true" width="150" alignment="center">Aclaración</label>  
+				<line x1="340" y1="82" x2="490" y2="82" weight="0.25"/>
+				<label x="340" y="85" name="lbltitle" dynamic="true" width="150" alignment="center">Receptor</label>  
+				<line x1="0" y1="100" x2="100%" y2="100" weight="3"/>
+      			</groupfooter>
+		</group>
+		
+	</groups>
+	
+	<items layout-cachable="false" >
+		<band name="table_1" fontsize="08">
+			
+                        <line x1="0"    y1="0" x2="0"    y2="100%" weight="0.25"/>
+			<line x1="150"  y1="0" x2="150"  y2="100%" weight="0.25"/>
+			<line x1="240"  y1="0" x2="240"  y2="100%" weight="0.25"/>
+			<line x1="300"  y1="0" x2="300"  y2="100%" weight="0.25"/>
+			<line x1="345"  y1="0" x2="345"  y2="100%" weight="0.25"/>
+                        <line x1="400"  y1="0" x2="400"  y2="100%" weight="0.25"/>
+			<line x1="450"  y1="0" x2="450"  y2="100%" weight="0.25"/>
+			<line x1="100%" y1="0" x2="100%" y2="100%" weight="0.25"/>
+			
+			<string-field x="5"   y="0" width="145" alignment="left"   height="12" dynamic="false" fieldname="table_1.resource"/>
+			<string-field x="155" y="0" width="85"  alignment="left"   height="12" dynamic="false" fieldname="table_1.brand"/>
+			<number-field x="240" y="0" width="55"  alignment="right"  height="12" dynamic="false" format="#,##0.0000" fieldname="table_1.finalqty"/>
+			<string-field x="310" y="0" width="45"  alignment="center" height="12" dynamic="false" fieldname="table_1.unit"/>
+			<number-field x="345" y="0" width="50"  alignment="right"  height="12" dynamic="false" format="$ #,##0.0000" fieldname="table_1.price"/>
+                        <number-field x="400" y="0" width="45"  alignment="right"  height="12" dynamic="false" format="#,##0.00" fieldname="table_1.vatp"/>
+			<number-field x="450" y="0" width="60"  alignment="right"  height="12" dynamic="false" format="$ #,##0.0000" fieldname="table_1.amount"/>
+			
+		</band>
+	</items>
+	
+	<functions>
+		<function class="org.jfree.report.function.HideElementByNameFunction" name="hideHeader">
+			<properties>
+				<property name="element">table_0</property>
+				<property name="field">TablePrefix</property>
+			</properties>
+		</function>
+		
+		<function class="org.jfree.report.function.HideElementByNameFunction" name="hideDetail">
+			<properties>
+				<property name="element">table_1</property>
+				<property name="field">TablePrefix</property>
+			</properties>
+		</function>
+                
+                <function class="org.jfree.report.function.ItemSumFunction" name="totalAmount">
+			<properties>
+				<property name="field">table_1.amount</property>
+			</properties>
+		</function>
+                
+                <function class="org.jfree.report.function.PageOfPagesFunction" name="pageXofY">
+		    <properties>
+			    <property name="format">Página {0} de {1}</property>
+		    </properties>
+		</function>
+                
+	</functions>
+        
+        <pagefooter height="24">
+                <rectangle name="PF0" x="0" y="0" width="100%" height="100%" color="#FFFFFF" weight="0" draw="false" fill="true"/>
+                <line x1="0" y1="0" x2="100%" y2="0" weight="0.5"/>
+                <string-field fieldname="location" x="0" y="4" width="100%" height="100%" alignment="left" vertical-alignment="middle"/>
+                <string-field fieldname="pageXofY" x="0" y="4" width="100%" height="100%" alignment="right" vertical-alignment="middle"/>
+        </pagefooter>
+	
+</report>
+
+
+

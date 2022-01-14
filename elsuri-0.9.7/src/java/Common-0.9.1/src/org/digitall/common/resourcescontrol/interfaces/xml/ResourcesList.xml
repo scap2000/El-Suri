@@ -1,0 +1,339 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!--
+ LIMITACIÓN DE RESPONSABILIDAD - COPYRIGHT - [Español]
+ ================================================================================
+ El Suri - Entorno JAVA de Trabajo y Desarrollo para Gobierno Electrónico
+ ================================================================================
+
+ Información del Proyecto:  http://elsuri.sourceforge.net
+
+ Copyright (C) 2007-2010 por D'AMBROSIO MARCELO E CASSINA SANTIAGO SOC DE HECHO.
+ D'AMBROSIO MARCELO E CASSINA SANTIAGO SOC DE HECHO es propiedad de
+ Lic. Santiago Cassina (santiago@digitallsh.com.ar - scap2000@yahoo.com) y
+ Marcelo D'Ambrosio (marcelo@digitallsh.com.ar - marcelodambrosio@gmail.com)
+ http://www.digitallsh.com.ar
+
+ Este programa es software libre: usted puede redistribuirlo y/o modificarlo
+ bajo los términos de la Licencia Pública General GNU publicada
+ por la Fundación para el Software Libre, ya sea la versión 3
+ de la Licencia, o (a su elección) cualquier versión posterior.
+
+ Este programa se distribuye con la esperanza de que sea útil, pero
+ SIN GARANTÍA ALGUNA; ni siquiera la garantía implícita
+ MERCANTIL o de APTITUD PARA UN PROPÓSITO DETERMINADO.
+ Consulte los detalles de la Licencia Pública General GNU para obtener
+ una información más detallada.
+
+ Debería haber recibido una copia de la Licencia Pública General GNU
+ junto a este programa.
+ En caso contrario, consulte <http://www.gnu.org/licenses/>.
+
+ DISCLAIMER - COPYRIGHT - [English]
+ =====================================================================================
+ El Suri - JAVA Management & Development Environment for Electronic Government
+ =====================================================================================
+
+ Project Info:  http://elsuri.sourceforge.net
+
+ Copyright (C) 2007-2010 by D'AMBROSIO MARCELO E CASSINA SANTIAGO SOC DE HECHO.
+ D'AMBROSIO MARCELO E CASSINA SANTIAGO SOC DE HECHO is owned by
+ Lic. Santiago Cassina (santiago@digitallsh.com.ar - scap2000@yahoo.com) and
+ Marcelo D'Ambrosio (marcelo@digitallsh.com.ar - marcelodambrosio@gmail.com)
+ http://www.digitallsh.com.ar
+
+ This program is free software: you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation, either version 3 of the License, or
+ (at your option) any later version.
+
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public License for more details.
+
+ You should have received a copy of the GNU General Public License
+ along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+-->
+<!--
+  ResourcesList.xml
+-->
+<!--
+    ~ Copyright (c) 2007, Your Corporation. All Rights Reserved.
+    -->
+
+<report xmlns="http://jfreereport.sourceforge.net/namespaces/reports/legacy/simple" name="Recursos por Cuentas" pageformat="A4"
+       topmargin="20" leftmargin="50" bottommargin="30" rightmargin="30" orientation="portrait">
+	
+	<pageheader height="12">
+		<string-field fontname="SansSerif" fontsize="16" fsbold="true" width="100%" dynamic="true" alignment="center" fieldname="location"></string-field>
+                
+                <line x1="0" y1="20" x2="100%" y2="20" weight="3"/>
+                <label name="lbl1"  x="0"  y="25" width="350" height="12" dynamic="true" alignment="left">Listado de Recursos por Cuentas</label>
+                <rectangle name="t" x="0"  y="25" width="75"  height="12" draw="false" fill="false" color="#FF0000"/>
+             
+
+                <label name="lbldate" x="400" y="25" width="45" dynamic="true" alignment="right" fsbold="true">Fecha:</label>
+                <date-field x="450" y="25" width="65" dynamic="true" fieldname="report.date" alignment="left"  format="dd/MM/yyyy" />
+                
+                <line x1="0" y1="40" x2="100%" y2="40" weight="3"/>
+                <line x1="0" y1="43" x2="100%" y2="43" weight="1"/>
+
+                <rectangle name="tangle"  x="0"   y="55" width="160" height="18"  draw="true" fill="false" color="#000000"/>
+                <rectangle name="tangle"  x="160" y="55" width="160" height="18"  draw="true" fill="false" color="#000000"/>
+                <rectangle name="tangle"  x="320" y="55" width="200" height="18"  draw="true" fill="false" color="#000000"/>
+
+                <label x="0"   y="55" width="160" height="18" dynamic="false" alignment="center" vertical-alignment="middle" fontsize="10">Cuenta Superior</label>
+                <label x="160" y="55" width="160" height="18" dynamic="false" alignment="center" vertical-alignment="middle" fontsize="10">Cuenta</label>
+                <label x="320" y="55" width="200" height="18" dynamic="false" alignment="center" vertical-alignment="middle" fontsize="10">Recurso</label>
+	</pageheader>
+	
+	<groups>
+		
+		<group name="Header-Detail" >
+			<fields>
+				<field>TablePrefix</field>
+				<field>table_0.header</field>
+				<field>table_0.parentcode</field>
+				<field>dummy-field</field>
+			</fields>
+			
+			<groupheader repeat="false" layout-cachable="false" >
+
+			</groupheader>
+			
+			<groupfooter height="10" fontname="Monospaced" fontstyle="bold" fontsize="9">
+				
+                                <line x1="0"   y1="0" x2="0"   y2="100%" weight="0.25"/>
+                                <line x1="160" y1="0" x2="160" y2="100%" weight="0.25"/>
+                                <line x1="320" y1="0" x2="320" y2="100%" weight="0.25"/>
+                                <line x1="515" y1="0" x2="515" y2="100%" weight="0.25"/>
+                                <line x1="0" y1="5" x2="760" y2="5" weight="1.00" stroke-style="dashed" color="#AAAAAA"/>
+			    
+      			</groupfooter>
+		</group>
+		
+	</groups>
+	
+	<items layout-cachable="false" fontsize="08">
+		<band name="table_0">
+                        
+			<line x1="0"   y1="0" x2="0"   y2="100%" weight="0.25"/>
+                        <line x1="160" y1="0" x2="160" y2="100%" weight="0.25"/>
+                        <line x1="320" y1="0" x2="320" y2="100%" weight="0.25"/>
+			<line x1="515" y1="0" x2="515" y2="100%" weight="0.25"/>
+
+                        <string-field  x="5"   y="0"   width="153"  alignment="left"  height="08" dynamic="false" fieldname="table_0.father"/>
+			<string-field  x="165" y="0"   width="153"  alignment="left"  height="08" dynamic="false" fieldname="table_0.son"/>
+			<string-field  x="325" y="0"   width="195"  alignment="left"  height="08" dynamic="false" fieldname="table_0.resourcename"/>
+                        
+		</band>
+	</items>
+    <pagefooter height="24">
+	<rectangle name="PF0" x="0" y="0" width="100%" height="100%" color="#FFFFFF" weight="0" draw="false" fill="true"/>
+	<line x1="0" y1="0" x2="100%" y2="0" weight="0.25"/>
+	<string-field fieldname="pageXofY" x="0" y="0" width="100%" height="100%" alignment="right" vertical-alignment="top"/>
+    </pagefooter>
+
+    <functions>
+	<property-ref name="report.date"/>
+	    <function class="org.jfree.report.function.PageOfPagesFunction" name="pageXofY">
+		<properties>
+			<property name="format">Página {0} de {1}</property>
+		</properties>
+	    </function>
+    
+    </functions>
+        
+</report>
+<!--        VERSION 2
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<report xmlns="http://jfreereport.sourceforge.net/namespaces/reports/legacy/simple" name="Libro diario" pageformat="A4"
+       topmargin="20" leftmargin="50" bottommargin="20" rightmargin="30" orientation="landscape">
+	
+	<pageheader height="12">
+		<string-field fontname="SansSerif" fontsize="16" fsbold="true" width="100%" dynamic="true" alignment="center" fieldname="location"></string-field>
+                
+                <line x1="0" y1="20" x2="100%" y2="20" weight="3"/>
+                <label name="lbl1"  x="0"  y="35" width="150" height="12" dynamic="true" alignment="left">Listado de Recursos</label>
+                    <rectangle name="t" x="0"  y="55" width="75"  height="12" draw="false" fill="false" color="#FF0000"/>
+		 
+
+		    <label name="lbldate" x="605" y="25" width="90" dynamic="true" alignment="right" fsbold="true" fontsize="10">Fecha:</label>
+                    <date-field x="700" y="25" width="65" dynamic="true" fieldname="table_0.date" alignment="left"  format="dd/MM/yyyy" fontsize="10"/>
+		    
+		    <line x1="0" y1="70" x2="100%" y2="70" weight="3"/>
+		    <line x1="0" y1="73" x2="100%" y2="73" weight="1"/>
+
+		    <rectangle name="tangle"  x="0"   y="85" width="230"  height="18"  draw="true" fill="false" color="#000000"/>
+		    <rectangle name="tangle"  x="230" y="85" width="230" height="18"  draw="true" fill="false" color="#000000"/>
+		    <rectangle name="tangle"  x="460" y="85" width="300" height="18"  draw="true" fill="false" color="#000000"/>
+
+		    <label x="0"   y="85" width="230"  height="18" dynamic="false" alignment="center" vertical-alignment="middle" fontsize="10">Cuenta P.</label>
+		    <label x="230" y="85" width="230" height="18" dynamic="false" alignment="center" vertical-alignment="middle" fontsize="10">Cuenta</label>
+		    <label x="460" y="85" width="300" height="18" dynamic="false" alignment="center" vertical-alignment="middle" fontsize="10">Recurso</label>
+	</pageheader>
+	
+	<groups>
+		
+		<group name="Header-Detail" >
+			<fields>
+				<field>TablePrefix</field>
+				<field>table_0.header</field>
+				<field>table_0.parentcode</field>
+				<field>dummy-field</field>
+			</fields>
+			
+			<groupheader repeat="false" layout-cachable="false" >
+
+			</groupheader>
+			
+			<groupfooter height="10" fontname="Monospaced" fontstyle="bold" fontsize="9">
+				
+                                <line x1="0"   y1="2" x2="0"   y2="12" weight="0.75"/>
+                                <line x1="230" y1="2" x2="230"  y2="12" weight="0.75"/>
+                                <line x1="460" y1="2" x2="460" y2="12" weight="0.75"/>
+                                <line x1="760" y1="2" x2="760" y2="12" weight="0.75"/>
+                                <line x1="0" y1="5" x2="760" y2="5" weight="1.25" stroke-style="dashed" color="#AAAAAA"/>
+			    
+      			</groupfooter>
+		</group>
+		
+	</groups>
+	
+	<items layout-cachable="false" >
+		<band name="table_0">
+                        
+			<line x1="0"   y1="2" x2="0"   y2="12" weight="0.75"/>
+                        <line x1="230" y1="2" x2="230"  y2="12" weight="0.75"/>
+                        <line x1="460" y1="2" x2="460" y2="12" weight="0.75"/>
+			<line x1="760" y1="2" x2="760" y2="12" weight="0.75"/>
+
+                        <string-field  x="5"   y="2"   width="220"  alignment="left"  height="12" dynamic="false" fieldname="table_0.father"/>
+			<string-field  x="235" y="2"   width="220"  alignment="left"  height="12" dynamic="false" fieldname="table_0.son"/>
+			<string-field  x="465" y="2"   width="295"  alignment="left"  height="12" dynamic="false" fieldname="table_0.resourcename"/>
+                        
+		</band>
+	</items>
+    <pagefooter height="24">
+	<rectangle name="PF0" x="0" y="0" width="100%" height="100%" color="#FFFFFF" weight="0" draw="false" fill="true"/>
+	<line x1="0" y1="0" x2="100%" y2="0" weight="0.5"/>
+	<string-field fieldname="pageXofY" x="0" y="2" width="100%" height="100%" alignment="right" vertical-alignment="top"/>
+    </pagefooter>
+
+    <functions>
+	<property-ref name="report.date"/>
+	    <function class="org.jfree.report.function.PageOfPagesFunction" name="pageXofY">
+		<properties>
+			<property name="format">Página {0} de {1}</property>
+		</properties>
+	    </function>
+    
+    </functions>
+        
+</report>
+-->
+
+
+<!--<   VERSION 1
+
+?xml version="1.0" encoding="ISO-8859-1"?>
+
+<report xmlns="http://jfreereport.sourceforge.net/namespaces/reports/legacy/simple" name="Libro diario" pageformat="A4"
+       topmargin="20" leftmargin="50" bottommargin="20" rightmargin="30" orientation="portrait">
+	
+	<pageheader height="12">
+		<string-field fontname="SansSerif" fontsize="16" fsbold="true" width="100%" dynamic="true" alignment="center" fieldname="location"></string-field>
+                
+                <line x1="0" y1="20" x2="100%" y2="20" weight="3"/>
+                <label name="lbl1"  x="0"  y="35" width="150" height="12" dynamic="true" alignment="left">Listado de Recursos</label>
+                    <rectangle name="t" x="0"  y="55" width="75"  height="12" draw="false" fill="false" color="#FF0000"/>
+		 
+
+		    <label name="lbldate" x="400" y="35" width="45" dynamic="true" alignment="right" fsbold="true">Fecha:</label>
+		    <date-field x="450" y="35" width="65" dynamic="true" fieldname="report.date" alignment="left"  format="dd/MM/yyyy" />
+		    
+		    <line x1="0" y1="70" x2="100%" y2="70" weight="3"/>
+		    <line x1="0" y1="73" x2="100%" y2="73" weight="1"/>
+
+		    <rectangle name="tangle"  x="0"   y="85" width="60"  height="18"  draw="true" fill="false" color="#000000"/>
+		    <rectangle name="tangle"  x="60"  y="85" width="60"  height="18"  draw="true" fill="false" color="#000000"/>
+                    <rectangle name="tangle"  x="120" y="85" width="180" height="18"  draw="true" fill="false" color="#000000"/>
+		    <rectangle name="tangle"  x="300" y="85" width="215" height="18"  draw="true" fill="false" color="#000000"/>
+
+		    <label x="0"   y="85" width="60"  height="18" dynamic="false" alignment="center" vertical-alignment="middle" fontsize="10">Nro. Cta. P.</label>
+		    <label x="60"  y="85" width="60"  height="18" dynamic="false" alignment="center" vertical-alignment="middle" fontsize="10">Nro. Cta.</label>
+                    <label x="120" y="85" width="180" height="18" dynamic="false" alignment="center" vertical-alignment="middle" fontsize="10">Cuenta</label>
+		    <label x="300" y="85" width="215" height="18" dynamic="false" alignment="center" vertical-alignment="middle" fontsize="10">Recurso</label>
+
+                    <line x1="0"   y1="2" x2="0"   y2="12" weight="0.75"/>
+                    <line x1="60"  y1="2" x2="60"  y2="12" weight="0.75"/>
+                    <line x1="120" y1="2" x2="120" y2="12" weight="0.75"/>
+                    <line x1="300" y1="2" x2="300" y2="12" weight="0.75"/>
+                    <line x1="515" y1="2" x2="515" y2="12" weight="0.75"/>
+	</pageheader>
+	
+	<groups>
+		
+		<group name="Header-Detail" >
+			<fields>
+				<field>TablePrefix</field>
+				<field>table_0.header</field>
+				<field>table_0.parentcode</field>
+				<field>dummy-field</field>
+			</fields>
+			
+			<groupheader repeat="false" layout-cachable="false" >
+
+			</groupheader>
+			
+			<groupfooter height="10" fontname="Monospaced" fontstyle="bold" fontsize="9">
+				
+                                <line x1="0"   y1="2" x2="0"   y2="12" weight="0.75"/>
+                                <line x1="60"  y1="2" x2="60"  y2="12" weight="0.75"/>
+                                <line x1="120" y1="2" x2="120" y2="12" weight="0.75"/>
+                                <line x1="300" y1="2" x2="300" y2="12" weight="0.75"/>
+                                <line x1="515" y1="2" x2="515" y2="12" weight="0.75"/>
+                                <line x1="0" y1="5" x2="515" y2="5" weight="1.25" stroke-style="dashed" color="#AAAAAA"/>
+			    
+      			</groupfooter>
+                        
+                        
+		</group>
+		
+	</groups>
+	
+	<items layout-cachable="false" >
+		<band name="table_0">
+                        
+			<line x1="0"   y1="2" x2="0"   y2="12" weight="0.75"/>
+                        <line x1="60"  y1="2" x2="60"  y2="12" weight="0.75"/>
+                        <line x1="120" y1="2" x2="120" y2="12" weight="0.75"/>
+			<line x1="300" y1="2" x2="300" y2="12" weight="0.75"/>
+			<line x1="515" y1="2" x2="515" y2="12" weight="0.75"/>
+
+                        <string-field  x="5"   y="2"   width="55"  alignment="left"  height="12" dynamic="false" fieldname="table_0.parentcode"/>
+			<string-field  x="65"  y="2"   width="55"  alignment="left"  height="12" dynamic="false" fieldname="table_0.code"/>
+			<string-field  x="125" y="2"   width="175"  alignment="left"  height="12" dynamic="false" fieldname="table_0.accountname"/>
+			<string-field  x="305" y="2"   width="210"  alignment="left"  height="12" dynamic="false" fieldname="table_0.resourcename"/>
+                        
+		</band>
+	</items>
+    <pagefooter height="24">
+	<rectangle name="PF0" x="0" y="0" width="100%" height="100%" color="#FFFFFF" weight="0" draw="false" fill="true"/>
+	<line x1="0" y1="0" x2="100%" y2="0" weight="0.5"/>
+	<string-field fieldname="pageXofY" x="0" y="2" width="100%" height="100%" alignment="right" vertical-alignment="top"/>
+    </pagefooter>
+
+    <functions>
+	<property-ref name="report.date"/>
+	    <function class="org.jfree.report.function.PageOfPagesFunction" name="pageXofY">
+		<properties>
+			<property name="format">Página {0} de {1}</property>
+		</properties>
+	    </function>
+    
+    </functions>
+        
+</report> -->

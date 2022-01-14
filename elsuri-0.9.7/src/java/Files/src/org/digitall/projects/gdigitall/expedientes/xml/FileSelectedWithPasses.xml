@@ -1,0 +1,299 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!--
+ LIMITACIÓN DE RESPONSABILIDAD - COPYRIGHT - [Español]
+ ================================================================================
+ El Suri - Entorno JAVA de Trabajo y Desarrollo para Gobierno Electrónico
+ ================================================================================
+
+ Información del Proyecto:  http://elsuri.sourceforge.net
+
+ Copyright (C) 2007-2010 por D'AMBROSIO MARCELO E CASSINA SANTIAGO SOC DE HECHO.
+ D'AMBROSIO MARCELO E CASSINA SANTIAGO SOC DE HECHO es propiedad de
+ Lic. Santiago Cassina (santiago@digitallsh.com.ar - scap2000@yahoo.com) y
+ Marcelo D'Ambrosio (marcelo@digitallsh.com.ar - marcelodambrosio@gmail.com)
+ http://www.digitallsh.com.ar
+
+ Este programa es software libre: usted puede redistribuirlo y/o modificarlo
+ bajo los términos de la Licencia Pública General GNU publicada
+ por la Fundación para el Software Libre, ya sea la versión 3
+ de la Licencia, o (a su elección) cualquier versión posterior.
+
+ Este programa se distribuye con la esperanza de que sea útil, pero
+ SIN GARANTÍA ALGUNA; ni siquiera la garantía implícita
+ MERCANTIL o de APTITUD PARA UN PROPÓSITO DETERMINADO.
+ Consulte los detalles de la Licencia Pública General GNU para obtener
+ una información más detallada.
+
+ Debería haber recibido una copia de la Licencia Pública General GNU
+ junto a este programa.
+ En caso contrario, consulte <http://www.gnu.org/licenses/>.
+
+ DISCLAIMER - COPYRIGHT - [English]
+ =====================================================================================
+ El Suri - JAVA Management & Development Environment for Electronic Government
+ =====================================================================================
+
+ Project Info:  http://elsuri.sourceforge.net
+
+ Copyright (C) 2007-2010 by D'AMBROSIO MARCELO E CASSINA SANTIAGO SOC DE HECHO.
+ D'AMBROSIO MARCELO E CASSINA SANTIAGO SOC DE HECHO is owned by
+ Lic. Santiago Cassina (santiago@digitallsh.com.ar - scap2000@yahoo.com) and
+ Marcelo D'Ambrosio (marcelo@digitallsh.com.ar - marcelodambrosio@gmail.com)
+ http://www.digitallsh.com.ar
+
+ This program is free software: you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation, either version 3 of the License, or
+ (at your option) any later version.
+
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public License for more details.
+
+ You should have received a copy of the GNU General Public License
+ along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+-->
+<!--
+  FileSelectedWithPasses.xml
+-->
+<!--
+    ~ Copyright (c) 2007, Your Corporation. All Rights Reserved.
+    -->
+
+<report xmlns="http://jfreereport.sourceforge.net/namespaces/reports/legacy/simple" name="Expediente Seleccionado" pageformat="A4"
+       topmargin="20" leftmargin="50" bottommargin="70" rightmargin="30" orientation="portrait">
+	
+       <pageheader height="12">
+		<string-field fontname="SansSerif" fontsize="16" fsbold="true" width="100%" dynamic="true" alignment="center" fieldname="location"></string-field>
+		<band name="table_0" fontname="SansSerif" fsbold="true" fontsize="10">
+                    
+                    <line x1="0" y1="25" x2="100%" y2="25" weight="3"/>
+                    <label name="lbltitle" x="0" y="30" width="80" dynamic="true" alignment="left" fsbold="true">Nº Expediente: </label>
+                    <string-field x="80"   y="30" width="130"  dynamic="true" alignment="left" fieldname="table_0.expte"/>
+                    <label name="lbldate" x="300" y="30" width="145" dynamic="true" alignment="right" fsbold="true">Fecha de impresión:</label>
+                    <date-field x="450" y="30" width="65" dynamic="true" fieldname="report.date" alignment="left"  format="dd/MM/yyyy" />
+                    
+                    <line x1="0" y1="45" x2="100%" y2="45" weight="3"/>
+                    <line x1="0" y1="48" x2="100%" y2="48" weight="1"/>
+                    
+                </band>
+	</pageheader>
+        
+        <reportheader height="12" fontname="serif" fontsize="16" fsbold="true" >
+            
+            <band name="table_0" fontname="SansSerif" fontstyle="plain" fontsize="10">
+                    <rectangle name="tangle"  x="0" y="10"  width="90"  height="18"  draw="true" fill="false" color="#000000"/>
+                    <rectangle name="tangle"  x="0" y="28"  width="90"  height="18"  draw="true" fill="false" color="#000000"/>
+                    <rectangle name="tangle"  x="0" y="46"  width="90"  height="18"  draw="true" fill="false" color="#000000"/>
+                    <rectangle name="tangle"  x="0" y="64" width="90"  height="18"  draw="true" fill="false" color="#000000"/>
+                    <rectangle name="tangle"  x="0" y="82" width="90"  height="18"  draw="true" fill="false" color="#000000"/>
+                    <rectangle name="tangle"  x="0" y="100" width="90"  height="18"  draw="true" fill="false" color="#000000"/>
+                    <rectangle name="tangle"  x="0" y="118" width="90"  height="36"  draw="true" fill="false" color="#000000"/>
+                    <rectangle name="tangle"  x="0" y="154" width="90"  height="36"  draw="true" fill="false" color="#000000"/>
+                    <rectangle name="tangle"  x="0" y="190" width="90"  height="18"  draw="true" fill="false" color="#000000"/>
+                    <rectangle name="tangle"  x="0" y="208" width="90"  height="18"  draw="true" fill="false" color="#000000"/>
+                    <rectangle name="tangle"  x="0" y="226" width="90"  height="18"  draw="true" fill="false" color="#000000"/>
+                    
+                    <label name="label01"  x="0"   y="10" width="85"  height="18" dynamic="false" alignment="right" vertical-alignment="middle">Nº Expediente:</label>
+                    <string-field x="95"   y="10" width="425"  height="18" dynamic="false" alignment="left" vertical-alignment="middle" fieldname="table_0.expte"/>
+                    <rectangle name="tangle"  x="90" y="10" width="425"  height="18"  draw="true" fill="false" color="#000000"/>
+                    
+                    <label name="label02"  x="0"  y="28" width="85"  height="18" dynamic="false" alignment="right" vertical-alignment="middle">Nº Catastro:</label>
+                    <string-field x="95"   y="28" width="425"  height="18" dynamic="false" alignment="left" vertical-alignment="middle" fieldname="table_0.catastro"/>
+                    <rectangle name="tangle"  x="90" y="28" width="425"  height="18"  draw="true" fill="false" color="#000000"/>
+                    
+                    <label name="label03"  x="0" y="46" width="85"  height="18" dynamic="false" alignment="right" vertical-alignment="middle">Fecha:</label>
+                    <date-field x="95"   y="46" width="425"  height="18" dynamic="false" alignment="left" vertical-alignment="middle" format="dd/MM/yyyy" fieldname="table_0.fechaexp"/>
+                    <rectangle name="tangle"  x="90" y="46" width="425"  height="18"  draw="true" fill="false" color="#000000"/>
+                    
+                    <label name="label04"  x="0" y="64" width="85" height="18" dynamic="false" alignment="right" vertical-alignment="middle">Iniciador:</label>
+                    <string-field x="95"   y="64" width="425"  height="18" dynamic="false" alignment="left" vertical-alignment="middle" fieldname="table_0.iniciador"/>
+                    <rectangle name="tangle"  x="90" y="64" width="425"  height="18"  draw="true" fill="false" color="#000000"/>
+                    
+                    <label name="label05"  x="0" y="82" width="85" height="18" dynamic="false" alignment="right" vertical-alignment="middle">Asunto:</label>
+                    <string-field x="95"   y="82" width="425"  height="18" dynamic="false" alignment="left" vertical-alignment="middle" fieldname="table_0.asunto"/>
+                    <rectangle name="tangle"  x="90" y="82" width="425"  height="18"  draw="true" fill="false" color="#000000"/>
+                    
+                    <label name="label06"  x="0" y="100" width="85"  height="18" dynamic="false" alignment="right" vertical-alignment="top">Iniciante:</label>
+                    <string-field x="95"   y="100" width="425"  height="18" dynamic="false" alignment="left" vertical-alignment="middle" fieldname="table_0.iniciante"/>
+                    <rectangle name="tangle"  x="90" y="100" width="425"  height="18"  draw="true" fill="false" color="#000000"/>
+                    
+                    <label name="label07"  x="0" y="118" width="85" height="18" alignment="right" >Contenido:</label>
+                    <string-field x="95"   y="118" width="425"  height="36" dynamic="false" alignment="left" fieldname="table_0.extracto"/>
+                    <rectangle name="tangle"  x="90" y="118" width="425"  height="36"  draw="true" fill="false" color="#000000"/>
+                    
+                    <label name="label08"  x="0" y="154" width="85"  height="18" alignment="right" vertical-alignment="middle">Observaciones:</label>
+                    <string-field x="95"   y="154" width="425"  height="36" dynamic="false" alignment="left" vertical-alignment="middle" fieldname="table_0.observaciones"/>
+                    <rectangle name="tangle"  x="90" y="154" width="425"  height="36"  draw="true" fill="false" color="#000000"/>
+                    
+                    <label name="label09"    x="0" y="190" width="85"  height="18" dynamic="false" alignment="right" vertical-alignment="middle">Folios:</label>
+                    <string-field x="95"   y="190" width="425"  height="18" dynamic="false" alignment="left" vertical-alignment="middle" fieldname="table_0.cantfolios"/>
+                    <rectangle name="tangle"  x="90" y="190" width="425"  height="18"  draw="true" fill="false" color="#000000"/>
+                    
+                    <label name="label10" x="0" y="208" width="85" height="18" alignment="right" vertical-alignment="middle">Estado:</label>
+                    <string-field x="95"   y="208" width="425"  height="18" dynamic="false" alignment="left" vertical-alignment="middle" fieldname="table_0.estadoexp"/>
+                    <rectangle name="tangle"  x="90" y="208" width="425"  height="18"  draw="true" fill="false" color="#000000"/>
+                    
+                    <label name="label11" x="0" y="226" width="85"  height="18" alignment="right" vertical-alignment="middle">Profesional:</label>
+                    <string-field x="95"   y="226" width="425"  height="18" dynamic="false" alignment="left" vertical-alignment="middle" fieldname="table_0.profesional"/>
+                    <rectangle name="tangle"  x="90" y="226" width="425"  height="18"  draw="true" fill="false" color="#000000"/>
+        
+                    <line x1="0" y1="265" x2="100%" y2="265" weight="3"/>
+                    <label name="lbltitle" x="0" y="270" width="280" dynamic="true" alignment="left" fsbold="true">Ultimo Pase registrado</label>
+                    
+                    <line x1="0" y1="285" x2="100%" y2="285" weight="3"/>
+                    <line x1="0" y1="288" x2="100%" y2="288" weight="1"/>
+                    
+                    <rectangle name="tangle"  x="0" y="300"  width="90"  height="18"  draw="true" fill="false" color="#000000"/>
+                    <rectangle name="tangle"  x="0" y="318"  width="90"  height="18"  draw="true" fill="false" color="#000000"/>
+                    <rectangle name="tangle"  x="0" y="336"  width="90"  height="18"  draw="true" fill="false" color="#000000"/>
+                    <rectangle name="tangle"  x="0" y="354" width="90"  height="18"  draw="true" fill="false" color="#000000"/>
+                    <rectangle name="tangle"  x="0" y="372" width="90"  height="18"  draw="true" fill="false" color="#000000"/>
+                    <rectangle name="tangle"  x="0" y="390" width="90"  height="18"  draw="true" fill="false" color="#000000"/>
+                    <rectangle name="tangle"  x="0" y="408" width="90"  height="36"  draw="true" fill="false" color="#000000"/>
+                    <rectangle name="tangle"  x="0" y="444" width="90"  height="36"  draw="true" fill="false" color="#000000"/>
+                    <rectangle name="tangle"  x="0" y="480" width="90"  height="18"  draw="true" fill="false" color="#000000"/>
+                    <rectangle name="tangle"  x="0" y="498" width="90"  height="18"  draw="true" fill="false" color="#000000"/>
+                    <rectangle name="tangle"  x="0" y="516" width="90"  height="18"  draw="true" fill="false" color="#000000"/>
+                    <rectangle name="tangle"  x="0" y="534" width="90"  height="18"  draw="true" fill="false" color="#000000"/>
+                    
+                    <label name="label01"  x="0"   y="300" width="85"  height="18" dynamic="false" alignment="right" vertical-alignment="middle">Fecha:</label>
+                    <date-field x="95"   y="300" width="425"  height="18" dynamic="false" alignment="left" vertical-alignment="middle" format="dd/MM/yyyy" fieldname="table_0.fechapase"/>
+                    <rectangle name="tangle"  x="90" y="300" width="425"  height="18"  draw="true" fill="false" color="#000000"/>
+                    
+                    <label name="label02"  x="0"  y="318" width="85"  height="18" dynamic="false" alignment="right" vertical-alignment="middle">Hora:</label>
+                    <string-field x="95"   y="318" width="425"  height="18" dynamic="false" alignment="left" vertical-alignment="middle" fieldname="table_0.horapase"/>
+                    <rectangle name="tangle"  x="90" y="318" width="425"  height="18"  draw="true" fill="false" color="#000000"/>
+                    
+                    <label name="label03"  x="0" y="336" width="85"  height="18" dynamic="false" alignment="right" vertical-alignment="middle">Oficina Emisora:</label>
+                    <string-field x="95"   y="336" width="425"  height="18" dynamic="false" alignment="left" vertical-alignment="middle" fieldname="table_0.ofic_emi"/>
+                    <rectangle name="tangle"  x="90" y="336" width="425"  height="18"  draw="true" fill="false" color="#000000"/>
+                    
+                    <label name="label04"  x="0" y="354" width="85" height="18" dynamic="false" alignment="right" vertical-alignment="middle">Emisor:</label>
+                    <string-field x="95"   y="354" width="425"  height="18" dynamic="false" alignment="left" vertical-alignment="middle" fieldname="table_0.emisor"/>
+                    <rectangle name="tangle"  x="90" y="354" width="425"  height="18"  draw="true" fill="false" color="#000000"/>
+                    
+                    <label name="label05"  x="0" y="372" width="85" height="18" dynamic="false" alignment="right" vertical-alignment="middle">Texto del pase:</label>
+                    <string-field x="95"   y="372" width="425"  height="18" dynamic="false" alignment="left" vertical-alignment="middle" fieldname="table_0.observemi"/>
+                    <rectangle name="tangle"  x="90" y="372" width="425"  height="18"  draw="true" fill="false" color="#000000"/>
+                    
+                    <label name="label06"  x="0" y="390" width="85"  height="18" dynamic="false" alignment="right" >Oficina Recept.:</label>
+                    <string-field x="95"   y="390" width="425"  height="18" dynamic="false" alignment="left" fieldname="table_0.ofic_rec"/>
+                    <rectangle name="tangle"  x="90" y="390" width="425"  height="18"  draw="true" fill="false" color="#000000"/>
+                    
+                    <label name="label07"  x="0" y="408" width="85" height="18" alignment="right" >Receptor:</label>
+                    <string-field x="95"   y="408" width="425"  height="36" dynamic="false" alignment="left" fieldname="table_0.receptor"/>
+                    <rectangle name="tangle"  x="90" y="408" width="425"  height="36"  draw="true" fill="false" color="#000000"/>
+                    
+                    <label name="label08"  x="0" y="444" width="85"  height="18" dynamic="true" alignment="right" >Observ. Receptor:</label>
+                    <string-field x="95"   y="444" width="425"  height="36" dynamic="false" alignment="left" fieldname="table_0.observrec"/>
+                    <rectangle name="tangle"  x="90" y="444" width="425"  height="36"  draw="true" fill="false" color="#000000"/>
+                    
+                    <label name="label09"    x="0" y="480" width="85"  height="18" dynamic="false" alignment="right" vertical-alignment="middle">Folio:</label>
+                    <string-field x="95"   y="480" width="425"  height="18" dynamic="false" alignment="left" vertical-alignment="middle" fieldname="table_0.cfoliorec"/>
+                    <rectangle name="tangle"  x="90" y="480" width="425"  height="18"  draw="true" fill="false" color="#000000"/>
+
+                    <label name="label10" x="0" y="498" width="85" height="18" alignment="right" vertical-alignment="middle">Estado:</label>
+                    <string-field x="95"   y="498" width="425"  height="18" dynamic="false" alignment="left" vertical-alignment="middle" fieldname="table_0.estadopase"/>
+                    <rectangle name="tangle"  x="90" y="498" width="425"  height="18"  draw="true" fill="false" color="#000000"/>
+                    
+                    <label name="label11" x="0" y="516" width="85"  height="18" alignment="right" vertical-alignment="middle">Fecha Rec.:</label>
+                    <date-field x="95"   y="516" width="425"  height="18" dynamic="false" alignment="left" vertical-alignment="middle" format="dd/MM/yyyy" fieldname="table_0.fecha_rec"/>
+                    <rectangle name="tangle"  x="90" y="516" width="425"  height="18"  draw="true" fill="false" color="#000000"/>
+                    
+                    <label name="label11" x="0" y="534" width="85"  height="18" alignment="right" vertical-alignment="middle">Hora Rec.:</label>
+                    <string-field x="95"   y="534" width="425"  height="18" dynamic="false" alignment="left" vertical-alignment="middle" fieldname="table_0.hora_rec"/>
+                    <rectangle name="tangle"  x="90" y="534" width="425"  height="18"  draw="true" fill="false" color="#000000"/>
+                </band>
+        </reportheader>
+	
+	<groups>
+                <group name="table_1" >
+			<fields>
+				<field>TablePrefix</field>
+                                <field>table_1.header</field>
+			</fields>
+			<groupheader layout-cachable="false" pagebreak-before-print="true" >
+				<band name="table_1" fontname="SansSerif" fontstyle="plain" fontsize="10">
+					<line x1="0" y1="15" x2="100%" y2="15" weight="3"/>
+                                        <label name="lbltitle" x="0" y="20" width="280" dynamic="true" alignment="left" fsbold="true">Pases Registrados</label>
+					
+                                        <line x1="0" y1="35" x2="100%" y2="35" weight="3"/>
+                                        <line x1="0" y1="38" x2="100%" y2="38" weight="1"/>
+                                        
+                                        <rectangle name="tangle"  x="0" y="50"  width="65"  height="18"  draw="true" fill="false" color="#000000"/>
+                                        <label name="label01"  x="0"   y="50" width="65"  height="18" dynamic="false" alignment="center" vertical-alignment="middle">Fecha</label>
+                                        
+                                        <rectangle name="tangle"  x="65" y="50" width="50"  height="18"  draw="true" fill="false" color="#000000"/>
+                                        <label name="label02"  x="65"  y="50" width="50"  height="18" dynamic="false" alignment="center" vertical-alignment="middle">Hora</label>
+                                        
+					<rectangle name="tangle"  x="115" y="50" width="100"  height="18"  draw="true" fill="false" color="#000000"/>
+                                        <label name="label02"  x="115"  y="50" width="100"  height="18" dynamic="false" alignment="center" vertical-alignment="middle">Oficina Emisora</label>
+                                        
+                                        <rectangle name="tangle"  x="215" y="50" width="100"  height="18"  draw="true" fill="false" color="#000000"/>
+					<label name="label03"  x="215" y="50" width="100"  height="18" dynamic="false" alignment="center" vertical-alignment="middle">Oficina Receptora</label>
+
+                                        <rectangle name="tangle"  x="315" y="50" width="35"  height="18"  draw="true" fill="false" color="#000000"/>
+                                        <label name="label04"  x="315" y="50" width="35" height="18" dynamic="false" alignment="center" vertical-alignment="middle">Folio</label>
+                                        
+                                        <rectangle name="tangle"  x="350" y="50" width="60"  height="18"  draw="true" fill="false" color="#000000"/>
+                                        <label name="label05"  x="350" y="50" width="60" height="18" dynamic="false" alignment="center" vertical-alignment="middle">Estado</label>
+                                        
+                                        <rectangle name="tangle"  x="410" y="50" width="65"  height="18"  draw="true" fill="false" color="#000000"/>
+                                        <label name="label06"  x="410" y="50" width="65"  height="18" dynamic="false" alignment="center" vertical-alignment="middle">Fecha Rec.</label>
+                                        
+                                        <rectangle name="tangle"  x="475" y="50" width="45"  height="18"  draw="true" fill="false" color="#000000"/>
+                                        <label name="label07"  x="475" y="50" width="45" height="18" alignment="center" vertical-alignment="middle">Hr. Rec</label>
+                                        
+				</band>
+			</groupheader>
+                        <!--
+                        <groupfooter height="18" fontname="Monospaced" fontstyle="bold" fontsize="9">
+			    <line x1="0" y1="0" x2="100%" y2="0" weight="0.25"/>
+      			</groupfooter>
+                        -->
+		</group>
+                
+	</groups>
+	
+	<items layout-cachable="false" >
+		<band name="table_1" fontsize="08" >
+			<line x1="0" y1="0" x2="0" y2="100%" weight="0.25"/>
+			<line x1="65" y1="0" x2="65" y2="100%" weight="0.25"/>
+                        <line x1="115" y1="0" x2="115" y2="100%" weight="0.25"/>
+			<line x1="215" y1="0" x2="215" y2="100%" weight="0.25"/>
+                        <line x1="315" y1="0" x2="315" y2="100%" weight="0.25"/>
+                        <line x1="350" y1="0" x2="350" y2="100%" weight="0.25"/>
+                        <line x1="410" y1="0" x2="410" y2="100%" weight="0.25"/>
+                        <line x1="475" y1="0" x2="475" y2="100%" weight="0.25"/>
+			<line x1="100%" y1="0" x2="100%" y2="100%" weight="0.25"/>
+			
+                        <date-field   x="0"   y="2" width="65"  height="18" alignment="center" dynamic="false" format="dd/MM/yyyy" fieldname="table_1.fechapase"/>
+			<string-field x="65"  y="2" width="50"  height="18" alignment="center" dynamic="false" fieldname="table_1.horapase"/>
+			<string-field x="117" y="2" width="100" height="18" alignment="left"   dynamic="true"  fieldname="table_1.ofic_emi"/>
+                        <string-field x="217" y="2" width="100" height="18" alignment="left"   dynamic="true"  fieldname="table_1.ofic_rec"/>
+                        <number-field x="315" y="2" width="35"  height="18" alignment="center" dynamic="false"  fieldname="table_1.cfoliorec"/>
+                        <string-field x="350" y="2" width="60"  height="18" alignment="center" dynamic="true"  fieldname="table_1.estadopase"/>
+                        <date-field   x="410" y="2" width="65"  height="18" alignment="center" dynamic="false"  format="dd/MM/yyyy" fieldname="table_1.fecha_rec"/>
+                        <string-field x="475" y="2" width="45"  height="18" alignment="center" dynamic="false"  fieldname="table_1.hora_rec"/>
+
+		</band>
+	</items>
+	
+	
+    
+	<functions>
+        
+		<function class="org.jfree.report.function.HideElementByNameFunction" name="hideHeader">
+			<properties>
+				<property name="element">table_1</property>
+				<property name="field">TablePrefix</property>
+			</properties>
+		</function>
+                
+		<property-ref name="dummy-field"/>
+	</functions>
+</report>
+

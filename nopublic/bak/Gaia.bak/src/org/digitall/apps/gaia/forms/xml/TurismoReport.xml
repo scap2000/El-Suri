@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+
+<report xmlns="http://jfreereport.sourceforge.net/namespaces/reports/legacy/simple" name="Turismo" pageformat="A4"
+       topmargin="25" leftmargin="50" bottommargin="10" rightmargin="10" orientation="landscape">
+
+         <groups>
+		<group name="table_0">
+			<fields>
+				<field>TablePrefix</field>
+				<field>table_0.header</field>
+                                <field>dummy-field</field>
+		 	</fields>
+                    
+			<groupheader repeat="false" layout-cachable="false" pagebreak-before-print="true">
+				<band name="table_0" fontname="SansSerif" fontstyle="bold" fontsize="06" >
+
+                                <line x1="0" y1="70"  x2="780" y2="70"  weight=".75" color="#AAAAAA"/>
+                                <line x1="600" y1="0" x2="600" y2="70"  weight=".75" color="#AAAAAA"/>
+                                
+                                <image-field name="logo" x="0" y="0" width="72"  height="20"  scale="true" fieldname="logo"/>
+                                <rectangle name="ta" x="70"  y="0"  width="460" height="14" draw="false" fill="false" color="#0000FF"/>
+                                <label     name="ti" x="70"  y="0"  width="460" height="14" dynamic="false" alignment="center" fontsize="14" fsbold="true">MUNICIPALIDAD DE</label>
+                                <rectangle name="ta" x="70"  y="15" width="460" height="14" draw="false" fill="false" color="#0000FF"/>
+                                <label     name="ti" x="70"  y="15" width="460" height="14" fontsize="14" dynamic="false" alignment="center" fsbold="true">SAN RAMÓN DE LA NUEVA ORAN</label>
+                                
+                                <rectangle    name="ta" x="70" y="30" width="460" height="10" draw="false" fill="false" color="#0000FF"/>
+                                <string-field name="ti" x="70" y="30" width="460" height="10" dynamic="false" alignment="center" fontsize="08" fsbold="false" fieldname="description" />
+                                <rectangle    name="ta" x="0"   y="42" width="230" height="10" draw="false" fill="false" color="#0000FF"/>
+                                <string-field name="ti" x="0"   y="42" width="230" height="10" dynamic="false" alignment="left" fontsize="08" fsbold="false" fieldname="address" />
+                                
+                                <rectangle    name="ta" x="460" y="42" width="45"  height="10" draw="false" fill="false" color="#0000FF"/>
+                                <label        name="ti" x="460" y="42" width="45"  height="10" dynamic="false" alignment="left" fontsize="08" fsbold="false">Teléfonos:</label>
+                                <rectangle    name="ta" x="520" y="42" width="75" height="10" draw="false" fill="false" color="#0000FF"/>
+                                <string-field name="ti" x="520" y="42" width="75" height="10" dynamic="false" alignment="left" fontsize="08" fsbold="false" fieldname="phonenumber1" />
+                                <rectangle    name="ta" x="520" y="55" width="75" height="10" draw="false" fill="false" color="#0000FF"/>
+                                <string-field name="ti" x="520" y="55" width="75" height="10" dynamic="false" alignment="left" fontsize="08" fsbold="false" fieldname="phonenumber2" />
+                                <rectangle    name="ta" x="0"   y="55" width="190" height="10" draw="false" fill="false" color="#0000FF"/>
+                                <string-field name="ti" x="0"   y="55" width="190" height="10" dynamic="false" alignment="left" fontsize="08" fsbold="false" fieldname="webaddress" />
+                                
+                                <rectangle name="ta" x="600" y="00"  width="180" height="10" draw="false" fill="false" color="#0000FF"/>
+                                <label     name="zo" x="600" y="00"  width="180" height="10" fontsize="08" dynamic="false" alignment="center" vertical-aligment="middle" fsbold="true">LISTADO DE TURISMO</label>
+                                <rectangle name="ta" x="610" y="55"  width="60"  height="10" draw="false" fill="false" color="#0000FF"/>
+                                <label     name="zo" x="610" y="55"  width="60"  height="10" fontsize="08" dynamic="false" alignment="left" vertical-aligment="middle" fsbold="false">Fecha Impr.:</label>
+                                <rectangle name="ta" x="700" y="55"  width="200" height="10" draw="false" fill="false" color="#0000FF"/>
+                                <string-field        x="700" y="55"  width="200" height="10" fontsize="08" dynamic="true"  alignment="left"  fieldname="actualdate"/>
+                    
+                    
+                                <rectangle name="tangle"  x="0"     y="80" width="120" height="10"  draw="true" fill="false" color="#000000"/>
+                                <rectangle name="tangle"  x="120"   y="80" width="50"  height="10"  draw="true" fill="false" color="#000000"/>
+                                <rectangle name="tangle"  x="170"   y="80" width="160" height="10"  draw="true" fill="false" color="#000000"/>
+                                <rectangle name="tangle"  x="330"   y="80" width="170" height="10"  draw="true" fill="false" color="#000000"/>
+                                <rectangle name="tangle"  x="500"   y="80" width="150" height="10"  draw="true" fill="false" color="#000000"/>
+                                <rectangle name="tangle"  x="650"   y="80" width="50"  height="10"  draw="true" fill="false" color="#000000"/>
+                                <rectangle name="tangle"  x="700"   y="80" width="80"  height="10"  draw="true" fill="false" color="#000000"/>
+                                
+                                <label name="purche"  x="0"   y="80" width="120" height="10" fontsize="06" dynamic="true" alignment="center" vertical-alignment="middle">Coordenadas</label>
+                                <label name="status"  x="120" y="80" width="50"  height="10" fontsize="06" dynamic="true" alignment="center" vertical-alignment="middle">Catastro</label>
+                                <label name="status"  x="170" y="80" width="160" height="10" fontsize="06" dynamic="true" alignment="center" vertical-alignment="middle">Tipo Inst. Turística</label>
+                                <label name="amount"  x="330" y="80" width="170" height="10" fontsize="06" dynamic="true" alignment="center" vertical-alignment="middle">Nombre</label>
+                                <label name="amount"  x="500" y="80" width="150" height="10" fontsize="06" dynamic="true" alignment="center" vertical-alignment="middle">Categoría</label>
+                                <label name="amount"  x="650" y="80" width="50"  height="10" fontsize="06" dynamic="true" alignment="center" vertical-alignment="middle">Hab.</label>
+                                <label name="amount"  x="700" y="80" width="80"  height="10" fontsize="06" dynamic="true" alignment="center" vertical-alignment="middle">Teléfono 1</label>
+                              
+                    </band>
+            </groupheader>
+            
+            </group>
+             <group name="Header-Footer">
+			<groupfooter height="18" fontname="Monospaced" fontstyle="bold" fontsize="9">
+                                <line x1="0" y1="0" x2="780" y2="0" weight="0.25"/>
+      			</groupfooter>
+            </group>
+                
+	</groups>
+
+        <items layout-cachable="false" >
+            <band name="table_0" fontsize="08">
+                    
+                    <line x1="0"   y1="0" x2="0"   y2="100%" weight="0.25"/>
+                    <line x1="120" y1="0" x2="120" y2="100%" weight="0.25"/>
+                    <line x1="170" y1="0" x2="170" y2="100%" weight="0.25"/>
+                    <line x1="330" y1="0" x2="330" y2="100%" weight="0.25"/>
+                    <line x1="500" y1="0" x2="500" y2="100%" weight="0.25"/>
+                    <line x1="650" y1="0" x2="650" y2="100%" weight="0.25"/>
+                    <line x1="700" y1="0" x2="700" y2="100%" weight="0.25"/>
+                    <line x1="780" y1="0" x2="780" y2="100%" weight="0.25"/>
+                    
+                    <string-field name="expn" x="00"  y="2"  width="120" height="10" alignment="center" vertical-alignment="middle" dynamic="true" fieldname="table_0.coordenada"/>
+                    <number-field name="dias" x="122" y="2"  width="47"  height="10" alignment="right"  vertical-alignment="middle" dynamic="false" fieldname="table_0.catastro"/>
+                    <string-field name="bast" x="172" y="2"  width="158" height="10" alignment="left"   vertical-alignment="middle" dynamic="false" fieldname="table_0.tiposinstalacionturistica"/>
+                    <string-field name="acct" x="332" y="2"  width="168" height="10" alignment="left"   vertical-alignment="middle" dynamic="false" fieldname="table_0.nombre"/>
+                    <string-field name="acct" x="502" y="2"  width="148" height="10" alignment="left"   vertical-alignment="middle" dynamic="false" fieldname="table_0.categoriaturistica"/>
+                    <number-field name="acct" x="652" y="2"  width="47"  height="10" alignment="right"  vertical-alignment="middle" dynamic="false" fieldname="table_0.habitaciones"/>
+                    <string-field name="acct" x="702" y="2"  width="77"  height="10" alignment="center" vertical-alignment="middle" dynamic="false" fieldname="table_0.telefono1"/>
+            </band>
+	</items>
+
+
+	<functions>
+		<function class="org.jfree.report.function.HideElementByNameFunction" name="hideHeader">
+			<properties>
+				<property name="element">table_0</property>
+				<property name="field">TablePrefix</property>
+			</properties>
+		</function>
+		
+		<function class="org.jfree.report.function.HideElementByNameFunction" name="hideDetail">
+			<properties>
+				<property name="element">table_0</property>
+				<property name="field">TablePrefix</property>
+			</properties>
+		</function>
+
+                <property-ref name="dummy-field"/>
+	</functions>
+	
+</report>
+
+
+
+
+
+
+
+
+
+

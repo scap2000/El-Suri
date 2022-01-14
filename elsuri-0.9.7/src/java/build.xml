@@ -1,0 +1,92 @@
+<project name="ElSuri" basedir="." default="buildall">
+	
+    <target name="Lib">
+	<ant dir="Lib"/>
+    </target>
+
+    <target name="Resources">
+	<ant dir="Resources"/>
+    </target>
+
+    <target name="Common" depends="Lib">
+	<ant dir="Common-0.9.1"/>
+    </target>
+
+    <target name="AccionSocial" depends="Common, Lib, Resources">
+	<ant dir="AccionSocial"/>
+    </target>
+
+    <target name="Calendar" depends="Common, Lib, Resources">
+	<ant dir="Calendar"/>
+    </target>
+
+    <target name="CashFlow" depends="Common, Lib, Resources">
+	<ant dir="CashFlow-0.9.1"/>
+    </target>
+
+    <target name="CashFlowClient" depends="Common, Lib, Resources">
+	<ant dir="CashFlowClient-0.9.1"/>
+    </target>
+
+    <target name="ChatWithYou" depends="Common, Lib, Resources">
+	<ant dir="ChatWithYou"/>
+    </target>
+
+    <target name="Corporation" depends="Common, Lib, Resources">
+	<ant dir="Corporation"/>
+    </target>
+
+    <target name="DBAdmin" depends="Common, Lib, Resources">
+	<ant dir="DBAdmin-0.9.1"/>
+    </target>
+
+    <target name="DrivingLicenses" depends="Common, Lib, Resources">
+	<ant dir="DrivingLicenses"/>
+    </target>
+
+    <target name="EKit" depends="Common, Lib, Resources">
+	<ant dir="EKit"/>
+    </target>
+
+    <target name="Files" depends="Common, Lib, Resources, EKit">
+	<ant dir="Files"/>
+    </target>
+
+    <target name="JPGAdmin" depends="Common, Lib, Resources">
+	<ant dir="JPGAdmin"/>
+    </target>
+
+    <target name="ResourcesControl" depends="Common, Lib, Resources">
+	<ant dir="ResourcesControl"/>
+    </target>
+
+    <target name="ResourcesControl-0.9.1" depends="Common, Lib, Resources">
+	<ant dir="ResourcesControl-0.9.1"/>
+    </target>
+
+    <target name="ResourcesRequests" depends="Common, Lib, Resources">
+	<ant dir="ResourcesRequests-0.9.1"/>
+    </target>
+
+    <target name="Sueldos" depends="Common, Lib, Resources">
+	<ant dir="Sueldos"/>
+    </target>
+
+    <target name="TaskMan" depends="Common, Lib, Resources">
+	<ant dir="TaskMan"/>
+    </target>
+
+    <target name="Taxes" depends="Common, Lib, Resources">
+	<ant dir="Taxes-0.9.1"/>
+    </target>
+
+    <target name="Gaia" depends="Common, Lib, Resources, Taxes">
+	<ant dir="Gaia"/>
+    </target>
+
+    <target name="buildall" depends="AccionSocial, Calendar, CashFlow, CashFlowClient, ChatWithYou, Corporation, DBAdmin,
+	DrivingLicenses, Files, Gaia, JPGAdmin, ResourcesControl, ResourcesControl-0.9.1,
+    	ResourcesRequests, Sueldos, TaskMan, Taxes">
+    </target>
+
+</project>

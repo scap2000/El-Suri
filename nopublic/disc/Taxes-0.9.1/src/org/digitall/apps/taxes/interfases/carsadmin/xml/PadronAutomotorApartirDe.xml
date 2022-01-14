@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!--
+ LIMITACIÓN DE RESPONSABILIDAD - COPYRIGHT - [Español]
+ ================================================================================
+ El Suri - Entorno JAVA de Trabajo y Desarrollo para Gobierno Electrónico
+ ================================================================================
+
+ Información del Proyecto:  http://elsuri.sourceforge.net
+
+ Copyright (C) 2007-2010 por D'AMBROSIO MARCELO E CASSINA SANTIAGO SOC DE HECHO.
+ D'AMBROSIO MARCELO E CASSINA SANTIAGO SOC DE HECHO es propiedad de
+ Lic. Santiago Cassina (santiago@digitallsh.com.ar - scap2000@yahoo.com) y
+ Marcelo D'Ambrosio (marcelo@digitallsh.com.ar - marcelodambrosio@gmail.com)
+ http://www.digitallsh.com.ar
+
+ Este programa es software libre: usted puede redistribuirlo y/o modificarlo
+ bajo los términos de la Licencia Pública General GNU publicada
+ por la Fundación para el Software Libre, ya sea la versión 3
+ de la Licencia, o (a su elección) cualquier versión posterior.
+
+ Este programa se distribuye con la esperanza de que sea útil, pero
+ SIN GARANTÍA ALGUNA; ni siquiera la garantía implícita
+ MERCANTIL o de APTITUD PARA UN PROPÓSITO DETERMINADO.
+ Consulte los detalles de la Licencia Pública General GNU para obtener
+ una información más detallada.
+
+ Debería haber recibido una copia de la Licencia Pública General GNU
+ junto a este programa.
+ En caso contrario, consulte <http://www.gnu.org/licenses/>.
+
+ DISCLAIMER - COPYRIGHT - [English]
+ =====================================================================================
+ El Suri - JAVA Management & Development Environment for Electronic Government
+ =====================================================================================
+
+ Project Info:  http://elsuri.sourceforge.net
+
+ Copyright (C) 2007-2010 by D'AMBROSIO MARCELO E CASSINA SANTIAGO SOC DE HECHO.
+ D'AMBROSIO MARCELO E CASSINA SANTIAGO SOC DE HECHO is owned by
+ Lic. Santiago Cassina (santiago@digitallsh.com.ar - scap2000@yahoo.com) and
+ Marcelo D'Ambrosio (marcelo@digitallsh.com.ar - marcelodambrosio@gmail.com)
+ http://www.digitallsh.com.ar
+
+ This program is free software: you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation, either version 3 of the License, or
+ (at your option) any later version.
+
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public License for more details.
+
+ You should have received a copy of the GNU General Public License
+ along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+-->
+<!--
+  PadronAutomotorApartirDe.xml
+-->
+
+<report xmlns="http://jfreereport.sourceforge.net/namespaces/reports/legacy/simple" name="Padron Automotor" pageformat="A4"
+       topmargin="25" leftmargin="25" bottommargin="10" rightmargin="10">
+	
+	<pageheader height="12" fontname="SansSerif" fontsize="16" fsbold="true">
+		
+		<!-- INICIO HEADER 1 -->
+	    
+		    <line x1="0" y1="80"  x2="550" y2="80"  weight=".75" color="#AAAAAA"/>
+		    <line x1="370" y1="0" x2="370" y2="80"  weight=".75" color="#AAAAAA"/>
+		    
+		    <image-field name="logo" x="0" y="5" width="52" height="30"  scale="true" fieldname="logo"/>
+		    <string-field        x="70"  y="00" width="300" height="28" dynamic="false" alignment="center" vertical-aligment="middle" fontsize="14" fsbold="true" fieldname="orgtitle"/>
+		    <rectangle name="ta" x="70"  y="30" width="300" height="10" draw="false" fill="false" color="#0000FF"/>
+		    <string-field        x="70"  y="30" width="300" height="10" dynamic="false" alignment="center" fontsize="08" fsbold="false" fieldname="locationdata"/>
+		    <rectangle name="ta" x="0"   y="52" width="230" height="10" draw="false" fill="false" color="#0000FF"/>
+		    <string-field        x="0"   y="52" width="230" height="10" dynamic="false" alignment="left" fontsize="08" fsbold="false" fieldname="address"/>
+		    
+		    <rectangle name="ta" x="240" y="52"  width="45"  height="10" draw="false" fill="false" color="#0000FF"/>
+		    <label     name="ti" x="240" y="52"  width="45"  height="10" dynamic="false" alignment="left" fontsize="08" fsbold="false">Teléfonos:</label>
+		    <rectangle name="ta" x="290" y="52"  width="75"  height="10" draw="false" fill="false" color="#0000FF"/>
+		    <string-field        x="290" y="52"  width="75"  height="10" dynamic="false" alignment="left" fontsize="08" fsbold="false" fieldname="phonenumber1"/>
+		    <rectangle name="ta" x="290" y="65"  width="75"  height="10" draw="false" fill="false" color="#0000FF"/>
+		    <string-field        x="290" y="65"  width="75"  height="10" dynamic="false" alignment="left" fontsize="08" fsbold="false" fieldname="phonenumber2"/>
+		    <rectangle name="ta" x="0"   y="65"  width="190" height="10" draw="false" fill="false" color="#0000FF"/>
+		    <string-field        x="0"   y="65"  width="190" height="10" dynamic="false" alignment="left" fontsize="08" fsbold="false" fieldname="webaddress"/>
+		    
+		    <rectangle name="ta" x="370" y="00"  width="180" height="17" draw="false" fill="false" color="#0000FF"/>
+		    <string-field        x="370" y="00"  width="180" height="17" fontsize="08" dynamic="false" alignment="center" fieldname="title"/>
+		    
+		    <rectangle name="ta" x="380" y="52"  width="60"  height="10" draw="false" fill="false" color="#0000FF"/>
+		    <label     name="zo" x="380" y="52"  width="60"  height="10" fontsize="08" dynamic="false" alignment="left" vertical-aligment="middle" fsbold="false">C.U.I.T.:</label>
+		    <rectangle name="ta" x="470" y="52"  width="080" height="10" draw="false" fill="false" color="#0000FF"/>
+		    <string-field        x="470" y="52"  width="080" height="10" alignment="left" dynamic="false" fontsize="08" fsbold="false" fieldname="cuit"/>
+		    <rectangle name="ta" x="380" y="65"  width="60"  height="10" draw="false" fill="false" color="#0000FF"/>
+		    <label     name="zo" x="380" y="65"  width="60"  height="10" fontsize="08" dynamic="false" alignment="left" vertical-aligment="middle" fsbold="false">Fecha Impr.:</label>
+		    <rectangle name="ta" x="470" y="65"  width="080" height="10" draw="false" fill="false" color="#0000FF"/>
+		    <string-field        x="470" y="65"  width="080" height="10" fontsize="08" dynamic="true"  alignment="left" fsbold="false" fieldname="actualdate"/>
+		    
+		    <!-- FIN HEADER 1 -->
+		    
+		    <rectangle name="tangle"  x="0"     y="90" width="70"  height="18"  draw="true" fill="false" color="#000000"/>
+		    <rectangle name="tangle"  x="70"    y="90" width="120" height="18"  draw="true" fill="false" color="#000000"/>
+		    <rectangle name="tangle"  x="190"   y="90" width="115" height="18"  draw="true" fill="false" color="#000000"/>
+		    <rectangle name="tangle"  x="305"   y="90" width="190" height="18"  draw="true" fill="false" color="#000000"/>
+		    <rectangle name="tangle"  x="495"   y="90" width="55"  height="18"  draw="true" fill="false" color="#000000"/>
+		    
+		    <label name="paymentorder"  x="0"   y="90" width="70"  height="18" dynamic="true" alignment="center" vertical-alignment="middle" fontsize="09">Dominio</label>
+		    <label name="date"          x="70"  y="90" width="120" height="18" dynamic="true" alignment="center" vertical-alignment="middle" fontsize="09">Fecha de Registración</label>
+		    <label name="bookkentry"    x="190" y="90" width="115" height="18" dynamic="true" alignment="center" vertical-alignment="middle" fontsize="09">Tipo</label>
+		    <label name="concept"       x="305" y="90" width="190" height="18" dynamic="true" alignment="center" vertical-alignment="middle" fontsize="09">Marca</label>
+		    <label name="amount"        x="495" y="90" width="55"  height="18" dynamic="true" alignment="center" vertical-alignment="middle" fontsize="09">Modelo</label>
+	</pageheader>
+	
+	<groups>
+		
+		<group name="Header-Detail" >
+			<fields>
+				<field>TablePrefix</field>
+			</fields>
+			<groupfooter height="10" fontname="Monospaced" fontstyle="bold" fontsize="9">
+				<line x1="0" y1="0" x2="550" y2="0" weight="0.5" color="#000000"/>
+      			</groupfooter>
+	
+		</group>
+		
+	</groups>
+	
+	
+	<items layout-cachable="false" >
+		<band name="table_0">
+			<line x1="0"   y1="0" x2="0"   y2="100%" weight="0.25"/>
+			<line x1="70"  y1="0" x2="70"  y2="100%" weight="0.25"/>
+			<line x1="190" y1="0" x2="190" y2="100%" weight="0.25"/>
+                        <line x1="305" y1="0" x2="305" y2="100%" weight="0.25"/>
+                        <line x1="495" y1="0" x2="495" y2="100%" weight="0.25"/>
+                        <line x1="550" y1="0" x2="550" y2="100%" weight="0.25"/>
+                        
+			<string-field x="2"   y="2" width="70"  height="12" alignment="left" dynamic="false" fieldname="table_0.dominio"/>
+			<string-field x="72"  y="2" width="120"  height="12" alignment="center" dynamic="false" format="dd/MM/yyyy" fieldname="table_0.pagadesde"/>
+			<string-field x="192" y="2" width="115"  height="12" alignment="left" dynamic="false" fieldname="table_0.tipo"/>
+                        <string-field x="307" y="2" width="190" height="12" alignment="left"   dynamic="false" fieldname="table_0.marca"/>
+			<string-field x="495" y="2" width="55"  height="12" alignment="center"  dynamic="false" format="$#,##0.00" fieldname="table_0.modelo"/>
+		</band>
+	</items>
+	
+	<pagefooter height="24">
+		<line x1="0" y1="0" x2="550" y2="0" weight="0.5"/>
+                <string-field fieldname="location" x="0" y="3" width="100%" height="10" alignment="left" vertical-alignment="top"/>
+		<string-field fieldname="pageXofY" x="0" y="3" width="550" height="10" alignment="right" vertical-alignment="top"/>
+	</pagefooter>
+	
+	<functions>
+		<function class="org.jfree.report.function.HideElementByNameFunction" name="hideHeader">
+			<properties>
+				<property name="element">table_0</property>
+				<property name="field">TablePrefix</property>
+			</properties>
+		</function>
+		
+		
+		<function class="org.jfree.report.function.PageOfPagesFunction" name="pageXofY">
+			<properties>
+				<property name="format">Página {0} de {1}</property>
+			</properties>
+		</function>
+		
+	</functions>
+	
+</report>
+
+
+
+
+
+
+

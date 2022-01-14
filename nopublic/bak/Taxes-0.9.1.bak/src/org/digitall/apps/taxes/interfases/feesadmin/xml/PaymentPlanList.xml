@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!--
+    ~ Copyright (c) 2007, Your Corporation. All Rights Reserved.
+    -->
+
+<report xmlns="http://jfreereport.sourceforge.net/namespaces/reports/legacy/simple" name="Planes de Pago" pageformat="A4"
+	
+        topmargin="20" leftmargin="50" bottommargin="20" rightmargin="30" orientation="portrait">
+	
+	<pageheader height="12" fontname="SansSerif" fontsize="16" fsbold="true">
+		<string-field  width="100%" dynamic="true" alignment="center" fieldname="location"></string-field>
+                
+                <line x1="0" y1="20" x2="100%" y2="20" weight="3"/>
+                <rectangle name="ta"  x="005" y="028" width="300"  height="14"  draw="false" fill="false" color="#0000FF"/>
+                <label name="lblBook" x="005" y="028" width="300"  dynamic="true" alignment="left" fsbold="true" fontsize="14">Listado de Planes de Pago</label>
+                <label name="lbldate" x="400" y="030" width="40" dynamic="true" alignment="right" fsbold="true" fontsize="10">Fecha:</label>
+		<rectangle name="ta"  x="400" y="030" width="40"  height="12"  draw="false" fill="false" color="#0000FF"/>
+                <string-field         x="445" y="030" width="65" dynamic="true" alignment="left"  fontsize="10" fieldname="actualdate"/>
+		<rectangle name="ta"  x="445" y="030" width="65"  height="12"  draw="false" fill="false" color="#0000FF"/>
+                <line x1="0" y1="50" x2="100%" y2="50" weight="3"/>
+                
+                <rectangle name="tangle"  x="0"   y="75" width="50"  height="18"  draw="true" fill="false" color="#000000"/>
+                <rectangle name="tangle"  x="50"  y="75" width="25"  height="18"  draw="true" fill="false" color="#000000"/>
+                <rectangle name="tangle"  x="75"  y="75" width="140" height="18"  draw="true" fill="false" color="#000000"/>
+                <rectangle name="tangle"  x="215" y="75" width="35"  height="18"  draw="true" fill="false" color="#000000"/>
+                <rectangle name="tangle"  x="250" y="75" width="45"  height="18"  draw="true" fill="false" color="#000000"/>
+                <rectangle name="tangle"  x="295" y="75" width="45"  height="18"  draw="true" fill="false" color="#000000"/>
+		<rectangle name="tangle"  x="340" y="75" width="65"  height="18"  draw="true" fill="false" color="#000000"/>
+		<rectangle name="tangle"  x="405" y="75" width="30"  height="18"  draw="true" fill="false" color="#000000"/>
+		<rectangle name="tangle"  x="435" y="75" width="30"  height="18"  draw="true" fill="false" color="#000000"/>
+		<rectangle name="tangle"  x="465" y="75" width="30"  height="18"  draw="true" fill="false" color="#000000"/>
+		<rectangle name="tangle"  x="495" y="75" width="20"  height="18"  draw="true" fill="false" color="#000000"/>
+                
+                <label name="catastro"    x="0"   y="75" width="50"  height="18"    alignment="center" vertical-alignment="middle" fontsize="09">Nº Bien</label>
+                <label name="plandeplago" x="50"  y="75" width="25"  height="18"    alignment="center" vertical-alignment="middle" fontsize="09">P.P.</label>
+                <label name="apoderado"   x="75"  y="75" width="140" height="18"    alignment="center" vertical-alignment="middle" fontsize="09">Titular</label>
+                <label name="impuesto"    x="215" y="75" width="35"  height="18"    alignment="center" vertical-alignment="middle" fontsize="09">Imp.</label>
+                <label name="desde"       x="250" y="75" width="45"  height="18"    alignment="center" vertical-alignment="middle" fontsize="09">Desde</label>
+		<label name="hasta"       x="295" y="75" width="45"  height="18"    alignment="center" vertical-alignment="middle" fontsize="09">Hasta</label>
+		<label name="monto"       x="340" y="75" width="65"  height="18"    alignment="center" vertical-alignment="middle" fontsize="09">Monto</label>
+                <label name="cuotas"      x="405" y="75" width="30"  height="18"    alignment="center" vertical-alignment="middle" fontsize="09">Ctas.</label>
+		<label name="cuotasP"     x="435" y="75" width="30"  height="18"    alignment="center" vertical-alignment="middle" fontsize="09">Pag.</label>
+		<label name="cuotasV"     x="465" y="75" width="30"  height="18"    alignment="center" vertical-alignment="middle" fontsize="09">Venc.</label>
+		<label name="estado"      x="495" y="75" width="20"  height="18"    alignment="center" vertical-alignment="middle" fontsize="09">Est.</label>
+
+	</pageheader>
+	
+	<groups>
+		<group name="Header-Detail" >
+			<fields>
+				<field>TablePrefix</field>
+			</fields>
+			
+			<groupheader repeat="false" layout-cachable="false" >
+			</groupheader>
+			
+			<groupfooter height="10" fontname="Monospaced" fontstyle="bold" fontsize="9">
+			<line x1="0" y1="0" x2="100%" y2="0" weight="0.5" color="#000000"/>
+      			</groupfooter>
+		</group>
+		
+	</groups>
+	
+	<items layout-cachable="false" >
+		<band name="table_0">
+                        
+			<string-field x="2"   y="2" width="46"  alignment="center" height="10" dynamic="false"  fontsize="8"  fieldname="table_0.numerobien"/>
+                        <string-field x="50"  y="2" width="23"  alignment="right"  height="10" dynamic="false"  fontsize="8"  fieldname="table_0.numplandepago"/>
+                        <string-field x="80"  y="2" width="135" alignment="left"   height="10" dynamic="false"  fontsize="8"  fieldname="table_0.apoderado"/>
+			<string-field x="220" y="2" width="30"  alignment="left"   height="10" dynamic="false"  fontsize="8"  fieldname="table_0.tipoimpuesto"/>
+			<string-field x="250" y="2" width="45"  alignment="center" height="10" dynamic="false"  fontsize="8"  fieldname="table_0.desde"/>
+			<string-field x="295" y="2" width="45"  alignment="center" height="10" dynamic="false"  fontsize="8"  fieldname="table_0.hasta"/>
+			<number-field x="340" y="2" width="62"  alignment="right"  height="10" dynamic="false"  fontsize="8"  format="$ #,##0.00" fieldname="table_0.monto"/>
+			<string-field x="405" y="2" width="30"  alignment="center" height="10" dynamic="false"  fontsize="8"  fieldname="table_0.cuotas"/>
+			<string-field x="435" y="2" width="30"  alignment="center" height="10" dynamic="false"  fontsize="8"  fieldname="table_0.cuotaspagadas"/>
+			<string-field x="465" y="2" width="30"  alignment="center" height="10" dynamic="false"  fontsize="8"  fieldname="table_0.cuotasvencidas"/>
+			<string-field x="495" y="2" width="20"  alignment="center" height="10" dynamic="false"  fontsize="8"  fieldname="table_0.state"/>
+
+                        <line x1="0"   y1="0" x2="0"   y2="100%" weight="0.25"/>
+			<line x1="50"  y1="0" x2="50"  y2="100%" weight="0.25"/>
+			<line x1="75"  y1="0" x2="75"  y2="100%" weight="0.25"/>
+                        <line x1="215" y1="0" x2="215" y2="100%" weight="0.25"/>
+                        <line x1="250" y1="0" x2="250" y2="100%" weight="0.25"/>
+			<line x1="295" y1="0" x2="295" y2="100%" weight="0.25"/>
+                        <line x1="340" y1="0" x2="340" y2="100%" weight="0.25"/>
+                        <line x1="405" y1="0" x2="405" y2="100%" weight="0.25"/>
+			<line x1="435" y1="0" x2="435" y2="100%" weight="0.25"/>
+			<line x1="465" y1="0" x2="465" y2="100%" weight="0.25"/>
+			<line x1="495" y1="0" x2="495" y2="100%" weight="0.25"/>
+			<line x1="515" y1="0" x2="515" y2="100%" weight="0.25"/>
+
+		</band>
+	</items>
+    <pagefooter height="24">
+	<line x1="0" y1="0" x2="100%" y2="0" weight="0.5"/>
+	<string-field fieldname="location" x="0" y="3" width="100%" height="10" alignment="left" vertical-alignment="top"/>
+	<string-field fieldname="pageXofY" x="0" y="3" width="100%" height="100%" alignment="right" vertical-alignment="top"/>
+    </pagefooter>
+
+    <functions>
+	<property-ref name="report.date"/>
+	    <function class="org.jfree.report.function.PageOfPagesFunction" name="pageXofY">
+		<properties>
+			<property name="format">Página {0} de {1}</property>
+		</properties>
+	    </function>
+    
+    </functions>
+        
+</report>
+

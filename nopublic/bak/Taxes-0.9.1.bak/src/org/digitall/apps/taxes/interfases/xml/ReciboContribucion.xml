@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+
+<report xmlns="http://jfreereport.sourceforge.net/namespaces/reports/legacy/simple" name="BOLETA CONTRIBUCIÓN" pageformat="A4"
+       topmargin="25" leftmargin="25" bottommargin="10" rightmargin="10">
+	
+        <reportheader fontname="SanSerif" fontstyle="plain" fontsize="08">
+            <line x1="0" y1="80"  x2="550" y2="80"  weight=".75" color="#AAAAAA"/>
+            <line x1="370" y1="0" x2="370" y2="80"  weight=".75" color="#AAAAAA"/>
+            
+            <line x1="0" y1="80"  x2="550" y2="80"  weight=".75" color="#AAAAAA"/>
+            <line x1="370" y1="0" x2="370" y2="80"  weight=".75" color="#AAAAAA"/>
+                    
+            <!-- INICIO HEADER 1 -->                                        
+            <image-field name="logo" x="0" y="5" width="52"  height="30"  scale="true" fieldname="logo"/>
+            <rectangle name="ta" x="70"  y="0"  width="300" height="14" draw="false" fill="false" color="#0000FF"/>
+	    <string-field        x="70"  y="00" width="300" height="28" dynamic="false" alignment="center" vertical-aligment="middle" fontsize="14" fsbold="true" fieldname="orgtitle"/>
+            <rectangle name="ta" x="70"  y="30" width="300" height="10" draw="false" fill="false" color="#0000FF"/>
+            <string-field        x="70"  y="30" width="300" height="10" dynamic="false" alignment="center" fontsize="08" fsbold="false" vertical-aligment="middle" fieldname="locationdata"/>
+            <rectangle name="ta" x="0"   y="52" width="230" height="10" draw="false" fill="false" color="#0000FF"/>
+	    <string-field        x="0"   y="52" width="230" height="10" dynamic="false" alignment="left" fontsize="08" fieldname="address"/>
+            
+            <rectangle name="ta" x="240" y="52" width="45"  height="10" draw="false" fill="false" color="#0000FF"/>
+            <label     name="ti" x="240" y="52" width="45"  height="10" dynamic="false" alignment="left" fontsize="08" fsbold="false">Teléfonos:</label>
+            <rectangle name="ta" x="290" y="52" width="75"  height="10" draw="false" fill="false" color="#0000FF"/>
+            <string-field        x="290" y="52" width="75"  height="10" dynamic="false" alignment="left" fontsize="08" fieldname="phonenumber1"/>
+            <rectangle name="ta" x="290" y="65" width="75"  height="10" draw="false" fill="false" color="#0000FF"/>
+            <string-field        x="290" y="65" width="75"  height="10" dynamic="false" alignment="left" fontsize="08" fieldname="phonenumber2"/>
+            <rectangle name="ta" x="0"   y="65" width="230" height="10" draw="false" fill="false" color="#0000FF"/>
+            <string-field        x="0"   y="65" width="230" height="10" dynamic="false" alignment="left" fontsize="08" fieldname="webaddress"/>
+            
+            
+            <rectangle  name="t" x="370" y="00" width="180" height="10" draw="false" fill="false" color="#0000FF"/>
+            <label     name="zo" x="370" y="00" width="180" height="10" fontsize="08" dynamic="false" alignment="center" vertical-aligment="middle" fsbold="true">CONTRIBUCIÓN</label>
+            <rectangle  name="t" x="375" y="30"  width="80"  height="12" draw="false" fill="false" color="#00FFFF"/>
+            <label     name="ti" x="375" y="30"  width="80"  height="12" fontsize="08" dynamic="false" alignment="left" fsbold="true">Comprobante Nº:</label>
+            <rectangle  name="t" x="470" y="30"  width="25"  height="12" draw="false" fill="false" color="#0000FF"/>
+            <string-field        x="470" y="30"  width="25"  height="12" fontsize="08" dynamic="false" alignment="right" fsbold="true" fieldname="anio"/>
+            <rectangle  name="t" x="495" y="30"  width="05"  height="12" draw="false" fill="false" color="#0000FF"/>
+            <label     name="ti" x="495" y="30"  width="05"  height="12" fontsize="08" dynamic="false" alignment="center" fsbold="true">-</label>
+            <rectangle  name="t" x="500" y="30"  width="40" height="12" draw="false" fill="false" color="#0000FF"/>
+            <string-field        x="500" y="30"  width="40" height="12" fontsize="08" dynamic="false" alignment="left" fsbold="true" fieldname="numeroformateado"/>
+            <rectangle name="ta" x="375" y="30"  width="240" height="12" draw="false" fill="false" color="#0000FF"/>
+            <rectangle name="ta" x="375" y="52"  width="55"  height="10" draw="false" fill="false" color="#0000FF"/>
+            <label     name="zo" x="375" y="52"  width="55"  height="10" fontsize="08" dynamic="false" alignment="left" vertical-aligment="middle" fsbold="false">C.U.I.T.:</label>
+            <rectangle name="ta" x="470" y="52"  width="080" height="10" draw="false" fill="false" color="#0000FF"/>
+	    <string-field        x="470" y="52"  width="080" height="10" alignment="left" dynamic="false" fontsize="08" fsbold="false" fieldname="cuit"/>
+            <rectangle name="ta" x="375" y="65"  width="55"  height="10" draw="false" fill="false" color="#0000FF"/>
+            <label     name="zo" x="375" y="65"  width="55"  height="10" fontsize="08" dynamic="false" alignment="left" vertical-aligment="middle" fsbold="false">Fecha Impr.:</label>
+            <rectangle name="ta" x="470" y="65"  width="080" height="10" draw="false" fill="false" color="#0000FF"/>
+            <string-field        x="470" y="65"  width="080" height="10" fontsize="08" dynamic="true"  alignment="left"  fieldname="actualdate"/>
+            
+            <!-- FIN HEADER 1 -->
+            
+            <!-- INICIO HEADER 2 -->
+            
+            <rectangle  name="ta" x="0"   y="90"  width="80"  height="12" draw="false" fill="false" color="#0000FF"/>
+            <label      name="zo" x="0"   y="90"  width="80"  height="12" fontsize="10" dynamic="false" alignment="left" fontname="SanSerif" vertical-aligment="middle" fsbold="false">Contribuyente:</label>
+            <rectangle  name="ta" x="85"  y="90"  width="355" height="12" draw="false" fill="false" color="#0000FF"/>
+            <string-field         x="85"  y="90"  width="355" height="12" alignment="left" dynamic="false" fontsize="10" fontname="SanSerif" fsbold="true" fieldname="contribuyente"/>
+            
+            <rectangle  name="ta" x="0"   y="108" width="60"  height="12" draw="false" fill="false" color="#0000FF"/>
+            <label      name="zo" x="0"   y="108" width="60"  height="12" fontsize="10" dynamic="false" alignment="left" fontname="SanSerif" vertical-aligment="middle">Concepto:</label>
+            <rectangle  name="ta" x="65"  y="108" width="375" height="25" draw="false" fill="false" color="#0000FF"/>
+            <string-field         x="65"  y="108" width="375" height="25" alignment="left" dynamic="true" fontsize="10" fontname="SanSerif" fsbold="true" fieldname="concepto"/>
+            
+            <image-field name="t" x="440" y="090" width="121"  height="20"  scale="true" fieldname="barcode"/>
+            
+            <!-- FIN HEADER 2 -->
+            
+            <!-- INICIO HEADER 3 -->
+            
+            <label     name="zo" x="0" y="140" width="100"  height="12" fontsize="10" dynamic="false" alignment="left" vertical-aligment="middle" fsbold="true">Detalle:</label>
+            <line x1="0" y1="152" x2="550" y2="152" weight=".75" color="#AAAAAA"/>
+            
+	</reportheader>
+        
+        <items layout-cachable="false" >
+            <band name="table_0" fontsize="08" fontname="SansSerif">
+                    
+                <rectangle name="ta" x="0"   y="005" width="550" height="30" draw="true" fill="true" color="#E5E5E5"/>
+                <string-field        x="0"   y="005" width="510" height="15" fontsize="08" alignment="left" vertical-aligment="middle" dynamic="true" fieldname="table_0.nombrecontribucion"/>
+                <string-field        x="0"   y="020" width="510" height="18" fontsize="08" alignment="left" vertical-aligment="middle" dynamic="true" fieldname="table_0.textocalculo"/>
+                <number-field        x="465" y="020" width="080" height="10" fontsize="09" alignment="right" format="$ #,##0.00" dynamic="true" fsbold="false" fieldname="table_0.montototal"/>
+                <rectangle name="ta" x="000" y="031" width="550" height="04" draw="true" fill="true" color="#FFFFFF"/>
+                
+            </band>
+	</items>
+        <groups>
+ 	  <group name="Header-Detail" >
+            <groupfooter height="18" fontsize="9">
+		<label name="l" x="000" y="13" width="40"  fontsize="10" dynamic="true" alignment="left" fontname="SansSerif" fsbold="true" >Total:</label>
+                <string-field   x="040" y="13" width="380" height="10" fontsize="08" dynamic="false" alignment="left" vertical-aligment="middle" fsitalic="false" fsbold="false" fieldname="textamount"/>
+		<rectangle      x="430" y="10" width="120" height="15" color="#FFFF00" draw="true" fill="true"/>
+		<rectangle      x="430" y="10" width="120" height="15" color="#000000" draw="true" fill="false"/>
+		<number-field   x="430" y="13" width="117" height="12" alignment="right" format="$ #,##0.00" dynamic="true" fontsize="10" fsbold="true" fieldname="totalAmount"/>
+                
+                <rectangle      x="0"   y="35" width="550" height="15" draw="true" fill="true" color="#F7F6F6"/>
+                <label name="z" x="0"   y="40" width="550" height="06" fontsize="06" dynamic="true" alignment="left" vertical-aligment="middle" fsbold="false">EN CASO DE DISCREPANCIA EN EL PAGO SE CONSIDERARÁ VÁLIDO EL IMPORTE Y LA FECHA DEL SELLO DE CAJA DEL TALÓN EN PODER DE LA MUNICIPALIDAD.</label>
+        
+	    </groupfooter>
+          </group>
+        </groups>
+        
+        <reportfooter fixed-position="530" fontname="SanSerif" >
+        <!-- restar 523 -->
+            <line x1="0"   y1="010" x2="550" y2="010"  weight=".75" stroke-style="dashed" color="#AAAAAA"/>
+            <line x1="275" y1="010" x2="275" y2="247" weight=".75" stroke-style="dashed" color="#AAAAAA"/>
+
+            <rectangle name="tangle"  x="0" y="002" width="260"  height="148"  draw="false" fill="false" color="#000000"/>
+            
+            <rectangle name="tangle" x="0"   y="007" width="260" height="14" draw="false" fill="false" color="#00ff00"/>
+            <rectangle name="tangle" x="45"  y="017" width="180" height="20" draw="false"  fill="false" color="#0000FF"/>
+	    <string-field            x="45"  y="017" width="180" height="20" dynamic="false" alignment="center" vertical-aligment="middle" fontsize="10" fsbold="true" fieldname="shortname"/>
+            <image-field name="logo" x="0"   y="017" width="35"  height="20"  scale="true" fieldname="logo"/>
+	    <rectangle name="tangle" x="45"  y="032" width="180" height="10"  draw="false" fill="false" color="#0000ff"/>
+	    <label name="impuesto"   x="45"  y="032" width="180" height="10" dynamic="false" alignment="center" fontsize="08" fsbold="false">CONTRIBUCIÓN</label>
+            <image-field name="logo" x="230" y="015" width="35"  height="30"  scale="true" fieldname="escudo"/>
+            
+            <rectangle name="tangle" x="0"   y="057" width="85"  height="14"  draw="true" fill="false" color="#000000"/>
+            <label name="impuesto"   x="03"  y="059" width="85"  height="12"  fontsize="08" dynamic="false" alignment="center" vertical-aligment="middle" fsbold="false">Fecha</label>
+            <string-field            x="0"   y="074" width="85"  height="10"  fontsize="08" alignment="center" vertical-aligment="middle" dynamic="false" fieldname="fechaboleta"/>
+            <rectangle name="tangle" x="85"  y="057" width="90"  height="14"  draw="true" fill="false" color="#000000"/>
+            <label name="impuesto"   x="85"  y="058" width="85"  height="12"  fontsize="08" dynamic="false" alignment="center" vertical-aligment="middle" fsbold="false">Comprobante Nº</label>
+            <rectangle name="tangle" x="85"  y="058" width="35"  height="10"  draw="false" fill="false" color="#0000FF"/>
+            <string-field            x="85"  y="074" width="35"  height="10"  fontsize="08" dynamic="true"  alignment="right" fieldname="table_0.anio"/>
+            <rectangle name="tangle" x="120" y="057" width="10"  height="10"  draw="false" fill="false" color="#0000FF"/>
+            <label name="impuesto"   x="120" y="074" width="10"  height="10"  fontsize="08" dynamic="false" alignment="center" vertical-aligment="middle" fsbold="false">-</label>
+            <rectangle name="tangle" x="130" y="057" width="45"  height="10"  draw="false" fill="false" color="#0000FF"/>
+            <string-field            x="130" y="074" width="45"  height="10"  fontsize="08" dynamic="true"  alignment="left" fieldname="numeroformateado"/>
+            <rectangle name="tangle" x="175" y="057" width="85"  height="14"  draw="true" fill="false" color="#000000"/>
+            <label name="impuesto"   x="175" y="058" width="85"  height="12"  fontsize="08" dynamic="false" alignment="center" vertical-aligment="middle" fsbold="false">Tipo</label>
+            <string-field            x="175" y="074" width="85"  height="12"  fontsize="08" alignment="center" vertical-aligment="middle" dynamic="false" fieldname="nombrealicuota"/>
+            
+            
+            
+            <rectangle name="tangle" x="0"   y="071" width="85"  height="14"  draw="true" fill="false" color="#000000"/>
+            <rectangle name="tangle" x="85"  y="071" width="90"  height="14"  draw="true" fill="false" color="#000000"/>
+            <rectangle name="tangle" x="175" y="071" width="85"  height="14"  draw="true" fill="false" color="#000000"/>
+            <rectangle name="tangle" x="0"   y="084" width="260" height="50"  draw="true" fill="false" color="#000000"/>
+            
+            <label name="impuesto" x="03" y="095" width="70"  height="12" fontsize="09" dynamic="false" alignment="right" vertical-aligment="middle" fsbold="false">Contribuyente:</label>
+            <rectangle name="tane" x="80" y="095" width="175" height="12"  draw="false" fill="false" color="#0000FF"/>
+            <string-field          x="80" y="095" width="175" height="12" fontsize="09" alignment="left" dynamic="false" fsbold="false" fieldname="contribuyente"/>
+            <rectangle name="tae"  x="03" y="115" width="70"  height="12"  draw="false" fill="false" color="#0000FF"/>
+            <label name="impuesto" x="03" y="115" width="70"  height="12" fontsize="09" dynamic="false" alignment="right" vertical-aligment="middle" fsbold="false">DNI/CUIT/CUIL:</label>
+            <rectangle name="tane" x="80" y="115" width="175" height="12"  draw="false" fill="false" color="#0000FF"/>
+            <string-field          x="80" y="115" width="175" height="12" fontsize="09" alignment="left" dynamic="false" fsbold="false" fieldname="dni"/>
+            
+            <rectangle name="tangle"  x="0"   y="135" width="175" height="70"  draw="true" fill="false" color="#000000"/>
+            <rectangle name="tangle"  x="175" y="135" width="85"  height="70"  draw="true" fill="false" color="#000000"/>
+            
+            <rectangle         x="00" y="142" width="175" height="12"  draw="false" fill="false" color="#0000FF"/>
+            <label name="zona" x="00" y="142" width="175" height="12" fontsize="08" dynamic="false" alignment="center" vertical-aligment="middle" fsbold="false" fsunderline="true">CONCEPTO:</label>
+            <string-field      x="03" y="162" width="170" height="35" fontsize="08" alignment="left" dynamic="true" fieldname="concepto"/>
+            
+            <rectangle name="ta" x="175" y="140" width="85" height="10"  draw="false" fill="false" color="#0000FF"/>
+            <label name="zona"   x="175" y="140" width="85" height="10" fontsize="08" dynamic="false" alignment="center" vertical-aligment="middle" fsbold="true">Importe</label>
+            <rectangle name="ta" x="180" y="150" width="75" height="20"  draw="true" fill="true" color="#DCD4D9"/>
+            <rectangle name="ta" x="180" y="150" width="75" height="20"  draw="true" fill="false" color="#000000"/>
+            <number-field        x="180" y="155" width="75" height="12" fontsize="09" alignment="center" format="$ #,##0.00" dynamic="true" fsbold="true" fieldname="montototal"/>
+            
+            <label name="zona"   x="175" y="177" width="85" height="12" fontsize="08" dynamic="false" alignment="center" vertical-aligment="middle" fsbold="true">Actualizado al</label>
+            <rectangle name="ta" x="175" y="177" width="85" height="12" draw="false" fill="false" color="#0000FF"/>
+            <string-field        x="175" y="187" width="85" height="12" fontsize="08" dynamic="false" alignment="center" vertical-aligment="middle" fieldname="actualdate"/>
+            
+            <label     name="zon"   x="0"  y="212" width="40" height="12" dynamic="false" alignment="left" vertical-aligment="middle" fontsize="07" fsbold="false">Fch. imp.:</label>
+            <string-field           x="45" y="212" width="100" height="12" dynamic="true"  alignment="left"  fontsize="07" fieldname="actualdate"/>
+            <label     name="zon"   x="0"  y="227" width="35" height="12" dynamic="false" alignment="left" vertical-aligment="middle" fontsize="07" fsbold="false">Usuario:</label>
+            <string-field           x="40" y="227" width="90" alignment="left" height="12" dynamic="false" fontsize="07" fieldname="usuario"/>
+            
+            <rectangle name="tle"   x="33" y="227" width="115" height="12"  draw="false" fill="false" color="#0000FF"/>
+            
+            <image-field name="t"  x="150" y="212"  width="121"  height="20"  scale="true" fieldname="barcode"/>
+            
+            <label       name="z"  x="100" y="237" width="160" height="14" dynamic="false" alignment="right" vertical-aligment="middle" fontsize="07" fsbold="false">Talón para la Municipalidad</label>
+            
+            <rectangle name="tangle"  x="290" y="002" width="260"  height="148"  draw="false" fill="false" color="#000000"/>
+            
+            <!-- FIN TALON PARA LA MUNINCIPALIDAD -->
+            
+            <!-- INICIO TALON PARA EL ENTE REGULADOR -->
+            <rectangle name="tangle" x="290" y="007" width="260" height="14" draw="false" fill="false" color="#00ff00"/>
+            <rectangle name="tangle" x="335" y="017" width="180" height="20" draw="false" fill="false" color="#0000FF"/>
+	    <string-field            x="335" y="017" width="180" height="20" dynamic="false" alignment="center" vertical-aligment="middle" fontsize="10" fsbold="true" fieldname="shortname"/>
+            <image-field name="logo" x="290" y="017" width="35"  height="20"  scale="true" fieldname="logo"/>
+            <rectangle name="tangle" x="335" y="032" width="180" height="12"  draw="false" fill="false" color="#0000ff"/>
+            <label name="impuesto"   x="335" y="032" width="180" height="12" dynamic="false" alignment="center" fontsize="08" fsbold="false">CONTRIBUCIÓN</label>
+            <image-field name="logo" x="520" y="015" width="35"  height="30"  scale="true" fieldname="escudo"/>
+            
+            <rectangle name="tangle" x="290" y="057" width="85"  height="14"  draw="true" fill="false" color="#000000"/>
+            <label name="impuesto"   x="293" y="059" width="85"  height="12"  fontsize="08" dynamic="false" alignment="center" vertical-aligment="middle" fsbold="false">Fecha</label>
+            <string-field            x="290" y="074" width="85"  height="10"  fontsize="08" alignment="center" vertical-aligment="middle" dynamic="false" fieldname="fechaboleta"/>
+            <rectangle name="tangle" x="375" y="057" width="90"  height="14"  draw="true" fill="false" color="#000000"/>
+            <label name="impuesto"   x="375" y="058" width="85"  height="12"  fontsize="08" dynamic="false" alignment="center" vertical-aligment="middle" fsbold="false">Comprobante Nº</label>
+            <rectangle name="tangle" x="375" y="058" width="35"  height="10"  draw="false" fill="false" color="#0000FF"/>
+            <string-field            x="375" y="074" width="35"  height="10"  fontsize="08" dynamic="true"  alignment="right" fieldname="table_0.anio"/>
+            <rectangle name="tangle" x="410" y="057" width="10"  height="10"  draw="false" fill="false" color="#0000FF"/>
+            <label name="impuesto"   x="410" y="074" width="10"  height="10"  fontsize="08" dynamic="false" alignment="center" vertical-aligment="middle" fsbold="false">-</label>
+            <rectangle name="tangle" x="420" y="057" width="45"  height="10"  draw="false" fill="false" color="#0000FF"/>
+            <string-field            x="420" y="074" width="45"  height="10"  fontsize="08" dynamic="true"  alignment="left" fieldname="numeroformateado"/>
+            <rectangle name="tangle" x="465" y="057" width="85"  height="14"  draw="true" fill="false" color="#000000"/>
+            <label name="impuesto"   x="465" y="058" width="85"  height="12"  fontsize="08" dynamic="false" alignment="center" vertical-aligment="middle" fsbold="false">Tipo</label>
+            <string-field            x="465" y="074" width="85"  height="12"  fontsize="08" alignment="center" vertical-aligment="middle" dynamic="false" fieldname="nombrealicuota"/>
+            
+            <rectangle name="tangle" x="290" y="071" width="85"  height="14"  draw="true" fill="false" color="#000000"/>
+            <rectangle name="tangle" x="375" y="071" width="90"  height="14"  draw="true" fill="false" color="#000000"/>
+            <rectangle name="tangle" x="465" y="071" width="85"  height="14"  draw="true" fill="false" color="#000000"/>
+            <rectangle name="tangle" x="290" y="084" width="260" height="50"  draw="true" fill="false" color="#000000"/>
+	    
+            <label name="impuesto" x="293" y="095" width="70"  height="12" fontsize="09" dynamic="false" alignment="right" vertical-aligment="middle" fsbold="false">Contribuyente:</label>
+            <string-field          x="370" y="095" width="200" height="12" fontsize="09" alignment="left" dynamic="false" fsbold="false" fieldname="contribuyente"/>
+            <label name="impuesto" x="293" y="115" width="70"  height="12" fontsize="09" dynamic="false" alignment="right" vertical-aligment="middle" fsbold="false">DNI/CUIT/CUIL:</label>
+            <string-field          x="370" y="115" width="175" height="12" fontsize="09" alignment="left" dynamic="false" fsbold="false" fieldname="dni"/>
+            
+            <rectangle name="tangle"  x="290" y="135" width="175" height="70"  draw="true" fill="false" color="#000000"/>
+            <rectangle name="tangle"  x="465" y="135" width="85"  height="70"  draw="true" fill="false" color="#000000"/>
+            
+            <label name="zona" x="290" y="142" width="175"  height="12" fontsize="08" dynamic="false" alignment="center" vertical-aligment="middle" fsbold="false" fsunderline="true">CONCEPTO:</label>
+            <string-field      x="293" y="162" width="170"  height="35" fontsize="08" alignment="left" dynamic="false" fieldname="concepto"/>
+            
+            <rectangle name="ta" x="465" y="140" width="85" height="10"  draw="false" fill="false" color="#0000FF"/>
+            <label name="zona"   x="465" y="140" width="85" height="10" fontsize="08" dynamic="false" alignment="center" vertical-aligment="middle" fsbold="true">Importe</label>
+            <rectangle name="ta" x="470" y="150" width="75" height="20"  draw="true" fill="true" color="#DCD4D9"/>
+            <rectangle name="ta" x="470" y="150" width="75" height="20"  draw="true" fill="false" color="#000000"/>
+            <number-field        x="470" y="155" width="75" height="12" fontsize="09" alignment="center" format="$ #,##0.00" dynamic="true" fsbold="true" fieldname="montototal"/>
+            
+            <rectangle name="ta" x="465" y="177" width="85" height="10" draw="false" fill="false" color="#0000FF"/>
+            <label name="zona"   x="465" y="177" width="85" height="10" fontsize="08" dynamic="false" alignment="center" vertical-aligment="middle" fsbold="true">Actualizado al</label>
+            <rectangle name="ta" x="465" y="187" width="85" height="10" draw="false" fill="false" color="#0000FF"/>
+            <string-field        x="465" y="187" width="85" height="10" fontsize="08" dynamic="false" alignment="center" vertical-aligment="middle" fieldname="actualdate"/>
+            
+            <label     name="zon" x="290" y="212" width="40" height="12" dynamic="false" alignment="left" vertical-aligment="middle" fontsize="07" fsbold="false">Fch. imp.:</label>
+            <string-field         x="335" y="212" width="100" height="12" dynamic="true"  alignment="left"  fontsize="07" fieldname="actualdate"/>
+            <label     name="zon" x="290" y="227" width="40" height="12" dynamic="false" alignment="left" vertical-aligment="middle" fontsize="07" fsbold="false">Usuario:</label>
+            <string-field         x="335" y="227" width="90" alignment="left" height="12" dynamic="false" fontsize="07" fieldname="usuario"/>
+            <rectangle name="tle" x="323" y="227" width="115" height="12"  draw="false" fill="false" color="#0000FF"/>
+            
+            <image-field name="t"  x="440" y="212"  width="121"  height="20"  scale="true" fieldname="barcode"/>
+            
+            <label       name="z"  x="390" y="237" width="160" height="14" dynamic="false" alignment="right" vertical-aligment="middle" fontsize="07" fsbold="false">Talón para el Ente Recaudador</label>
+            
+            <!--FIN PARA ENTE RECAUDADOR -->
+        </reportfooter>
+
+	<functions>
+		<function class="org.jfree.report.function.HideElementByNameFunction" name="hideHeader">
+			<properties>
+				<property name="element">table_0</property>
+				<property name="field">TablePrefix</property>
+			</properties>
+		</function>
+		
+		<function class="org.jfree.report.function.HideElementByNameFunction" name="hideDetail">
+			<properties>
+				<property name="element">table_0</property>
+				<property name="field">TablePrefix</property>
+			</properties>
+		</function>
+
+                <function class="org.jfree.report.function.ItemSumFunction" name="totalAmount">
+			<properties>
+				<property name="field">table_0.montototal</property>
+				<property name="group">Header-Detail</property>
+			</properties>
+		</function>
+                
+		<function class="org.jfree.report.function.PageOfPagesFunction" name="pageXofY">
+		    <properties>
+			    <property name="format">Página {0} de {1}</property>
+		    </properties>
+		</function>
+
+	</functions>
+
+    <pagefooter height="24">
+                <rectangle name="PF0" x="0" y="0" width="100%" height="100%" color="#FFFFFF" weight="0" draw="false" fill="true"/>
+                <line x1="0" y1="0" x2="100%" y2="0" weight="0.5"/>
+                <string-field fieldname="location" x="0" y="4" width="100%" height="100%" alignment="left" vertical-alignment="middle"/>
+                <string-field fieldname="pageXofY" x="0" y="4" width="100%" height="100%" alignment="right" vertical-alignment="middle"/>
+    </pagefooter>
+    
+</report>
+
+
